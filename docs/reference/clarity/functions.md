@@ -4,46 +4,6 @@ description: The complete reference guide to all Clarity functions.
 
 # Functions
 
-## \* (multiply)
-
-Introduced in: **Clarity 1**
-
-**input:** `int, ... | uint, ...`\
-**output:** `int | uint`\
-**signature:** `(* i1 i2...)`
-
-**description:**\
-Multiplies a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.
-
-**example:**
-
-```clojure
-(* 2 3) ;; Returns 6
-(* 5 2) ;; Returns 10
-(* 2 2 2) ;; Returns 8
-```
-
-***
-
-## + (add)
-
-Introduced in: **Clarity 1**
-
-**input:** `int, ... | uint, ...`\
-**output:** `int | uint`\
-**signature:** `(+ i1 i2...)`
-
-**description:**\
-Adds a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.
-
-**example:**
-
-```clojure
-(+ 1 2 3) ;; Returns 6
-```
-
-***
-
 ## - (subtract)
 
 Introduced in: **Clarity 1**
@@ -57,9 +17,30 @@ Subtracts a variable number of integer inputs and returns the result. In the eve
 
 **example:**
 
-```clojure
+```clarity
 (- 2 1 1) ;; Returns 0
 (- 0 3) ;; Returns -3
+```
+
+***
+
+## * (multiply)
+
+Introduced in: **Clarity 1**
+
+**input:** `int, ... | uint, ...`\
+**output:** `int | uint`\
+**signature:** `(* i1 i2...)`
+
+**description:**\
+Multiplies a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.
+
+**example:**
+
+```clarity
+(* 2 3) ;; Returns 6
+(* 5 2) ;; Returns 10
+(* 2 2 2) ;; Returns 8
 ```
 
 ***
@@ -77,10 +58,29 @@ Integer divides a variable number of integer inputs and returns the result. In t
 
 **example:**
 
-```clojure
+```clarity
 (/ 2 3) ;; Returns 0
 (/ 5 2) ;; Returns 2
 (/ 4 2 2) ;; Returns 1
+```
+
+***
+
+## + (add)
+
+Introduced in: **Clarity 1**
+
+**input:** `int, ... | uint, ...`\
+**output:** `int | uint`\
+**signature:** `(+ i1 i2...)`
+
+**description:**\
+Adds a variable number of integer inputs and returns the result. In the event of an _overflow_, throws a runtime error.
+
+**example:**
+
+```clarity
+(+ 1 2 3) ;; Returns 6
 ```
 
 ***
@@ -94,14 +94,13 @@ Introduced in: **Clarity 1**
 **signature:** `(< i1 i2)`
 
 **description:**\
-Compares two integers (or other comparable types), returning `true` if `i1` is less than `i2` and `false` otherwise. i1 and i2 must be of the same type.
-
-* Starting with Stacks 1.0: comparable types are `int` and `uint`.
-* Starting with Stacks 2.1: comparable types also include `string-ascii`, `string-utf8` and `buff`.
+Compares two integers, returning `true` if `i1` is less than `i2` and `false` otherwise.
+i1 and i2 must be of the same type. Starting with Stacks 1.0, the `<`-comparable types are `int` and `uint`. Starting with Stacks 2.1,
+the `<`-comparable types are expanded to include `string-ascii`, `string-utf8` and `buff`.
 
 **example:**
 
-```clojure
+```clarity
 (< 1 2) ;; Returns true
 (< 5 2) ;; Returns false
 (< "aaa" "baa") ;; Returns true
@@ -121,11 +120,13 @@ Introduced in: **Clarity 1**
 **signature:** `(<= i1 i2)`
 
 **description:**\
-Compares two values, returning `true` if `i1` is less than or equal to `i2`. Types must match. Same type support notes as `<`.
+Compares two integers, returning true if `i1` is less than or equal to `i2` and `false` otherwise.
+i1 and i2 must be of the same type. Starting with Stacks 1.0, the `<=`-comparable types are `int` and `uint`. Starting with Stacks 2.1,
+the `<=`-comparable types are expanded to include `string-ascii`, `string-utf8` and `buff`.
 
 **example:**
 
-```clojure
+```clarity
 (<= 1 1) ;; Returns true
 (<= 5 2) ;; Returns false
 (<= "aaa" "baa") ;; Returns true
@@ -145,11 +146,13 @@ Introduced in: **Clarity 1**
 **signature:** `(> i1 i2)`
 
 **description:**\
-Compares two values, returning `true` if `i1` is greater than `i2`. Types must match. Same type support notes as `<`.
+Compares two integers, returning `true` if `i1` is greater than `i2` and false otherwise.
+i1 and i2 must be of the same type. Starting with Stacks 1.0, the `>`-comparable types are `int` and `uint`. Starting with Stacks 2.1,
+the `>`-comparable types are expanded to include `string-ascii`, `string-utf8` and `buff`.
 
 **example:**
 
-```clojure
+```clarity
 (> 1 2) ;; Returns false
 (> 5 2) ;; Returns true
 (> "baa" "aaa") ;; Returns true
@@ -169,11 +172,13 @@ Introduced in: **Clarity 1**
 **signature:** `(>= i1 i2)`
 
 **description:**\
-Compares two values, returning `true` if `i1` is greater than or equal to `i2`. Types must match. Same type support notes as `<`.
+Compares two integers, returning `true` if `i1` is greater than or equal to `i2` and `false` otherwise.
+i1 and i2 must be of the same type. Starting with Stacks 1.0, the `>=`-comparable types are `int` and `uint`. Starting with Stacks 2.1,
+the `>=`-comparable types are expanded to include `string-ascii`, `string-utf8` and `buff`.
 
 **example:**
 
-```clojure
+```clarity
 (>= 1 1) ;; Returns true
 (>= 5 2) ;; Returns true
 (>= "baa" "aaa") ;; Returns true
@@ -193,11 +198,13 @@ Introduced in: **Clarity 1**
 **signature:** `(and b1 b2 ...)`
 
 **description:**\
-Returns `true` if all boolean inputs are `true`. Arguments are evaluated in-order and lazily (short-circuits on `false`).
+Returns `true` if all boolean inputs are `true`. Importantly, the supplied arguments are
+evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `false`, the function
+short-circuits, and no subsequent arguments are evaluated.
 
 **example:**
 
-```clojure
+```clarity
 (and true false) ;; Returns false
 (and (is-eq (+ 1 2) 1) (is-eq 4 4)) ;; Returns false
 (and (is-eq (+ 1 2) 3) (is-eq 4 4)) ;; Returns true
@@ -214,17 +221,18 @@ Introduced in: **Clarity 1**
 **signature:** `(append (list 1 2 3 4) 5)`
 
 **description:**\
-Takes a list and a value of the same entry type, and returns a new list with max\_len += 1 (effectively appending the value).
+The `append` function takes a list and another value with the same entry type,
+and outputs a list of the same type with max_len += 1.
 
 **example:**
 
-```clojure
+```clarity
 (append (list 1 2 3 4) 5) ;; Returns (1 2 3 4 5)
 ```
 
 ***
 
-## as-contract​
+## as-contract
 
 {% hint style="danger" %}
 Deprecated in Clarity 4.
@@ -232,18 +240,17 @@ Deprecated in Clarity 4.
 
 Introduced in: **Clarity 1**
 
-**input:** `A`
-
-**output:** `A`
-
+**input:** `A`\
+**output:** `A`\
 **signature:** `(as-contract expr)`
 
 **description:**\
-The `as-contract` function switches the current context's `tx-sender` value to the _contract's_ principal and executes `expr` with that context. It returns the resulting value of `expr`.
+The `as-contract` function switches the current context's `tx-sender` value to the _contract's_
+principal and executes `expr` with that context. It returns the resulting value of `expr`.
 
 **example:**
 
-```
+```clarity
 (as-contract tx-sender) ;; Returns S1G2081040G2081040G2081040G208105NK8PE5.docs-test
 ```
 
@@ -251,39 +258,46 @@ The `as-contract` function switches the current context's `tx-sender` value to t
 
 ## as-contract?
 
-Introduced in: **Clarity 4**
-
 {% hint style="info" %}
 The previous version of `as-contract`, introduced in Clarity 1, has changed to `as-contract?` in Clarity 4, with several new security enhancements.
 {% endhint %}
 
-**Input**:
+Introduced in: **Clarity 4**
 
-* `((with-stx|with-ft|with-nft|with-stacking)*|with-all-assets-unsafe)`: The set of allowances (at most 128) to grant during the evaluation of the body expressions. Note that `with-all-assets-unsafe` is mutually exclusive with other allowances.
-* `AnyType* A`: The Clarity expressions to be executed within the context, with the final expression returning type `A`, where `A` is not a `response`
+**input:** `((Allowance){0,128}), AnyType, ... A`\
+**output:** `(response A uint)`\
+**signature:** `(as-contract? ((with-stx|with-ft|with-nft|with-stacking)*) expr-body1 expr-body2 ... expr-body-last)`
 
-**Output**: `(response A uint)`
+**description:**\
+Switches the current context's `tx-sender` and
+`contract-caller` values to the contract's principal and executes the body
+expressions within that context, then checks the asset outflows from the
+contract against the granted allowances, in declaration order. If any
+allowance is violated, the body expressions are reverted, an error is
+returned, and an event is emitted with the full details of the violation to
+help with debugging. Note that the allowance setup expressions are evaluated
+before executing the body expressions. The final body expression cannot
+return a `response` value in order to avoid returning a nested `response`
+value from `as-contract?` (nested responses are error-prone). Returns:
+* `(ok x)` if the outflows are within the allowances, where `x` is the
+    result of the final body expression and has type `A`.
+* `(err index)` if an allowance was violated, where `index` is the 0-based
+    index of the first violated allowance in the list of granted allowances,
+    or `u128` if an asset with no allowance caused the violation.
 
-**Signature**: `(as-contract? ((with-stx|with-ft|with-nft|with-stacking)*|with-all-assets-unsafe) expr-body1 expr-body2 ... expr-body-last)`
-
-**Description**: Switches the current context's `tx-sender` and `contract-caller` values to the contract's principal and executes the body expressions within that context, then checks the asset outflows from the contract against the granted allowances, in declaration order. If any allowance is violated, the body expressions are reverted and an error is returned. Note that the allowance setup expressions are evaluated before executing the body expressions. The final body expression cannot return a `response` value in order to avoid returning a nested `response` value from `as-contract?` (nested responses are error-prone). Returns:
-
-* `(ok x)` if the outflows are within the allowances, where `x` is the result of the final body expression and has type `A`.
-* `(err index)` if an allowance was violated, where `index` is the 0-based index of the first violated allowance in the list of granted allowances, or `u128` if an asset with no allowance caused the violation.
-
-**Example**:
+**example:**
 
 ```clarity
-(define-public (foo)
-  (as-contract? ()
-    (try! (stx-transfer? u1000000 tx-sender recipient))
-  )
-) ;; Returns (err u128)
-(define-public (bar)
-  (as-contract? ((with-stx u1000000))
-    (try! (stx-transfer? u1000000 tx-sender recipient))
+(let ((recipient tx-sender))
+  (as-contract? ((with-stx u100))
+    (try! (stx-transfer? u50 tx-sender recipient))
   )
 ) ;; Returns (ok true)
+(let ((recipient tx-sender))
+  (as-contract? ()
+    (try! (stx-transfer? u50 tx-sender recipient))
+  )
+) ;; Returns (err u128)
 ```
 
 ***
@@ -297,11 +311,14 @@ Introduced in: **Clarity 1**
 **signature:** `(as-max-len? sequence max_length)`
 
 **description:**\
-The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument. The function returns an optional type. If the input sequence length is less than or equal to the supplied max\_length, this returns `(some sequence)`, otherwise it returns `none`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
+The `as-max-len?` function takes a sequence argument and a uint-valued, literal length argument.
+The function returns an optional type. If the input sequence length is less than
+or equal to the supplied max_length, this returns `(some sequence)`, otherwise it returns `none`.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
 
 **example:**
 
-```clojure
+```clarity
 (as-max-len? (list 2 2 2) u3) ;; Returns (some (2 2 2))
 (as-max-len? (list 1 2 3) u2) ;; Returns none
 (as-max-len? "hello" u10) ;; Returns (some "hello")
@@ -319,11 +336,14 @@ Introduced in: **Clarity 1**
 **signature:** `(asserts! bool-expr thrown-value)`
 
 **description:**\
-The `asserts!` function admits a boolean argument and asserts its evaluation: if bool-expr is `true`, `asserts!` returns `true` and proceeds in the program execution. If the supplied argument is returning a false value, `asserts!` _returns_ `thrown-value` and exits the current control-flow.
+The `asserts!` function admits a boolean argument and asserts its evaluation:
+if bool-expr is `true`, `asserts!` returns `true` and proceeds in the program execution.
+If the supplied argument is returning a false value, `asserts!` _returns_ `thrown-value` and exits the current
+control-flow.
 
 **example:**
 
-```clojure
+```clarity
 (asserts! (is-eq 1 1) (err 1)) ;; Returns true
 ```
 
@@ -332,7 +352,11 @@ The `asserts!` function admits a boolean argument and asserts its evaluation: if
 ## at-block
 
 {% hint style="danger" %}
-Beginning in epoch 3.4, `at-block` has been disabled: any execution reaching a call to `at-block` will result in a runtime error and new contracts containing `at-block` will be rejected. See [SIP-042](https://github.com/francesco-stacks/sips/blob/da24c8fffc2501b8999d5fd169e364895283dc98/sips/sip-042/sip-042.md) for details.
+Deprecated in Clarity 5.
+{% endhint %}
+
+{% hint style="danger" %}
+As of Epoch 3.4, existing contracts using `at-block` will throw an error if called.
 {% endhint %}
 
 Introduced in: **Clarity 1**
@@ -342,18 +366,23 @@ Introduced in: **Clarity 1**
 **signature:** `(at-block id-block-hash expr)`
 
 **description:**\
-The `at-block` function evaluates the expression `expr` _as if_ it were evaluated at the end of the block indicated by the _block-hash_ argument. The `expr` closure must be read-only.
+Removed in Epoch 3.4 (see SIP-042).
 
-Note: The block identifying hash must be a hash returned by the `id-header-hash` block information property. This hash uniquely identifies Stacks blocks and is unique across Stacks forks. While the hash returned by `header-hash` is unique within the context of a single fork, it is not unique across Stacks forks.
+The `at-block` function evaluates the expression `expr` _as if_ it were evaluated at the end of the
+block indicated by the _block-hash_ argument. The `expr` closure must be read-only.
+
+Note: The block identifying hash must be a hash returned by the `id-header-hash` block information
+property. This hash uniquely identifies Stacks blocks and is unique across Stacks forks. While the hash returned by
+`header-hash` is unique within the context of a single fork, it is not unique across Stacks forks.
 
 The function returns the result of evaluating `expr`.
 
 **example:**
 
-```clojure
+```clarity
 (define-data-var data int 1)
 (at-block 0x0000000000000000000000000000000000000000000000000000000000000000 block-height) ;; Returns u0
-(at-block (get-block-info? id-header-hash 0) (var-get data)) ;; Throws NoSuchDataVariable because `data` wasn't initialized at block height 0
+(at-block (unwrap-panic (get-stacks-block-info? id-header-hash u0)) (var-get data)) ;; Throws NoSuchDataVariable because `data` wasn't initialized at block height 0
 ```
 
 ***
@@ -367,11 +396,14 @@ Introduced in: **Clarity 1**
 **signature:** `(begin expr1 expr2 expr3 ... expr-last)`
 
 **description:**\
-Evaluates each expression in order and returns the value of the last expression. Note: intermediary statements returning a response type must be checked.
+The `begin` function evaluates each of its input expressions, returning the
+return value of the last such expression.
+
+Note: intermediary statements returning a response type must be checked.
 
 **example:**
 
-```clojure
+```clarity
 (begin (+ 1 2) 4 5) ;; Returns 5
 ```
 
@@ -386,15 +418,16 @@ Introduced in: **Clarity 2**
 **signature:** `(bit-and i1 i2...)`
 
 **description:**\
-Bitwise AND across a variable number of integer inputs.
+Returns the result of bitwise and'ing a variable number of integer inputs.
 
 **example:**
 
-```clojure
+```clarity
 (bit-and 24 16) ;; Returns 16
 (bit-and 28 24 -1) ;; Returns 24
 (bit-and u24 u16) ;; Returns u16
 (bit-and -128 -64) ;; Returns -128
+(bit-and 28 24 -1) ;; Returns 24
 ```
 
 ***
@@ -408,11 +441,12 @@ Introduced in: **Clarity 2**
 **signature:** `(bit-not i1)`
 
 **description:**\
-Returns the one's complement (bitwise NOT) of `i1`.
+Returns the one's compliement (sometimes also called the bitwise compliment or not operator) of `i1`, effectively reversing the bits in `i1`.
+In other words, every bit that is `1` in `ì1` will be `0` in the result.  Conversely, every bit that is `0` in `i1` will be `1` in the result.
 
 **example:**
 
-```clojure
+```clarity
 (bit-not 3) ;; Returns -4
 (bit-not u128) ;; Returns u340282366920938463463374607431768211327
 (bit-not 128) ;; Returns -129
@@ -430,11 +464,11 @@ Introduced in: **Clarity 2**
 **signature:** `(bit-or i1 i2...)`
 
 **description:**\
-Bitwise inclusive OR across a variable number of integer inputs.
+Returns the result of bitwise inclusive or'ing a variable number of integer inputs.
 
 **example:**
 
-```clojure
+```clarity
 (bit-or 4 8) ;; Returns 12
 (bit-or 1 2 4) ;; Returns 7
 (bit-or 64 -32 -16) ;; Returns -16
@@ -454,16 +488,18 @@ Introduced in: **Clarity 2**
 **description:**\
 Shifts all the bits in `i1` to the left by the number of places specified in `shamt` modulo 128 (the bit width of Clarity integers).
 
-Note that there is a deliberate choice made to ignore arithmetic overflow for this operation. In use cases where overflow should be detected, developers should use `*`, `/`, and `pow` instead of the shift operators.
+Note that there is a deliberate choice made to ignore arithmetic overflow for this operation.  In use cases where overflow should be detected, developers
+should use `*`, `/`, and `pow` instead of the shift operators.
 
 **example:**
 
-```clojure
+```clarity
 (bit-shift-left 2 u1) ;; Returns 4
 (bit-shift-left 16 u2) ;; Returns 64
 (bit-shift-left -64 u1) ;; Returns -128
 (bit-shift-left u4 u2) ;; Returns u16
 (bit-shift-left 123 u9999999999) ;; Returns -170141183460469231731687303715884105728
+(bit-shift-left u123 u9999999999) ;; Returns u170141183460469231731687303715884105728
 (bit-shift-left -1 u7) ;; Returns -128
 (bit-shift-left -1 u128) ;; Returns -1
 ```
@@ -479,19 +515,24 @@ Introduced in: **Clarity 2**
 **signature:** `(bit-shift-right i1 shamt)`
 
 **description:**\
-Shifts all the bits in `i1` to the right by the number of places specified in `shamt` modulo 128 (the bit width of Clarity integers). When `i1` is a `uint` (unsigned), new bits are filled with zeros. When `i1` is an `int` (signed), the sign is preserved, meaning that new bits are filled with the value of the previous sign-bit.
+Shifts all the bits in `i1` to the right by the number of places specified in `shamt` modulo 128 (the bit width of Clarity integers).
+When `i1` is a `uint` (unsigned), new bits are filled with zeros. When `i1` is an `int` (signed), the sign is preserved, meaning that new bits are filled with the value of the previous sign-bit.
 
 Note that there is a deliberate choice made to ignore arithmetic overflow for this operation. In use cases where overflow should be detected, developers should use `*`, `/`, and `pow` instead of the shift operators.
 
 **example:**
 
-```clojure
+```clarity
 (bit-shift-right 2 u1) ;; Returns 1
 (bit-shift-right 128 u2) ;; Returns 32
 (bit-shift-right -64 u1) ;; Returns -32
 (bit-shift-right u128 u2) ;; Returns u32
 (bit-shift-right 123 u9999999999) ;; Returns 0
+(bit-shift-right u123 u9999999999) ;; Returns u0
 (bit-shift-right -128 u7) ;; Returns -1
+(bit-shift-right -256 u1) ;; Returns -128
+(bit-shift-right 5 u2) ;; Returns 1
+(bit-shift-right -5 u2) ;; Returns -2
 ```
 
 ***
@@ -505,11 +546,11 @@ Introduced in: **Clarity 2**
 **signature:** `(bit-xor i1 i2...)`
 
 **description:**\
-Bitwise exclusive OR across a variable number of integer inputs.
+Returns the result of bitwise exclusive or'ing a variable number of integer inputs.
 
 **example:**
 
-```clojure
+```clarity
 (bit-xor 1 2) ;; Returns 3
 (bit-xor 120 280) ;; Returns 352
 (bit-xor -128 64) ;; Returns -64
@@ -528,11 +569,16 @@ Introduced in: **Clarity 2**
 **signature:** `(buff-to-int-be (buff 16))`
 
 **description:**\
-Converts a byte buffer to a signed integer use a big-endian encoding. The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as this function uses a big-endian encoding, the input behaves as if it is zero-padded on the _left_.
+Converts a byte buffer to a signed integer use a big-endian encoding.
+The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as
+this function uses a big-endian encoding, the input behaves as if it is
+zero-padded on the _left_.
+
+Note: This function is only available starting with Stacks 2.1.
 
 **example:**
 
-```clojure
+```clarity
 (buff-to-int-be 0x01) ;; Returns 1
 (buff-to-int-be 0x00000000000000000000000000000001) ;; Returns 1
 (buff-to-int-be 0xffffffffffffffffffffffffffffffff) ;; Returns -1
@@ -550,11 +596,16 @@ Introduced in: **Clarity 2**
 **signature:** `(buff-to-int-le (buff 16))`
 
 **description:**\
-Converts a byte buffer to a signed integer use a little-endian encoding. The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as this function uses a little-endian encoding, the input behaves as if it is zero-padded on the _right_.
+Converts a byte buffer to a signed integer use a little-endian encoding.
+The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as
+this function uses a little-endian encoding, the input behaves as if it is
+zero-padded on the _right_.
+
+Note: This function is only available starting with Stacks 2.1.
 
 **example:**
 
-```clojure
+```clarity
 (buff-to-int-le 0x01) ;; Returns 1
 (buff-to-int-le 0x01000000000000000000000000000000) ;; Returns 1
 (buff-to-int-le 0xffffffffffffffffffffffffffffffff) ;; Returns -1
@@ -572,11 +623,16 @@ Introduced in: **Clarity 2**
 **signature:** `(buff-to-uint-be (buff 16))`
 
 **description:**\
-Converts a byte buffer to an unsigned integer use a big-endian encoding. The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as this function uses a big-endian encoding, the input behaves as if it is zero-padded on the _left_.
+Converts a byte buffer to an unsigned integer use a big-endian encoding.
+The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as
+this function uses a big-endian encoding, the input behaves as if it is
+zero-padded on the _left_.
+
+Note: This function is only available starting with Stacks 2.1.
 
 **example:**
 
-```clojure
+```clarity
 (buff-to-uint-be 0x01) ;; Returns u1
 (buff-to-uint-be 0x00000000000000000000000000000001) ;; Returns u1
 (buff-to-uint-be 0xffffffffffffffffffffffffffffffff) ;; Returns u340282366920938463463374607431768211455
@@ -594,11 +650,16 @@ Introduced in: **Clarity 2**
 **signature:** `(buff-to-uint-le (buff 16))`
 
 **description:**\
-Converts a byte buffer to an unsigned integer use a little-endian encoding.. The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as this function uses a little-endian encoding, the input behaves as if it is zero-padded on the _right_.
+Converts a byte buffer to an unsigned integer use a little-endian encoding.
+The byte buffer can be up to 16 bytes in length. If there are fewer than 16 bytes, as
+this function uses a little-endian encoding, the input behaves as if it is
+zero-padded on the _right_.
+
+Note: This function is only available starting with Stacks 2.1.
 
 **example:**
 
-```clojure
+```clarity
 (buff-to-uint-le 0x01) ;; Returns u1
 (buff-to-uint-le 0x01000000000000000000000000000000) ;; Returns u1
 (buff-to-uint-le 0xffffffffffffffffffffffffffffffff) ;; Returns u340282366920938463463374607431768211455
@@ -616,11 +677,14 @@ Introduced in: **Clarity 1**
 **signature:** `(concat sequence1 sequence2)`
 
 **description:**\
-Concatenates two sequences of the same type. Applicable to `(list A)`, `buff`, `string-ascii`, `string-utf8`.
+The `concat` function takes two sequences of the same type,
+and returns a concatenated sequence of the same type, with the resulting
+sequence_len = sequence1_len + sequence2_len.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
 
 **example:**
 
-```clojure
+```clarity
 (concat (list 1 2) (list 3 4)) ;; Returns (1 2 3 4)
 (concat "hello " "world") ;; Returns "hello world"
 (concat 0x0102 0x0304) ;; Returns 0x01020304
@@ -637,13 +701,16 @@ Introduced in: **Clarity 1**
 **signature:** `(contract-call? .contract-name function-name arg0 arg1 ...)`
 
 **description:**\
-The `contract-call?` function executes the given public function of the given contract. You _may not_ use this function to call a public function defined in the current contract. If the public function returns _err_, any database changes resulting from calling `contract-call?` are aborted. If the function returns _ok_, database changes occurred.
+The `contract-call?` function executes the given public function of the given contract.
+You _may not_ use this function to call a public function defined in the current contract. If the public
+function returns _err_, any database changes resulting from calling `contract-call?` are aborted.
+If the function returns _ok_, database changes occurred.
 
 **example:**
 
-```clojure
-;; instantiate the sample-contracts/tokens.clar contract first
-(as-contract (contract-call? .tokens mint! u19)) ;; Returns (ok u19)
+```clarity
+;; instantiate the sample/contracts/tokens.clar contract first!
+(as-contract? () (try! (contract-call? .tokens mint! u19))) ;; Returns (ok u19)
 ```
 
 ***
@@ -652,22 +719,24 @@ The `contract-call?` function executes the given public function of the given co
 
 Introduced in: **Clarity 4**
 
-**Input**: `principal`
+**input:** `principal`\
+**output:** `(response (buff 32) uint)`\
+**signature:** `(contract-hash? contract)`
 
-**Output**: `(response (buff 32) uint)`
+**description:**\
+Returns the hash of the specified contract, or an error if the principal
+is not a contract or the specified contract does not exist. Returns:
+* `(ok 0x<hash>)` on success, where `<hash>` is the SHA-512/256 hash of the code body
+* `(err u1)` if the principal is not a contract principal.
+* `(err u2)` if the specified contract does not exist.
 
-**Signature**: `(contract-hash? contract-principal)`
-
-**Description**: Returns the SHA-512/256 hash of the code body of the contract principal specified as input, or an error if the principal is not a contract or the specified contract does not exist. Returns:
-
-* `(ok 0x<hash>)`, where `<hash>` is the SHA-512/256 hash of the code body, on success
-* `(err u1)` if the principal is not a contract principal
-* `(err u2)` if the specified contract does not exist
-
-**Example**:
+**example:**
 
 ```clarity
-(contract-hash? 'SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF.BNS-V2) ;; Returns (ok 0x9f8104ff869aba1205cd5e15f6404dd05675f4c3fe0817c623c425588d981c2f)
+;; instantiate the sample/contracts/tokens.clar contract first!
+(contract-hash? .tokens) ;; Returns (ok 0x90b4a559286ba8ec3801fe8ef49d5e646043861f29376771918d1afb8ff68af7)
+(contract-hash? 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM) ;; Returns (err u1)
+(contract-hash? 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.does-not-exist) ;; Returns (err u2)
 ```
 
 ***
@@ -681,11 +750,11 @@ Introduced in: **Clarity 1**
 **signature:** `(contract-of .contract-name)`
 
 **description:**\
-Returns the principal of the contract implementing the trait.
+The `contract-of` function returns the principal of the contract implementing the trait.
 
 **example:**
 
-```clojure
+```clarity
 (use-trait token-a-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)
 (define-public (forward-get-balance (user principal) (contract <token-a-trait>))
   (begin
@@ -703,11 +772,13 @@ Introduced in: **Clarity 1**
 **signature:** `(default-to default-value option-value)`
 
 **description:**\
-The `default-to` function attempts to 'unpack' the second argument: if the argument is a `(some ...)` option, it returns the inner value of the option. If the second argument is a `(none)` value, `default-to` it returns the value of `default-value`.
+The `default-to` function attempts to 'unpack' the second argument: if the argument is
+a `(some ...)` option, it returns the inner value of the option. If the second argument is a `none` value,
+`default-to` it returns the value of `default-value`.
 
 **example:**
 
-```clojure
+```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: "blockstack" } { id: 1337 })
 (default-to 0 (get id (map-get? names-map (tuple (name "blockstack"))))) ;; Returns 1337
@@ -720,18 +791,22 @@ The `default-to` function attempts to 'unpack' the second argument: if the argum
 
 Introduced in: **Clarity 1**
 
-**input:** `ConstName, Expression`\
+**input:** `MethodSignature, MethodBody`\
 **output:** `Not Applicable`\
 **signature:** `(define-constant name expression)`
 
 **description:**\
-`define-constant` is used to define a private constant value in a smart contract. The expression passed into the definition is evaluated at contract launch, in the order that it is supplied in the contract. This can lead to undefined function or undefined variable errors in the event that a function or variable used in the expression has not been defined before the constant.
+`define-constant` is used to define a private constant value in a smart contract.
+The expression passed into the definition is evaluated at contract launch, in the order that it is
+supplied in the contract. This can lead to undefined function or undefined variable errors in the
+event that a function or variable used in the expression has not been defined before the constant.
 
-Like other kinds of definition statements, `define-constant` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-constant` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
 **example:**
 
-```clojure
+```clarity
 (define-constant four (+ 2 2))
 (+ 4 four) ;; Returns 8
 ```
@@ -747,15 +822,17 @@ Introduced in: **Clarity 1**
 **signature:** `(define-data-var var-name type value)`
 
 **description:**\
-`define-data-var` is used to define a new persisted variable for use in a smart contract. Such variable are only modifiable by the current smart contract.
+`define-data-var` is used to define a new persisted variable for use in a smart contract. Such
+variable are only modifiable by the current smart contract.
 
 Persisted variable are defined with a type and a value.
 
-Like other kinds of definition statements, `define-data-var` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-data-var` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
 **example:**
 
-```clojure
+```clarity
 (define-data-var size int 0)
 (define-private (set-size (value int))
   (var-set size value))
@@ -776,15 +853,18 @@ Introduced in: **Clarity 1**
 **description:**\
 `define-fungible-token` is used to define a new fungible token class for use in the current contract.
 
-The second argument, if supplied, defines the total supply of the fungible token. This ensures that all calls to the `ft-mint?` function will never be able to create more than `total-supply` tokens. If any such call were to increase the total supply of tokens passed that amount, that invocation of `ft-mint?` will result in a runtime error and abort.
+The second argument, if supplied, defines the total supply of the fungible token. This ensures that all calls to the `ft-mint?`
+function will never be able to create more than `total-supply` tokens. If any such call were to increase the total supply
+of tokens passed that amount, that invocation of `ft-mint?` will result in a runtime error and abort.
 
-Like other kinds of definition statements, `define-fungible-token` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-fungible-token` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
 Tokens defined using `define-fungible-token` may be used in `ft-transfer?`, `ft-mint?`, and `ft-get-balance` functions
 
 **example:**
 
-```clojure
+```clarity
 (define-fungible-token stacks)
 (define-fungible-token limited-supply-stacks u100)
 ```
@@ -800,20 +880,25 @@ Introduced in: **Clarity 1**
 **signature:** `(define-map map-name key-type value-type)`
 
 **description:**\
-`define-map` is used to define a new datamap for use in a smart contract. Such maps are only modifiable by the current smart contract.
+`define-map` is used to define a new datamap for use in a smart contract. Such
+maps are only modifiable by the current smart contract.
 
 Maps are defined with a key type and value type, often these types are tuple types.
 
-Like other kinds of definition statements, `define-map` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-map` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
 **example:**
 
-```clojure
+```clarity
 (define-map squares { x: int } { square: int })
 (define-private (add-entry (x int))
   (map-insert squares { x: 2 } { square: (* x x) }))
 (add-entry 1)
 (add-entry 2)
+(add-entry 3)
+(add-entry 4)
+(add-entry 5)
 ```
 
 ***
@@ -827,15 +912,18 @@ Introduced in: **Clarity 1**
 **signature:** `(define-non-fungible-token asset-name asset-identifier-type)`
 
 **description:**\
-`define-non-fungible-token` is used to define a new non-fungible token class for use in the current contract. Individual assets are identified by their asset identifier, which must be of the type `asset-identifier-type`. Asset identifiers are _unique_ identifiers.
+`define-non-fungible-token` is used to define a new non-fungible token class for use in the current contract.
+Individual assets are identified by their asset identifier, which must be of the type `asset-identifier-type`. Asset
+identifiers are _unique_ identifiers.
 
-Like other kinds of definition statements, `define-non-fungible-token` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-non-fungible-token` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
 Assets defined using `define-non-fungible-token` may be used in `nft-transfer?`, `nft-mint?`, and `nft-get-owner?` functions
 
 **example:**
 
-```clojure
+```clarity
 (define-non-fungible-token names (buff 50))
 ```
 
@@ -847,22 +935,25 @@ Introduced in: **Clarity 1**
 
 **input:** `MethodSignature, MethodBody`\
 **output:** `Not Applicable`\
-**signature:** `(define-private (function-name (arg-name-0 arg-type-0) ...) function-body)`
+**signature:** `(define-private (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)`
 
 **description:**\
-`define-private` is used to define _private_ functions for a smart contract. Private functions may not be called from other smart contracts, nor may they be invoked directly by users. Instead, these functions may only be invoked by other functions defined in the same smart contract.
+`define-private` is used to define _private_ functions for a smart contract. Private
+functions may not be called from other smart contracts, nor may they be invoked directly by users.
+Instead, these functions may only be invoked by other functions defined in the same smart contract.
 
-Like other kinds of definition statements, `define-private` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-private` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
 Private functions may return any type.
 
 **example:**
 
-```clojure
+```clarity
 (define-private (max-of (i1 int) (i2 int))
   (if (> i1 i2)
-    i1
-    i2))
+      i1
+      i2))
 (max-of 4 6) ;; Returns 6
 ```
 
@@ -874,22 +965,26 @@ Introduced in: **Clarity 1**
 
 **input:** `MethodSignature, MethodBody`\
 **output:** `Not Applicable`\
-**signature:** `(define-public (function-name (arg-name-0 arg-type-0) ...) function-body)`
+**signature:** `(define-public (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)`
 
 **description:**\
-`define-public` is used to define a _public_ function and transaction for a smart contract. Public functions are callable from other smart contracts and may be invoked directly by users by submitting a transaction to the Stacks blockchain.
+`define-public` is used to define a _public_ function and transaction for a smart contract. Public
+functions are callable from other smart contracts and may be invoked directly by users by submitting a transaction
+to the Stacks blockchain.
 
-Like other kinds of definition statements, `define-public` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-public` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
-Public functions _must_ return a ResponseType (using either `ok` or `err`). Any datamap modifications performed by a public function is aborted if the function returns an `err` type. Public functions may be invoked by other contracts via `contract-call?`.
+Public functions _must_ return a ResponseType (using either `ok` or `err`). Any datamap modifications performed by
+a public function is aborted if the function returns an `err` type. Public functions may be invoked by other
+contracts via `contract-call?`.
 
 **example:**
 
-```clojure
+```clarity
 (define-public (hello-world (input int))
-  (begin
-    (print (+ 2 input))
-    (ok input)))
+  (begin (print (+ 2 input))
+         (ok input)))
 ```
 
 ***
@@ -900,18 +995,24 @@ Introduced in: **Clarity 1**
 
 **input:** `MethodSignature, MethodBody`\
 **output:** `Not Applicable`\
-**signature:** `(define-read-only (function-name (arg-name-0 arg-type-0) ...) function-body)`
+**signature:** `(define-read-only (function-name (arg-name-0 arg-type-0) (arg-name-1 arg-type-1) ...) function-body)`
 
 **description:**\
-`define-read-only` is used to define a _public read-only_ function for a smart contract. Such functions are callable from other smart contracts.
+`define-read-only` is used to define a _public read-only_ function for a smart contract. Such
+functions are callable from other smart contracts.
 
-Like other kinds of definition statements, `define-read-only` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-read-only` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
-Read-only functions may return any type. However, read-only functions may not perform any datamap modifications, or call any functions which perform such modifications. This is enforced both during type checks and during the execution of the function. Public read-only functions may be invoked by other contracts via `contract-call?`.
+Read-only functions may return any type. However, read-only functions
+may not perform any datamap modifications, or call any functions which
+perform such modifications. This is enforced both during type checks and during
+the execution of the function. Public read-only functions may
+be invoked by other contracts via `contract-call?`.
 
 **example:**
 
-```clojure
+```clarity
 (define-read-only (just-return-one-hundred)
   (* 10 10))
 ```
@@ -924,50 +1025,59 @@ Introduced in: **Clarity 1**
 
 **input:** `VarName, [MethodSignature]`\
 **output:** `Not Applicable`\
-**signature:** `(define-trait trait-name ((func1-name (arg1-type ...) (return-type))))`
+**signature:** `(define-trait trait-name ((func1-name (arg1-type arg2-type ...) (return-type))))`
 
 **description:**\
-`define-trait` is used to define a new trait definition for use in a smart contract. Other contracts can implement a given trait and then have their contract identifier being passed as a function argument in order to be called dynamically with `contract-call?`.
+`define-trait` is used to define a new trait definition for use in a smart contract. Other contracts
+can implement a given trait and then have their contract identifier being passed as a function argument in order to be called
+dynamically with `contract-call?`.
 
-Traits are defined with a name, and a list functions, defined with a name, a list of argument types, and return type.
+Traits are defined with a name, and a list of functions, where each function is defined with a name, a list of argument types, and a return type.
 
-In Clarity 1, a trait type can be used to specify the type of a function parameter. A parameter with a trait type can be used as the target of a dynamic `contract-call?`. A principal literal (e.g. `ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.foo`) may be passed as a trait parameter if the specified contract implements all of the functions specified by the trait. A trait value (originating from a parameter with trait type) may also be passed as a trait parameter if the types are the same.
+In Clarity 1, a trait type can be used to specify the type of a function parameter. A parameter with a trait type can
+be used as the target of a dynamic `contract-call?`. A principal literal (e.g. `ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.foo`)
+may be passed as a trait parameter if the specified contract implements all of the functions specified by the trait.
+A trait value (originating from a parameter with trait type) may also be passed as a trait parameter if the types are the same.
 
-Beginning in Clarity 2, a trait can be used in all of the same ways that a built-in type can be used, except that it cannot be stored in a data var or map, since this would inhibit static analysis. This means that a trait type can be embedded in a compound type (e.g. `(optional <my-trait>)` or `(list 4 <my-trait>)`) and a trait value can be bound to a variable in a `let` or `match` expression. In addition to the principal literal and trait value with matching type allowed in Clarity 1, Clarity 2 also supports implicit casting from a compatible trait, meaning that a value of type `trait-a` may be passed to a parameter with type `trait-b` if `trait-a` includes all of the requirements of `trait-b` (and optionally additional functions).
+Beginning in Clarity 2, a trait can be used in all of the same ways that a built-in type can be used,
+except that it cannot be stored in a data var or map, since this would inhibit static analysis.
+This means that a trait type can be embedded in a compound type (e.g. `(optional <my-trait>)` or `(list 4 <my-trait>)`)
+and a trait value can be bound to a variable in a `let` or `match` expression. In addition to the principal literal
+and trait value with matching type allowed in Clarity 1, Clarity 2 also supports implicit casting from a
+compatible trait, meaning that a value of type `trait-a` may be passed to a parameter with type `trait-b` if `trait-a`
+includes all of the requirements of `trait-b` (and optionally additional functions).
 
-Like other kinds of definition statements, `define-trait` may only be used at the top level of a smart contract definition (i.e., you cannot put a define statement in the middle of a function body).
+Like other kinds of definition statements, `define-trait` may only be used at the top level of a smart contract
+definition (i.e., you cannot put a define statement in the middle of a function body).
 
 **example:**
 
 ```clarity
 (define-trait token-trait
-  ((transfer? (principal principal uint) (response uint uint))
-  (get-balance (principal) (response uint uint))))
+    ((transfer? (principal principal uint) (response uint uint))
+     (get-balance (principal) (response uint uint))))
 ```
 
 ***
 
-## element-at​
-
-{% hint style="danger" %}
-Deprecated in Clarity 2.
-{% endhint %}
+## element-at
 
 Introduced in: **Clarity 1**
 
-**input:** `sequence_A, uint`
-
-**output:** `(optional A)`
-
+**input:** `sequence_A, uint`\
+**output:** `(optional A)`\
 **signature:** `(element-at? sequence index)`
 
-**description:**
+**description:**\
+The `element-at?` function returns the element at `index` in the provided sequence.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
+for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
 
-The `element-at?` function returns the element at `index` in the provided sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. In Clarity1, `element-at` must be used (without the `?`). The `?` is added in Clarity2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity1 spelling is left as an alias in Clarity2 for backwards compatibility.
+In Clarity1, `element-at` must be used (without the `?`). The `?` is added in Clarity2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity1 spelling is left as an alias in Clarity2 for backwards compatibility.
 
 **example:**
 
-```
+```clarity
 (element-at? "blockstack" u5) ;; Returns (some "s")
 (element-at? (list 1 2 3 4 5) u5) ;; Returns none
 (element-at? (list 1 2 3 4 5) (+ u1 u2)) ;; Returns (some 4)
@@ -986,11 +1096,15 @@ Introduced in: **Clarity 2**
 **signature:** `(element-at? sequence index)`
 
 **description:**\
-The `element-at?` function returns the element at `index` in the provided sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. In Clarity1, `element-at` must be used (without the `?`). The `?` is added in Clarity2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity1 spelling is left as an alias in Clarity2 for backwards compatibility.
+The `element-at?` function returns the element at `index` in the provided sequence.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
+for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
+
+In Clarity1, `element-at` must be used (without the `?`). The `?` is added in Clarity2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity1 spelling is left as an alias in Clarity2 for backwards compatibility.
 
 **example:**
 
-```clojure
+```clarity
 (element-at? "blockstack" u5) ;; Returns (some "s")
 (element-at? (list 1 2 3 4 5) u5) ;; Returns none
 (element-at? (list 1 2 3 4 5) (+ u1 u2)) ;; Returns (some 4)
@@ -1009,11 +1123,13 @@ Introduced in: **Clarity 1**
 **signature:** `(err value)`
 
 **description:**\
-Constructs an `err` response. Use for returning errors from public functions; indicates DB changes should be rolled back.
+The `err` function constructs a response type from the input value. Use `err` for
+creating return values in public functions. An _err_ value indicates that any database changes during
+the processing of the function should be rolled back.
 
 **example:**
 
-```clojure
+```clarity
 (err true) ;; Returns (err true)
 ```
 
@@ -1028,17 +1144,19 @@ Introduced in: **Clarity 1**
 **signature:** `(filter func sequence)`
 
 **description:**\
-The `filter` function applies the input function `func` to each element of the input sequence, and returns the same sequence with any elements removed for which `func` returned `false`. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. The `func` argument must be a literal function name.
+The `filter` function applies the input function `func` to each element of the
+input sequence, and returns the same sequence with any elements removed for which `func` returned `false`.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
+for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
+The `func` argument must be a literal function name.
 
 **example:**
 
 ```clarity
 (filter not (list true false true false)) ;; Returns (false false)
-(define-private (is-a (char (string-utf8 1))) 
-  (is-eq char u"a"))
+(define-private (is-a (char (string-utf8 1))) (is-eq char u"a"))
 (filter is-a u"acabd") ;; Returns u"aa"
-(define-private (is-zero (char (buff 1)))
-  (is-eq char 0x00))
+(define-private (is-zero (char (buff 1))) (is-eq char 0x00))
 (filter is-zero 0x00010002) ;; Returns 0x0000
 ```
 
@@ -1053,11 +1171,19 @@ Introduced in: **Clarity 1**
 **signature:** `(fold func sequence_A initial_B)`
 
 **description:**\
-The `fold` function condenses `sequence_A` into a value of type `B` by recursively applies the function `func` to each element of the input sequence _and_ the output of a previous application of `func`.
+The `fold` function condenses `sequence_A` into a value of type
+`B` by recursively applies the function `func` to each element of the
+input sequence _and_ the output of a previous application of `func`.
 
-`fold` uses `initial_B` in the initial application of `func`, along with the first element of `sequence_A`. The resulting value of type `B` is used for the next application of `func`, along with the next element of `sequence_A` and so on. `fold` returns the last value of type `B` returned by these successive applications `func`.
+`fold` uses `initial_B` in the initial application of `func`, along with the
+first element of `sequence_A`. The resulting value of type `B` is used for the
+next application of `func`, along with the next element of `sequence_A` and so
+on. `fold` returns the last value of type `B` returned by these successive
+applications `func`.
 
-Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. The `func` argument must be a literal function name.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
+for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
+The `func` argument must be a literal function name.
 
 **example:**
 
@@ -1065,17 +1191,13 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 (fold * (list 2 2 2) 1) ;; Returns 8
 (fold * (list 2 2 2) 0) ;; Returns 0
 ;; calculates (- 11 (- 7 (- 3 2)))
-(fold - (list 3 7 11) 2) ;; Returns 5 
-(define-private (concat-string (a (string-ascii 20)) (b (string-ascii 20))) 
-  (unwrap-panic (as-max-len? (concat a b) u20)))
+(fold - (list 3 7 11) 2) ;; Returns 5
+(define-private (concat-string (a (string-ascii 20)) (b (string-ascii 20))) (unwrap-panic (as-max-len? (concat a b) u20)))
 (fold concat-string "cdef" "ab")   ;; Returns "fedcab"
 (fold concat-string (list "cd" "ef") "ab")   ;; Returns "efcdab"
-(define-private (concat-buff (a (buff 20)) (b (buff 20)))
-  (unwrap-panic (as-max-len? (concat a b) u20)))
+(define-private (concat-buff (a (buff 20)) (b (buff 20))) (unwrap-panic (as-max-len? (concat a b) u20)))
 (fold concat-buff 0x03040506 0x0102)   ;; Returns 0x060504030102
 ```
-
-(Examples showing string/buffer concatenation omitted here; see original for fuller set.)
 
 ***
 
@@ -1088,13 +1210,17 @@ Introduced in: **Clarity 2**
 **signature:** `(from-consensus-buff? type-signature buffer)`
 
 **description:**\
-`from-consensus-buff?` is a special function that will deserialize a buffer into a Clarity value, using the SIP-005 serialization of the Clarity value. The type that `from-consensus-buff?` tries to deserialize into is provided by the first parameter to the function. If it fails to deserialize the type, the method returns `none`.
+`from-consensus-buff?` is a special function that will deserialize a
+buffer into a Clarity value, using the SIP-005 serialization of the
+Clarity value. The type that `from-consensus-buff?` tries to deserialize
+into is provided by the first parameter to the function. If it fails
+to deserialize the type, the method returns `none`.
 
 **example:**
 
 ```clarity
 (from-consensus-buff? int 0x0000000000000000000000000000000001) ;; Returns (some 1)
-(from-consensus-buff? uint 0x0000000000000000000000000000000001) ;; Returns none 
+(from-consensus-buff? uint 0x0000000000000000000000000000000001) ;; Returns none
 (from-consensus-buff? uint 0x0100000000000000000000000000000001) ;; Returns (some u1)
 (from-consensus-buff? bool 0x0000000000000000000000000000000001) ;; Returns none
 (from-consensus-buff? bool 0x03) ;; Returns (some true)
@@ -1114,11 +1240,17 @@ Introduced in: **Clarity 1**
 **signature:** `(ft-burn? token-name amount sender)`
 
 **description:**\
-Burns (destroys) `amount` of `token-name` from `sender`'s balance. On success returns `(ok true)`. Error `(err u1)` - insufficient balance or non-positive amount.
+`ft-burn?` is used to decrease the token balance for the `sender` principal for a token
+type defined using `define-fungible-token`. The decreased token balance is _not_ transferred to another principal, but
+rather destroyed, reducing the circulating supply.
+
+On a successful burn, it returns `(ok true)`. The burn may fail with error code:
+
+* `(err u1)` -- `sender` does not have enough balance to burn this amount or the amount specified is not positive
 
 **example:**
 
-```clojure
+```clarity
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 (ft-burn? stackaroo u50 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
@@ -1135,11 +1267,12 @@ Introduced in: **Clarity 1**
 **signature:** `(ft-get-balance token-name principal)`
 
 **description:**\
-Returns the `token-name` balance for `principal`. Token must be defined with `define-fungible-token`.
+`ft-get-balance` returns `token-name` balance of the principal `principal`.
+The token type must have been defined using `define-fungible-token`.
 
 **example:**
 
-```clojure
+```clarity
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (ft-get-balance stackaroo 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns u100
@@ -1156,11 +1289,12 @@ Introduced in: **Clarity 1**
 **signature:** `(ft-get-supply token-name)`
 
 **description:**\
-Returns circulating supply for the `token-name`. Token must be defined with `define-fungible-token`.
+`ft-get-balance` returns `token-name` circulating supply.
+The token type must have been defined using `define-fungible-token`.
 
 **example:**
 
-```clojure
+```clarity
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (ft-get-supply stackaroo) ;; Returns u100
@@ -1177,11 +1311,17 @@ Introduced in: **Clarity 1**
 **signature:** `(ft-mint? token-name amount recipient)`
 
 **description:**\
-Mints `amount` of `token-name` to `recipient`. Non-positive amount returns `(err 1)`. On success returns `(ok true)`.
+`ft-mint?` is used to increase the token balance for the `recipient` principal for a token
+type defined using `define-fungible-token`. The increased token balance is _not_ transferred from another principal, but
+rather minted.
+
+If a non-positive amount is provided to mint, this function returns `(err 1)`. Otherwise, on successfully mint, it
+returns `(ok true)`. If this call would result in more supplied tokens than defined by the total supply in
+`define-fungible-token`, then a `SupplyOverflow` runtime error is thrown.
 
 **example:**
 
-```clojure
+```clarity
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
 ```
@@ -1197,14 +1337,24 @@ Introduced in: **Clarity 1**
 **signature:** `(ft-transfer? token-name amount sender recipient)`
 
 **description:**\
-Transfers `amount` of `token-name` from `sender` to `recipient` (token must be defined in contract). Anyone can call; proper guards are expected. Returns `(ok true)` on success. Error codes: `(err u1)` insufficient balance, `(err u2)` sender==recipient, `(err u3)` non-positive amount.
+`ft-transfer?` is used to increase the token balance for the `recipient` principal for a token
+type defined using `define-fungible-token` by debiting the `sender` principal. In contrast to `stx-transfer?`,
+any user can transfer the assets. When used, relevant guards need to be added.
+
+This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns
+one of the following error codes:
+
+* `(err u1)` -- `sender` does not have enough balance to transfer
+* `(err u2)` -- `sender` and `recipient` are the same principal
+* `(err u3)` -- amount to send is non-positive
 
 **example:**
 
-```clojure
+```clarity
 (define-fungible-token stackaroo)
 (ft-mint? stackaroo u100 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)
 (ft-transfer? stackaroo u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (ok true)
+(ft-transfer? stackaroo u60 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) ;; Returns (err u1)
 ```
 
 ***
@@ -1218,13 +1368,15 @@ Introduced in: **Clarity 1**
 **signature:** `(get key-name tuple)`
 
 **description:**\
-Fetches value associated with `key-name` from a tuple. If an optional tuple is supplied and is `none`, returns `none`.
+The `get` function fetches the value associated with a given key from the supplied typed tuple.
+If an `Optional` value is supplied as the inputted tuple, `get` returns an `Optional` type of the specified key in
+the tuple. If the supplied option is a `none` option, get returns `none`.
 
 **example:**
 
-```clojure
+```clarity
 (define-map names-map { name: (string-ascii 12) } { id: int })
-(map-insert names-map { name: "blockstack" } { id: 1337 })
+(map-insert names-map { name: "blockstack" } { id: 1337 }) ;; Returns true
 (get id (tuple (name "blockstack") (id 1337))) ;; Returns 1337
 (get id (map-get? names-map (tuple (name "blockstack")))) ;; Returns (some 1337)
 (get id (map-get? names-map (tuple (name "non-existent")))) ;; Returns none
@@ -1245,22 +1397,49 @@ Introduced in: **Clarity 1**
 **signature:** `(get-block-info? prop-name block-height)`
 
 **description:**\
-In Clarity 3, `get-block-info?` is removed. In its place, `get-stacks-block-info?` can be used to retrieve information about a Stacks block and `get-tenure-info?` can be used to get information pertaining to the tenure. The `get-block-info?` function fetches data for a block of the given _Stacks_ block height. The value and type returned are determined by the specified `BlockInfoPropertyName`. If the provided `block-height` does not correspond to an existing block prior to the current block, the function returns `none`. The currently available property names are as follows:
+In Clarity 3, `get-block-info?` is removed. In its place, `get-stacks-block-info?` can be used to retrieve
+information about a Stacks block and `get-tenure-info?` can be used to get information pertaining to the tenure.
 
-* `burnchain-header-hash`: This property returns a `(buff 32)` value containing the header hash of the burnchain (Bitcoin) block that selected the Stacks block at the given Stacks chain height.
-* `id-header-hash`: This property returns a `(buff 32)` value containing the _index block hash_ of a Stacks block. This hash is globally unique, and is derived from the block hash and the history of accepted PoX operations. This is also the block hash value you would pass into `(at-block)`.
-* `header-hash`: This property returns a `(buff 32)` value containing the header hash of a Stacks block, given a Stacks chain height. \*_WARNING_ this hash is not guaranteed to be globally unique, since the same Stacks block can be mined in different PoX forks. If you need global uniqueness, you should use `id-header-hash`.
-* `miner-address`: This property returns a `principal` value corresponding to the miner of the given block. **WARNING** In Stacks 2.1, this is not guaranteed to be the same `principal` that received the block reward, since Stacks 2.1 supports coinbase transactions that pay the reward to a contract address. This is merely the address of the `principal` that produced the block.
-* `time`: This property returns a `uint` value of the block header time field. This is a Unix epoch timestamp in seconds which roughly corresponds to when the block was mined. This timestamp comes from the burnchain block. **Note**: this does not increase monotonically with each block and block times are accurate only to within two hours. See [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) for more information. For blocks mined after epoch 3.0, all Stacks blocks in one tenure will share the same timestamp. To get the Stacks block time for a block in epoch 3.0+, use `get-stacks-block-info?`.
-* `vrf-seed`: This property returns a `(buff 32)` value of the VRF seed for the corresponding block.
-* `block-reward`: This property returns a `uint` value for the total block reward of the indicated Stacks block. This value is only available once the reward for the block matures. That is, the latest `block-reward` value available is at least 101 Stacks blocks in the past (on mainnet). The reward includes the coinbase, the anchored block's transaction fees, and the shares of the confirmed and produced microblock transaction fees earned by this block's miner. Note that this value may be smaller than the Stacks coinbase at this height, because the miner may have been punished with a valid `PoisonMicroblock` transaction in the event that the miner published two or more microblock stream forks. Added in Clarity 2.
-* `miner-spend-total`: This property returns a `uint` value for the total number of burnchain tokens (i.e. satoshis) spent by all miners trying to win this block. Added in Clarity 2.
-* `miner-spend-winner`: This property returns a `uint` value for the number of burnchain tokens (i.e. satoshis) spent by the winning miner for this Stacks block. Note that this value is less than or equal to the value for `miner-spend-total` at the same block height. Added in Clarity 2.
+The `get-block-info?` function fetches data for a block of the given *Stacks* block height. The
+value and type returned are determined by the specified `BlockInfoPropertyName`. If the provided `block-height` does
+not correspond to an existing block prior to the current block, the function returns `none`. The currently available property names
+are as follows:
+
+- `burnchain-header-hash`: This property returns a `(buff 32)` value containing the header hash of the burnchain (Bitcoin) block that selected the
+Stacks block at the given Stacks chain height.
+
+- `id-header-hash`: This property returns a `(buff 32)` value containing the _index block hash_ of a Stacks block.   This hash is globally unique, and is derived
+from the block hash and the history of accepted PoX operations.  This is also the block hash value you would pass into `(at-block)`.
+
+- `header-hash`: This property returns a `(buff 32)` value containing the header hash of a Stacks block, given a Stacks chain height.  **WARNING* this hash is
+not guaranteed to be globally unique, since the same Stacks block can be mined in different PoX forks.  If you need global uniqueness, you should use `id-header-hash`.
+
+- `miner-address`: This property returns a `principal` value corresponding to the miner of the given block.  **WARNING** In Stacks 2.1, this is not guaranteed to
+be the same `principal` that received the block reward, since Stacks 2.1 supports coinbase transactions that pay the reward to a contract address.  This is merely
+the address of the `principal` that produced the block.
+
+- `time`: This property returns a `uint` value of the block header time field. This is a Unix epoch timestamp in seconds
+which roughly corresponds to when the block was mined. This timestamp comes from the burnchain block. **Note**: this does not increase monotonically with each block
+and block times are accurate only to within two hours. See [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) for more information.
+For blocks mined after epoch 3.0, all Stacks blocks in one tenure will share the same timestamp. To get the Stacks block time for a block in epoch 3.0+, use `get-stacks-block-info?`.
+
+- `vrf-seed`: This property returns a `(buff 32)` value of the VRF seed for the corresponding block.
+
+- `block-reward`: This property returns a `uint` value for the total block reward of the indicated Stacks block.  This value is only available once the reward for
+the block matures.  That is, the latest `block-reward` value available is at least 101 Stacks blocks in the past (on mainnet).  The reward includes the coinbase,
+the anchored block's transaction fees, and the shares of the confirmed and produced microblock transaction fees earned by this block's miner.  Note that this value may
+be smaller than the Stacks coinbase at this height, because the miner may have been punished with a valid `PoisonMicroblock` transaction in the event that the miner
+published two or more microblock stream forks. Added in Clarity 2.
+
+- `miner-spend-total`: This property returns a `uint` value for the total number of burnchain tokens (i.e. satoshis) spent by all miners trying to win this block. Added in Clarity 2.
+
+- `miner-spend-winner`: This property returns a `uint` value for the number of burnchain tokens (i.e. satoshis) spent by the winning miner for this Stacks block.  Note that
+this value is less than or equal to the value for `miner-spend-total` at the same block height. Added in Clarity 2.
 
 **example:**
 
 ```clarity
-(get-block-info? time u0) ;; Returns (some u1557860301) 
+(get-block-info? time u0) ;; Returns (some u1557860301)
 (get-block-info? header-hash u0) ;; Returns (some 0x374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb)
 (get-block-info? vrf-seed u0) ;; Returns (some 0xf490de2920c8a35fabeb13208852aa28c76f9be9b03a4dd2b3c075f7a26923b4)
 ```
@@ -1272,34 +1451,41 @@ In Clarity 3, `get-block-info?` is removed. In its place, `get-stacks-block-info
 Introduced in: **Clarity 2**
 
 **input:** `BurnBlockInfoPropertyName, uint`\
-**output:** `(optional buff) | (optional (tuple ...))`\
-**signature:** `(get-burn-block-info? prop-name block-height)`
+**output:** `(optional buff) | (optional (tuple (addrs (list 2 (tuple (hashbytes (buff 32)) (version (buff 1))))) (payout uint)))`\
+**signature:** `(get-burn-block-info? prop-name burn-block-height)`
 
 **description:**\
-The `get-burn-block-info?` function fetches data for a block of the given _burnchain_ block height. The value and type returned are determined by the specified `BlockInfoPropertyName`. Valid values for `block-height` only include heights between the burnchain height at the time the Stacks chain was launched, and the last-processed burnchain block. If the `block-height` argument falls outside of this range, then `none` shall be returned.
+The `get-burn-block-info?` function fetches data for a block of the given *burnchain* block height. The
+value and type returned are determined by the specified `BlockInfoPropertyName`.  Valid values for `burn-block-height` only
+include heights between the burnchain height at the time the Stacks chain was launched, and the last-processed burnchain
+block.  If the `burn-block-height` argument falls outside of this range, then `none` shall be returned.
 
 The following `BlockInfoPropertyName` values are defined:
 
-* The `header-hash` property returns a 32-byte buffer representing the header hash of the burnchain block at burnchain height `block-height`.
-* The `pox-addrs` property returns a tuple with two items: a list of up to two PoX addresses that received a PoX payout at that block height, and the amount of burnchain tokens paid to each address (note that per the blockchain consensus rules, each PoX payout will be the same for each address in the block-commit transaction). The list will include burn addresses -- that is, the unspendable addresses that miners pay to when there are no PoX addresses left to be paid. During the prepare phase, there will be exactly one burn address reported. During the reward phase, up to two burn addresses may be reported in the event that some PoX reward slots are not claimed.
+* The `header-hash` property returns a 32-byte buffer representing the header hash of the burnchain block at
+burnchain height `burn-block-height`.
+
+* The `pox-addrs` property returns a tuple with two items: a list of up to two PoX addresses that received a PoX payout at that block height, and the amount of burnchain
+tokens paid to each address (note that per the blockchain consensus rules, each PoX payout will be the same for each address in the block-commit transaction).
+The list will include burn addresses -- that is, the unspendable addresses that miners pay to when there are no PoX addresses left to be paid.  During the prepare phase,
+there will be exactly one burn address reported. During the reward phase, up to two burn addresses may be reported in the event that some PoX reward slots are not claimed.
 
 The `addrs` list contains the same PoX address values passed into the PoX smart contract:
-
-* They each have type signature `(tuple (hashbytes (buff 32)) (version (buff 1)))`
-* The `version` field can be any of the following:
-  * `0x00` means this is a p2pkh address, and `hashbytes` is the 20-byte hash160 of a single public key
-  * `0x01` means this is a p2sh address, and `hashbytes` is the 20-byte hash160 of a redeemScript script
-  * `0x02` means this is a p2wpkh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wpkh witness script
-  * `0x03` means this is a p2wsh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wsh witness script
-  * `0x04` means this is a p2wpkh address, and `hashbytes` is the 20-byte hash160 of the witness script
-  * `0x05` means this is a p2wsh address, and `hashbytes` is the 32-byte sha256 of the witness script
-  * `0x06` means this is a p2tr address, and `hashbytes` is the 32-byte sha256 of the witness script
+   * They each have type signature `(tuple (hashbytes (buff 32)) (version (buff 1)))`
+   * The `version` field can be any of the following:
+      * `0x00` means this is a p2pkh address, and `hashbytes` is the 20-byte hash160 of a single public key
+      * `0x01` means this is a p2sh address, and `hashbytes` is the 20-byte hash160 of a redeemScript script
+      * `0x02` means this is a p2wpkh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wpkh witness script
+      * `0x03` means this is a p2wsh-p2sh address, and `hashbytes` is the 20-byte hash160 of a p2wsh witness script
+      * `0x04` means this is a p2wpkh address, and `hashbytes` is the 20-byte hash160 of the witness script
+      * `0x05` means this is a p2wsh address, and `hashbytes` is the 32-byte sha256 of the witness script
+      * `0x06` means this is a p2tr address, and `hashbytes` is the 32-byte sha256 of the witness script
 
 **example:**
 
 ```clarity
-(get-burn-block-info? header-hash u677050) ;; Returns (some 0xe671...)
-(get-burn-block-info? pox-addrs u677050) ;; Returns (some (tuple (addrs (...)) (payout u123)))
+(get-burn-block-info? header-hash u677050) ;; Returns (some 0xe67141016c88a7f1203eca0b4312f2ed141531f59303a1c267d7d83ab6b977d8)
+(get-burn-block-info? pox-addrs u677050) ;; Returns (some (tuple (addrs ((tuple (hashbytes 0x395f3643cea07ec4eec73b4d9a973dcce56b9bf1) (version 0x00)) (tuple (hashbytes 0x7c6775e20e3e938d2d7e9d79ac310108ba501ddb) (version 0x01)))) (payout u123)))
 ```
 
 ***
@@ -1309,23 +1495,34 @@ The `addrs` list contains the same PoX address values passed into the PoX smart 
 Introduced in: **Clarity 3**
 
 **input:** `StacksBlockInfoPropertyName, uint`\
-**output:** `(optional buff), (optional uint)`\
+**output:** `(optional buff) | (optional uint)`\
 **signature:** `(get-stacks-block-info? prop-name stacks-block-height)`
 
 **description:**\
-The `get-stacks-block-info?` function fetches data for a block of the given _Stacks_ block height. The value and type returned are determined by the specified `StacksBlockInfoPropertyName`. If the provided `stacks-block-height` does not correspond to an existing block prior to the current block, the function returns `none`. The currently available property names are as follows:
+The `get-stacks-block-info?` function fetches data for a block of the given *Stacks* block height. The
+value and type returned are determined by the specified `StacksBlockInfoPropertyName`. If the provided `stacks-block-height` does
+not correspond to an existing block prior to the current block, the function returns `none`. The currently available property names
+are as follows:
 
-* `id-header-hash`: This property returns a `(buff 32)` value containing the _index block hash_ of a Stacks block. This hash is globally unique, and is derived from the block hash and the history of accepted PoX operations. This is also the block hash value you would pass into `(at-block)`.
-* `header-hash`: This property returns a `(buff 32)` value containing the header hash of a Stacks block, given a Stacks chain height. **WARNING** this hash is not guaranteed to be globally unique, since the same Stacks block can be mined in different PoX forks. If you need global uniqueness, you should use `id-header-hash`.
-* `time`: This property returns a `uint` value of the block header time field. This is a Unix epoch timestamp in seconds which roughly corresponds to when the block was mined. For a block mined before epoch 3.0, this timestamp comes from the burnchain block. **Note**: this does not increase monotonically with each block and block times are accurate only to within two hours. See [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) for more information. For a block mined after epoch 3.0, this timestamp comes from the Stacks block header. **Note**: this is the time, according to the miner, when the mining of this block started, but is not guaranteed to be accurate. This time will be validated by the signers to be:
-* Greater than the timestamp of the previous block
-* At most 15 seconds into the future (according to their own local clocks)
+- `id-header-hash`: This property returns a `(buff 32)` value containing the _index block hash_ of a Stacks block.   This hash is globally unique, and is derived
+from the block hash and the history of accepted PoX operations.  This is also the block hash value you would pass into `(at-block)`.
+
+- `header-hash`: This property returns a `(buff 32)` value containing the header hash of a Stacks block, given a Stacks chain height.  **WARNING* this hash is
+not guaranteed to be globally unique, since the same Stacks block can be mined in different PoX forks.  If you need global uniqueness, you should use `id-header-hash`.
+
+- `time`: This property returns a `uint` value of the block header time field. This is a Unix epoch timestamp in seconds
+which roughly corresponds to when the block was mined. For a block mined before epoch 3.0, this timestamp comes from the burnchain block. **Note**: this does not increase monotonically with each block
+and block times are accurate only to within two hours. See [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) for more information.
+For a block mined after epoch 3.0, this timestamp comes from the Stacks block header. **Note**: this is the time, according to the miner, when
+the mining of this block started, but is not guaranteed to be accurate. This time will be validated by the signers to be:
+  - Greater than the timestamp of the previous block
+  - At most 15 seconds into the future (according to their own local clocks)
 
 **example:**
 
-```clojure
+```clarity
 (get-stacks-block-info? time u0) ;; Returns (some u1557860301)
-(get-stacks-block-info? header-hash u0) ;; Returns (some 0x3747...)
+(get-stacks-block-info? header-hash u0) ;; Returns (some 0x374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb)
 ```
 
 ***
@@ -1339,21 +1536,40 @@ Introduced in: **Clarity 3**
 **signature:** `(get-tenure-info? prop-name stacks-block-height)`
 
 **description:**\
-The `get-tenure-info?` function fetches data for the tenure at the given block height. The value and type returned are determined by the specified `TenureInfoPropertyName`. If the provided `stacks-block-height` does not correspond to an existing block prior to the current block, the function returns `none`. The currently available property names are as follows:
+The `get-tenure-info?` function fetches data for the tenure at the given block height. The
+value and type returned are determined by the specified `TenureInfoPropertyName`. If the provided `stacks-block-height` does
+not correspond to an existing block prior to the current block, the function returns `none`. The currently available property names
+are as follows:
 
-* `burnchain-header-hash`: This property returns a `(buff 32)` value containing the header hash of the burnchain (Bitcoin) block that selected the tenure at the given height.
-* `miner-address`: This property returns a `principal` value corresponding to the miner of the given tenure. **WARNING** This is not guaranteed to be the same `principal` that received the block reward, since Stacks 2.1+ supports coinbase transactions that pay the reward to a contract address. This is merely the address of the `principal` that produced the tenure.
-* `time`: This property returns a `uint` Unix epoch timestamp in seconds which roughly corresponds to when the tenure was started. This timestamp comes from the burnchain block. **Note**: this does not increase monotonically with each tenure and tenure times are accurate only to within two hours. See [BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) for more information.
-* `vrf-seed`: This property returns a `(buff 32)` value of the VRF seed for the corresponding tenure.
-* `block-reward`: This property returns a `uint` value for the total block reward of the indicated tenure. This value is only available once the reward for the tenure matures. That is, the latest `block-reward` value available is at least 101 Stacks blocks in the past (on mainnet). The reward includes the coinbase, the anchored tenure's transaction fees, and the shares of the confirmed and produced microblock transaction fees earned by this block's miner. Note that this value may be smaller than the Stacks coinbase at this height, because the miner may have been punished with a valid `PoisonMicroblock` transaction in the event that the miner published two or more microblock stream forks.
-* `miner-spend-total`: This property returns a `uint` value for the total number of burnchain tokens (i.e. satoshis) spent by all miners trying to win this tenure.
-* `miner-spend-winner`: This property returns a `uint` value for the number of burnchain tokens (i.e. satoshis) spent by the winning miner for this tennure. Note that this value is less than or equal to the value for `miner-spend-total` at the same tenure height.
+- `burnchain-header-hash`: This property returns a `(buff 32)` value containing the header hash of the burnchain (Bitcoin) block that selected the
+tenure at the given height.
+
+- `miner-address`: This property returns a `principal` value corresponding to the miner of the given tenure.  **WARNING** This is not guaranteed to
+be the same `principal` that received the block reward, since Stacks 2.1+ supports coinbase transactions that pay the reward to a contract address.  This is merely
+the address of the `principal` that produced the tenure.
+
+- `time`: This property returns a `uint` Unix epoch timestamp in seconds which roughly corresponds to when the tenure was started. This timestamp comes
+from the burnchain block. **Note**: this does not increase monotonically with each tenure and tenure times are accurate only to within two hours. See
+[BIP113](https://github.com/bitcoin/bips/blob/master/bip-0113.mediawiki) for more information.
+
+- `vrf-seed`: This property returns a `(buff 32)` value of the VRF seed for the corresponding tenure.
+
+- `block-reward`: This property returns a `uint` value for the total block reward of the indicated tenure.  This value is only available once the reward for
+the tenure matures.  That is, the latest `block-reward` value available is at least 101 Stacks blocks in the past (on mainnet).  The reward includes the coinbase,
+the anchored tenure's transaction fees, and the shares of the confirmed and produced microblock transaction fees earned by this block's miner.  Note that this value may
+be smaller than the Stacks coinbase at this height, because the miner may have been punished with a valid `PoisonMicroblock` transaction in the event that the miner
+published two or more microblock stream forks.
+
+- `miner-spend-total`: This property returns a `uint` value for the total number of burnchain tokens (i.e. satoshis) spent by all miners trying to win this tenure.
+
+- `miner-spend-winner`: This property returns a `uint` value for the number of burnchain tokens (i.e. satoshis) spent by the winning miner for this tennure.  Note that
+this value is less than or equal to the value for `miner-spend-total` at the same tenure height.
 
 **example:**
 
-```clojure
+```clarity
 (get-tenure-info? time u0) ;; Returns (some u1557860301)
-(get-tenure-info? vrf-seed u0) ;; Returns (some 0xf490...)
+(get-tenure-info? vrf-seed u0) ;; Returns (some 0xf490de2920c8a35fabeb13208852aa28c76f9be9b03a4dd2b3c075f7a26923b4)
 ```
 
 ***
@@ -1367,12 +1583,14 @@ Introduced in: **Clarity 1**
 **signature:** `(hash160 value)`
 
 **description:**\
-Computes RIPEMD160(SHA256(x)). If input is an integer, it is hashed over its little-endian representation.
+The `hash160` function computes `RIPEMD160(SHA256(x))` of the inputted value.
+If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
+integer.
 
 **example:**
 
-```clojure
-(hash160 0) ;; Returns 0xe4352f72...
+```clarity
+(hash160 0) ;; Returns 0xe4352f72356db555721651aa612e00379167b30f
 ```
 
 ***
@@ -1386,11 +1604,14 @@ Introduced in: **Clarity 1**
 **signature:** `(if bool1 expr1 expr2)`
 
 **description:**\
-Conditional expression: evaluates and returns `expr1` if `bool1` is true, otherwise `expr2`. Both exprs must return the same type.
+The `if` function admits a boolean argument and two expressions
+which must return the same type. In the case that the boolean input is `true`, the
+`if` function evaluates and returns `expr1`. If the boolean input is `false`, the
+`if` function evaluates and returns `expr2`.
 
 **example:**
 
-```clojure
+```clarity
 (if true 1 2) ;; Returns 1
 (if (> 1 2) 1 2) ;; Returns 2
 ```
@@ -1406,39 +1627,49 @@ Introduced in: **Clarity 1**
 **signature:** `(impl-trait trait-identifier)`
 
 **description:**\
-Asserts that the contract implements the given trait. Checked at publish time. Must be top-level.
+`impl-trait` can be use for asserting that a contract is fully implementing a given trait.
+Additional checks are being performed when the contract is being published, rejecting the deployment if the
+contract is violating the trait specification.
+
+Trait identifiers can either be using the sugared syntax (.token-a.token-trait), or be fully qualified
+('SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait).
+
+Like other kinds of definition statements, `impl-trait` may only be used at the top level of a smart contract
+definition (i.e., you cannot put such a statement in the middle of a function body).
 
 **example:**
 
-```clojure
+```clarity
 (impl-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)
 (define-public (get-balance (account principal))
+  (ok u0))
+(define-public (transfer? (from principal) (to principal) (amount uint))
   (ok u0))
 ```
 
 ***
 
-## index-of​
-
-{% hint style="danger" %}
-Deprecated in Clartiy 2.
-{% endhint %}
+## index-of
 
 Introduced in: **Clarity 1**
 
-**input:** `sequence_A, A`
-
-**output:** `(optional uint)`
-
+**input:** `sequence_A, A`\
+**output:** `(optional uint)`\
 **signature:** `(index-of? sequence item)`
 
-**description:**
+**description:**\
+The `index-of?` function returns the first index at which `item` can be
+found, using `is-eq` checks, in the provided sequence.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
+for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
+If the target item is not found in the sequence (or if an empty string or buffer is
+supplied), this function returns `none`.
 
-The `index-of?` function returns the first index at which `item` can be found, using `is-eq` checks, in the provided sequence. Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`, for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`. If the target item is not found in the sequence (or if an empty string or buffer is supplied), this function returns `none`. In Clarity1, `index-of` must be used (without the `?`). The `?` is added in Clarity2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity1 spelling is left as an alias in Clarity2 for backwards compatibility.
+In Clarity1, `index-of` must be used (without the `?`). The `?` is added in Clarity2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity1 spelling is left as an alias in Clarity2 for backwards compatibility.
 
 **example:**
 
-```
+```clarity
 (index-of? "blockstack" "b") ;; Returns (some u0)
 (index-of? "blockstack" "k") ;; Returns (some u4)
 (index-of? "blockstack" "") ;; Returns none
@@ -1457,11 +1688,18 @@ Introduced in: **Clarity 2**
 **signature:** `(index-of? sequence item)`
 
 **description:**\
-Returns first index of `item` in sequence using `is-eq`. Returns `none` if not found or if empty string/buffer. In Clarity 1, `index-of` must be used (without the `?`). The `?` is added in Clarity 2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity 1 spelling is left as an alias in Clarity 2 for backwards compatibility.
+The `index-of?` function returns the first index at which `item` can be
+found, using `is-eq` checks, in the provided sequence.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
+for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
+If the target item is not found in the sequence (or if an empty string or buffer is
+supplied), this function returns `none`.
+
+In Clarity1, `index-of` must be used (without the `?`). The `?` is added in Clarity2 for consistency -- built-ins that return responses or optionals end in `?`. The Clarity1 spelling is left as an alias in Clarity2 for backwards compatibility.
 
 **example:**
 
-```clojure
+```clarity
 (index-of? "blockstack" "b") ;; Returns (some u0)
 (index-of? "blockstack" "k") ;; Returns (some u4)
 (index-of? "blockstack" "") ;; Returns none
@@ -1480,12 +1718,15 @@ Introduced in: **Clarity 2**
 **signature:** `(int-to-ascii (int|uint))`
 
 **description:**\
-Converts an integer to its ASCII string representation. Available starting Stacks 2.1.
+Converts an integer, either `int` or `uint`, to a `string-ascii` string-value representation.
+
+Note: This function is only available starting with Stacks 2.1.
 
 **example:**
 
-```clojure
+```clarity
 (int-to-ascii 1) ;; Returns "1"
+(int-to-ascii u1) ;; Returns "1"
 (int-to-ascii -1) ;; Returns "-1"
 ```
 
@@ -1500,12 +1741,15 @@ Introduced in: **Clarity 2**
 **signature:** `(int-to-utf8 (int|uint))`
 
 **description:**\
-Converts an integer to its UTF-8 string representation. Available starting Stacks 2.1.
+Converts an integer, either `int` or `uint`, to a `string-utf8` string-value representation.
+
+Note: This function is only available starting with Stacks 2.1.
 
 **example:**
 
-```clojure
+```clarity
 (int-to-utf8 1) ;; Returns u"1"
+(int-to-utf8 u1) ;; Returns u"1"
 (int-to-utf8 -1) ;; Returns u"-1"
 ```
 
@@ -1520,34 +1764,106 @@ Introduced in: **Clarity 1**
 **signature:** `(is-eq v1 v2...)`
 
 **description:**\
-Returns `true` if all inputs are equal. Unlike `and`, does not short-circuit. All arguments must be the same type.
+Compares the inputted values, returning `true` if they are all equal. Note that
+_unlike_ the `(and ...)` function, `(is-eq ...)` will _not_ short-circuit. All values supplied to
+is-eq _must_ be the same type.
 
 **example:**
 
-```clojure
+```clarity
 (is-eq 1 1) ;; Returns true
 (is-eq true false) ;; Returns false
+(is-eq "abc" 234 234) ;; Throws type error
 (is-eq "abc" "abc") ;; Returns true
+(is-eq 0x0102 0x0102) ;; Returns true
 ```
 
 ***
 
-## is-err / is-ok / is-none / is-some
+## is-err
 
 Introduced in: **Clarity 1**
 
-* `(is-err value)` returns `true` if `value` is `(err ...)`.
-* `(is-ok value)` returns `true` if `value` is `(ok ...)`.
-* `(is-none value)` returns `true` if `value` is `none`.
-* `(is-some value)` returns `true` if `value` is `(some ...)`.
+**input:** `(response A B)`\
+**output:** `bool`\
+**signature:** `(is-err value)`
 
-**examples:**
+**description:**\
+`is-err` tests a supplied response value, returning `true` if the response was an `err`,
+and `false` if it was an `ok`.
 
-```clojure
+**example:**
+
+```clarity
+(is-err (ok 1)) ;; Returns false
 (is-err (err 1)) ;; Returns true
+```
+
+***
+
+## is-none
+
+Introduced in: **Clarity 1**
+
+**input:** `(optional A)`\
+**output:** `bool`\
+**signature:** `(is-none value)`
+
+**description:**\
+`is-none` tests a supplied option value, returning `true` if the option value is `none`,
+and `false` if it is a `(some ...)`.
+
+**example:**
+
+```clarity
+(define-map names-map { name: (string-ascii 12) } { id: int })
+(map-set names-map { name: "blockstack" } { id: 1337 })
+(is-none (get id (map-get? names-map { name: "blockstack" }))) ;; Returns false
+(is-none (get id (map-get? names-map { name: "non-existant" }))) ;; Returns true
+```
+
+***
+
+## is-ok
+
+Introduced in: **Clarity 1**
+
+**input:** `(response A B)`\
+**output:** `bool`\
+**signature:** `(is-ok value)`
+
+**description:**\
+`is-ok` tests a supplied response value, returning `true` if the response was `ok`,
+and `false` if it was an `err`.
+
+**example:**
+
+```clarity
 (is-ok (ok 1)) ;; Returns true
-(is-none none) ;; Returns true
-(is-some (some 1)) ;; Returns true
+(is-ok (err 1)) ;; Returns false
+```
+
+***
+
+## is-some
+
+Introduced in: **Clarity 1**
+
+**input:** `(optional A)`\
+**output:** `bool`\
+**signature:** `(is-some value)`
+
+**description:**\
+`is-some` tests a supplied option value, returning `true` if the option value is `(some ...)`,
+and `false` if it is a `none`.
+
+**example:**
+
+```clarity
+(define-map names-map { name: (string-ascii 12) } { id: int })
+(map-set names-map { name: "blockstack" } { id: 1337 })
+(is-some (get id (map-get? names-map { name: "blockstack" }))) ;; Returns true
+(is-some (get id (map-get? names-map { name: "non-existant" }))) ;; Returns false
 ```
 
 ***
@@ -1561,12 +1877,26 @@ Introduced in: **Clarity 2**
 **signature:** `(is-standard standard-or-contract-principal)`
 
 **description:**\
-Tests whether a principal matches the current network type (mainnet vs testnet) and therefore can spend tokens on that network. Available starting Stacks 2.1.
+Tests whether `standard-or-contract-principal` _matches_ the current network
+type, and therefore represents a principal that can spend tokens on the current
+network type. That is, the network is either of type `mainnet`, or `testnet`.
+Only `SPxxxx` and `SMxxxx` _c32check form_ addresses can spend tokens on
+a mainnet, whereas only `STxxxx` and `SNxxxx` _c32check forms_ addresses can spend
+tokens on a testnet. All addresses can _receive_ tokens, but only principal
+_c32check form_ addresses that match the network type can _spend_ tokens on the
+network.  This method will return `true` if and only if the principal matches
+the network type, and false otherwise.
+
+Note: This function is only available starting with Stacks 2.1.
 
 **example:**
 
-```clojure
-(is-standard 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6) ;; true on testnet; false on mainnet
+```clarity
+(is-standard 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6) ;; returns true on testnet and false on mainnet
+(is-standard 'STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6.foo) ;; returns true on testnet and false on mainnet
+(is-standard 'SP3X6QWWETNBZWGBK6DRGTR1KX50S74D3433WDGJY) ;; returns true on mainnet and false on testnet
+(is-standard 'SP3X6QWWETNBZWGBK6DRGTR1KX50S74D3433WDGJY.foo) ;; returns true on mainnet and false on testnet
+(is-standard 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; returns false on both mainnet and testnet
 ```
 
 ***
@@ -1580,12 +1910,15 @@ Introduced in: **Clarity 1**
 **signature:** `(keccak256 value)`
 
 **description:**\
-Computes KECCAK256(value). If input is an integer, it is hashed over its little-endian representation.
+The `keccak256` function computes `KECCAK256(value)` of the inputted value.
+
+Note: this differs from the `NIST SHA-3` (that is, FIPS 202) standard. If an integer (128 bit)
+is supplied the hash is computed over the little-endian representation of the integer.
 
 **example:**
 
-```clojure
-(keccak256 0) ;; Returns 0xf490de29...
+```clarity
+(keccak256 0) ;; Returns 0xf490de2920c8a35fabeb13208852aa28c76f9be9b03a4dd2b3c075f7a26923b4
 ```
 
 ***
@@ -1599,11 +1932,12 @@ Introduced in: **Clarity 1**
 **signature:** `(len sequence)`
 
 **description:**\
-Returns length of a sequence. Applies to `(list A)`, `buff`, `string-ascii`, `string-utf8`.
+The `len` function returns the length of a given sequence.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
 
 **example:**
 
-```clojure
+```clarity
 (len "blockstack") ;; Returns u10
 (len (list 1 2 3 4 5)) ;; Returns u5
 (len 0x010203) ;; Returns u3
@@ -1615,20 +1949,24 @@ Returns length of a sequence. Applies to `(list A)`, `buff`, `string-ascii`, `st
 
 Introduced in: **Clarity 1**
 
-**input:** `((name1 AnyType) ...), AnyType, ... A`\
+**input:** `((name1 AnyType) (name2 AnyType) ...), AnyType, ... A`\
 **output:** `A`\
-**signature:** `(let ((name1 expr1) ...) expr-body1 ... expr-body-last)`
+**signature:** `(let ((name1 expr1) (name2 expr2) ...) expr-body1 expr-body2 ... expr-body-last)`
 
 **description:**\
-Binds sequential variables then evaluates the body expressions in that context. Returns last body expression's value.
+The `let` function accepts a list of `variable name` and `expression` pairs,
+evaluating each expression and _binding_ it to the corresponding variable name.
+`let` bindings are sequential: when a `let` binding is evaluated, it may refer to prior binding.
+The _context_ created by this set of bindings is used for evaluating its body expressions.
+The let expression returns the value of the last such body expression.
+
+Note: intermediary statements returning a response type must be checked
 
 **example:**
 
-```clojure
-(let ((a 2) (b (+ 5 6 7)))
-  (print a)
-  (print b)
-  (+ a b)) ;; Returns 20
+```clarity
+(let ((a 2) (b (+ 5 6 7))) (print a) (print b) (+ a b)) ;; Returns 20
+(let ((a 5) (c (+ a 1)) (d (+ c 1)) (b (+ a c d))) (print a) (print b) (+ a b)) ;; Returns 23
 ```
 
 ***
@@ -1642,11 +1980,12 @@ Introduced in: **Clarity 1**
 **signature:** `(list expr1 expr2 expr3 ...)`
 
 **description:**\
-Constructs a list from supplied values (must be same type).
+The `list` function constructs a list composed of the inputted values. Each
+supplied value must be of the same type.
 
 **example:**
 
-```clojure
+```clarity
 (list (+ 1 2) 4 5) ;; Returns (3 4 5)
 ```
 
@@ -1661,13 +2000,16 @@ Introduced in: **Clarity 1**
 **signature:** `(log2 n)`
 
 **description:**\
-Returns floor(log2(n)). Fails on negative numbers.
+Returns the power to which the number 2 must be raised to obtain the value `n`, rounded
+down to the nearest integer. Fails on a negative numbers.
 
 **example:**
 
-```clojure
+```clarity
 (log2 u8) ;; Returns u3
 (log2 8) ;; Returns 3
+(log2 u1) ;; Returns u0
+(log2 1000) ;; Returns 9
 ```
 
 ***
@@ -1676,34 +2018,44 @@ Returns floor(log2(n)). Fails on negative numbers.
 
 Introduced in: **Clarity 1**
 
-**input:** `Function(A, B, ..., N) -> X, sequence_A, sequence_B, ...`\
+**input:** `Function(A, B, ..., N) -> X, sequence_A, sequence_B, ..., sequence_N`\
 **output:** `(list X)`\
-**signature:** `(map func sequence_A sequence_B ...)`
+**signature:** `(map func sequence_A sequence_B ... sequence_N)`
 
 **description:**\
-Applies `func` to each corresponding element of input sequences and returns a list of results. `func` must be a literal function name. Output is always a list.
+The `map` function applies the function `func` to each corresponding element of the input sequences,
+and outputs a _list_ of the same type containing the outputs from those function applications.
+Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`,
+for which the corresponding element types are, respectively, `A`, `(buff 1)`, `(string-ascii 1)` and `(string-utf8 1)`.
+The `func` argument must be a literal function name.
+
+Note: no matter what kind of sequences the inputs are, the output is always a list.
 
 **example:**
 
-```clojure
+```clarity
+(map not (list true false true false)) ;; Returns (false true false true)
 (map + (list 1 2 3) (list 1 2 3) (list 1 2 3)) ;; Returns (3 6 9)
+(define-private (a-or-b (char (string-utf8 1))) (if (is-eq char u"a") u"a" u"b"))
+(map a-or-b u"aca") ;; Returns (u"a" u"b" u"a")
+(define-private (zero-or-one (char (buff 1))) (if (is-eq char 0x00) 0x00 0x01))
+(map zero-or-one 0x000102) ;; Returns (0x00 0x01 0x01)
 ```
 
 ***
 
-## map-delete​
+## map-delete
 
 Introduced in: **Clarity 1**
 
-**input:** `MapName, tuple`
-
-**output:** `bool`
-
+**input:** `MapName, tuple`\
+**output:** `bool`\
 **signature:** `(map-delete map-name key-tuple)`
 
-**description:**
-
-The `map-delete` function removes the value associated with the input key for the given map. If an item exists and is removed, the function returns `true`. If a value did not exist for this key in the data map, the function returns `false`.
+**description:**\
+The `map-delete` function removes the value associated with the input key for
+the given map. If an item exists and is removed, the function returns `true`.
+If a value did not exist for this key in the data map, the function returns `false`.
 
 **example:**
 
@@ -1717,19 +2069,19 @@ The `map-delete` function removes the value associated with the input key for th
 
 ***
 
-## map-get?​
+## map-get?
 
 Introduced in: **Clarity 1**
 
-**input:** `MapName, tuple`
-
-**output:** `(optional (tuple))`
-
+**input:** `MapName, tuple`\
+**output:** `(optional (tuple))`\
 **signature:** `(map-get? map-name key-tuple)`
 
-**description:**
-
-The `map-get?` function looks up and returns an entry from a contract's data map. The value is looked up using `key-tuple`. If there is no value associated with that key in the data map, the function returns a `none` option. Otherwise, it returns `(some value)`.
+**description:**\
+The `map-get?` function looks up and returns an entry from a contract's data map.
+The value is looked up using `key-tuple`.
+If there is no value associated with that key in the data map, the function returns a `none` option. Otherwise,
+it returns `(some value)`.
 
 **example:**
 
@@ -1742,21 +2094,22 @@ The `map-get?` function looks up and returns an entry from a contract's data map
 
 ***
 
-## map-insert​
+## map-insert
 
 Introduced in: **Clarity 1**
 
-**input:** `MapName, tuple_A, tuple_B`
-
-**output:** `bool`
-
+**input:** `MapName, tuple_A, tuple_B`\
+**output:** `bool`\
 **signature:** `(map-insert map-name key-tuple value-tuple)`
 
-**description:**
+**description:**\
+The `map-insert` function sets the value associated with the input key to the
+inputted value if and only if there is not already a value associated with the key in the map.
+If an insert occurs, the function returns `true`. If a value already existed for
+this key in the data map, the function returns `false`.
 
-The `map-insert` function sets the value associated with the input key to the inputted value if and only if there is not already a value associated with the key in the map. If an insert occurs, the function returns `true`. If a value already existed for this key in the data map, the function returns `false`.
-
-Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX\_CLARITY\_VALUE - 1.
+Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state,
+and therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.
 
 **example:**
 
@@ -1769,21 +2122,21 @@ Note: the `value-tuple` requires 1 additional byte for storage in the materializ
 
 ***
 
-## map-set​
+## map-set
 
 Introduced in: **Clarity 1**
 
-**input:** `MapName, tuple_A, tuple_B`
-
-**output:** `bool`
-
+**input:** `MapName, tuple_A, tuple_B`\
+**output:** `bool`\
 **signature:** `(map-set map-name key-tuple value-tuple)`
 
-**description:**
+**description:**\
+The `map-set` function sets the value associated with the input key to the
+inputted value. This function performs a _blind_ update; whether or not a value is already associated
+with the key, the function overwrites that existing association.
 
-The `map-set` function sets the value associated with the input key to the inputted value. This function performs a _blind_ update; whether or not a value is already associated with the key, the function overwrites that existing association.
-
-Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state, and therefore the maximum size of a value that may be inserted into a map is MAX\_CLARITY\_VALUE - 1.
+Note: the `value-tuple` requires 1 additional byte for storage in the materialized blockchain state,
+and therefore the maximum size of a value that may be inserted into a map is MAX_CLARITY_VALUE - 1.
 
 **example:**
 
@@ -1801,20 +2154,53 @@ Introduced in: **Clarity 1**
 
 **input:** `(optional A) name expression expression | (response A B) name expression name expression`\
 **output:** `C`\
-**signature:** `(match opt-input some-binding-name some-branch none-branch) | (match-resp input ok-binding-name ok-branch err-binding-name err-branch)`
+**signature:** `(match opt-input some-binding-name some-branch none-branch) |
+(match-resp input ok-binding-name ok-branch err-binding-name err-branch)`
 
 **description:**\
-Destructures `optional` and `response` types and evaluates only the matching branch. See original for type-checking caveats.
+The `match` function is used to test and destructure optional and response types.
+
+If the `input` is an optional, it tests whether the provided
+`input` is a `some` or `none` option, and evaluates `some-branch` or
+`none-branch` in each respective case.
+
+Within the `some-branch`, the _contained value_ of the `input`
+argument is bound to the provided `some-binding-name` name.
+
+Only _one_ of the branches will be evaluated (similar to `if` statements).
+
+If the `input` is a response, it tests whether the provided `input` is
+an `ok` or `err` response type, and evaluates `ok-branch` or
+`err-branch` in each respective case.
+
+Within the `ok-branch`, the _contained ok value_ of the `input`
+argument is bound to the provided `ok-binding-name` name.
+
+Within the `err-branch`, the _contained err value_ of the `input`
+argument is bound to the provided `err-binding-name` name.
+
+Only _one_ of the branches will be evaluated (similar to `if` statements).
+
+Note: Type checking requires that the type of both the ok and err parts of the
+response object be determinable. For situations in which one of the parts of a response
+is untyped, you should use `unwrap-panic` or `unwrap-err-panic` instead of `match`.
 
 **example:**
 
-```clojure
+```clarity
 (define-private (add-10 (x (optional int)))
   (match x
-    value (+ 10 value)
-    10))
+  value (+ 10 value)
+  10))
 (add-10 (some 5)) ;; Returns 15
 (add-10 none) ;; Returns 10
+
+(define-private (add-or-pass-err (x (response int (string-ascii 10))) (to-add int))
+  (match x
+   value (ok (+ to-add value))
+   err-value (err err-value)))
+(add-or-pass-err (ok 5) 20) ;; Returns (ok 25)
+(add-or-pass-err (err "ERROR") 20) ;; Returns (err "ERROR")
 ```
 
 ***
@@ -1828,12 +2214,15 @@ Introduced in: **Clarity 1**
 **signature:** `(merge tuple { key1: val1 })`
 
 **description:**\
-Returns a new tuple combining fields (non-mutating).
+The `merge` function returns a new tuple with the combined fields, without mutating the supplied tuples.
 
 **example:**
 
-```clojure
-(merge user { address: (some 'SPAXYA5X...) }) ;; Returns merged tuple
+```clarity
+(define-map users { id: int } { name: (string-ascii 12), address: (optional principal) })
+(map-insert users { id: 1337 } { name: "john", address: none }) ;; Returns true
+(let ((user (unwrap-panic (map-get? users { id: 1337 }))))
+    (merge user { address: (some 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF) })) ;; Returns (tuple (address (some SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF)) (name "john"))
 ```
 
 ***
@@ -1847,33 +2236,36 @@ Introduced in: **Clarity 1**
 **signature:** `(mod i1 i2)`
 
 **description:**\
-Returns remainder of integer division; division by zero throws runtime error.
+Returns the integer remainder from integer dividing `i1` by `i2`. In the event of a division by zero, throws a runtime error.
 
 **example:**
 
-```clojure
+```clarity
+(mod 2 3) ;; Returns 2
 (mod 5 2) ;; Returns 1
+(mod 7 1) ;; Returns 0
 ```
 
 ***
 
-## nft-burn?​
+## nft-burn?
 
 Introduced in: **Clarity 1**
 
-**input:** `AssetName, A, principal`
-
-**output:** `(response bool uint)`
-
+**input:** `AssetName, A, principal`\
+**output:** `(response bool uint)`\
 **signature:** `(nft-burn? asset-class asset-identifier sender)`
 
-**description:**
+**description:**\
+`nft-burn?` is used to burn an asset that the `sender` principal owns.
+The asset must have been defined using `define-non-fungible-token`, and the supplied
+`asset-identifier` must be of the same type specified in that definition.
 
-`nft-burn?` is used to burn an asset that the `sender` principal owns. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
+On a successful burn, it returns `(ok true)`. In the event of an unsuccessful burn it
+returns one of the following error codes:
 
-On a successful burn, it returns `(ok true)`. In the event of an unsuccessful burn it returns one of the following error codes:
-
-`(err u1)` -- `sender` does not own the specified asset `(err u3)` -- the asset specified by `asset-identifier` does not exist
+* `(err u1)` -- `sender` does not own the specified asset
+* `(err u3)` -- the asset specified by `asset-identifier` does not exist
 
 **example:**
 
@@ -1885,19 +2277,18 @@ On a successful burn, it returns `(ok true)`. In the event of an unsuccessful bu
 
 ***
 
-## nft-get-owner?​
+## nft-get-owner?
 
 Introduced in: **Clarity 1**
 
-**input:** `AssetName, A`
-
-**output:** `(optional principal)`
-
+**input:** `AssetName, A`\
+**output:** `(optional principal)`\
 **signature:** `(nft-get-owner? asset-class asset-identifier)`
 
-**description:**
-
-`nft-get-owner?` returns the owner of an asset, identified by `asset-identifier`, or `none` if the asset does not exist. The asset type must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
+**description:**\
+`nft-get-owner?` returns the owner of an asset, identified by `asset-identifier`, or `none` if the asset does not exist.
+The asset type must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in
+that definition.
 
 **example:**
 
@@ -1910,25 +2301,22 @@ Introduced in: **Clarity 1**
 
 ***
 
-## nft-mint?​
+## nft-mint?
 
 Introduced in: **Clarity 1**
 
-**input:** `AssetName, A, principal`
-
-**output:** `(response bool uint)`
-
+**input:** `AssetName, A, principal`\
+**output:** `(response bool uint)`\
 **signature:** `(nft-mint? asset-class asset-identifier recipient)`
 
-**description:**
+**description:**\
+`nft-mint?` is used to instantiate an asset and set that asset's owner to the `recipient` principal.
+The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in
+that definition.
 
-`nft-mint?` is used to instantiate an asset and set that asset's owner to the `recipient` principal. The asset must have been defined using `define-non-fungible-token`, and the supplied `asset-identifier` must be of the same type specified in that definition.
+The function returns `(ok true)` if the mint is successful. This function may fail with the error code:
 
-If an asset identified by `asset-identifier` _already exists_, this function will return an error with the following error code:
-
-`(err u1)`
-
-Otherwise, on successfuly mint, it returns `(ok true)`.
+* `(err u1)` -- an asset identified by `asset-identifier` _already exists_
 
 **example:**
 
@@ -1939,23 +2327,26 @@ Otherwise, on successfuly mint, it returns `(ok true)`.
 
 ***
 
-## nft-transfer?​
+## nft-transfer?
 
 Introduced in: **Clarity 1**
 
-**input:** `AssetName, A, principal, principal`
-
-**output:** `(response bool uint)`
-
+**input:** `AssetName, A, principal, principal`\
+**output:** `(response bool uint)`\
 **signature:** `(nft-transfer? asset-class asset-identifier sender recipient)`
 
-**description:**
+**description:**\
+`nft-transfer?` is used to change the owner of an asset identified by `asset-identifier`
+from `sender` to `recipient`. The `asset-class` must have been defined by `define-non-fungible-token` and `asset-identifier`
+must be of the type specified in that definition. In contrast to `stx-transfer?`, any user can transfer the asset.
+When used, relevant guards need to be added.
 
-`nft-transfer?` is used to change the owner of an asset identified by `asset-identifier` from `sender` to `recipient`. The `asset-class` must have been defined by `define-non-fungible-token` and `asset-identifier` must be of the type specified in that definition. In contrast to `stx-transfer?`, any user can transfer the asset. When used, relevant guards need to be added.
+This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns
+one of the following error codes:
 
-This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
-
-`(err u1)` -- `sender` does not own the asset `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- asset identified by asset-identifier does not exist
+* `(err u1)` -- `sender` does not own the asset
+* `(err u2)` -- `sender` and `recipient` are the same principal
+* `(err u3)` -- asset identified by asset-identifier does not exist
 
 **example:**
 
@@ -1982,7 +2373,7 @@ Returns the inverse of the boolean input.
 
 **example:**
 
-```clojure
+```clarity
 (not true) ;; Returns false
 (not (is-eq 1 2)) ;; Returns true
 ```
@@ -1998,11 +2389,13 @@ Introduced in: **Clarity 1**
 **signature:** `(ok value)`
 
 **description:**\
-The `ok` function constructs a response type from the input value. Use `ok` for creating return values in public functions. An _ok_ value indicates that any database changes during the processing of the function should materialize.
+The `ok` function constructs a response type from the input value. Use `ok` for
+creating return values in public functions. An _ok_ value indicates that any database changes during
+the processing of the function should materialize.
 
 **example:**
 
-```clojure
+```clarity
 (ok 1) ;; Returns (ok 1)
 ```
 
@@ -2017,12 +2410,17 @@ Introduced in: **Clarity 1**
 **signature:** `(or b1 b2 ...)`
 
 **description:**\
-Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `true`, the function short-circuits, and no subsequent arguments are evaluated.
+Returns `true` if any boolean inputs are `true`. Importantly, the supplied arguments are
+evaluated in-order and lazily. Lazy evaluation means that if one of the arguments returns `true`, the function
+short-circuits, and no subsequent arguments are evaluated.
 
 **example:**
 
-```clojure
+```clarity
 (or true false) ;; Returns true
+(or (is-eq (+ 1 2) 1) (is-eq 4 4)) ;; Returns true
+(or (is-eq (+ 1 2) 1) (is-eq 3 4)) ;; Returns false
+(or (is-eq (+ 1 2) 3) (is-eq 4 4)) ;; Returns true
 ```
 
 ***
@@ -2036,16 +2434,16 @@ Introduced in: **Clarity 1**
 **signature:** `(pow i1 i2)`
 
 **description:**\
-Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error. Note: Corner cases are handled with the following rules:
-
-* if both `i1` and `i2` are `0`, return `1`
-* if `i1` is `1`, return `1`
-* if `i1` is `0`, return `0`
-* if `i2` is negative or greater than `u32::MAX`, throw a runtime error
+Returns the result of raising `i1` to the power of `i2`. In the event of an _overflow_, throws a runtime error.
+Note: Corner cases are handled with the following rules:
+  * if both `i1` and `i2` are `0`, return `1`
+  * if `i1` is `1`, return `1`
+  * if `i1` is `0`, return `0`
+  * if `i2` is negative or greater than `u32::MAX`, throw a runtime error
 
 **example:**
 
-```clojure
+```clarity
 (pow 2 3) ;; Returns 8
 (pow 2 2) ;; Returns 4
 (pow 7 1) ;; Returns 7
@@ -2058,21 +2456,43 @@ Returns the result of raising `i1` to the power of `i2`. In the event of an _ove
 Introduced in: **Clarity 2**
 
 **input:** `(buff 1), (buff 20), [(string-ascii 40)]`\
-**output:** `(response principal { error_code: uint, principal: (option principal) })`\
+**output:** `(response principal { error_code: uint, value: (optional principal) })`\
 **signature:** `(principal-construct? (buff 1) (buff 20) [(string-ascii 40)])`
 
 **description:**\
-A principal value represents either a set of keys, or a smart contract. The former, called a _standard principal_, is encoded as a `(buff 1)` _version byte_, indicating the type of account and the type of network that this principal can spend tokens on, and a `(buff 20)` _public key hash_, characterizing the principal's unique identity. The latter, a _contract principal_, is encoded as a standard principal concatenated with a `(string-ascii 40)` _contract name_ that identifies the code body.
+A principal value represents either a set of keys, or a smart contract.
+The former, called a _standard principal_,
+is encoded as a `(buff 1)` *version byte*, indicating the type of account
+and the type of network that this principal can spend tokens on,
+and a `(buff 20)` *public key hash*, characterizing the principal's unique identity.
+The latter, a _contract principal_, is encoded as a standard principal concatenated with
+a `(string-ascii 40)` *contract name* that identifies the code body.
 
-The `principal-construct?` function allows users to create either standard or contract principals, depending on which form is used. To create a standard principal, `principal-construct?` would be called with two arguments: it takes as input a `(buff 1)` which encodes the principal address's `version-byte`, a `(buff 20)` which encodes the principal address's `hash-bytes`. To create a contract principal, `principal-construct?` would be called with three arguments: the `(buff 1)` and `(buff 20)` to represent the standard principal that created the contract, and a `(string-ascii 40)` which encodes the contract's name. On success, this function returns either a standard principal or contract principal, depending on whether or not the third `(string-ascii 40)` argument is given.
+The `principal-construct?` function allows users to create either standard or contract principals,
+depending on which form is used.  To create a standard principal,
+`principal-construct?` would be called with two arguments: it
+takes as input a `(buff 1)` which encodes the principal address's
+`version-byte`, a `(buff 20)` which encodes the principal address's `hash-bytes`.
+To create a contract principal, `principal-construct?` would be called with
+three arguments: the `(buff 1)` and `(buff 20)` to represent the standard principal
+that created the contract, and a `(string-ascii 40)` which encodes the contract's name.
+On success, this function returns either a standard principal or contract principal,
+depending on whether or not the third `(string-ascii 40)` argument is given.
 
-This function returns a `Response`. On success, the `ok` value is a `Principal`. The `err` value is a value tuple with the form `{ error_code: uint, value: (optional principal) }`.
+This function returns a `Response`. On success, the `ok` value is a `Principal`.
+The `err` value is a value tuple with the form `{ error_code: uint, value: (optional principal) }`.
 
-If the single-byte `version-byte` is in the valid range `0x00` to `0x1f`, but is not an appropriate version byte for the current network, then the error will be `u0`, and `value` will contain `(some principal)`, where the wrapped value is the principal. If the `version-byte` is not in this range, however, then the `value` will be `none`.
+If the single-byte `version-byte` is in the valid range `0x00` to `0x1f`, but is not an appropriate
+version byte for the current network, then the error will be `u0`, and `value` will contain
+`(some principal)`, where the wrapped value is the principal.  If the `version-byte` is not in this range,
+however, then the `value` will be `none`.
 
-If the `version-byte` is a `buff` of length 0, if the single-byte `version-byte` is a value greater than `0x1f`, or the `hash-bytes` is a `buff` of length not equal to 20, then `error_code` will be `u1` and `value` will be `None`.
+If the `version-byte` is a `buff` of length 0, if the single-byte `version-byte` is a
+value greater than `0x1f`, or the `hash-bytes` is a `buff` of length not equal to 20, then `error_code`
+will be `u1` and `value` will be `none`.
 
-If a name is given, and the name is either an empty string or contains ASCII characters that are not allowed in contract names, then `error_code` will be `u2`.
+If a name is given, and the name is either an empty string or contains ASCII characters
+that are not allowed in contract names, then `error_code` will be `u2`.
 
 Note: This function is only available starting with Stacks 2.1.
 
@@ -2097,21 +2517,32 @@ Note: This function is only available starting with Stacks 2.1.
 Introduced in: **Clarity 2**
 
 **input:** `principal`\
-**output:** `(response (tuple ...) (tuple ...))`\
+**output:** `(response (tuple (hash-bytes (buff 20)) (name (optional (string-ascii 40))) (version (buff 1))) (tuple (hash-bytes (buff 20)) (name (optional (string-ascii 40))) (version (buff 1))))`\
 **signature:** `(principal-destruct? principal-address)`
 
 **description:**\
-A principal value represents either a set of keys, or a smart contract. The former, called a _standard principal_, is encoded as a `(buff 1)` _version byte_, indicating the type of account and the type of network that this principal can spend tokens on, and a `(buff 20)` _public key hash_, characterizing the principal's unique identity. The latter, a _contract principal_, is encoded as a standard principal concatenated with a `(string-ascii 40)` _contract name_ that identifies the code body.
+A principal value represents either a set of keys, or a smart contract.
+The former, called a _standard principal_,
+is encoded as a `(buff 1)` *version byte*, indicating the type of account
+and the type of network that this principal can spend tokens on,
+and a `(buff 20)` *public key hash*, characterizing the principal's unique identity.
+The latter, a _contract principal_, is encoded as a standard principal concatenated with
+a `(string-ascii 40)` *contract name* that identifies the code body.
 
-`principal-destruct?` will decompose a principal into its component parts: either`{version-byte, hash-bytes}` for standard principals, or `{version-byte, hash-bytes, name}` for contract principals.
+`principal-destruct?` will decompose a principal into its component parts: either`{version-byte, hash-bytes}`
+for standard principals, or `{version-byte, hash-bytes, name}` for contract principals.
 
 This method returns a `Response` that wraps this data as a tuple.
 
-If the version byte of `principal-address` matches the network (see `is-standard`), then this method returns the pair as its `ok` value.
+If the version byte of `principal-address` matches the network (see `is-standard`), then this method
+returns the pair as its `ok` value.
 
-If the version byte of `principal-address` does not match the network, then this method returns the pair as its `err` value.
+If the version byte of `principal-address` does not match the network, then this method
+returns the pair as its `err` value.
 
-In both cases, the value itself is a tuple containing three fields: a `version` value as a `(buff 1)`, a `hash-bytes` value as a `(buff 20)`, and a `name` value as an `(optional (string-ascii 40))`. The `name` field will only be `(some ..)` if the principal is a contract principal.
+In both cases, the value itself is a tuple containing three fields: a `version` value as a `(buff 1)`,
+a `hash-bytes` value as a `(buff 20)`, and a `name` value as an `(optional (string-ascii 40))`.  The `name`
+field will only be `(some ..)` if the principal is a contract principal.
 
 Note: This function is only available starting with Stacks 2.1.
 
@@ -2135,14 +2566,21 @@ Introduced in: **Clarity 1**
 **signature:** `(principal-of? public-key)`
 
 **description:**\
-The `principal-of?` function returns the principal derived from the provided public key. If the `public-key` is invalid, it will return the error code `(err u1).`.
+The `principal-of?` function returns the principal derived from the provided public key.
+This function may fail with the error code:
 
-Note: Before Stacks 2.1, this function has a bug, in that the principal returned would always be a testnet single-signature principal, even if the function were run on the mainnet. Starting with Stacks 2.1, this bug is fixed, so that this function will return a principal suited to the network it is called on. In particular, if this is called on the mainnet, it will return a single-signature mainnet principal.
+* `(err u1)` -- `public-key` is invalid
+
+Note: Before Stacks 2.1, this function has a bug, in that the principal returned would always
+be a testnet single-signature principal, even if the function were run on the mainnet. Starting
+with Stacks 2.1, this bug is fixed, so that this function will return a principal suited to
+the network it is called on. In particular, if this is called on the mainnet, it will
+return a single-signature mainnet principal.
 
 **example:**
 
-```clojure
-(principal-of? 0x03adb8de4b...) ;; Returns (ok ST1AW6E...)
+```clarity
+(principal-of? 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns (ok ST1AW6EKPGT61SQ9FNVDS17RKNWT8ZP582VF9HSCP)
 ```
 
 ***
@@ -2156,11 +2594,12 @@ Introduced in: **Clarity 1**
 **signature:** `(print expr)`
 
 **description:**\
-The `print` function evaluates and returns its input expression. On Stacks Core nodes configured for development (as opposed to production mining nodes), this function prints the resulting value to `STDOUT` (standard output).
+The `print` function evaluates and returns its input expression. On Stacks Core
+nodes configured for development (as opposed to production mining nodes), this function prints the resulting value to `STDOUT` (standard output).
 
 **example:**
 
-```clojure
+```clarity
 (print (+ 1 2 3)) ;; Returns 6
 ```
 
@@ -2175,18 +2614,21 @@ Introduced in: **Clarity 2**
 **signature:** `(replace-at? sequence index element)`
 
 **description:**\
-The `replace-at?` function takes in a sequence, an index, and an element, and returns a new sequence with the data at the index position replaced with the given element. The given element's type must match the type of the sequence, and must correspond to a single index of the input sequence. The return type on success is the same type as the input sequence.
+The `replace-at?` function takes in a sequence, an index, and an element,
+and returns a new sequence with the data at the index position replaced with the given element.
+The given element's type must match the type of the sequence, and must correspond to a single
+index of the input sequence. The return type on success is the same type as the input sequence.
 
 If the provided index is out of bounds, this functions returns `none`.
 
 **example:**
 
-```clojure
+```clarity
 (replace-at? u"ab" u1 u"c") ;; Returns (some u"ac")
 (replace-at? 0x00112233 u2 0x44) ;; Returns (some 0x00114433)
 (replace-at? "abcd" u3 "e") ;; Returns (some "abce")
 (replace-at? (list 1) u0 10) ;; Returns (some (10))
-(replace-at? (list (list 1) (list 2)) u0 (list 33)) ;; Returns (some ( (33) (2)))
+(replace-at? (list (list 1) (list 2)) u0 (list 33)) ;; Returns (some ((33) (2)))
 (replace-at? (list 1 2) u3 4) ;; Returns none
 ```
 
@@ -2196,34 +2638,35 @@ If the provided index is out of bounds, this functions returns `none`.
 
 Introduced in: **Clarity 4**
 
-**Input**:
+**input:** `principal, ((Allowance){0,128}), AnyType, ... A`\
+**output:** `(response A int)`\
+**signature:** `(restrict-assets? asset-owner ((with-stx|with-ft|with-nft|with-stacking)*) expr-body1 expr-body2 ... expr-body-last)`
 
-* `asset-owner`: `principal`: The principal whose assets are being protected.
-* `((with-stx|with-ft|with-nft|with-stacking)*)`: The set of allowances (at most 128) to grant during the evaluation of the body expressions .
-* `AnyType* A`: The Clarity expressions to be executed within the context, with the final expression returning type `A`, where `A` is not a `response`
+**description:**\
+Executes the body expressions, then checks the asset
+outflows against the granted allowances, in declaration order. If any
+allowance is violated, the body expressions are reverted, an error is
+returned, and an event is emitted with the full details of the violation to
+help with debugging. Note that the `asset-owner` and allowance setup
+expressions are evaluated before executing the body expressions. The final
+body expression cannot return a `response` value in order to avoid returning
+a nested `response` value from `restrict-assets?` (nested responses are
+error-prone). Returns:
+* `(ok x)` if the outflows are within the allowances, where `x` is the
+    result of the final body expression and has type `A`.
+* `(err index)` if an allowance was violated, where `index` is the 0-based
+    index of the first violated allowance in the list of granted allowances,
+    or `u128` if an asset with no allowance caused the violation.
 
-**Output**: `(response A uint)`
-
-**Signature**: `(restrict-assets? asset-owner ((with-stx|with-ft|with-nft|with-stacking)*) expr-body1 expr-body2 ... expr-body-last)`
-
-**Description**: Executes the body expressions, then checks the asset outflows against the granted allowances, in declaration order. If any allowance is violated, the body expressions are reverted and an error is returned. Note that the `asset-owner` and allowance setup expressions are evaluated before executing the body expressions. The final body expression cannot return a `response` value in order to avoid returning a nested `response` value from `restrict-assets?` (nested responses are error-prone). Returns:
-
-* `(ok x)` if the outflows are within the allowances, where `x` is the result of the final body expression and has type `A`.
-* `(err index)` if an allowance was violated, where `index` is the 0-based index of the first violated allowance in the list of granted allowances, or `u128` if an asset with no allowance caused the violation.
-
-**Example**:
+**example:**
 
 ```clarity
-(define-public (foo)
-  (restrict-assets? tx-sender ()
-    (try! (stx-transfer? u1000000 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
-  )
-) ;; Returns (err u128)
-(define-public (bar)
-  (restrict-assets? tx-sender ()
-    (+ u1 u2)
-  )
+(restrict-assets? tx-sender ()
+  (+ u1 u2)
 ) ;; Returns (ok u3)
+(restrict-assets? tx-sender ()
+  (try! (stx-transfer? u50 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+) ;; Returns (err u128)
 ```
 
 ***
@@ -2237,12 +2680,19 @@ Introduced in: **Clarity 1**
 **signature:** `(secp256k1-recover? message-hash signature)`
 
 **description:**\
-The `secp256k1-recover?` function recovers the public key used to sign the message which sha256 is `message-hash` with the provided `signature`. If the signature does not match, it will return the error code `(err u1).`. If the signature is invalid, it will return the error code `(err u2).`. The signature includes 64 bytes plus an additional recovery id (00..03) for a total of 65 bytes.
+The `secp256k1-recover?` function recovers the public key used to sign the hash, `message-hash`, typically
+a sha256 hash, with the provided `signature`. The signature includes 64 bytes plus an additional recovery id (00..03) for a total of 65 bytes.
+On success, it returns the public key as a 33-byte buffer. This function may fail with one of the following error codes:
+
+* `(err u1)` - the signature does not match the message hash
+* `(err u2)` - the signature is invalid
 
 **example:**
 
 ```clarity
-(secp256k1-recover? 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301) ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110)
+(secp256k1-recover? 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
+ 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301)
+ ;; Returns (ok 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110)
 ```
 
 ***
@@ -2256,14 +2706,24 @@ Introduced in: **Clarity 1**
 **signature:** `(secp256k1-verify message-hash signature public-key)`
 
 **description:**\
-The `secp256k1-verify` function verifies that the provided signature of the message-hash was signed with the private key that generated the public key. The `message-hash` is the `sha256` of the message. The signature includes 64 bytes plus an optional additional recovery id (00..03) for a total of 64 or 65 bytes.
+The `secp256k1-verify` function verifies that the provided signature of the message-hash
+was signed with the private key that generated the public key.
+The `message-hash` is typically the `sha256` of a message.
+The signature includes 64 bytes plus an optional additional recovery id (00..03) for a total of 64 or 65 bytes.
+High-S signatures are rejected to enforce the canonical low-S form and prevent malleable signatures.
 
 **example:**
 
 ```clarity
-(secp256k1-verify 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns true
-(secp256k1-verify 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a13 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns true
-(secp256k1-verify 0x0000000000000000000000000000000000000000000000000000000000000000 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns false
+(secp256k1-verify 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
+ 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a1301
+ 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns true
+(secp256k1-verify 0xde5b9eb9e7c5592930eb2e30a01369c36586d872082ed8181ee83d2a0ec20f04
+ 0x8738487ebe69b93d8e51583be8eee50bb4213fc49c767d329632730cc193b873554428fc936ca3569afc15f1c9365f6591d6251a89fee9c9ac661116824d3a13
+ 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns true
+(secp256k1-verify 0x0000000000000000000000000000000000000000000000000000000000000000
+ 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+ 0x03adb8de4bfb65db2cfd6120d55c6526ae9c52e675db7e47308636534ba7786110) ;; Returns false
 ```
 
 ***
@@ -2272,39 +2732,45 @@ The `secp256k1-verify` function verifies that the provided signature of the mess
 
 Introduced in: **Clarity 4**
 
-**Input**: `(buff 32), (buff 64), (buff 33)`
+**input:** `(buff 32), (buff 64), (buff 33)`\
+**output:** `bool`\
+**signature:** `(secp256r1-verify message-hash signature public-key)`
 
-**Output**: `bool`
+**description:**\
+The `secp256r1-verify` function verifies that the provided signature of the message-hash
+was signed with the private key that generated the public key.
+In Clarity 4, the `message-hash` is SHA256 hashed again internally before verification (i.e. double SHA256)
+but in Clarity 5 and later, the `message-hash` is used directly without additional hashing.
+`message-hash` is typically the `sha256` of a message and `signature` is the raw 64-byte signature.
+High-S signatures are allowed.
+Note that this is NOT the Bitcoin (or default Stacks) signature scheme, secp256k1, but rather the
+NIST P-256 curve (also known as secp256r1).
 
-**Signature**: `(secp256r1-verify message-hash signature public-key)`
+**example:**
 
-**Description**: The `secp256r1-verify` function verifies that the provided `signature` of the `message-hash` was produced by the private key corresponding to `public-key`. The `message-hash` is the SHA-256 hash of the message. The `signature` must be 64 bytes (compact signature). Returns `true` if the signature is valid for the given `public-key` and message hash, otherwise returns `false`.
-
-**Example**:
-
-```clojure
-(secp256r1-verify 0x033510403a646d23ee4f005061c2ca6af5da7c32c83758e8e9b6ac4cc1c2153c
-  0x9608dc164b76d2e19365ffa67b48981e441d323c3109718aee245d6ac8ccd21ddadadb94303c922c0d79d131ea59a0b6ba83e1157695db01189bb4b7e9f14b72 0x037a6b62e3c8b14f1b5933f5d5ab0509a8e7d95a111b8d3b264d95bfa753b00296) ;; Returns true
+```clarity
+(secp256r1-verify 0x44acf6b7e36c1342c2c5897204fe09504e1e2efb1a900377dbc4e7a6a133ec56
+    0xf3ac8061b514795b8843e3d6629527ed2afd6b1f6a555a7acabb5e6f79c8c2ac8bf77819ca05a6b2786c76262bf7371cef97b218e96f175a3ccdda2acc058903
+    0x031ccbe91c075fc7f4f033bfa248db8fccd3565de94bbfb12f3c59ff46c271bf83) ;; Returns true
 (secp256r1-verify 0x0000000000000000000000000000000000000000000000000000000000000000
-  0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  0x037a6b62e3c8b14f1b5933f5d5ab0509a8e7d95a111b8d3b264d95bfa753b00296) ;; Returns false
+    0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    0x031ccbe91c075fc7f4f033bfa248db8fccd3565de94bbfb12f3c59ff46c271bf83) ;; Returns false
 ```
 
 ***
 
-## sha256​
+## sha256
 
 Introduced in: **Clarity 1**
 
-**input:** `buff|uint|int`
-
-**output:** `(buff 32)`
-
+**input:** `buff|uint|int`\
+**output:** `(buff 32)`\
 **signature:** `(sha256 value)`
 
-**description:**
-
-The `sha256` function computes `SHA256(x)` of the inputted value. If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the integer.
+**description:**\
+The `sha256` function computes `SHA256(x)` of the inputted value.
+If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
+integer.
 
 **example:**
 
@@ -2314,19 +2780,18 @@ The `sha256` function computes `SHA256(x)` of the inputted value. If an integer 
 
 ***
 
-## sha512​
+## sha512
 
 Introduced in: **Clarity 1**
 
-**input:** `buff|uint|int`
-
-**output:** `(buff 64)`
-
+**input:** `buff|uint|int`\
+**output:** `(buff 64)`\
 **signature:** `(sha512 value)`
 
-**description:**
-
-The `sha512` function computes `SHA512(x)` of the inputted value. If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the integer.
+**description:**\
+The `sha512` function computes `SHA512(x)` of the inputted value.
+If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
+integer.
 
 **example:**
 
@@ -2336,19 +2801,19 @@ The `sha512` function computes `SHA512(x)` of the inputted value. If an integer 
 
 ***
 
-## sha512/256​
+## sha512/256
 
 Introduced in: **Clarity 1**
 
-**input:** `buff|uint|int`
-
-**output:** `(buff 32)`
-
+**input:** `buff|uint|int`\
+**output:** `(buff 32)`\
 **signature:** `(sha512/256 value)`
 
-**description:**
-
-The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with the 512/256 initialization vector, truncated to 256 bits) of the inputted value. If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the integer.
+**description:**\
+The `sha512/256` function computes `SHA512/256(x)` (the SHA512 algorithm with the 512/256 initialization vector, truncated
+to 256 bits) of the inputted value.
+If an integer (128 bit) is supplied the hash is computed over the little-endian representation of the
+integer.
 
 **example:**
 
@@ -2367,7 +2832,11 @@ Introduced in: **Clarity 2**
 **signature:** `(slice? sequence left-position right-position)`
 
 **description:**\
-The `slice?` function attempts to return a sub-sequence of that starts at `left-position` (inclusive), and ends at `right-position` (non-inclusive). If `left_position`==`right_position`, the function returns an empty sequence. If either `left_position` or `right_position` are out of bounds OR if `right_position` is less than `left_position`, the function returns `none`.
+The `slice?` function attempts to return a sub-sequence of that starts at `left-position` (inclusive), and
+ends at `right-position` (non-inclusive).
+If `left_position`==`right_position`, the function returns an empty sequence.
+If either `left_position` or `right_position` are out of bounds OR if `right_position` is less than
+`left_position`, the function returns `none`.
 
 **example:**
 
@@ -2395,7 +2864,7 @@ The `some` function constructs a `optional` type from the input value.
 
 **example:**
 
-```clojure
+```clarity
 (some 1) ;; Returns (some 1)
 (is-none (some 2)) ;; Returns false
 ```
@@ -2411,12 +2880,12 @@ Introduced in: **Clarity 1**
 **signature:** `(sqrti n)`
 
 **description:**\
-Returns the largest integer that is less than or equal to the square root of `n`.\
+Returns the largest integer that is less than or equal to the square root of `n`.
 Fails on a negative numbers.
 
 **example:**
 
-```clojure
+```clarity
 (sqrti u11) ;; Returns u3
 (sqrti 1000000) ;; Returns 1000
 (sqrti u1) ;; Returns u1
@@ -2425,19 +2894,18 @@ Fails on a negative numbers.
 
 ***
 
-## string-to-int?​
+## string-to-int?
 
 Introduced in: **Clarity 2**
 
-**input:** `(string-ascii 1048576) | (string-utf8 262144)`
-
-**output:** `(optional int)`
-
+**input:** `(string-ascii 1048576) | (string-utf8 262144)`\
+**output:** `(optional int)`\
 **signature:** `(string-to-int? (string-ascii|string-utf8))`
 
-**description:**
-
-Converts a string, either `string-ascii` or `string-utf8`, to an optional-wrapped signed integer. If the input string does not represent a valid integer, then the function returns `none`. Otherwise it returns an integer wrapped in `some`.
+**description:**\
+Converts a string, either `string-ascii` or `string-utf8`, to an optional-wrapped signed integer.
+If the input string does not represent a valid integer, then the function returns `none`. Otherwise it returns
+an integer wrapped in `some`.
 
 Note: This function is only available starting with Stacks 2.1.
 
@@ -2451,19 +2919,18 @@ Note: This function is only available starting with Stacks 2.1.
 
 ***
 
-## string-to-uint?​
+## string-to-uint?
 
 Introduced in: **Clarity 2**
 
-**input:** `(string-ascii 1048576) | (string-utf8 262144)`
-
-**output:** `(optional uint)`
-
+**input:** `(string-ascii 1048576) | (string-utf8 262144)`\
+**output:** `(optional uint)`\
 **signature:** `(string-to-uint? (string-ascii|string-utf8))`
 
-**description:**
-
-Converts a string, either `string-ascii` or `string-utf8`, to an optional-wrapped unsigned integer. If the input string does not represent a valid integer, then the function returns `none`. Otherwise it returns an unsigned integer wrapped in `some`.
+**description:**\
+Converts a string, either `string-ascii` or `string-utf8`, to an optional-wrapped unsigned integer.
+If the input string does not represent a valid integer, then the function returns `none`. Otherwise it returns
+an unsigned integer wrapped in `some`.
 
 Note: This function is only available starting with Stacks 2.1.
 
@@ -2479,10 +2946,6 @@ Note: This function is only available starting with Stacks 2.1.
 
 ## stx-account
 
-{% hint style="danger" %}
-There is a bug when `stx-account` is used within an `at-block` expression. Normally, keywords or functions executed within an `at-block` expression will return the historical data for that specified block. This bug causes `stx-account` to possibly return an incorrect value inside of an `at-block` since the incorrect burn block height is used to determine the locked status of the STX. This only affects accounts that had locked tokens (i.e. were stacking or delegating). This behavior will be fixed in the upcoming Clarity 5 version.
-{% endhint %}
-
 Introduced in: **Clarity 2**
 
 **input:** `principal`\
@@ -2492,12 +2955,15 @@ Introduced in: **Clarity 2**
 **description:**\
 `stx-account` is used to query the STX account of the `owner` principal.
 
-This function returns a tuple with the canonical account representation for an STX account. This includes the current amount of unlocked STX, the current amount of locked STX, and the unlock height for any locked STX, all denominated in microstacks.
+This function returns a tuple with the canonical account representation for an STX account.
+This includes the current amount of unlocked STX, the current amount of locked STX, and the
+unlock height for any locked STX, all denominated in microstacks.
 
 **example:**
 
-```clojure
-(stx-account 'SZ2J6ZY48G...) ;; Returns (tuple (locked u0) (unlock-height u0) (unlocked u0))
+```clarity
+(stx-account 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns (tuple (locked u0) (unlock-height u0) (unlocked u0))
+(stx-account tx-sender) ;; Returns (tuple (locked u0) (unlock-height u0) (unlocked u1000))
 ```
 
 ***
@@ -2511,26 +2977,27 @@ Introduced in: **Clarity 1**
 **signature:** `(stx-burn? amount sender)`
 
 **description:**\
-`stx-burn?` decreases the `sender` principal's STX holdings by `amount`, specified in microstacks, by destroying the STX. The `sender` principal _must_ be equal to the current context's `tx-sender`.
+`stx-burn?` decreases the `sender` principal's STX holdings by `amount`,
+specified in microstacks, by destroying the STX. The `sender` principal _must_ be equal to the current
+context's `tx-sender`.
 
-This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
+This function returns (ok true) if the burn is successful. In the event of an unsuccessful burn it returns
+one of the following error codes:
 
-`(err u1)` -- `sender` does not have enough balance to transfer `(err u3)` -- amount to send is non-positive `(err u4)` -- the `sender` principal is not the current `tx-sender`
+* `(err u1)` -- `sender` does not have enough balance to burn
+* `(err u3)` -- amount to burn is non-positive
+* `(err u4)` -- the `sender` principal is not the current `tx-sender`
 
 **example:**
 
-```clojure
-(as-contract  (stx-burn? u60 tx-sender)) ;; Returns (ok true)
-(as-contract  (stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (err u4)
+```clarity
+(stx-burn? u60 tx-sender) ;; Returns (ok true)
+(stx-burn? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns (err u4)
 ```
 
 ***
 
 ## stx-get-balance
-
-{% hint style="danger" %}
-There is a bug when `stx-get-balance` is used within an `at-block` expression. Normally, keywords or functions executed within an `at-block` expression will return the historical data for that specified block. This bug causes `stx-get-balance` to possibly return an incorrect value inside of an `at-block` since the incorrect burn block height is used to determine the locked status of the STX. This only affects accounts that had locked tokens (i.e. were stacking or delegating). This behavior will be fixed in the upcoming Clarity 5 version.
-{% endhint %}
 
 Introduced in: **Clarity 1**
 
@@ -2541,13 +3008,15 @@ Introduced in: **Clarity 1**
 **description:**\
 `stx-get-balance` is used to query the STX balance of the `owner` principal.
 
-This function returns the STX balance, in microstacks (1 STX = 1,000,000 microstacks), of the `owner` principal. In the event that the `owner` principal isn't materialized, it returns 0.
+This function returns the (unlocked) STX balance, in microstacks (1 STX = 1,000,000 microstacks), of the
+`owner` principal. The result is the same as `(get unlocked (stx-account user))`.
+In the event that the `owner` principal isn't materialized, it returns 0.
 
 **example:**
 
-```clojure
+```clarity
 (stx-get-balance 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns u0
-(stx-get-balance (as-contract tx-sender)) ;; Returns u1000
+(stx-get-balance tx-sender) ;; Returns u1000
 ```
 
 ***
@@ -2561,12 +3030,14 @@ Introduced in: **Clarity 2**
 **signature:** `(stx-transfer-memo? amount sender recipient memo)`
 
 **description:**\
-Same as `stx-transfer?` but includes a `memo` buffer. Returns same error codes as `stx-transfer?`.
+`stx-transfer-memo?` is similar to `stx-transfer?`, except that it adds a `memo` field.
+
+This function returns (ok true) if the transfer is successful, or, on an error, returns the same codes as `stx-transfer?`.
 
 **example:**
 
-```clojure
-(as-contract (stx-transfer-memo? u60 tx-sender 'SZ2J6Z... 0x010203)) ;; Returns (ok true)
+```clarity
+(stx-transfer-memo? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR 0x010203) ;; Returns (ok true)
 ```
 
 ***
@@ -2575,23 +3046,29 @@ Same as `stx-transfer?` but includes a `memo` buffer. Returns same error codes a
 
 Introduced in: **Clarity 1**
 
-**input:** `uint, principal, principal`\
+**input:** `uint, principal, principal, buff`\
 **output:** `(response bool uint)`\
 **signature:** `(stx-transfer? amount sender recipient)`
 
 **description:**\
-`stx-transfer?` is used to increase the STX balance for the `recipient` principal by debiting the `sender` principal by `amount`, specified in microstacks. The `sender` principal _must_ be equal to the current context's `tx-sender`.
+`stx-transfer?` is used to increase the STX balance for the `recipient` principal
+by debiting the `sender` principal by `amount`, specified in microstacks. The `sender` principal
+ _must_ be equal to the current context's `tx-sender`.
 
-This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns one of the following error codes:
+This function returns (ok true) if the transfer is successful. In the event of an unsuccessful transfer it returns
+one of the following error codes:
 
-`(err u1)` -- `sender` does not have enough balance to transfer `(err u2)` -- `sender` and `recipient` are the same principal `(err u3)` -- amount to send is non-positive `(err u4)` -- the `sender` principal is not the current `tx-sender`
+* `(err u1)` -- `sender` does not have enough balance to transfer
+* `(err u2)` -- `sender` and `recipient` are the same principal
+* `(err u3)` -- amount to send is non-positive
+* `(err u4)` -- the `sender` principal is not the current `tx-sender`
 
 **example:**
 
-```clojure
-(as-contract  (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (ok true)
-(as-contract  (stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR)) ;; Returns (ok true)
-(as-contract  (stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender)) ;; Returns (err u4)
+```clarity
+(stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns (ok true)
+(stx-transfer? u60 tx-sender 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR) ;; Returns (ok true)
+(stx-transfer? u50 'SZ2J6ZY48GV1EZ5V2V5RB9MP66SW86PYKKQ9H6DPR tx-sender) ;; Returns (err u4)
 ```
 
 ***
@@ -2600,21 +3077,25 @@ This function returns (ok true) if the transfer is successful. In the event of a
 
 Introduced in: **Clarity 4**
 
-**Input**: `int` | `uint` | `bool` | `principal` | `(buff 524284)` | `(string-utf8 262144)`
+**input:** `int|uint|bool|principal|(buff 524284)|(string-utf8 1048571)`\
+**output:** `(response (string-ascii 1048571) uint)`\
+**signature:** `(to-ascii? value)`
 
-**Output**: `(response (string-ascii 1048571) uint)`
+**description:**\
+The `to-ascii?` function converts the input value to its ASCII representation.
+If the input is a `string-utf8`, it will fail with `(err u1)` if the string contains non-ASCII
+characters.
 
-**Signature**: `(to-ascii? value)`
-
-**Description**: Returns the `string-ascii` representation of the input value in an `ok` response on success. The only error condition is if the input type is `string-utf8` and the value contains non-ASCII characters, in which case, `(err u1)` is returned. Note that the limitation on the maximum sizes of `buff` and `string-utf8` inputs is due to the Clarity value size limit of 1MB. The `(string-utf8 262144)` is the maximum allowed size of a `string-utf8` value, and the `(buff 524284)` limit is chosen because the ASCII representation of a `buff` is `0x` followed by two ASCII characters per byte in the `buff`. This means that the ASCII representation of a `(buff 524284)` is `2 + 2 * 524284 = 1048570` characters at 1 byte each, and the remainder is required for the `response` value wrapping the `string-ascii`.
-
-**Example**:
+**example:**
 
 ```clarity
-(to-ascii? true) ;; Returns (ok "true")
-(to-ascii? 42) ;; Returns (ok "42")
-(to-ascii? 'SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF) ;; Returns (ok "SP2QEZ06AGJ3RKJPBV14SY1V5BBFNAW33D96YPGZF")
-(to-ascii? 0x12345678) ;; Returns (ok "0x12345678")
+(to-ascii? 123) ;; Returns (ok "123")
+(to-ascii? u456) ;; Returns (ok "u456")
+(to-ascii? false) ;; Returns (ok "false")
+(to-ascii? 'SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4) ;; Returns (ok "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4")
+(to-ascii? 0x00112233) ;; Returns (ok "0x00112233")
+(to-ascii? u"An ASCII smiley face: :)") ;; Returns (ok "An ASCII smiley face: :)")
+(to-ascii? u"A smiley face emoji: \u{1F600}") ;; Returns (err u1)
 ```
 
 ***
@@ -2628,9 +3109,17 @@ Introduced in: **Clarity 2**
 **signature:** `(to-consensus-buff? value)`
 
 **description:**\
-`to-consensus-buff?` is a special function that will serialize any Clarity value into a buffer, using the SIP-005 serialization of the Clarity value. Not all values can be serialized: some value's consensus serialization is too large to fit in a Clarity buffer (this is because of the type prefix in the consensus serialization).
+`to-consensus-buff?` is a special function that will serialize any
+Clarity value into a buffer, using the SIP-005 serialization of the
+Clarity value. Not all values can be serialized: some value's
+consensus serialization is too large to fit in a Clarity buffer (this
+is because of the type prefix in the consensus serialization).
 
-If the value cannot fit as serialized into the maximum buffer size, this returns `none`, otherwise, it will be `(some consensus-serialized-buffer)`. During type checking, the analyzed type of the result of this method will be the maximum possible consensus buffer length based on the inferred type of the supplied value.
+If the value cannot fit as serialized into the maximum buffer size,
+this returns `none`, otherwise, it will be
+`(some consensus-serialized-buffer)`. During type checking, the
+analyzed type of the result of this method will be the maximum possible
+consensus buffer length based on the inferred type of the supplied value.
 
 **example:**
 
@@ -2693,7 +3182,11 @@ Introduced in: **Clarity 1**
 **signature:** `(try! option-input)`
 
 **description:**\
-The `try!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `try!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value, `try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.
+The `try!` function attempts to 'unpack' the first argument: if the argument is
+an option type, and the argument is a `(some ...)` option, `try!` returns the inner value of the
+option. If the argument is a response type, and the argument is an `(ok ...)` response, `try!` returns
+ the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value,
+`try!` _returns_ either `none` or the `(err ...)` value from the current function and exits the current control-flow.
 
 **example:**
 
@@ -2701,11 +3194,11 @@ The `try!` function attempts to 'unpack' the first argument: if the argument is 
 (define-map names-map { name: (string-ascii 12) } { id: int })
 (map-set names-map { name: "blockstack" } { id: 1337 })
 (try! (map-get? names-map { name: "blockstack" })) ;; Returns (tuple (id 1337))
-(define-private (checked-even (x int))  
-  (if (is-eq (mod x 2) 0)      
-    (ok x)      
-    (err false)))
-(define-private (double-if-even (x int))  
+(define-private (checked-even (x int))
+  (if (is-eq (mod x 2) 0)
+      (ok x)
+      (err false)))
+(define-private (double-if-even (x int))
   (ok (* 2 (try! (checked-even x)))))
 (double-if-even 10) ;; Returns (ok 20)
 (double-if-even 3) ;; Returns (err false)
@@ -2717,88 +3210,40 @@ The `try!` function attempts to 'unpack' the first argument: if the argument is 
 
 Introduced in: **Clarity 1**
 
-**input:** `(key-name A), ...`\
-**output:** `(tuple (key-name A) ...)`\
+**input:** `(key-name A), (key-name-2 B), ...`\
+**output:** `(tuple (key-name A) (key-name-2 B) ...)`\
 **signature:** `(tuple (key0 expr0) (key1 expr1) ...)`
 
 **description:**\
-The `tuple` special form constructs a typed tuple from the supplied key and expression pairs. A `get` function can use typed tuples as input to select specific values from a given tuple. Key names may not appear multiple times in the same tuple definition. Supplied expressions are evaluated and associated with the expressions' paired key name.
+The `tuple` special form constructs a typed tuple from the supplied key and expression pairs.
+A `get` function can use typed tuples as input to select specific values from a given tuple.
+Key names may not appear multiple times in the same tuple definition. Supplied expressions are evaluated and
+associated with the expressions' paired key name.
 
 There is a shorthand using curly brackets of the form {key0: expr0, key1: expr, ...}
 
 **example:**
 
-```clojure
-(tuple (name "blockstack") 
-(id 1337)) ;; using tuple    
-{name: "blockstack", id: 1337} ;; using curly brackets
-```
-
-***
-
-## unwrap!
-
-Introduced in: **Clarity 1**
-
-**input:** `(optional A) | (response A B), C`
-
-**output:** `A`
-
-**signature:** `(unwrap! option-input thrown-value)`
-
-**description:**
-
-The `unwrap!` function attempts to 'unpack' the first argument: if the argument is an option type, and the argument is a `(some ...)` option, `unwrap!` returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, `unwrap!` returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value, `unwrap!` _returns_ `thrown-value` from the current function and exits the current control-flow.
-
-**example:**
-
 ```clarity
-(define-map names-map { name: (string-ascii 12) } { id: int })
-(map-set names-map { name: "blockstack" } { id: 1337 })
-(define-private (get-name-or-err (name (string-ascii 12)))  
-  (let ( (raw-name (unwrap! (map-get? names-map { name: name }) (err 1))))       
-  (ok raw-name)))
-(get-name-or-err "blockstack") ;; Returns (ok (tuple (id 1337)))
-(get-name-or-err "non-existant") ;; Returns (err 1)
+(tuple (name "blockstack") (id 1337)) ;; using tuple
+    {name: "blockstack", id: 1337} ;; using curly brackets
 ```
 
 ***
 
-## unwrap-err!
+## unwrap-err-panic
 
 Introduced in: **Clarity 1**
 
-**input:** `(response A B), C`
-
-**output:** `B`
-
-**signature:** `(unwrap-err! response-input thrown-value)`
-
-**description:**
-
-The `unwrap-err!` function attempts to 'unpack' the first argument: if the argument is an `(err ...)` response, `unwrap-err!` returns the inner value of the `err`. If the supplied argument is an `(ok ...)` value, `unwrap-err!` _returns_ `thrown-value` from the current function and exits the current control-flow.
-
-**example:**
-
-```clarity
-(unwrap-err! (err 1) false) ;; Returns 1
-```
-
-***
-
-## unwrap-err-panic​
-
-Introduced in: **Clarity 1**
-
-**input:** `(response A B)`
-
-**output:** `B`
-
+**input:** `(response A B)`\
+**output:** `B`\
 **signature:** `(unwrap-err-panic response-input)`
 
-**description:**
-
-The `unwrap-err` function attempts to 'unpack' the first argument: if the argument is an `(err ...)` response, `unwrap` returns the inner value of the `err`. If the supplied argument is an `(ok ...)` value, `unwrap-err` throws a runtime error, aborting any further processing of the current transaction.
+**description:**\
+The `unwrap-err` function attempts to 'unpack' the first argument: if the argument
+is an `(err ...)` response, `unwrap` returns the inner value of the `err`.
+If the supplied argument is an `(ok ...)` value,
+`unwrap-err` throws a runtime error, aborting any further processing of the current transaction.
 
 **example:**
 
@@ -2809,19 +3254,42 @@ The `unwrap-err` function attempts to 'unpack' the first argument: if the argume
 
 ***
 
-## unwrap-panic​
+## unwrap-err!
 
 Introduced in: **Clarity 1**
 
-**input:** `(optional A) | (response A B)`
+**input:** `(response A B), C`\
+**output:** `B`\
+**signature:** `(unwrap-err! response-input thrown-value)`
 
-**output:** `A`
+**description:**\
+The `unwrap-err!` function attempts to 'unpack' the first argument: if the argument
+is an `(err ...)` response, `unwrap-err!` returns the inner value of the `err`.
+If the supplied argument is an `(ok ...)` value,
+`unwrap-err!` _returns_ `thrown-value` from the current function and exits the current control-flow.
 
+**example:**
+
+```clarity
+(unwrap-err! (err 1) false) ;; Returns 1
+```
+
+***
+
+## unwrap-panic
+
+Introduced in: **Clarity 1**
+
+**input:** `(optional A) | (response A B)`\
+**output:** `A`\
 **signature:** `(unwrap-panic option-input)`
 
-**description:**
-
-The `unwrap` function attempts to 'unpack' its argument: if the argument is an option type, and the argument is a `(some ...)` option, this function returns the inner value of the option. If the argument is a response type, and the argument is an `(ok ...)` response, it returns the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `(none)` value, `unwrap` throws a runtime error, aborting any further processing of the current transaction.
+**description:**\
+The `unwrap` function attempts to 'unpack' its argument: if the argument is
+an option type, and the argument is a `(some ...)` option, this function returns the inner value of the
+option. If the argument is a response type, and the argument is an `(ok ...)` response, it returns
+ the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value,
+`unwrap` throws a runtime error, aborting any further processing of the current transaction.
 
 **example:**
 
@@ -2830,6 +3298,36 @@ The `unwrap` function attempts to 'unpack' its argument: if the argument is an o
 (map-set names-map { name: "blockstack" } { id: 1337 })
 (unwrap-panic (map-get? names-map { name: "blockstack" })) ;; Returns (tuple (id 1337))
 (unwrap-panic (map-get? names-map { name: "non-existant" })) ;; Throws a runtime exception
+```
+
+***
+
+## unwrap!
+
+Introduced in: **Clarity 1**
+
+**input:** `(optional A) | (response A B), C`\
+**output:** `A`\
+**signature:** `(unwrap! option-input thrown-value)`
+
+**description:**\
+The `unwrap!` function attempts to 'unpack' the first argument: if the argument is
+an option type, and the argument is a `(some ...)` option, `unwrap!` returns the inner value of the
+option. If the argument is a response type, and the argument is an `(ok ...)` response, `unwrap!` returns
+ the inner value of the `ok`. If the supplied argument is either an `(err ...)` or a `none` value,
+`unwrap!` _returns_ `thrown-value` from the current function and exits the current control-flow.
+
+**example:**
+
+```clarity
+(define-map names-map { name: (string-ascii 12) } { id: int })
+(map-set names-map { name: "blockstack" } { id: 1337 })
+(define-private (get-name-or-err (name (string-ascii 12)))
+  (let ((raw-name (unwrap! (map-get? names-map { name: name }) (err 1))))
+       (ok raw-name)))
+
+(get-name-or-err "blockstack") ;; Returns (ok (tuple (id 1337)))
+(get-name-or-err "non-existant") ;; Returns (err 1)
 ```
 
 ***
@@ -2843,35 +3341,37 @@ Introduced in: **Clarity 1**
 **signature:** `(use-trait trait-alias trait-identifier)`
 
 **description:**\
-`use-trait` is used to bring a trait, defined in another contract, to the current contract. Subsequent references to an imported trait are signaled with the syntax `<trait-alias>`.
+`use-trait` is used to bring a trait, defined in another contract, to the current contract. Subsequent
+references to an imported trait are signaled with the syntax `<trait-alias>`.
 
-Traits import are defined with a name, used as an alias, and a trait identifier. Trait identifiers can either be using the sugared syntax (.token-a.token-trait), or be fully qualified ('SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait).
+Traits import are defined with a name, used as an alias, and a trait identifier. Trait identifiers can either be
+using the sugared syntax (.token-a.token-trait), or be fully qualified ('SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait).
 
-Like other kinds of definition statements, `use-trait` may only be used at the top level of a smart contract definition (i.e., you cannot put such a statement in the middle of a function body).
+Like other kinds of definition statements, `use-trait` may only be used at the top level of a smart contract
+definition (i.e., you cannot put such a statement in the middle of a function body).
 
 **example:**
 
 ```clarity
 (use-trait token-a-trait 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF.token-a.token-trait)
-(define-public (forward-get-balance (user principal) (contract <token-a-trait>))  
-  (begin (ok 1)))
+(define-public (forward-get-balance (user principal) (contract <token-a-trait>))
+  (begin
+    (ok 1)))
 ```
 
 ***
 
-## var-get​
+## var-get
 
 Introduced in: **Clarity 1**
 
-**input:** `VarName`
-
-**output:** `A`
-
+**input:** `VarName`\
+**output:** `A`\
 **signature:** `(var-get var-name)`
 
-**description:**
-
-The `var-get` function looks up and returns an entry from a contract's data map. The value is looked up using `var-name`.
+**description:**\
+The `var-get` function looks up and returns an entry from a contract's data map.
+The value is looked up using `var-name`.
 
 **example:**
 
@@ -2882,19 +3382,17 @@ The `var-get` function looks up and returns an entry from a contract's data map.
 
 ***
 
-## var-set​
+## var-set
 
 Introduced in: **Clarity 1**
 
-**input:** `VarName, AnyType`
-
-**output:** `bool`
-
+**input:** `VarName, AnyType`\
+**output:** `bool`\
 **signature:** `(var-set var-name expr1)`
 
-**description:**
-
-The `var-set` function sets the value associated with the input variable to the inputted value. The function always returns `true`.
+**description:**\
+The `var-set` function sets the value associated with the input variable to the
+inputted value. The function always returns `true`.
 
 **example:**
 
@@ -2907,108 +3405,133 @@ The `var-set` function sets the value associated with the input variable to the 
 
 ***
 
-{% hint style="info" %}
-The following 5 `with-*` functions are meant to be used inside the new `restrict-assets?` function.
-{% endhint %}
-
 ## with-all-assets-unsafe
 
 Introduced in: **Clarity 4**
 
-**Input**: None
+**input:** `N/A`\
+**output:** `Allowance`\
+**signature:** `(with-all-assets-unsafe)`
 
-**Output**: Not applicable
+**description:**\
+Grants unrestricted access to all assets of the contract to
+the enclosing `as-contract?` expression. `with-all-assets-unsafe` is not
+allowed outside of `as-contract?` contexts. Note that this is not allowed in
+`restrict-assets?` and will trigger an analysis error, since usage there does
+not make sense (i.e. just remove the `restrict-assets?` instead).
+**_⚠️ Security Warning: This should be used with extreme caution, as it
+effectively disables all asset protection for the contract. ⚠️_** This
+dangerous allowance should only be used when the code executing within the
+`as-contract?` body is verified to be trusted through other means (e.g.
+checking traits against an allow list, passed in from a trusted caller), and
+even then the more restrictive allowances should be preferred when possible.
 
-**Signature**: `(with-all-assets-unsafe)`
-
-**Description**: Grants unrestricted access to all assets of the contract to the enclosing `as-contract?` expression. Note that this is not allowed in `restrict-assets?` and will trigger an analysis error, since usage there does not make sense (i.e. just remove the `restrict-assets?` instead). **Security Warning:** This should be used with extreme caution, as it effectively disables all asset protection for the contract. This dangerous allowance should only be used when the code executing within the `as-contract?` body is verified to be trusted through other means (e.g. checking traits against an allow list, passed in from a trusted caller), and even then the more restrictive allowances should be preferred when possible.
-
-**Example**:
+**example:**
 
 ```clarity
-(define-public (execute-trait (trusted-trait <sample-trait>))
-  (begin
-    (asserts! (is-eq contract-caller TRUSTED_CALLER) ERR_UNTRUSTED_CALLER)
-    (as-contract? ((with-all-assets-unsafe))
-      (contract-call? trusted-trait execute)
-    )
+(let ((recipient tx-sender))
+  (as-contract? ((with-all-assets-unsafe))
+    (try! (stx-transfer? u100 tx-sender recipient))
   )
-)
+) ;; Returns (ok true)
 ```
 
 ***
 
 ## with-ft
 
-**Input**:
+Introduced in: **Clarity 4**
 
-* `contract-id`: `principal`: The contract defining the FT asset.
-* `token-name`: `(string-ascii 128)`: The name of the FT or `"*"` for any FT defined in `contract-id`.
-* `amount`: `uint`: The amount of FT to grant access to.
+**input:** `principal (string-ascii 128) uint`\
+**output:** `Allowance`\
+**signature:** `(with-ft contract-id token-name amount)`
 
-**Output**: Not applicable
+**description:**\
+Adds an outflow allowance for `amount` of the fungible
+token defined in `contract-id` with name `token-name` from the `asset-owner`
+of the enclosing `restrict-assets?` or `as-contract?` expression.  `with-ft` is
+not allowed outside of `restrict-assets?` or `as-contract?` contexts. Note that
+`token-name` should match the name used in the `define-fungible-token` call in
+the contract. When `"*"` is used for the token name, the allowance applies to
+**all** FTs defined in `contract-id`.
 
-**Signature**: `(with-ft contract-id token-name amount)`
-
-**Description**: Adds an outflow allowance for `amount` of the fungible token defined in `contract-id` with name `token-name` from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?` expression. Note that `token-name` should match the name used in the `define-fungible-token` call in the contract. When `"*"` is used for the token name, the allowance applies to **all** FTs defined in `contract-id`.
-
-**Example**:
+**example:**
 
 ```clarity
+(define-fungible-token stackaroo)
+(ft-mint? stackaroo u200 tx-sender)
 (restrict-assets? tx-sender
-  ((with-ft (contract-of token-trait) "stackaroo" u50))
-  (try! (contract-call? token-trait transfer u100 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM none))
-) ;; Returns (err u0)
-(restrict-assets? tx-sender
-  ((with-ft (contract-of token-trait) "stackaroo" u50))
-  (try! (contract-call? token-trait transfer u20 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM none))
+  ((with-ft current-contract "stackaroo" u100))
+  (try! (ft-transfer? stackaroo u100 tx-sender 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF))
 ) ;; Returns (ok true)
+(restrict-assets? tx-sender
+  ((with-ft current-contract "stackaroo" u50))
+  (try! (ft-transfer? stackaroo u100 tx-sender 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF))
+) ;; Returns (err u0)
 ```
 
 ***
 
 ## with-nft
 
-**Input**:
+Introduced in: **Clarity 4**
 
-* `contract-id`: `principal`: The contract defining the NFT asset.
-* `token-name`: `(string-ascii 128)`: The name of the NFT or `"*"` for any NFT defined in `contract-id`.
-* `identifiers`: `(list 128 T)`: The identifiers of the token to grant access to.
+**input:** `principal (string-ascii 128) (list 128 T)`\
+**output:** `Allowance`\
+**signature:** `(with-nft contract-id asset-name identifiers)`
 
-**Output**: Not applicable
+**description:**\
+Adds an outflow allowance for the non-fungible tokens
+identified by `identifiers` defined in `contract-id` with name `token-name`
+from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?`
+expression. `with-nft` is not allowed outside of `restrict-assets?` or
+`as-contract?` contexts. Note that `token-name` should match the name used in
+the `define-non-fungible-token` call in the contract. When `"*"` is used for
+the token name, the allowance applies to **all** NFTs defined in `contract-id`.
+Note that the type of the elements in `asset-identifiers` should match the type
+defined in the `define-non-fungible-token` call in the contract, but this is
+**not** checked by the type-checker. An identifier with the wrong type will
+simply never match any asset.
 
-**Signature**: `(with-nft contract-id token-name identifiers)`
-
-**Description**: Adds an outflow allowance for the non-fungible token(s) identified by `identifiers` defined in `contract-id` with name `token-name` from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?` expression. Note that `token-name` should match the name used in the `define-non-fungible-token` call in the contract. When `"*"` is used for the token name, the allowance applies to **all** NFTs defined in `contract-id`.
-
-**Example**:
+**example:**
 
 ```clarity
+(define-non-fungible-token stackaroo uint)
+(nft-mint? stackaroo u123 tx-sender)
+(nft-mint? stackaroo u124 tx-sender)
+(nft-mint? stackaroo u125 tx-sender)
 (restrict-assets? tx-sender
-  ((with-nft (contract-of nft-trait) "stackaroo" (list u123)))
-  (try! (contract-call? nft-trait transfer u4 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
-) ;; Returns (err u0)
-(restrict-assets? tx-sender
-  ((with-nft (contract-of nft-trait) "stackaroo" (list u123)))
-  (try! (contract-call? nft-trait transfer u123 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+  ((with-nft current-contract "stackaroo" (list u123)))
+  (try! (nft-transfer? stackaroo u123 tx-sender 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF))
 ) ;; Returns (ok true)
+(restrict-assets? tx-sender
+  ((with-nft current-contract "stackaroo" (list u125)))
+  (try! (nft-transfer? stackaroo u124 tx-sender 'SPAXYA5XS51713FDTQ8H94EJ4V579CXMTRNBZKSF))
+) ;; Returns (err u0)
 ```
 
 ***
 
 ## with-stacking
 
-**Input**:
+Introduced in: **Clarity 4**
 
-* `amount`: `uint`: The amount of uSTX that can be locked.
+**input:** `uint`\
+**output:** `Allowance`\
+**signature:** `(with-stacking amount)`
 
-**Output**: Not applicable
+**description:**\
+Adds a stacking allowance for `amount` uSTX from the
+`asset-owner` of the enclosing `restrict-assets?` or `as-contract?`
+expression. `with-stacking` is not allowed outside of `restrict-assets?` or
+`as-contract?` contexts. This restricts calls to the active PoX contract
+that either delegate funds for stacking or stack directly, ensuring that the
+locked amount is limited by the amount of uSTX specified. Note that the
+amount specified here is the total amount allowed to be stacked, i.e. a call to
+`stack-increase` will need an allowance for the new total, not just the
+increase amount.
 
-**Signature**: `(with-stacking amount)`
-
-**Description**: Adds a stacking allowance for `amount` uSTX from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?` expression. This restricts calls to the active PoX contract that either delegate funds for stacking or stack directly, ensuring that the locked amount is limited by the amount of uSTX specified.
-
-**Example**:
+**example:**
 
 ```clarity
 (restrict-assets? tx-sender
@@ -3029,27 +3552,29 @@ Introduced in: **Clarity 4**
 
 ## with-stx
 
-**Input**:
+Introduced in: **Clarity 4**
 
-* `amount`: `uint`: The amount of uSTX to grant access to.
+**input:** `uint`\
+**output:** `Allowance`\
+**signature:** `(with-stx amount)`
 
-**Output**: Not applicable
+**description:**\
+Adds an outflow allowance for `amount` uSTX from the
+`asset-owner` of the enclosing `restrict-assets?` or `as-contract?`
+expression. `with-stx` is not allowed outside of `restrict-assets?` or
+`as-contract?` contexts.
 
-**Signature**: `(with-stx amount)`
-
-**Description**: Adds an outflow allowance for `amount` uSTX from the `asset-owner` of the enclosing `restrict-assets?` or `as-contract?` expression.
-
-**Example**:
+**example:**
 
 ```clarity
 (restrict-assets? tx-sender
-  ((with-stx u1000000))
-  (try! (stx-transfer? u2000000 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
-) ;; Returns (err u0)
-(restrict-assets? tx-sender
-  ((with-stx u1000000))
-  (try! (stx-transfer? u1000000 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+  ((with-stx u100))
+  (try! (stx-transfer? u100 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
 ) ;; Returns (ok true)
+(restrict-assets? tx-sender
+  ((with-stx u50))
+  (try! (stx-transfer? u100 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
+) ;; Returns (err u0)
 ```
 
 ***
@@ -3067,7 +3592,9 @@ Returns the result of bitwise exclusive or'ing `i1` with `i2`.
 
 **example:**
 
-```clojure
+```clarity
 (xor 1 2) ;; Returns 3
 (xor 120 280) ;; Returns 352
 ```
+
+***
