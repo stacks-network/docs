@@ -123,7 +123,7 @@ start_height = 109280
 
 [[burnchain.epochs]]
 epoch_name = "3.4"
-start_height = 159345
+start_height = 159350
 EOF
 
 docker run -d  \\
