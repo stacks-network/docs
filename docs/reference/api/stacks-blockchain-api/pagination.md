@@ -4,49 +4,78 @@ description: Learn how to paginate through lists.
 
 # Pagination
 
-To make API responses more compact, lists returned by the API are paginated. For lists, the response body includes:
+To keep responses compact, endpoints that return lists are paginated. Newer endpoints (all `/extended/v3` routes, plus some `/extended/v2` routes) use **cursor-based pagination**: instead of counting through a list with a numeric offset, each response hands you an opaque cursor that points at the next page. This keeps results stable even when new items are added to the front of the list while you're paging through it.
 
-- `limit`: The number of list items returned per response
-- `offset`: The number of elements to skip (starting from 0)
-- `total`: The number of all available list items
-- `results`: The array of list items (length of array equals the set limit)
+### Request parameters
 
-Here is a sample response:
+Cursor-paginated endpoints accept two query parameters:
+
+* `limit`: The number of items to return per page. Defaults to `20`, with a maximum of `50`.
+* `cursor`: The cursor pointing at the page to fetch. Omit it on your first request to get the first page.
+
+Treat the cursor as an opaque token — copy the value from a response and pass it back unchanged. (Its internal format is endpoint-specific; for example, the transactions endpoint encodes `block_height:microblock_sequence:tx_index`.)
+
+### Response body
+
+Each response includes:
+
+* `limit`: The number of items returned per page.
+* `total`: The number of items available.
+* `results`: The array of items (length equals the set limit, or fewer on the last page).
+* `cursor`: An object with the cursors for navigating from the current page:
+  * `next`: Cursor for the next page, or `null` if this is the last page.
+  * `previous`: Cursor for the previous page, or `null` if this is the first page.
+  * `current`: Cursor for the current page.
+
+Here is a sample response from `GET /extended/v3/transactions?limit=20`:
 
 ```json
 {
-  "limit": 10,
-  "offset": 0,
+  "limit": 20,
   "total": 101922,
+  "cursor": {
+    "next": "14461:2147483647:0",
+    "previous": null,
+    "current": "14805:0:3"
+  },
   "results": [
     {
       "tx_id": "0x924e0a688664851f5f96b437fabaec19b7542cfcaaf92a97eae43384cacd83d0",
-      "nonce": 308,
-      "fee_rate": "0",
-      "sender_address": "ST39F7SA0AKH7RB363W3NE2DTHD3P32ZHNX2KE7J9",
-      "sponsored": false,
-      "post_condition_mode": "deny",
-      "post_conditions": [],
-      "anchor_mode": "on_chain_only",
-      "block_hash": "0x17ceb3da5f36aab351d6b14f5aa77f85bb6b800b954b2f24c564579f80116d99",
-      "parent_block_hash": "0xe0d1e8d216a77526ae2ce40294fc77038798a179a6532bb8980d3c2183f58de6",
-      "block_height": 14461,
-      "burn_block_time": 1622875042,
-      "burn_block_time_iso": "2021-06-05T06:37:22.000Z",
-      "canonical": true,
-      "tx_index": 0,
       "tx_status": "success",
-      "tx_result": {},
-      "microblock_hash": "",
-      "microblock_sequence": 2147483647,
-      "microblock_canonical": true,
-      "event_count": 0,
-      "events": [],
       "tx_type": "coinbase",
-      "coinbase_payload": {}
+      "block_height": 14461,
+      "burn_block_time_iso": "2021-06-05T06:37:22.000Z"
     }
   ]
 }
 ```
 
-Using the `limit` and `offset` properties, you can paginate through the entire list by increasing the offset by the limit until you reach the total.
+### Paginating through a list
+
+To walk the entire list, make an initial request without a `cursor`, then repeat the request with the `cursor.next` value from each response. Stop when `cursor.next` is `null`.
+
+```js
+async function fetchAllTransactions() {
+  const base = "https://api.hiro.so/extended/v3/transactions";
+  const results = [];
+  let cursor = null;
+
+  do {
+    const url = new URL(base);
+    url.searchParams.set("limit", "50");
+    if (cursor) url.searchParams.set("cursor", cursor);
+
+    const page = await fetch(url).then((res) => res.json());
+    results.push(...page.results);
+    cursor = page.cursor.next;
+  } while (cursor);
+
+  return results;
+}
+```
+
+To page backwards, use `cursor.previous` the same way — it is `null` once you reach the first page.
+
+{% hint style="info" %}
+Older endpoints (most `/extended/v1` and `/extended/v2` routes) still use offset-based pagination with `limit` and `offset` parameters and return a `total`. For those, page through the list by increasing `offset` by `limit` until you reach `total`. Check the parameters listed for each endpoint in the API reference to see which style it uses.
+{% endhint %}
