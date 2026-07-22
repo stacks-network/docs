@@ -266,7 +266,7 @@ Introduced in: **Clarity 4**
 
 **input:** `((Allowance){0,128}), AnyType, ... A`\
 **output:** `(response A uint)`\
-**signature:** `(as-contract? ((with-stx|with-ft|with-nft|with-stacking)*) expr-body1 expr-body2 ... expr-body-last)`
+**signature:** `(as-contract? ((with-stx|with-ft|with-nft|with-stacking|with-staking|with-pox)*) expr-body1 expr-body2 ... expr-body-last)`
 
 **description:**\
 Switches the current context's `tx-sender` and
@@ -672,15 +672,21 @@ Note: This function is only available starting with Stacks 2.1.
 
 Introduced in: **Clarity 1**
 
-**input:** `sequence_A, sequence_A`\
+**input:** `sequence_A, sequence_A, ...`\
 **output:** `sequence_A`\
-**signature:** `(concat sequence1 sequence2)`
+**signature:** `(concat sequence1 sequence2 ...)`
 
 **description:**\
-The `concat` function takes two sequences of the same type,
+The `concat` function takes two or more sequences of the same type,
 and returns a concatenated sequence of the same type, with the resulting
-sequence_len = sequence1_len + sequence2_len.
+sequence_len equal to the sum of the input sequence lengths.
 Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf8`.
+
+Prior to Clarity 6, `concat` accepts exactly two arguments. Beginning in
+Clarity 6, `concat` is variadic and accepts two or more arguments in a single
+call. The variadic form charges runtime cost proportional to the combined
+length of the inputs (rather than the quadratic-in-N cost of an equivalent
+nested-binary chain), so it is strictly cheaper than chaining binary calls.
 
 **example:**
 
@@ -688,6 +694,7 @@ Applicable sequence types are `(list A)`, `buff`, `string-ascii` and `string-utf
 (concat (list 1 2) (list 3 4)) ;; Returns (1 2 3 4)
 (concat "hello " "world") ;; Returns "hello world"
 (concat 0x0102 0x0304) ;; Returns 0x01020304
+(concat 0x01 0x02 0x03 0x04) ;; Returns 0x01020304
 ```
 
 ***
@@ -1060,6 +1067,33 @@ definition (i.e., you cannot put a define statement in the middle of a function 
 
 ***
 
+## ed25519-verify
+
+Introduced in: **Clarity 6**
+
+**input:** `(buff 1048576), (buff 64), (buff 32)`\
+**output:** `bool`\
+**signature:** `(ed25519-verify message signature public-key)`
+
+**description:**\
+The `ed25519-verify` function verifies that the provided signature of the message
+was signed with the private key that generated the public key.
+The `message` can be up to 1 MiB in size. The `signature` is the raw 64-byte signature, and the `public-key` is the raw 32-byte public key.
+returns `true` if the signature is valid, and `false` otherwise.
+Note that validation is in strict mode, so non-canonical signatures will be rejected.
+
+**example:**
+
+```clarity
+(ed25519-verify 0xaf82
+    0x6291d657deec24024827e69c3abe01a30ce548a284743a445e3680d7db5ac3ac18ff9b538d16f290ae67f760984dc6594a7c15e9716ed28dc027beceea1ec40a
+    0xfc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025) ;; Returns true
+(ed25519-verify 0x00000000000000000000000000000000000000 0x6291d657deec24024827e69c3abe01a30ce548a284743a445e3680d7db5ac3ac18ff9b538d16f290ae67f760984dc6594a7c15e9716ed28dc027beceea1ec40a
+    0xfc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025) ;; Returns false
+```
+
+***
+
 ## element-at
 
 Introduced in: **Clarity 1**
@@ -1380,6 +1414,45 @@ the tuple. If the supplied option is a `none` option, get returns `none`.
 (get id (tuple (name "blockstack") (id 1337))) ;; Returns 1337
 (get id (map-get? names-map (tuple (name "blockstack")))) ;; Returns (some 1337)
 (get id (map-get? names-map (tuple (name "non-existent")))) ;; Returns none
+```
+
+***
+
+## get-bitcoin-tx-output?
+
+Introduced in: **Clarity 6**
+
+**input:** `(buff 1048576), uint`\
+**output:** `(response (tuple (script (buff 1024)) (amount uint) (txid (buff 32))) uint)`\
+**signature:** `(get-bitcoin-tx-output? tx-bytes vout)`
+
+**description:**\
+The `get-bitcoin-tx-output?` function parses a serialized Bitcoin transaction
+(`tx-bytes`, with or without SegWit witness data) and returns the output at the given `vout`
+index, plus the canonical (non-witness) `txid` of the transaction.
+
+The returned `txid` is in *internal* byte order (the raw double-SHA-256 result), ready to be
+passed directly to `verify-merkle-proof` as the leaf hash. The `script` is the raw
+`scriptPubKey` bytes of the output — contracts can pattern-match these bytes to recognize
+P2WSH (`0x00 0x20 ...`), P2TR (`0x51 0x20 ...`), P2WPKH (`0x00 0x14 ...`), OP_RETURN
+(`0x6a ...`), or any other output script.
+
+Returns one of three error codes on failure:
+- `(err u1)` — `tx-bytes` did not deserialize as a Bitcoin transaction.
+- `(err u2)` — `vout` is out of range for this transaction.
+- `(err u3)` — the output's `scriptPubKey` exceeds the 1024-byte cap.
+
+This builtin is intended to be paired with `verify-merkle-proof` and the burn-block header
+data exposed by `get-burn-block-info?` to verify that a Bitcoin output exists on-chain
+without trusting the caller to have correctly hashed or stripped witness data from the tx.
+
+**example:**
+
+```clarity
+;; Parse the Bitcoin genesis block coinbase tx and return its sole output.
+(get-bitcoin-tx-output? 0x01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4d04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73ffffffff0100f2052a01000000434104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac00000000 u0)
+;; Returns (ok (tuple (amount u5000000000) (script 0x4104678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5fac) (txid 0x3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a)))
+(get-bitcoin-tx-output? 0x00 u0) ;; Returns (err u1)
 ```
 
 ***
@@ -2640,7 +2713,7 @@ Introduced in: **Clarity 4**
 
 **input:** `principal, ((Allowance){0,128}), AnyType, ... A`\
 **output:** `(response A int)`\
-**signature:** `(restrict-assets? asset-owner ((with-stx|with-ft|with-nft|with-stacking)*) expr-body1 expr-body2 ... expr-body-last)`
+**signature:** `(restrict-assets? asset-owner ((with-stx|with-ft|with-nft|with-stacking|with-staking|with-pox)*) expr-body1 expr-body2 ... expr-body-last)`
 
 **description:**\
 Executes the body expressions, then checks the asset
@@ -2667,6 +2740,28 @@ error-prone). Returns:
 (restrict-assets? tx-sender ()
   (try! (stx-transfer? u50 tx-sender 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM))
 ) ;; Returns (err u128)
+```
+
+***
+
+## secp256k1-decompress?
+
+Introduced in: **Clarity 6**
+
+**input:** `(buff 33)`\
+**output:** `(response (buff 65) uint)`\
+**signature:** `(secp256k1-decompress? public-key)`
+
+**description:**\
+The `secp256k1-decompress?` function decompresses the provided (compressed) public key.
+    Returns the uncompressed public key as a 65-byte buffer on success. This function may fail with the error code:
+    - `(err u1)` — invalid compressed public-key.
+
+**example:**
+
+```clarity
+(secp256k1-decompress? 0x0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352) 
+    ;; Returns (ok 0x0450863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b23522cd470243453a299fa9e77237716103abc11a1df38855ed6f2ee187e9c582ba6)
 ```
 
 ***
@@ -3405,6 +3500,55 @@ inputted value. The function always returns `true`.
 
 ***
 
+## verify-merkle-proof
+
+Introduced in: **Clarity 6**
+
+**input:** `(buff 32), (buff 32), uint, uint, (list 24 (buff 32))`\
+**output:** `bool`\
+**signature:** `(verify-merkle-proof leaf-hash root-hash tx-index tx-count sibling-hashes)`
+
+**description:**\
+The `verify-merkle-proof` function verifies a Bitcoin-style merkle inclusion proof
+using double-SHA-256 hashing with the "duplicate the last node on odd-sized rows" rule.
+
+Given a `leaf-hash` (typically a Bitcoin txid), the merkle `root-hash` of a block, the
+`tx-index` of the leaf within the tree (0-indexed), the `tx-count` of transactions in the
+block, and the list of `sibling-hashes` along the path from the leaf to the root, the
+function returns `true` iff hashing pairwise up the tree in the order described by
+`tx-index` produces `root-hash`.
+
+`tx-count` pins down the canonical Bitcoin tree shape and is required to defend against
+CVE-2012-2459-style attacks where an intermediate node in an odd-row-padded tree could
+otherwise be passed off as a leaf, or where the last real leaf of an odd-sized tree
+could be relocated into the duplicated-padding region by inflating `tx-count`. The
+function rejects any proof whose path length doesn't match `ceil(log2(tx-count))`, any
+`tx-index` not less than `tx-count`, and any sibling whose value is inconsistent with the
+canonical tree shape implied by the supplied `tx-count`.
+
+All 32-byte hashes (leaf, root, siblings) are passed in *internal* (raw) byte order, not
+the display (reversed) order conventionally used for Bitcoin txids and block hashes. The
+`txid` returned by `get-bitcoin-tx-output?` is already in internal byte order and can be
+passed directly as `leaf-hash`.
+
+Returns `false` for any malformed proof and `true` for a valid proof.
+
+**example:**
+
+```clarity
+;; The Bitcoin genesis block contains a single tx, so its coinbase txid
+;; (in internal byte order) is also the block's merkle root. A proof
+;; with an empty sibling list verifies trivially.
+(verify-merkle-proof
+    0x3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a
+    0x3ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a
+    u0
+    u1
+    (list)) ;; Returns true
+```
+
+***
+
 ## with-all-assets-unsafe
 
 Introduced in: **Clarity 4**
@@ -3512,7 +3656,46 @@ simply never match any asset.
 
 ***
 
+## with-pox
+
+Introduced in: **Clarity 6**
+
+**input:** `N/A`\
+**output:** `Allowance`\
+**signature:** `(with-pox)`
+
+**description:**\
+Permits the `asset-owner` of the enclosing `restrict-assets?`
+or `as-contract?` expression to perform a position-altering PoX action — calling
+the active PoX contract to `unstake`, `unstake-sbtc`, `update-bond-registration`,
+or `announce-l1-early-exit`. `with-pox` is not allowed outside of
+`restrict-assets?` or `as-contract?` contexts. These actions are all-or-nothing
+for a position, so this allowance takes no amount: its presence simply permits
+them, and its absence forbids them within the protected scope. An *attempt* is
+gated whether or not the underlying call succeeds, so the absence of `with-pox`
+catches even a failed attempt to touch the position. Locking STX is covered by
+`with-staking`, not `with-pox`.
+
+**example:**
+
+```clarity
+(restrict-assets? tx-sender
+  ()
+  (try! (contract-call? 'ST000000000000000000002AMW42H.pox-5 unstake .signer))
+) ;; Returns (err u128) -- no allowance permits the PoX action
+(restrict-assets? tx-sender
+  ((with-pox))
+  (try! (contract-call? 'ST000000000000000000002AMW42H.pox-5 unstake .signer))
+) ;; Returns (ok true)
+```
+
+***
+
 ## with-stacking
+
+{% hint style="danger" %}
+Deprecated in Clarity 6.
+{% endhint %}
 
 Introduced in: **Clarity 4**
 
@@ -3529,7 +3712,8 @@ that either delegate funds for stacking or stack directly, ensuring that the
 locked amount is limited by the amount of uSTX specified. Note that the
 amount specified here is the total amount allowed to be stacked, i.e. a call to
 `stack-increase` will need an allowance for the new total, not just the
-increase amount.
+increase amount. Replaced with `with-staking` in Clarity 6+ for consistency
+with the active PoX contract's naming.
 
 **example:**
 
@@ -3544,6 +3728,44 @@ increase amount.
   ((with-stacking u1000000000000))
   (try! (contract-call? 'SP000000000000000000002Q6VF78.pox-4 delegate-stx
     u900000000000 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM none none
+  ))
+) ;; Returns (ok true)
+```
+
+***
+
+## with-staking
+
+Introduced in: **Clarity 6**
+
+**input:** `uint`\
+**output:** `Allowance`\
+**signature:** `(with-staking amount)`
+
+**description:**\
+Adds a staking allowance for `amount` uSTX from the
+`asset-owner` of the enclosing `restrict-assets?` or `as-contract?`
+expression. `with-staking` is the Clarity 6+ spelling of the allowance that was
+called `with-stacking` in Clarity 4 and 5; it is not allowed outside of
+`restrict-assets?` or `as-contract?` contexts. This restricts calls to the
+active PoX contract to stake STX, ensuring that the locked amount is limited by
+the amount of uSTX specified. Note that the amount specified here is the total
+amount allowed to be staked, i.e. a call that increases an existing stake will
+need an allowance for the new total, not just the increase amount.
+
+**example:**
+
+```clarity
+(restrict-assets? tx-sender
+  ((with-staking u1000000000000))
+  (try! (contract-call? 'ST000000000000000000002AMW42H.pox-5 stake
+    .signer u1100000000000 u12 burn-block-height none
+  ))
+) ;; Returns (err u0)
+(restrict-assets? tx-sender
+  ((with-staking u1000000000000))
+  (try! (contract-call? 'ST000000000000000000002AMW42H.pox-5 stake
+    .signer u900000000000 u12 burn-block-height none
   ))
 ) ;; Returns (ok true)
 ```
