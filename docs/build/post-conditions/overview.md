@@ -8,7 +8,7 @@ description: Learn how post-conditions protect users from unexpected transaction
 
 #### The Big Picture
 
-* Post-conditions are constraints _you attach to a transaction_ that define exactly what assets (STX, SIP-010 tokens, NFTs) are allowed to move and how much.
+* Post-conditions are constraints _you attach to a transaction_ that define exactly what assets (STX, SIP-010 tokens, NFTs) are allowed to move and how much — and, starting with SIP-045, what staking and PoX actions are allowed to occur.
 * If the underlying smart contract execution would violate your declared limits, the entire transaction aborts.
 * Even if a smart contract contains unexpected logic, it cannot move assets beyond what your post-conditions permit.
 * Post-conditions are constructed on the client-side usually by the client-side developer. They are part of the signed transaction. Contracts cannot modify them.
@@ -158,7 +158,22 @@ const nftCondition = Pc
   .principal('STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6')
   .willSendAsset()
   .nft('SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335.my-nft::my-asset', Cl.uint(1));
+
+// Staking post-condition (SIP-045)
+const stakingCondition = Pc
+  .principal('STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6')
+  .willSendGte(1000000)
+  .ustxToLock();
+
+// PoX post-condition (SIP-045)
+const poxCondition = Pc
+  .principal('STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6')
+  .willNotPerformPox();
 ```
+
+{% hint style="info" %}
+Staking and PoX post-conditions are introduced by SIP-045 and are available starting with Stacks epoch 4.0 (Bitcoin Staking). See the [Implementation](implementation.md) page for details.
+{% endhint %}
 
 ### Manual creation
 
@@ -168,7 +183,9 @@ Create post-conditions manually using type definitions when building conditions 
 import {
   StxPostCondition,
   FungiblePostCondition,
-  NonFungiblePostCondition
+  NonFungiblePostCondition,
+  StakingPostCondition,
+  PoxPostCondition
 } from '@stacks/transactions';
 
 // STX post-condition
@@ -212,6 +229,31 @@ const nftPostCondition: NonFungiblePostCondition = {
 };
 ```
 
+#### Staking (SIP-045)
+
+Guards staking STX (or modifying staked STX) for a principal. Uses the same comparators as the STX post-condition; amounts are denoted in uSTX.
+
+```ts
+const stakingPostCondition: StakingPostCondition = {
+  type: 'staking-postcondition',
+  address: 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B',
+  condition: 'gte', // 'eq' | 'gt' | 'gte' | 'lt' | 'lte'
+  amount: '1000000',
+};
+```
+
+#### PoX (SIP-045)
+
+Guards PoX state changes that do not alter locking status. Carries only a principal and one of three condition codes — no asset or amount.
+
+```ts
+const poxPostCondition: PoxPostCondition = {
+  type: 'pox-postcondition',
+  address: 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B',
+  condition: 'will-not-perform', // 'will-perform' | 'will-not-perform' | 'may-perform'
+};
+```
+
 ***
 
 ## Post-Condition Modes
@@ -247,6 +289,27 @@ Always use `Deny` mode unless you have a specific reason to allow additional tra
 
 Allow mode is a less-strict setting, in which it “allows” any transaction to execute as long as it meets the criteria of the specified post-conditions. In other words, this `allow` mode enables additional transactions to occur as long as the post-condition is met in that process. This setting is useful when you want to allow other unknown or dynamic transfers to happen. But usually you wouldn’t want to have this happen as this can open up unintended consequences for the user.
 
+#### Originator mode (SIP-040)
+
+Originator mode is a hybrid of the two: it applies `deny`-style protection to the transaction's _origin account_ while allowing asset movements between other principals. In originator mode, no asset transfers from the origin account are permitted besides those named in the post-conditions — but transfers between other principals (contracts routing assets among themselves, for example) proceed unrestricted.
+
+```ts
+import { Pc, PostConditionMode } from '@stacks/transactions';
+
+const tx = await makeContractCall({
+  // ...
+  postConditionMode: PostConditionMode.Originator,
+  postConditions: [
+    // Constrain only the origin account's outflows
+    Pc.origin().willSendLte(1_000_000).ustx(),
+  ],
+});
+```
+
+The origin account is the transaction's signer (the first signing account in a sponsored transaction). It stays fixed throughout execution — it is not `tx-sender`, and it is unaffected by `as-contract?`.
+
+This mode is designed for DeFi-style contract calls where enumerating every intermediate asset movement in `deny` mode is impractical, but the user still wants a hard cap on what can leave their own account. Available starting with Stacks epoch 3.4 ([SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md)).
+
 ## How post-conditions appear to the user
 
 Since post-conditions are declared on your frontend code, they also need to be visually displayed to users. Stacks-supported wallets handle that by displaying post-conditions on the transaction confirmation modals that popup when a user needs to confirm/approve a transaction.
@@ -257,7 +320,7 @@ Since post-conditions are declared on your frontend code, they also need to be v
 
 ## Things to be aware of
 
-While powerful, post-conditions have some limitations you should keep in mind. **Post-conditions only track who&#x20;**_**sends**_**&#x20;an asset, and how much.** They do not monitor who owns any set of assets when the transaction finishes, nor do they monitor the sequence of owners an asset might have during transaction execution.
+While powerful, post-conditions have some limitations you should keep in mind. **Post-conditions only track who&#x20;**_**sends**_**&#x20;an asset, and how much.** They do not monitor who owns any set of assets when the transaction finishes, nor do they monitor the sequence of owners an asset might have during transaction execution. The staking and PoX post-conditions added in SIP-045 follow the same principle: they constrain what a specific principal locks or which PoX actions it performs, not the resulting state.
 
 Alongside those limitations, it should be obvious, but it’s worth explicitly stating that post-conditions are not a catch-all. Just because you implement post-conditions doesn’t mean your contract or next transaction are guaranteed to be safe. Bugs can still occur, and you still need to build with security in mind. Debugging and extensive tests are still your best friend.
 
@@ -270,3 +333,5 @@ Alongside those limitations, it should be obvious, but it’s worth explicitly s
 * \[[Hiro YT](https://youtu.be/xXgQB8NfdEY?si=aEY_wrLybfWPMJTt)] ELI5: Post-Condtions on Stacks
 * \[[Hiro YT](https://youtu.be/wagcE_IXfME?si=kDqxzPAQ-XsA478l)] Understanding Post-Conditions in a Stacks Blockchain Transaction
 * \[[StacksGov](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-post-conditions)] Post-conditions section in SIP-005
+* \[[StacksGov](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md)] SIP-040: Originator mode and the MAY SEND NFT condition
+* \[[StacksGov](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)] SIP-045: pox-5 Bitcoin staking, including the staking and PoX post-condition framework

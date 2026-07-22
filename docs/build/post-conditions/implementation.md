@@ -15,6 +15,8 @@ Post-conditions are a powerful security feature in Stacks that protect users fro
 * Handle semi-fungible tokens (SFTs) with post-conditions
 * Use Originator mode to protect only the transaction sender's assets (SIP-040)
 * Use the MAY SEND token condition to optionally cover an NFT/SFT transfer (SIP-040)
+* Guard staking operations with staking post-conditions (SIP-045)
+* Constrain PoX actions with PoX post-conditions (SIP-045)
 
 ## Constructing post-conditions
 
@@ -65,6 +67,9 @@ Comparison methods available:
 // STX transfers
 .ustx()
 
+// STX staking (locking) — SIP-045, epoch 4.0+
+.ustxToLock()
+
 // Fungible token transfers
 .ft(contractAddress, tokenName)
 
@@ -88,6 +93,23 @@ Pc.principal(address).willMaybeSendAsset().nft(...);
 ```
 
 Use `willMaybeSendAsset()` when an NFT/SFT transfer is conditional inside the contract and you want the transaction to succeed whether or not it moves. Available from Stacks epoch 3.4 (SIP-040).
+
+### PoX-specific methods (SIP-045)
+
+PoX post-conditions constrain whether a principal performs a gated PoX action. They carry only a principal and a condition code — no asset or amount.
+
+```ts
+// Principal will perform a gated PoX action
+Pc.principal(address).willPerformPox();
+
+// Principal will not perform any gated PoX action
+Pc.principal(address).willNotPerformPox();
+
+// Principal may or may not perform a gated PoX action (always passes)
+Pc.principal(address).mayPerformPox();
+```
+
+Staking and PoX post-conditions are introduced by SIP-045 and available from Stacks epoch 4.0.
 
 ***
 
@@ -276,6 +298,59 @@ const tx = await makeContractCall({
 ```
 
 `Pc.origin()` is a convenience that binds the post-condition to the transaction's origin account (the signer of the standard authorization structure, not `tx-sender`, and unaffected by `as-contract?`).
+
+### Staking post-conditions (SIP-045)
+
+Staking post-conditions guard staking STX — or modifying staked STX — for a principal. Calls to the pox-5 `stake`, `register-for-bond`, and `stake-update` functions are evaluated against these post-conditions, and the transaction is rejected if the conditions are not met ([SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)). They use the same comparators as STX post-conditions, and amounts are denoted in uSTX.
+
+```ts
+import { Pc, PostConditionMode, makeContractCall } from '@stacks/transactions';
+
+// Assert the principal will lock at least 1 STX
+const stakingCondition = Pc
+  .principal('SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE')
+  .willSendGte(1000000)
+  .ustxToLock();
+
+const tx = await makeContractCall({
+  contractAddress: 'SP000000000000000000002Q6VF78',
+  contractName: 'pox-5',
+  functionName: 'stake',
+  functionArgs: [
+    // ... function arguments
+  ],
+  postConditions: [stakingCondition],
+  postConditionMode: PostConditionMode.Deny,
+  // ... other properties
+});
+```
+
+Note that `.ustxToLock()` constrains STX being locked for stacking, while `.ustx()` constrains STX being transferred. A staking operation does not transfer STX out of the account, so a plain STX post-condition will not cover it.
+
+### PoX post-conditions (SIP-045)
+
+PoX post-conditions guard PoX state changes that do not alter locking status. This covers the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` functions ([SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)). Under SIP-045's Bitcoin staking framework, a participant's L1 commitment can be held as native BTC on Bitcoin L1 or as sBTC on Stacks — `unstake-sbtc` handles the sBTC-form withdrawal, and both are gated by the same PoX post-condition type.
+
+```ts
+import { Pc } from '@stacks/transactions';
+
+const principal = 'SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE';
+
+// Require the principal to perform a gated PoX action
+const willPerform = Pc.principal(principal).willPerformPox();
+
+// Protect the principal from any gated PoX action occurring
+const willNotPerform = Pc.principal(principal).willNotPerformPox();
+
+// Allow a gated PoX action without requiring it (always passes)
+const mayPerform = Pc.principal(principal).mayPerformPox();
+```
+
+Use `willNotPerformPox()` when calling an unfamiliar contract to guarantee it cannot change your PoX state as a side effect. Use `willPerformPox()` when the whole point of the transaction is a PoX action and you want the transaction to abort if it silently does not happen.
+
+{% hint style="info" %}
+Staking and PoX post-conditions are introduced by SIP-045 and require Stacks epoch 4.0 or later.
+{% endhint %}
 
 ## Multiple post-conditions
 

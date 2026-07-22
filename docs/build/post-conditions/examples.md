@@ -299,3 +299,73 @@ const response = await request("stx_callContract", {
 **User Expectation:** Allow the transfer of 2 STX for a `cool-nft` asset.
 
 **Result:** The contract attempted to perform other asset transfers that were not covered by the declared post-conditions. Transaction will abort and fail.
+
+***
+
+## Staking STX (SIP-045)
+
+Staking post-conditions guard STX being locked for staking rather than transferred. Calls to the pox-5 `stake`, `register-for-bond`, and `stake-update` functions are evaluated against them, and the transaction is rejected if the conditions are not met.
+
+Here the user expects to lock at least 1 STX when calling the pox-5 `stake` function. The `.ustxToLock()` method constrains the locked amount — a plain `.ustx()` post-condition would not cover it, since staking is not a transfer.
+
+```typescript
+import { Pc } from '@stacks/transactions';
+
+const stakingPostCondition = Pc.principal(
+  'SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE'
+)
+  .willSendGte(1000000)
+  .ustxToLock();
+
+const response = await request("stx_callContract", {
+  contract: "SP000000000000000000002Q6VF78.pox-5",
+  functionName: "stake",
+  functionArgs: [
+    // ... function arguments
+  ],
+  postConditionMode: "deny",
+  postConditions: [stakingPostCondition],
+})
+```
+
+**User Expectation:** At least 1 STX will be locked for staking.
+
+**Result:** If the call locks 1 STX or more, the transaction confirms. If it would lock less, the transaction aborts and fails.
+
+***
+
+## Guarding PoX actions (SIP-045)
+
+PoX post-conditions guard PoX state changes that do not alter locking status — the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` functions. They carry only a principal and one of three condition codes:
+
+```typescript
+import { Pc } from '@stacks/transactions';
+
+const principal = 'SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE';
+
+Pc.principal(principal).willPerformPox(); //    principal will perform a gated PoX action
+Pc.principal(principal).willNotPerformPox(); // principal will not perform any gated PoX action
+Pc.principal(principal).mayPerformPox(); //     principal may or may not (always passes)
+```
+
+For example, when calling an unfamiliar third-party contract, add `willNotPerformPox()` to guarantee it cannot change your PoX state as a side effect:
+
+```typescript
+const poxPostCondition = Pc.principal(userStxAddress.value).willNotPerformPox();
+
+const response = await request("stx_callContract", {
+  contract: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.third-party-contract",
+  functionName: "do-something",
+  functionArgs: [],
+  postConditionMode: "deny",
+  postConditions: [poxPostCondition],
+})
+```
+
+**User Expectation:** The contract call will not unstake or otherwise modify the user's PoX state.
+
+**Result:** If the contract attempts a gated PoX action on behalf of the user (such as `unstake`), the transaction aborts and fails. Otherwise it confirms.
+
+{% hint style="info" %}
+Staking and PoX post-conditions are introduced by [SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md) as part of the pox-5 Bitcoin staking framework, and require Stacks epoch 4.0 or later.
+{% endhint %}
