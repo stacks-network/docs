@@ -274,6 +274,8 @@ const transaction = await makeContractCall({
 });
 ```
 
+Beyond STX, fungible token, and NFT conditions, post-conditions can also guard staking and PoX actions (`.ustxToLock()`, `.willNotPerformPox()` — SIP-045, epoch 4.0+) and use `PostConditionMode.Originator` to protect only the sender's assets (SIP-040). See the [post-conditions guide](../post-conditions/implementation.md) for details.
+
 ## Fee estimation
 
 Get accurate fee estimates before broadcasting.
