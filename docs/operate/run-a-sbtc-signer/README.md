@@ -16,18 +16,21 @@ It is of the utmost importance to follow the recommendations below.
 
 {% stepper %}
 {% step %}
+
 #### Prevent unauthorized access to signer infrastructure
 
 Prevent unauthorized access to the sBTC Signer infrastructure (the signer itself, its private key, and the associated PostgreSQL database).
 {% endstep %}
 
 {% step %}
+
 #### Keep an offline, secure backup of the Signer private key
 
 Keep an offline, secure backup of the sBTC Signer private key.
 {% endstep %}
 
 {% step %}
+
 #### Regularly backup PostgreSQL database
 
 Regularly backup the PostgreSQL database and store it in a secure location.
@@ -60,7 +63,6 @@ You will need `bitcoind` version 25 or higher.
 
 Your Bitcoin node must include these settings for sBTC signer operation:
 
-* `txindex=1`: Transaction indexing must be enabled
 * `server=1`: RPC server must be enabled
 
 ### RPC-Based Block Detection
@@ -71,18 +73,21 @@ The signer connects to Bitcoin Core via RPC and polls for new bitcoin blocks. Th
 
 {% stepper %}
 {% step %}
+
 #### Bitcoin Core validates a new block
 
 Bitcoin Core validates a new block.
 {% endstep %}
 
 {% step %}
+
 #### Signer detects the block via RPC polling
 
 Signer detects the block via RPC polling.
 {% endstep %}
 
 {% step %}
+
 #### Signer processes relevant sBTC transactions
 
 Signer processes relevant sBTC transactions.
@@ -100,8 +105,7 @@ bitcoind \
   -rpcpassword=${BITCOIN_RPC_PASSWORD} \
   -rpcport=${BITCOIN_RPC_PORT} \
   -rpcallowip=0.0.0.0/0 \
-  -rpcallowip=::/0 \
-  -txindex
+  -rpcallowip=::/0
 ```
 
 ## Configure your Stacks node
