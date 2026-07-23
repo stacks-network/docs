@@ -64,6 +64,7 @@ You will need `bitcoind` version 25 or higher.
 Your Bitcoin node must include these settings for sBTC signer operation:
 
 * `server=1`: RPC server must be enabled
+* `prune=0`: Pruning must be disabled
 
 ### RPC-Based Block Detection
 
@@ -105,7 +106,9 @@ bitcoind \
   -rpcpassword=${BITCOIN_RPC_PASSWORD} \
   -rpcport=${BITCOIN_RPC_PORT} \
   -rpcallowip=0.0.0.0/0 \
-  -rpcallowip=::/0
+  -rpcallowip=::/0 \
+  -prune=0
+
 ```
 
 ## Configure your Stacks node
