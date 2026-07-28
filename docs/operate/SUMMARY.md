@@ -16,6 +16,7 @@
   * [Mine Mainnet Stacks Tokens](run-a-miner/mine-mainnet-stacks-tokens.md)
   * [Verify Miner](run-a-miner/verify-miner.md)
 * [Run a Signer](run-a-signer/README.md)
+  * [PoX-5 Upgrade Guide](run-a-signer/pox-5-upgrade-guide.md)
   * [Signer Quickstart](run-a-signer/signer-quickstart.md)
   * [How to Read Signer Logs](run-a-signer/how-to-read-signer-logs.md)
   * [How to Monitor Signer](run-a-signer/how-to-monitor-signer.md)
