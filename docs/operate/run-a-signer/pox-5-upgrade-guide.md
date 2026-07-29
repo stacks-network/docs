@@ -13,15 +13,23 @@ Every signer operator must upgrade to `4.0.1` before activation at Bitcoin block
 * **Audience:** Stacks signer operators, stacking pool operators, and STX staking services
 * **Required release:** `4.0.1`
 * **Activation:** Bitcoin block `960,230` — approximately July 30, 2026 AM UTC
-* **Last verified:** July 21, 2026
+* **Last updated:** July 28, 2026
 
-Pool operators must also deploy and register a signer-manager after activation, then coordinate affected stakers' move to PoX-5.
+{% hint style="info" %}
+This guide covers STX staking under PoX-5. Native BTC bonds and whitelisted sBTC community pools follow separate integration paths. **New to the Stacks signer or upgrade process?** You don't have to do this alone — reach out to [support@stackslabs.com](mailto:support@stackslabs.com) at any point and we'll walk your team through any step.
+{% endhint %}
 
-This guide covers STX staking under PoX-5. Native BTC bonds and whitelisted sBTC community pools follow separate integration paths.
+### What changes in PoX-5
+
+The short version of what's different before you dig into the steps.
+
+* PoX-5 replaces PoX-4 for STX staking. Existing PoX-4 positions do not migrate automatically; affected stackers must submit a new PoX-5 stake.
+* Stacks pools now operate through a signer-manager contract that receives a one-time grant from the signer key, validates stake, and manages reward distribution.
+* A signer becomes eligible when at least 50,000 STX is assigned to it for the upcoming cycle. PoX-5 also removes the recurring PoX-4 aggregation commitment.
 
 ### What you need to do
 
-Use the table below to find the steps that apply to you. Some organizations have more than one role.
+Roles differ, so start by finding yours below — some organizations have more than one. Every signer operator must upgrade before activation; pool operators must also deploy and register a signer-manager after activation, then coordinate stakers' move to PoX-5.
 
 | If you...                            | Do this                                                                                                   |
 | ------------------------------------ | --------------------------------------------------------------------------------------------------------- |
@@ -31,15 +39,15 @@ Use the table below to find the steps that apply to you. Some organizations have
 | Operate a stacking pool              | Deploy and administer the pool's PoX-5 signer-manager, complete registration, and operate rewards.        |
 | Stack STX                            | After the signer-manager is active, submit a PoX-5 `stake` transaction from the wallet that owns the STX. |
 
-{% hint style="info" %}
-**Who deploys the signer-manager?** If you deploy a PoX-5 stacking pool, you must also deploy and administer its signer-manager contract. A signer-only provider reviews the contract and provides the signer-key grant, but does not deploy or administer the manager unless explicitly agreed.
-{% endhint %}
-
-Existing PoX-4 positions do not become PoX-5 positions automatically. Affected users or protocol-controlled accounts must submit a new PoX-5 stake transaction.
+> **Who deploys the signer-manager?** If you deploy a PoX-5 stacking pool, you must also deploy and administer its signer-manager contract. A signer-only provider reviews the contract and provides the signer-key grant, but does not deploy or administer the manager unless explicitly agreed.
 
 ### 1. Prepare before activation
 
+Everything in this section happens **before** the fork. The goal is to have your signer and node on `4.0.1` and your signer-manager fully rehearsed on testnet, so activation day is execution rather than discovery.
+
 #### Upgrade the signer and node
+
+This is the one step every operator must complete, whether or not you run a pool: if your node and signer aren't on `4.0.1` at activation, they diverge from the network. For a full walkthrough of running the signer, see [Run a signer](https://docs.stacks.co/operate/run-a-signer).
 
 1. Upgrade `stacks-signer` to `4.0.1`. If you operate its Stacks node, upgrade that node to `4.0.1` as well. Nodes on `3.4.x` diverge after activation.
 2. Preserve the existing signer configuration, private key, and database. Do not rotate the signer key or create a fresh database solely for this upgrade.
@@ -48,7 +56,7 @@ Existing PoX-4 positions do not become PoX-5 positions automatically. Affected u
 
 Official signer image:
 
-```sh
+```bash
 docker pull ghcr.io/stacks-network/stacks-signer:4.0.1@sha256:815b5518ec0f3a9b4c30d7fdca8f048a1fe8c263790ca65c5785e119b87d8590
 ```
 
@@ -56,37 +64,39 @@ For a new signer, generate the key offline with `stacks-cli make_keychain` or yo
 
 #### Prepare the signer-manager
 
+The signer-manager is the on-chain contract that connects stake to the signer and handles reward accounting — pool operators deploy and administer it. Because its code cannot be changed after deployment, get the source, canonical hash, wallet roles, and test results right before you go to mainnet. For the detail behind each action here, see the [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers).
+
 Before activation:
 
-* review and test the mainnet-configured signer-manager source your organization intends to deploy;
-* record its expected canonical hash, contract name, and intended principal;
-* identify the temporary software wallet used for deployment and the cold wallet that will retain admin control;
-* rehearse deployment, admin rotation, grant, registration, staking, and reward claims on testnet; and
-* assign owners for rewards, accounting, monitoring, and support.
+* Use the [mainnet reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/f0248dc0be7ab2d6f2958289f05f2b0833fa871f/contracts/reference-manager/generated/mainnet/signer-manager.clar) by default. Customize it only if your integration requires different behavior. Independently review and test any custom manager; do not deploy the unmodified `stacks-core` test fixture because it is not configured for mainnet.
+* Record the expected canonical SHA-256, `7fd58a7591ff0ae1643eb7e71ea2867385bcac237a3ea819f52301310c0d2e27`, the contract name, and the intended principal.
+* Use a compatible wallet, such as [Leather](https://leather.io/), for deployment. If the deployment wallet will not remain the administrator, rotate admin control to your cold wallet before registration.
+* In Signer Sidekick, select **Testnet** and complete steps 1–7 in the next section. Test your reward-claim procedure separately using the process under **Operate rewards**.
+* Assign owners for rewards, accounting, monitoring, and support.
 
-The signer-manager contract connects stake to the signer, validates new stake and updates, accounts for fees and rewards, and distributes rewards. Its code is immutable after deployment. Do not deploy an unmodified `stacks-core` test fixture: the PoX-5 and sBTC principals must match mainnet.
-
-The reference signer-manager uses Clarity 6 and cannot be deployed on mainnet until Epoch 4.0 activates at block `960,230`.
+The signer-manager contract validates new stake and updates, accounts for fees and rewards, and distributes rewards. The reference signer-manager uses Clarity 6 and cannot be deployed on mainnet until Epoch 4.0 activates at block `960,230`.
 
 ### 2. Complete the on-chain setup after activation
 
-{% hint style="warning" %}
-Use [Signer Sidekick](https://stx.fan/signer/) **only after PoX-5 is active on mainnet.** Signer Sidekick is one tool; the links below open its individual steps. Select **Mainnet** and confirm the network indicator on every page.
-{% endhint %}
+This section walks through the seven on-chain steps to bring a PoX-5 stacking pool live: deploying the signer-manager, securing its admin, linking it to your signer, and staking. Complete them **in order** — several are irreversible once submitted, because the manager contract is immutable after deployment, so read the full sequence before you start.
 
-| Step              | Owner and action                                                                                                                                | Signer Sidekick page / signing identity                                                                  |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| 1. Preflight      | Confirm the network, PoX-5 contract, balance, cycle, and signer-set minimum.                                                                    | [Preflight](https://stx.fan/signer/01-connect-preflight.html); connect the admin wallet, no transaction. |
-| 2. Deploy         | Deploy the reviewed, mainnet-configured signer-manager source for your rollout. Continue only if its canonical hash matches the expected value. | [Deploy manager](https://stx.fan/signer/03-deploy-manager.html); temporary software wallet.              |
-| 3. Secure admin   | Add the cold admin, reconnect as that admin, then remove the temporary deployer. Never remove the last working admin.                           | Deploy page → **Admin rotation**; temporary wallet, then cold admin.                                     |
-| 4. Generate grant | On the signer host, create the one-time signer-manager grant using a fresh `auth-id`.                                                           | Signer key; off-chain command below.                                                                     |
-| 5. Register       | Submit `register-self` and verify that the manager resolves to the expected signer public key.                                                  | [Register-self](https://stx.fan/signer/04-register-self.html); manager admin.                            |
-| 6. Stake          | Lock STX for 1–96 cycles. The signer needs at least 50,000 STX in aggregate for the upcoming cycle; an individual stake may be smaller.         | [Stake](https://stx.fan/signer/05-stake.html); staker wallet.                                            |
-| 7. Verify         | Confirm registration, grant validity, assigned STX, and eligibility for the upcoming cycle.                                                     | [Rewards + status](https://stx.fan/signer/06-rewards-status.html); read-only.                            |
+Use [Signer Sidekick](https://stx.fan/signer/) to rehearse on **Testnet** first; select **Mainnet** only after PoX-5 is active, and confirm the network indicator on every page. Signer Sidekick is one tool; the links below open its individual steps, and the [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers) covers the detail behind each one.
+
+| Step              | Owner and action                                                                                                                                                                          | Signer Sidekick page / signing identity                                                                  |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| 1. Preflight      | Confirm the network, PoX-5 contract, balance, cycle, and signer-set minimum.                                                                                                              | [Preflight](https://stx.fan/signer/01-connect-preflight.html); connect the admin wallet, no transaction. |
+| 2. Deploy         | Deploy the mainnet reference signer-manager approved for your rollout. Continue only if its canonical SHA-256 matches `7fd58a7591ff0ae1643eb7e71ea2867385bcac237a3ea819f52301310c0d2e27`. | [Deploy manager](https://stx.fan/signer/03-deploy-manager.html); deployment wallet.                      |
+| 3. Secure admin   | Add the cold admin, reconnect as that admin, then remove the temporary deployer. Never remove the last working admin.                                                                     | Deploy page → **Admin rotation**; deployment wallet, then cold admin if needed.                          |
+| 4. Generate grant | On the signer host, create the one-time signer-manager grant using a fresh `auth-id`.                                                                                                     | Signer key; off-chain command below.                                                                     |
+| 5. Register       | Submit `register-self` and verify that the manager resolves to the expected signer public key.                                                                                            | [Register-self](https://stx.fan/signer/04-register-self.html); manager admin.                            |
+| 6. Stake          | Lock STX for 1–96 cycles. The signer needs at least 50,000 STX in aggregate for the upcoming cycle; an individual stake may be smaller.                                                   | [Stake](https://stx.fan/signer/05-stake.html); staker wallet.                                            |
+| 7. Verify         | Confirm registration, grant validity, assigned STX, and eligibility for the upcoming cycle.                                                                                               | [Rewards + status](https://stx.fan/signer/06-rewards-status.html); read-only.                            |
+
+New to these actions? The [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers) and [PoX-5 STX staking guide](https://pox-5.vercel.app/docs/development/solo-stx) give step-by-step detail behind each Signer Sidekick page.
 
 Generate the grant on the signer host:
 
-```sh
+```bash
 stacks-signer generate-staking-signature \
   --config <config> \
   --signer-manager <manager-principal> \
@@ -97,6 +107,8 @@ stacks-signer generate-staking-signature \
 The `auth-id` must match the value used during registration. Do not accept stake until the signer-manager is registered and its signer-key grant is active; PoX-5 checks the grant on every new `stake` and `stake-update`.
 
 ### 3. Operate rewards
+
+Once your signer is earning, rewards don't distribute themselves — this section covers how they flow and what you're responsible for operating. Read it before you accept partner or user stake, since the claim and distribution workflow isn't yet in the guided tool.
 
 Under the reference manager, rewards accrue as sBTC. If a staker supplied a `pox-addr`, claiming initiates an sBTC withdrawal to that L1 Bitcoin address instead.
 
@@ -111,35 +123,36 @@ PoX-5 removes the recurring PoX-4 aggregation commitment. Participation still de
 
 ### Security and known limitations
 
-{% hint style="danger" %}
-**Signer keys:** Never paste a signer private key or seed phrase into a website, chat, or email. Generate grants on the signer host.
-{% endhint %}
+Skim these before you deploy or stake. They're the failure modes and tooling caveats most likely to catch a first-time PoX-5 rollout — especially around Ledger and key handling.
 
-* **Ledger deployment:** Ledger Stacks App versions through `0.26.17` cannot sign the Clarity 6 deployment payload. Deploy with a temporary software wallet, then rotate admin control to the Ledger or cold wallet before registration or staking.
+* **Signer keys:** Never paste a signer private key or seed phrase into a website, chat, or email. Do not reveal them in a screen-sharing session or screenshot. Generate grants on the signer host.
+* **Ledger deployment:** Leave **Force Clarity 6 payload (`0x06`)** off. After Epoch 4.0 activates, the network applies Clarity 6 to the standard deployment payload, which Ledger can sign. Use the forced `0x06` payload only to test a Ledger version that supports it.
 * **Ledger staking:** Staking post-conditions require Stacks App `0.26.15` or newer. Use Deny mode with the staking post-condition. Use Allow mode only after your organization has reviewed and approved the loss of that transaction-level guardrail.
-* **Interim tooling:** Signer Sidekick is unofficial, interim tooling. A reference hash match verifies source identity, not production approval. Confirm the network, manager principal, wallet identity, and final on-chain result at every step.
+* **Interim tooling:** Signer Sidekick is the guided workflow for this rollout. A reference hash match verifies source identity, not production approval. Confirm the network, manager principal, wallet identity, and final on-chain result at every step.
 * **Transaction status:** A transaction ID confirms submission, not success. Verify that every deployment and contract call succeeded on-chain.
 * **Troubleshooting:** Preserve signer configuration, logs, and database state when escalating an issue. Do not reset `signer.sqlite` without a diagnosed failure and an approved recovery plan.
 
 ### Readiness confirmation
 
-You are ready when:
+Use this as your go/no-go checklist before activation. You are ready when:
 
-* the signer and any operator-run node are on `4.0.1` and healthy;
-* the signer-manager is deployed after activation, its admin is secured, and its signer-key grant is active;
-* at least 50,000 STX is assigned to the signer for the upcoming cycle;
-* affected PoX-4 users or protocol accounts can complete a new PoX-5 stake; and
-* named owners are operating reward claims, accounting, monitoring, and support.
+* The signer and any operator-run node are on `4.0.1` and healthy;
+* The signer-manager is deployed after activation, its admin is secured, and its signer-key grant is active;
+* At least 50,000 STX is assigned to the signer for the upcoming cycle;
+* Affected PoX-4 users or protocol accounts can complete a new PoX-5 stake; and
+* Named owners are operating reward claims, accounting, monitoring, and support.
 
 Provide Stacks with the running versions, signer-manager principal, registration and eligibility confirmation, and an activation-window contact.
 
 ### References
 
-* [Stacks Core `4.0.1` release](https://github.com/stacks-network/stacks-core/releases/tag/4.0.1)
+* [Stacks Core 4.0.1 release](https://github.com/stacks-network/stacks-core/releases/tag/4.0.1)
 * [SIP-045: PoX-5 Bitcoin Staking](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)
 * [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers)
 * [PoX-5 STX staking guide](https://pox-5.vercel.app/docs/development/solo-stx)
-* [PoX-5 reference signer-manager](https://github.com/stacks-network/stacks-core/blob/4.0.1/contrib/core-contract-tests/contracts/signer-manager.clar)
+* [PoX-5 mainnet reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/f0248dc0be7ab2d6f2958289f05f2b0833fa871f/contracts/reference-manager/generated/mainnet/signer-manager.clar)
 * [PoX-5 contract](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar)
 
 For native BTC bonds or whitelisted sBTC community pools, use the separate [PoX-5 pools integration guide](https://pox-5.vercel.app/docs/development/pools).
+
+**Questions or need help at any step?** Contact [support@stackslabs.com](mailto:support@stackslabs.com) — we're glad to review your setup or walk your team through the upgrade.
