@@ -6,7 +6,13 @@ For more on the technical details of mining, please review the mining guide.
 
 The following is an abridged version of the [walkthrough here](https://github.com/stacksfoundation/miner-docs), written for a Linux system. If you're on Windows or MacOS, there will be some slight modifications needed (PR's welcome!).
 
-If you're interested in mining on the Stacks mainnet, you can find instructions on how to do that here:
+{% hint style="warning" %}
+**Epoch 4.0 / PoX-5:** Use `stacks-core` 4.0.1 for Epoch 4.0, which activates at Bitcoin block `960,230`. Nodes on earlier versions diverge at the fork.
+
+The bitcoind and `stacks-node` setup on this page is not changed by the fork. What changes is where unmatched miner BTC goes. Under PoX-4, miner BTC that could not be matched to an eligible stacker reward address was sent to a Bitcoin burn address — both when participating stackers were fewer than the cycle's available reward slots, and during the prepare phase. PoX-5 removes that burn: all miner BTC commitments route into the reward pool and are distributed through the yield waterfall ([SIP-045 §3.5](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)).
+
+Verify miner commit behavior against the PoX-5 waterfall implementation in [`stacks-core` 4.0.1](https://github.com/stacks-network/stacks-core/releases/tag/4.0.1).
+{% endhint %}
 
 ### Running a Bitcoin Mainnet Full Node
 
@@ -74,7 +80,7 @@ getblockchaininfo | jq .blocks
 
 ### Running a Stacks Blockchain miner
 
-First, download the latest tagged [stacks blockchain binary](https://github.com/stacks-network/stacks-blockchain/releases/latest), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)).
+First, download the [`stacks-core` 4.0.1 binary](https://github.com/stacks-network/stacks-core/releases/tag/4.0.1), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)).
 
 {% hint style="info" %}
 **Tip:** It is recommended to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`.
@@ -109,7 +115,7 @@ After this runs, you should see some JSON printed to the screen that looks like 
 **Do not lose this information** - we'll need to use the `privateKey`, `btcAddress` and `wif` fields in later steps.
 {% endhint %}
 
-The above `wif` (`Kyk49jsPGen5C1ThhyJJH4CndLk8yLESuQJVGsbbTV3FFF9CRTJG`) will then need to be imported into the bitcoin mainnet network.
+The above `wif` (`rohCie2ein2chaed9kaiyoo6zo1aeQu1yae4phooShov2oosh4ox`) will then need to be imported into the bitcoin mainnet network.
 
 Next, a bitcoin wallet is created:
 
