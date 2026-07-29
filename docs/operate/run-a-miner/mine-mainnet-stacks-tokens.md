@@ -20,7 +20,7 @@ To participate as a miner on mainnet, you must have access to a mainnet bitcoin 
 
 * [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements#system-requirements)
 
-First, download a [bitcoin binary](https://bitcoin.org/en/download), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/bitcoin.md#source-install) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)).
+First, download a [bitcoin binary](https://bitcoin.org/en/download), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/main/bitcoin.md#source-install) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/main/prerequisites.md#install-required-packages)). Use Bitcoin Core 25.0 or newer - the wallet commands below are tested against every major version from 25 through 31.
 
 If you want to learn more about the technical details of mining, please review the mining guide:
 
@@ -119,39 +119,31 @@ The above `wif` (`rohCie2ein2chaed9kaiyoo6zo1aeQu1yae4phooShov2oosh4ox`) will th
 
 Next, a bitcoin wallet is created:
 
+{% hint style="warning" %}
+**Required:** the node never creates this wallet - it only loads the wallet named by `burnchain.wallet_name` and exits at startup if it does not exist. The name chosen here (`miner`) is the value to set for `wallet_name` in the node config below.
+{% endhint %}
+
 ```bash
 bitcoin-cli \
   -rpcconnect=127.0.0.1 \
   -rpcport=8332 \
   -rpcuser=btcuser \
   -rpcpassword=btcpass \
-  createwallet \
+  -named createwallet \
   wallet_name="miner" \
-  disable_private_keys=false \
-  blank=false \
-  passphrase="" \
-  avoid_reuse=false \
-  descriptors=false \
+  disable_private_keys=true \
+  blank=true \
+  descriptors=true \
   load_on_startup=true
 ```
 
-Now, import your wif (bitcoin private key) inside the newly created wallet.
+The wallet only needs to **watch** the miner's addresses: the stacks node signs its bitcoin transactions itself, so no private key is ever stored in bitcoind (`disable_private_keys=true` above). Your wif (bitcoin private key) is used once, in the `getdescriptorinfo` call below, to derive the watch-only descriptor.
 
 {% hint style="info" %}
 **Note:** Be sure to replace `<wif from JSON above>` with the wif value in the `Generate a keychain` step.
 {% endhint %}
 
-```bash
-bitcoin-cli \
-  -rpcport=8332 \
-  -rpcuser=btcuser \
-  -rpcpassword=btcpassword \
-  importprivkey <wif from JSON above>
-```
-
-{% hint style="info" %}
-**Note:** The import may take a while, because a wallet rescan is triggered. After the import has completed successfully, you can check that the address is imported with `getaddressinfo`.
-{% endhint %}
+First, convert the wif into its public descriptor:
 
 ```bash
 bitcoin-cli \
@@ -159,6 +151,41 @@ bitcoin-cli \
   -rpcport=8332 \
   -rpcuser=btcuser \
   -rpcpassword=btcpass \
+  getdescriptorinfo "combo(<wif from JSON above>)"
+```
+
+Then import the `descriptor` value returned above into the `miner` wallet - paste it verbatim, it already ends with its `#checksum`. A `combo(...)` descriptor covers both the legacy and the segwit address of the key, so the same wallet works whether or not the miner runs with `segwit = true`:
+
+```bash
+bitcoin-cli \
+  -rpcconnect=127.0.0.1 \
+  -rpcport=8332 \
+  -rpcuser=btcuser \
+  -rpcpassword=btcpass \
+  -rpcwallet=miner \
+  importdescriptors \
+  '[{"desc":"<descriptor from output above>","timestamp":"now"}]'
+```
+
+The expected output is `[{"success": true}]` - `importdescriptors` reports failures inside this JSON rather than with a non-zero exit code.
+
+{% hint style="info" %}
+**Note:** `timestamp: "now"` skips the rescan, which is what you want for a freshly generated keychain. If the key has already received coins, use `"timestamp": 0` instead to rescan the chain for its history - this may take a while.
+{% endhint %}
+
+{% hint style="info" %}
+**Note:** to instead let bitcoind hold the private key - e.g. to manage the mined funds with `bitcoin-cli` - create the wallet without `disable_private_keys=true` and import `combo(<wif from JSON above>)#<checksum>`, using the top-level `checksum` field returned by `getdescriptorinfo` (not the checksum embedded in its `descriptor` field).
+{% endhint %}
+
+After the import has completed successfully, you can check that the address is imported with `getaddressinfo` - `ismine` should be `true`.
+
+```bash
+bitcoin-cli \
+  -rpcconnect=127.0.0.1 \
+  -rpcport=8332 \
+  -rpcuser=btcuser \
+  -rpcpassword=btcpass \
+  -rpcwallet=miner \
   getaddressinfo <btcAddress from JSON above>
 ```
 
@@ -172,6 +199,7 @@ Next, update the stacks configuration:
 
 * **Optional, but recommended:** Use a persistent directory to store the Stacks chainstate, i.e. `working_dir = "/stacks-blockchain"`
 * From the `make_keychain` step, modify the `seed` and `mining_key` values with `privatekey`
+* **Required:** set `wallet_name` to the bitcoin wallet you created above (`miner`)
 * Store the following configuration somewhere on your filesystem (ex: `$HOME/mainnet-miner-conf.toml`)
 
 ```toml
@@ -185,6 +213,7 @@ bootstrap_node = "02196f005965cebe6ddc3901b7b1cc1aa7a88f305bb8c5893456b8f9a60592
 mine_microblocks = false
 
 [burnchain]
+# Required for miners: must name an existing bitcoin wallet (created above)
 wallet_name = "miner"
 chain = "bitcoin"
 mode = "mainnet"
@@ -296,8 +325,11 @@ helm repo add blockstack https://charts.blockstack.xyz
 helm install my-release blockstack/stacks-blockchain \
   --set config.node.miner=true \
   --set config.node.seed="your-privateKey-from-generate-keychain-step" \
-  --set config.burnchain.mode="mainnet"
+  --set config.burnchain.mode="mainnet" \
+  --set config.burnchain.wallet_name="miner"
 ```
+
+The `miner` wallet must already exist on the bitcoind instance the chart points at (`config.burnchain.peer_host` and its RPC credentials).
 
 You can review the node logs with this command:
 
