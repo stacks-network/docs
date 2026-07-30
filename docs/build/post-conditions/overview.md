@@ -4,7 +4,7 @@ description: Learn how post-conditions protect users from unexpected transaction
 
 # Overview
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/post-conditions-cover.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://284917788-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZz9BLmTU9oydDpL3qiUh%2Fuploads%2FmEZDpqY246jBQV4vtCa3%2Fpost-conditions-cover.png?alt=media&#x26;token=5b642df8-0990-4e58-9104-e1f2f42c4189" alt=""><figcaption></figcaption></figure></div>
 
 #### The Big Picture
 
@@ -18,7 +18,7 @@ description: Learn how post-conditions protect users from unexpected transaction
 
 ## What are post-conditions?
 
-Post-conditions are assertions about an on-chain transaction that must be met; otherwise, the transaction will abort during execution. In other words, post-conditions act as a safety net, allowing you to specify what state changes can occur in a transaction.&#x20;
+Post-conditions are assertions about an on-chain transaction that must be met; otherwise, the transaction will abort during execution. In other words, post-conditions act as a safety net, allowing you to specify what state changes can occur in a transaction.
 
 **At times, the client-side developer is not the same person who wrote the underlying smart contract and may not be deeply familiar with its internal logic, nested external contract calls, or edge cases.** This logic helps limit the amount of damage that can be done to a user and their assets, whether due to a bug or malicious behavior.
 
@@ -86,7 +86,7 @@ On the right side of the image, wallets parse the passed transaction payload and
 
 The user specified a donation amount of 5 STX, and the user should expect to only transfer exactly 5 STX during the transaction execution.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/pc-example-1.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://284917788-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZz9BLmTU9oydDpL3qiUh%2Fuploads%2FVgIHQHrXBzT8s2zLNrLF%2Fpc-example-1.png?alt=media&#x26;token=77482120-b90c-43b6-9ab6-7fd64a1c5625" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 
 {% step %}
@@ -114,7 +114,7 @@ We can see that the contract will maliciously ignore the `amount` argument and i
 
 The Stacks protocol will evaluate the proposed runtime result of the transaction with the declared post-condtions and determine if they match. In this example, the user expected to transfer out exactly 5 STX, but the contract wanted to transfer 100 STX. This discrepancy is evaluated to result in the transaction aborting and failing.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/pc-example-2.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://284917788-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZz9BLmTU9oydDpL3qiUh%2Fuploads%2F6Lxa3WgJjD5z6kRKLbdD%2Fpc-example-2.png?alt=media&#x26;token=d1308481-6172-4b51-9aae-cebcceb53207" alt=""><figcaption></figcaption></figure></div>
 {% endstep %}
 {% endstepper %}
 
@@ -124,11 +124,11 @@ The Stacks protocol will evaluate the proposed runtime result of the transaction
 
 Post-conditions are enforced by the Stacks protocol itself but do not exist in the smart contracts themselves. Instead, they are programmatically constructed in your front-end application code using Stacks.js, specifically by passing them in as options to the transaction payload construction.
 
-By having post-conditions in the frontend code, Stacks-enabled wallets, such as Leather and Xverse, are able to display the post-conditions in a human-readable format for the user when confirming their transactions. Once a user confirms the transaction, the post-conditions get carried along with the transaction payload where eventually the Stacks protocol will evaluate them together.&#x20;
+By having post-conditions in the frontend code, Stacks-enabled wallets, such as Leather and Xverse, are able to display the post-conditions in a human-readable format for the user when confirming their transactions. Once a user confirms the transaction, the post-conditions get carried along with the transaction payload where eventually the Stacks protocol will evaluate them together.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/post-condition-stack.png" alt=""><figcaption><p><em>A visualization of the “post-conditions stack" and the entities involved</em></p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://284917788-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZz9BLmTU9oydDpL3qiUh%2Fuploads%2FxoSWraaxoJz1nvztDde4%2Fpost-condition-stack.png?alt=media&#x26;token=cd646b8e-d193-46eb-865e-fe3875bcd6be" alt=""><figcaption><p><em>A visualization of the “post-conditions stack" and the entities involved</em></p></figcaption></figure></div>
 
-If there were no post-conditions in the front-end application code, a user’s wallet will display an abstract warning message, where it would be up to the user to decide whether they want to blindly proceed with the transaction or not. And whatever the underlying contract code wants to do, it will do without any post-condition restrictions. So if a contract tries to send your STX tokens to a drainer wallet, it will without you knowing.&#x20;
+If there were no post-conditions in the front-end application code, a user’s wallet will display an abstract warning message, where it would be up to the user to decide whether they want to blindly proceed with the transaction or not. And whatever the underlying contract code wants to do, it will do without any post-condition restrictions. So if a contract tries to send your STX tokens to a drainer wallet, it will without you knowing.
 
 Even with post-conditions set up on the frontend code, a user is still blind to the underlying Clarity smart contract code, but at least they know what to _expect_ will happen in the transaction. And if that expectation is not met, the transaction will abort and fail.
 
@@ -159,6 +159,12 @@ const nftCondition = Pc
   .willSendAsset()
   .nft('SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335.my-nft::my-asset', Cl.uint(1));
 
+// NFT post-condition that may or may not send (SIP-040)
+const nftMaybeCondition = Pc
+  .principal('STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6')
+  .willMaybeSendAsset()
+  .nft('SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335.my-nft::my-asset', Cl.uint(1));
+
 // Staking post-condition (SIP-045)
 const stakingCondition = Pc
   .principal('STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6')
@@ -171,8 +177,12 @@ const poxCondition = Pc
   .willNotPerformPox();
 ```
 
+The builders above are defined in [`pc.ts`](https://github.com/stx-labs/stacks.js/blob/b7f0ed3f87cd4c5bfb7ab3c4bd8787c2018e3cec/packages/transactions/src/pc.ts) and the objects they return in [`postcondition-types.ts`](https://github.com/stx-labs/stacks.js/blob/b7f0ed3f87cd4c5bfb7ab3c4bd8787c2018e3cec/packages/transactions/src/postcondition-types.ts). Both links are pinned to the commit that introduced the staking and PoX conditions, so they will keep pointing at the code these examples were written against.
+
 {% hint style="info" %}
-Staking and PoX post-conditions are introduced by SIP-045 and are available starting with Stacks epoch 4.0 (Bitcoin Staking). See the [Implementation](implementation.md) page for details.
+Staking and PoX post-conditions come from [SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md) and are available starting with Stacks epoch 4.0 (Bitcoin Staking), in `@stacks/transactions` 7.5.0 and later. See the [Implementation](implementation.md) page for details.
+
+These two conditions moved from SIP-044 to SIP-045 late in the SIP process. The `@stacks/transactions` source still labels them SIP-044 in its JSDoc — SIP-045 is the correct reference.
 {% endhint %}
 
 ### Manual creation
@@ -223,11 +233,19 @@ const ftPostCondition: FungiblePostCondition = {
 const nftPostCondition: NonFungiblePostCondition = {
   type: 'nft-postcondition',
   address: 'SP2JXKMSH007NPYAQHKJPQMAQYAD90NQGTVJVQ02B',
-  condition: 'sent', // 'sent' | 'not-sent'
+  condition: 'sent', // 'sent' | 'not-sent' | 'maybe-sent'
   asset: 'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335.my-nft::my-asset',
   assetId: Cl.uint(602),
 };
 ```
+
+Available non-fungible condition types:
+
+* `sent`: The NFT MUST have been sent by the principal
+* `not-sent`: The NFT MUST NOT have been sent by the principal
+* `maybe-sent`: The NFT may or may not have been sent by the principal
+
+`maybe-sent` was added by [SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md) and is available starting with Stacks epoch 3.4, in `@stacks/transactions` 7.4.0 and later. It fills the same gap for NFTs that `lte` fills for fungible amounts: declaring that a transfer is _permitted_ without requiring it. The condition always passes, and it still counts as covering that specific NFT instance when `deny` or `originator` mode checks whether every asset movement was accounted for — so you can authorise an optional NFT transfer without falling back to `allow` mode.
 
 #### Staking (SIP-045)
 
@@ -260,7 +278,7 @@ const poxPostCondition: PoxPostCondition = {
 
 Control how unspecified, unexpected, or unforeseen asset transfers are handled with post-condition mode.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/post-condition-decision-flowchart.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://284917788-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZz9BLmTU9oydDpL3qiUh%2Fuploads%2Fe9RcdvdhyDuELrqQ8kSi%2Fpost-condition-decision-flowchart.png?alt=media&#x26;token=20d1923b-8ff3-4832-ba27-a3c294e8a9ca" alt=""><figcaption></figcaption></figure></div>
 
 #### **Deny Mode**
 
@@ -308,13 +326,13 @@ const tx = await makeContractCall({
 
 The origin account is the transaction's signer (the first signing account in a sponsored transaction). It stays fixed throughout execution — it is not `tx-sender`, and it is unaffected by `as-contract?`.
 
-This mode is designed for DeFi-style contract calls where enumerating every intermediate asset movement in `deny` mode is impractical, but the user still wants a hard cap on what can leave their own account. Available starting with Stacks epoch 3.4 ([SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md)).
+This mode is designed for DeFi-style contract calls where enumerating every intermediate asset movement in `deny` mode is impractical, but the user still wants a hard cap on what can leave their own account. Available starting with Stacks epoch 3.4 ([SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md)), in `@stacks/transactions` 7.4.0 and later.
 
 ## How post-conditions appear to the user
 
 Since post-conditions are declared on your frontend code, they also need to be visually displayed to users. Stacks-supported wallets handle that by displaying post-conditions on the transaction confirmation modals that popup when a user needs to confirm/approve a transaction.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/post-condition-modes.png" alt=""><figcaption><p>How post-conditions appear in wallets under different post-condition modes</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://284917788-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FZz9BLmTU9oydDpL3qiUh%2Fuploads%2FR2OF2o25z0Vu0HMO21uM%2Fpost-condition-modes.png?alt=media&#x26;token=1fc9ab99-8742-44bb-b3f0-44e84b598c30" alt=""><figcaption><p>How post-conditions appear in wallets under different post-condition modes</p></figcaption></figure></div>
 
 ***
 
@@ -335,3 +353,4 @@ Alongside those limitations, it should be obvious, but it’s worth explicitly s
 * \[[StacksGov](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-post-conditions)] Post-conditions section in SIP-005
 * \[[StacksGov](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md)] SIP-040: Originator mode and the MAY SEND NFT condition
 * \[[StacksGov](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)] SIP-045: pox-5 Bitcoin staking, including the staking and PoX post-condition framework
+* \[[stacks.js](https://github.com/stx-labs/stacks.js/blob/b7f0ed3f87cd4c5bfb7ab3c4bd8787c2018e3cec/packages/transactions/src/pc.ts)] `Pc` post-condition builder source, pinned to the staking/PoX commit
