@@ -1,4 +1,4 @@
-# Pc.fromHex
+# fromHex
 
 Deserializes a serialized post condition hex string into a post condition object.
 
@@ -21,9 +21,9 @@ const postCondition = Pc.fromHex(hex);
 
 #### Notes
 
-- Useful for parsing post conditions from serialized transaction data.
+* Useful for parsing post conditions from serialized transaction data.
 
-**[Reference Link](https://github.com/stx-labs/stacks.js/tree/main/packages/transactions/src/pc.ts#L289)**
+[**Reference Link**](https://github.com/stx-labs/stacks.js/blob/b7f0ed3f87cd4c5bfb7ab3c4bd8787c2018e3cec/packages/transactions/src/pc.ts)
 
 ***
 
@@ -40,10 +40,17 @@ function fromHex(hex: string): PostCondition;
 `PostCondition`
 
 ```ts
-type PostCondition = StxPostCondition | FungiblePostCondition | NonFungiblePostCondition;
+type PostCondition =
+  | StxPostCondition
+  | FungiblePostCondition
+  | NonFungiblePostCondition
+  | StakingPostCondition
+  | PoxPostCondition;
 ```
 
 A deserialized post condition object.
+
+`StakingPostCondition` and `PoxPostCondition` were added for Stacks epoch 4.0 and are available in `@stacks/transactions` 7.5.0 and later.
 
 ***
 
