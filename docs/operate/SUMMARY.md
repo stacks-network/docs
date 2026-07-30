@@ -22,6 +22,7 @@
   * [How to Monitor Signer](run-a-signer/how-to-monitor-signer.md)
   * [Best Practices to Run a Signer](run-a-signer/best-practices-to-run-a-signer.md)
   * [OpSec Best Practices](run-a-signer/opsec-best-practices.md)
+* [Deploy a Signer Manager Contract](deploy-a-signer-manager-contract.md)
 * [Run a sBTC Signer](run-a-sbtc-signer/README.md)
   * [Best Practices for Running a sBTC Signer](run-a-sbtc-signer/best-practices-for-running-an-sbtc-signer.md)
 * [Snapshot the Chainstate](snapshot-the-chainstate.md)
