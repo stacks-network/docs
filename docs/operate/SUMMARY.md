@@ -27,7 +27,7 @@
 * [Run a sBTC Signer](run-a-sbtc-signer/README.md)
   * [Best Practices for Running a sBTC Signer](run-a-sbtc-signer/best-practices-for-running-an-sbtc-signer.md)
 * [Snapshot the Chainstate](snapshot-the-chainstate.md)
-* [Stacking STX](stacking-stx/README.md)
+* [Staking STX](stacking-stx/README.md)
   * [What's Changed in PoX-5](stacking-stx/whats-changed-in-pox-5.md)
   * [Solo Stacking](stacking-stx/solo-stacking.md)
   * [Stack with a Pool](stacking-stx/stack-with-a-pool.md)
