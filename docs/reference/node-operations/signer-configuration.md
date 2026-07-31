@@ -6,7 +6,7 @@ The Stacks node will not boot if it sees config values it does not recognise. If
 
 ### Signer configuration file options
 
-The signer configuration file is a TOML file with no sections — every option below is set at the top level. Fields marked required have no default; omitting any optional field applies the default shown.
+The signer configuration file is a TOML file with no sections. Every option below is set at the top level. Fields marked required have no default, and omitting any optional field applies the default shown.
 
 This table is generated from `RawConfigFile` in [`stacks-signer/src/config.rs` at `stacks-core` 4.0.1](https://github.com/stacks-network/stacks-core/blob/4.0.1/stacks-signer/src/config.rs). Options not listed here are not recognised by the 4.0.1 signer.
 
@@ -14,7 +14,7 @@ This table is generated from `RawConfigFile` in [`stacks-signer/src/config.rs` a
 
 | Name                 | Description                                                                                                                                                                                     |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `node_host`          | `host:port` where your Stacks node can be reached. Must point to the node's `rpc_bind` address. Use an IP address — DNS hostnames are not supported.                                            |
+| `node_host`          | `host:port` where your Stacks node can be reached. Must point to the node's `rpc_bind` address.                                                                                                 |
 | `endpoint`           | `host:port` the signer listens on for events from your Stacks node. Must match the `endpoint` in the node's `[[events_observer]]` section.                                                      |
 | `stacks_private_key` | Hex representation of the signer's Stacks private key. 64 or 66 characters, the latter with a trailing `01` compression suffix. This key determines the signer's on-chain identity and address. |
 | `network`            | One of `"mainnet"`, `"testnet"`, or `"mocknet"`. Determines address and transaction version.                                                                                                    |
@@ -26,10 +26,10 @@ This table is generated from `RawConfigFile` in [`stacks-signer/src/config.rs` a
 | Name                                      | Default                                    | Units  | Description                                                                                                                                                                                                                                                                                                                             |
 | ----------------------------------------- | ------------------------------------------ | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `event_timeout_ms`                        | `5_000`                                    | ms     | Time to wait for a response from the StackerDB instance.                                                                                                                                                                                                                                                                                |
-| `metrics_endpoint`                        | disabled                                   | —      | `host:port` for Prometheus metrics collection.                                                                                                                                                                                                                                                                                          |
+| `metrics_endpoint`                        | disabled                                   |        | `host:port` for Prometheus metrics collection.                                                                                                                                                                                                                                                                                          |
 | `first_proposal_burn_block_timing_secs`   | `60`                                       | s      | Reorg protection window. Measures the time between a tenure's first block being signed and the next burn block arriving. Below this, a new miner may reorg the tenure; above it, the tenure is established and the reorg is denied. Setting it too low allows reorgs of established tenures; too high blocks legitimate miner handoffs. |
-| `block_proposal_timeout_ms`               | `120_000`                                  | ms     | How long to wait for the current sortition winner to propose a block before the signer marks that miner inactive. One of two gates for accepting a tenure extend from the previous miner.                                                                                                                                               |
-| `chain_id`                                | `0x00000001` mainnet, `0x80000000` testnet | —      | Custom chain ID. Only set this for custom or private networks.                                                                                                                                                                                                                                                                          |
+| `block_proposal_timeout_ms`               | `120_000`                                  | ms     | How long to wait for the current sortition winner to propose a block before the signer treats that miner as inactive.                                                                                                                                                                                                                   |
+| `chain_id`                                | `0x00000001` mainnet, `0x80000000` testnet |        | Custom chain ID. Only set this for custom or private networks.                                                                                                                                                                                                                                                                          |
 | `tenure_last_block_proposal_timeout_secs` | `30`                                       | s      | Time to wait for the last block of a tenure to be globally accepted or rejected before treating a new miner's block at the same height as potentially valid.                                                                                                                                                                            |
 | `block_proposal_validation_timeout_ms`    | `120_000`                                  | ms     | How long to wait for a block proposal validation response from the node before marking the block invalid and rejecting it.                                                                                                                                                                                                              |
 | `tenure_idle_timeout_secs`                | `30`                                       | s      | How much time since the last block in a tenure must pass before the signer allows a tenure extend. See the warning below before changing it.                                                                                                                                                                                            |
@@ -38,34 +38,33 @@ This table is generated from `RawConfigFile` in [`stacks-signer/src/config.rs` a
 | `block_proposal_max_age_secs`             | `600`                                      | s      | Maximum age of a block proposal the signer will process. Older proposals are ignored.                                                                                                                                                                                                                                                   |
 | `reorg_attempts_activity_timeout_ms`      | `200_000`                                  | ms     | Window after a block's global acceptance during which a miner's attempt to reorg it still counts as valid miner activity.                                                                                                                                                                                                               |
 | `proposal_wait_for_parent_time_secs`      | `15`                                       | s      | Time to wait before submitting a block proposal if the signer cannot confirm the node has processed the parent block.                                                                                                                                                                                                                   |
-| `dry_run`                                 | `false`                                    | —      | Run without submitting StackerDB messages or participating in signing. The signer logs what it would have done.                                                                                                                                                                                                                         |
-| `validate_with_replay_tx`                 | `false`                                    | —      | Validate blocks by replaying transactions. Experimental — adds validation at the cost of higher resource use.                                                                                                                                                                                                                           |
+| `dry_run`                                 | `false`                                    |        | Run without submitting StackerDB messages or participating in signing. The signer logs what it would have done.                                                                                                                                                                                                                         |
+| `validate_with_replay_tx`                 | `false`                                    |        | Validate blocks by replaying transactions. Experimental. Adds validation at the cost of higher resource use.                                                                                                                                                                                                                            |
 | `reset_replay_set_after_fork_blocks`      | `2`                                        | blocks | Blocks after a fork before the replay set is reset, as a failsafe.                                                                                                                                                                                                                                                                      |
 | `capitulate_miner_view_timeout_secs`      | `20`                                       | s      | Time between updating the local state machine view and capitulating to other signers' tenure view. Controls how quickly a signer adopts the consensus view when its own differs.                                                                                                                                                        |
 | `stackerdb_timeout_secs`                  | `120`                                      | s      | HTTP timeout for read and write operations against StackerDB.                                                                                                                                                                                                                                                                           |
 
 {% hint style="warning" %}
-**`tenure_idle_timeout_secs` must be coordinated with the miner.** The signer computes `extend_timestamp = last_block_time + tenure_idle_timeout_secs + tenure_idle_timeout_buffer_secs` and the miner cannot extend before it. The miner's `tenure_timeout` (default 180s) must be greater than that sum, and its `tenure_extend_wait_timeout_ms` (default 120\_000ms) should be greater than or equal to it. Raising `tenure_idle_timeout_secs` past roughly 118 breaks the second relationship at the miner's default and tenure extends stop being accepted. The default of `30` is the safe value — leave it unset unless you have a specific reason.
+**`tenure_idle_timeout_secs` must be coordinated with the miner.** The signer computes `extend_timestamp = last_block_time + tenure_idle_timeout_secs + tenure_idle_timeout_buffer_secs` and the miner cannot extend before it. The miner's `tenure_timeout` (default 180s) must be greater than that sum, and its `tenure_extend_wait_timeout_ms` (default `120_000`ms) should be greater than or equal to it. Raising `tenure_idle_timeout_secs` past roughly 118 breaks the second relationship at the miner's default and tenure extends stop being accepted. The default of `30` is the safe value. Leave it unset unless you have a specific reason.
 {% endhint %}
 
 ### Example configs
 
-Below are sample configuration files for running a Stacks node and signer, gathered in one place for convenience. You'll need to modify some values according to the [How to Run a Signer](https://docs.stacks.co/operate/run-a-signer) doc.
+Sample configuration files for running a Stacks node and signer. Change the values marked in the comments, following the [How to Run a Signer](https://docs.stacks.co/operate/run-a-signer) doc.
 
 #### Testnet signer
 
 ```toml
-# The IP address and port where your Stacks node can be accessed.
+# The address and port where your Stacks node can be accessed.
 # The port 20443 is the default RPC endpoint for Stacks nodes.
-# Note that you must use an IP address - DNS hosts are not supported at this time.
-# This should be the IP address accessible via Docker, usually via a network.
+# This should be the address accessible via Docker, usually via a network.
 node_host = "127.0.0.1:20443"
 
 # This is the location where the signer will expose an RPC endpoint for
 # receiving events from your Stacks node.
 endpoint = "127.0.0.1:30000"
 
-# Either “testnet” or “mainnet”
+# Either "testnet" or "mainnet"
 network = "testnet"
 
 # this is a file path where your signer will persist data. If using Docker,
@@ -73,7 +72,7 @@ network = "testnet"
 db_path = "/var/stacks/signer.sqlite"
 
 # an authentication token that is used for some HTTP requests made from the
-# signer to your Stacks node. You’ll need to use this later on when configuring
+# signer to your Stacks node. You'll need to use this later on when configuring
 # your Stacks node. You create this field yourself, rather than it being generated
 # with your private key.
 auth_password = "$your_http_auth_token"
@@ -89,11 +88,11 @@ stacks_private_key = "$your_stacks_private_key"
 Note that the `block_proposal_token` field has changed to `auth_token` in the Stacks node configuration file.
 {% endhint %}
 
-This is the configuration you'll need to run a Stacks follower node if you are also running a signer. Be sure to change the commented lines to the appropriate data for your setup. If you are not familiar with the process of setting up a signer, be sure to follow the [How to Run a Signer](https://docs.stacks.co/operate/run-a-signer) guide.
+This is the configuration for a Stacks follower node attached to a signer. Change the commented lines to match your setup. If you have not set up a signer before, follow the [How to Run a Signer](https://docs.stacks.co/operate/run-a-signer) guide.
 
 An overview of all Stacks node configuration options can be found in the Stacks Node Configuration doc.
 
-Additions necessary specifically to run a signer are the `[connection_options]` and `[[events_observer]]` sections and the `stacker = true` line. There are also a few comments detailing other lines that need to change.
+The `[connection_options]` and `[[events_observer]]` sections and the `stacker = true` line are the additions needed to run a signer. Comments in the block mark the other lines you need to change.
 
 ```toml
 [node]
@@ -202,20 +201,19 @@ start_height = 159350
 
 #### Mainnet signer
 
-This config is very similar to the testnet config, except the `network` field is changed.
+This matches the testnet config except for the `network` field.
 
 ```toml
-# The IP address and port where your Stacks node can be accessed.
+# The address and port where your Stacks node can be accessed.
 # The port 20443 is the default RPC endpoint for Stacks nodes.
-# Note that you must use an IP address - DNS hosts are not supported at this time.
-# This should be the IP address accessible via Docker, usually via a network.
+# This should be the address accessible via Docker, usually via a network.
 node_host = "127.0.0.1:20443"
 
 # This is the location where the signer will expose an RPC endpoint for
 # receiving events from your Stacks node.
 endpoint = "127.0.0.1:30000"
 
-# Either “testnet” or “mainnet”
+# Either "testnet" or "mainnet"
 network = "mainnet"
 
 # this is a file path where your signer will persist data. If using Docker,
@@ -223,7 +221,7 @@ network = "mainnet"
 db_path = "/var/stacks/signer.sqlite"
 
 # an authentication token that is used for some HTTP requests made from the
-# signer to your Stacks node. You’ll need to use this later on when configuring
+# signer to your Stacks node. You'll need to use this later on when configuring
 # your Stacks node. You create this field yourself, rather than it being generated
 # with your private key.
 auth_password = "$your_http_auth_token"
@@ -232,18 +230,18 @@ auth_password = "$your_http_auth_token"
 # previous step.
 stacks_private_key = "$your_stacks_private_key"
 
-# The IP address and port where prometheus metrics can be accessed.
+# The address and port where prometheus metrics can be accessed.
 metrics_endpoint = "127.0.0.1:9154"
 
 # Determines when a time-based tenure extend will be accepted.
-# Optional. Defaults to 30 seconds if omitted - leave it unset unless you
+# Optional. Defaults to 30 seconds if omitted. Leave it unset unless you
 # have a specific reason, and read the coordination warning above first.
 # tenure_idle_timeout_secs = 30
 ```
 
 #### Mainnet Stacks node
 
-With a mainnet Stacks node config, you'll need to change the bootstrap node field and the burnchain fields. Other than that, the `ustx_balance` fields are not necessary.
+For mainnet, change the bootstrap node field and the burnchain fields. The `ustx_balance` fields are not needed.
 
 ```toml
 [node]
@@ -263,7 +261,10 @@ stacker = true
 [burnchain]
 chain = "bitcoin"
 mode = "mainnet"
-peer_host = "bitcoin.mainnet.stacks.org"
+
+# Point this at your own Bitcoin node. Signers that rely on a public
+# Bitcoin node fall behind.
+peer_host = "127.0.0.1"
 
 # Set your auth token, which the signer uses
 # This should match the auth_password field of your signer config
