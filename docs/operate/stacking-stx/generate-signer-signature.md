@@ -1,207 +1,124 @@
+---
+description: >-
+  How to produce the one-time signer-key grant that ties your signer to a
+  signer-manager contract under PoX-5.
+---
+
 # Generate a Signer Signature
 
-Stacking transactions require a **signer key signature** to prove that the controller of the signer key authorizes the stacking operation. This page covers what a signer signature is, what data it contains, and all the ways to generate one.
-
-Both [solo stacking](solo-stacking.md) and delegated stacking ([Stack with a Pool](stack-with-a-pool.md) / [Operate a Pool](operate-a-pool.md)) reference this page. Generate your signature here before making stacking transactions.
-
-***
-
-## Overview
-
-Signer signatures are created using your signer key. They demonstrate that the controller of that signer key is allowing a stacker (or pool operator) to use their signing key in a stacking transaction. Because signer keys must be unique across the network, this also prevents other stackers from using someone else's key.
-
 {% hint style="info" %}
-The current pox-4 contract address can be found at [https://api.mainnet.hiro.so/v2/pox](https://api.mainnet.hiro.so/v2/pox). You can view the contract in the [Stacks Explorer](https://explorer.hiro.so/?chain=mainnet).
+Updated for Stacks 4.x and PoX-5.
 {% endhint %}
 
-### Fields Passed in Stacking Transactions
+PoX-5 uses a one-time **signer-key grant**. You generate one grant per signer-manager contract and submit it once. Every staking call routed through that manager then relies on it until you revoke it. There is nothing to generate per transaction, per cycle, or per staker.
 
-When making stacking transactions, you need to provide these signature-related fields:
+The grant ties three things together: your signer node, the signer-manager contract that stakers stake to, and the pox-5 contract. Without an active grant, `stake` and every related call against your manager fails with `ERR_SIGNER_KEY_GRANT_NOT_FOUND` (u17).
 
-{% stepper %}
-{% step %}
-#### signer-key
+### Generate the grant
 
-The public key that corresponds to the `stacks_private_key` your signer is using.
-{% endstep %}
+Run this on the signer host, where the private key already lives:
 
-{% step %}
-#### signer-signature
-
-A signature that demonstrates you actually control your `signer-key`.
-{% endstep %}
-
-{% step %}
-#### max-amount
-
-The maximum amount of uSTX (1 STX = 1,000,000 uSTX) that can be locked in the transaction that uses this signature. For example, if calling `stack-increase`, this dictates the maximum amount of uSTX that can be used to add more locked STX.
-{% endstep %}
-
-{% step %}
-#### auth-id
-
-A random integer that prevents the same signature from being reused, similar to how nonces are used with transactions. Must be less than 14 characters.
-{% endstep %}
-{% endstepper %}
-
-### Signature Message Contents
-
-The signer signature's message hash is created using the following data:
-
-* **`method`**: the stacking function that is allowed to use this signature. Valid options:
-  * `stack-stx`: for solo stacking
-  * `stack-extend`: for extending a solo stacking lock
-  * `stack-increase`: for increasing a solo stacking position
-  * `agg-commit`: for `stack-aggregation-commit-indexed` (pool operators)
-  * `agg-increase`: for `stack-aggregation-increase` (pool operators)
-* **`max-amount`**: the maximum uSTX allowed (described above)
-* **`auth-id`**: the random integer (described above)
-* **`period`**: a value between 1 and 12 indicating how many cycles the stacker is allowed to lock for. For `agg-commit`, this must equal 1.
-* **`reward-cycle`**: the reward cycle in which the stacking transaction can be confirmed. See the important note below about how this differs between solo and delegated stacking.
-* **`pox-address`**: the Bitcoin address allowed for receiving rewards
-* **`config`**: the signer configuration file path where the `stacks_private_key` is located (used by the CLI for signing)
-
-{% hint style="warning" %}
-**reward-cycle differences:**
-* For **solo stacking** operations (`stack-stx`, `stack-extend`, `stack-increase`): set this to the **current** reward cycle.
-* For **`stack-aggregation-commit-indexed`**: set this to the **target** reward cycle (typically current cycle + 1, or a future cycle you are committing to). This is because pool operators can commit for future cycles, not just the next one.
-{% endhint %}
-
-{% hint style="warning" %}
-Every field in the signature must **exactly match** the corresponding fields in your stacking transaction. A mismatch will cause the transaction to fail.
-{% endhint %}
-
-***
-
-## Generating Signatures
-
-You have several options for generating signer signatures. Choose the one that best fits your setup.
-
-### Using the stacks-signer CLI
-
-If you have your signer configured and running, you can use the `stacks-signer` CLI to generate signatures. You can SSH into your running signer or use the CLI locally with a matching configuration file.
-
-{% hint style="info" %}
-Having a matching configuration file is important to ensure the signer public key in your stacking transactions is the same as in your hosted signer.
-{% endhint %}
-
-```bash
-stacks-signer generate-stacking-signature \
-  --method stack-stx \
-  --max-amount 1000000000000 \
-  --auth-id 71948271489 \
-  --period 1 \
-  --reward-cycle 100 \
-  --pox-address bc1... \
-  --config ./config.toml \
+```sh
+stacks-signer generate-staking-signature \
+  --config /etc/stacks-signer/config.toml \
+  --signer-manager <manager-principal> \
+  --auth-id <unique-id> \
   --json
 ```
 
-* `--json` optionally outputs the result in JSON format
+Adjust the config path to match your setup. Replace `<manager-principal>` with your signer-manager's contract principal. Replace `<unique-id>` with a uint you have not used before for this signer key and manager pair.
 
-You can generate a random 32-bit integer for `auth-id` with:
+The command prints JSON. It contains your public key and the signature. It does not contain your private key, which is what makes it safe to move to whatever you use to build the next transaction.
 
-```bash
-python3 -c 'import secrets; print(secrets.randbits(32))'
-```
-
-The CLI outputs a JSON object:
-
-```json
-{
-  "authId": "71948271489",
-  "maxAmount": "1000000000000",
-  "method": "stack-stx",
-  "period": 1,
-  "poxAddress": "bc1...",
-  "rewardCycle": 100,
-  "signerKey": "03a3...",
-  "signerSignature": "bbbbbbbbbbb"
-}
-```
-
-Use this JSON when making stacking transactions. This output can be pasted directly into Leather Earn.
-
-{% hint style="info" %}
-The address you use for stacking transactions may differ from your signer address. See [Key and Address Rotation](key-and-address-rotation.md) for more details on the relationship between signer keys and pool operator keys.
+{% hint style="danger" %}
+Never paste a signer private key or seed phrase into a website, a chat, or an email. Generate the grant on the signer host.
 {% endhint %}
 
-### Using stacks.js
+For testing, the [signer key helper](https://stx.fan/signer/02-signer-key-helper.html) produces the same JSON offline. It is useful for seeing how the grant is built. For a real deployment, prefer the CLI so the private key never leaves the host.
 
-The [@stacks/stacking](https://www.npmjs.com/package/@stacks/stacking) NPM package provides a `signPoxSignature` function to generate signer signatures programmatically.
+### Submit it on-chain
 
-More information and code samples can be found on [Hiro's Nakamoto docs](https://docs.hiro.so/nakamoto/stacks-js).
+The grant is signed off-chain. It is submitted on-chain by the signer-manager contract itself, in two calls:
 
-### Using Degen Lab's stacking.tools
+1. `grant-signer-key` records the grant.
+2. `register-signer` binds the manager to the key.
 
-Degen Lab provides a [signature generation tool](https://signature.stacking.tools/) that generates signatures using their signer. This is the quickest and simplest option. Visit the tool and enter the relevant parameters.
+Both require `contract-caller` to equal the signer-manager. An account cannot submit either on the contract's behalf. Trying fails with `ERR_UNAUTHORIZED_SIGNER_REGISTRATION` (u26).
 
-### Using Leather Earn
+The reference signer-manager wraps both into a single `register-self` entrypoint, so in practice this is one transaction. See [Deploy a Signer Manager Contract](https://docs.stacks.co/operate/deploy-a-signer-manager-contract).
 
-{% hint style="info" %}
-At the time of writing, this has only been tested using the [Leather](https://leather.io/) wallet.
-{% endhint %}
+The [register-self page](https://stx.fan/signer/04-register-self.html) takes a completed grant and builds that transaction for you.
 
-Visit [earn.leather.io](https://earn.leather.io/) to generate a signer key signature. Make sure you're connected to the correct network.
+### What the grant contains
 
-To generate a signer key signature, log into Leather with the same secret key used to generate your signer key (not your pool operator address). Then click the "Signer key signature" link at the bottom of the page.
+The signed message carries two application fields and nothing else:
 
-The fields are:
+```clarity
+message: { topic: "grant-authorization", signer-manager: <principal>, auth-id: <uint> }
+domain:  { name: "pox-5-signer", version: "1.0.0", chain-id: <uint> }
+```
 
-* **Reward cycle**:
-  * For solo stacking transactions: must equal the current reward cycle. The field defaults to the current cycle.
-  * For `stack-aggregation-commit-indexed`: must equal the cycle used in that function's "reward cycle" argument. Typically current\_cycle + 1.
-* **Bitcoin address**: the PoX reward address
-* **Topic**: the stacking function that will use this signature
-* **Max amount**: max amount of STX that can be used. Defaults to "max possible amount".
-* **Auth ID**: defaults to a random integer
-* **Duration**: must match the number of cycles used in the stacking transaction. For `stack-aggregation-commit-indexed`, use "1".
+* **`signer-manager`** is the contract principal the key is bound to. Every staker who later stakes through that manager relies on this one grant.
+* **`auth-id`** is a replay guard. The tuple `(signer-key, signer-manager, auth-id)` can be consumed exactly once. Reusing it fails with `ERR_SIGNER_KEY_GRANT_USED` (u12). Pick a fresh value to issue a new grant.
 
-Click "generate signature" to popup a Leather signing window. After signing, Leather Earn will display your signer key and signature. You can click the "copy" icon next to "signer details to share with stackers" to copy a JSON string that can be pasted directly into the stacking transaction form.
+There is no `max-amount`, `period`, `reward-cycle`, or `pox-addr` field. The grant is not scoped to a single call.
 
-### Using a Hardware or Software Wallet
+### One grant covers every entrypoint
 
-If your signer is configured with a `stacks_private_key`, you can use that key in a wallet to generate stacking signatures.
+| Entrypoint                 | Needs an active grant?                                                                  |
+| -------------------------- | --------------------------------------------------------------------------------------- |
+| `stake`                    | Yes                                                                                     |
+| `stake-update`             | Yes, the same grant                                                                     |
+| `register-for-bond`        | Yes, the same grant                                                                     |
+| `update-bond-registration` | Yes. Rotating to a different signer-manager requires that manager to hold its own grant |
+| `register-signer`          | No. Gated on `contract-caller == signer-manager` instead                                |
 
-If you used [@stacks/cli](https://docs.hiro.so/get-started/command-line-interface) to generate the key, the CLI also outputs a mnemonic (seed phrase) that can be imported into a wallet. Because the Stacks CLI uses the standard derivation path, any Stacks wallet will default to the same private key when imported.
+Lock period is bounded by `MAX_NUM_CYCLES` (96) at the `stake` and `register-for-bond` level, not by anything in the grant.
 
-#### Setting up a wallet for signature generation
+### Revoke a grant
 
-{% stepper %}
-{% step %}
-#### Generate the keypair and configure signer
+`revoke-signer-grant` removes the binding. It takes `(signer-manager, signer-key)` in that order.
 
-1. Use `@stacks/cli` to generate the keychain and private key.
-   * When using a hardware wallet, it's typically better to generate the mnemonic on the device itself. However, the signer software needs the raw private key, which hardware wallets don't export by design.
-2. Take the `privateKey` from the CLI output and add it to your signer's configuration.
-3. Take the mnemonic (24 words) and either:
-   * Set up a new hardware wallet with this mnemonic, or
-   * Store it securely (e.g., in a password manager). Import it into Leather or XVerse when you need to generate signatures.
-{% endstep %}
+It must be sent directly by the Stacks principal derived from the signer key. No SIP-018 message is needed, and it cannot be forwarded through another contract. Calling it from any other principal fails with `ERR_UNAUTHORIZED` (u1).
 
-{% step %}
-#### Generate signatures when needed
+Revoking is not a kill switch. It stops the manager accepting new stake. Existing positions are left intact and wind down as their locks expire.
 
-1. Set up your wallet with your signer key's private key:
-   * Set up Leather with a Ledger hardware wallet, or
-   * Import your mnemonic into Leather, XVerse, or another Stacks wallet
-2. Open an app with stacking signature functionality (e.g., Leather Earn)
-3. Connect your wallet (sign in)
-4. Enter your PoX address and submit. The app will prompt you to sign
-5. Confirm the signature (if using a Ledger, confirm on the device)
-6. The app displays your signer key and signature
-7. Use the signer key and signature in your stacking transaction
-{% endstep %}
-{% endstepper %}
+### Doing it with the SDK
 
-***
+`@stacks/bitcoin-staking` exposes the same flow for tooling:
 
-## Signature Requirements by Function
+```typescript
+import {
+  signSignerGrant,
+  fetchEligibleGrantSignerKey,
+  buildGrantSignerKey,
+} from '@stacks/bitcoin-staking';
 
-| Function | Method | Period | Reward Cycle |
-|----------|--------|--------|-------------|
-| `stack-stx` | `stack-stx` | Lock period (1–12) | Current cycle |
-| `stack-extend` | `stack-extend` | Extend count (1–12) | Current cycle |
-| `stack-increase` | `stack-increase` | Current lock period | Current cycle |
-| `stack-aggregation-commit-indexed` | `agg-commit` | 1 | Target cycle (e.g., current + 1) |
-| `stack-aggregation-increase` | `agg-increase` | 1 | Target cycle |
+const signerSignature = signSignerGrant({ signerManager, authId, chainId, privateKey });
+
+const eligible = await fetchEligibleGrantSignerKey({
+  signerKey, signerManager, authId, signerSignature, network,
+});
+
+const tx = await buildGrantSignerKey({
+  signerKey, signerManager, authId, signerSignature, publicKey, fee, nonce, network,
+});
+```
+
+The package also provides `buildSignerGrantMessage`, `computeSignerGrantHash`, and `verifySignerGrant` as pure functions, plus `fetchVerifySignerKeyGrant` and `fetchSignerKeyGrantUsed` for reading on-chain state.
+
+### What changed from PoX-4
+
+If you ran a signer before Epoch 4.0, you generated a fresh signature for every call, scoped to that call:
+
+```sh
+# PoX-4. No longer valid.
+stacks-signer generate-stacking-signature \
+  --method stack-stx --max-amount 1000000000000 --auth-id 71948271489 \
+  --period 1 --reward-cycle 100 --pox-address bc1... \
+  --config ./config.toml --json
+```
+
+Three things changed. The command was renamed from `generate-stacking-signature` to `generate-staking-signature`. Five scoping flags collapsed into a single `--signer-manager`. And the result is reusable, so you run it once per manager rather than once per transaction.
+
+The old per-function signature table no longer applies. There are no `--method`, `--max-amount`, `--period`, `--reward-cycle`, or `--pox-address` flags, because a grant authorises a signer-manager rather than a specific call.
