@@ -10,9 +10,9 @@ description: >-
 Updated for Stacks 4.x and PoX-5.
 {% endhint %}
 
-PoX-5 uses a one-time **signer-key grant**. You generate one grant per signer-manager contract and submit it once. Every staking call routed through that manager then relies on it until you revoke it. There is nothing to generate per transaction, per cycle, or per staker.
+PoX-5 uses a one-time **signer-key grant**. You generate one grant per signer-manager contract and submit it once. Every staking call routed through that manager then relies on it until you revoke it. There is nothing to generate per transaction or per cycle.
 
-The grant ties three things together: your signer node, the signer-manager contract that stakers stake to, and the pox-5 contract. Without an active grant, `stake` and every related call against your manager fails with `ERR_SIGNER_KEY_GRANT_NOT_FOUND` (u17).
+The grant is what connects your signer node, the signer-manager contract that stakers stake to, and the pox-5 contract. Without an active grant, `stake` and every related call against your manager fails with `ERR_SIGNER_KEY_GRANT_NOT_FOUND` (u17).
 
 ### Generate the grant
 
@@ -51,7 +51,7 @@ The [register-self page](https://stx.fan/signer/04-register-self.html) takes a c
 
 ### What the grant contains
 
-The signed message carries two application fields and nothing else:
+The signed message:
 
 ```clarity
 message: { topic: "grant-authorization", signer-manager: <principal>, auth-id: <uint> }
@@ -61,7 +61,7 @@ domain:  { name: "pox-5-signer", version: "1.0.0", chain-id: <uint> }
 * **`signer-manager`** is the contract principal the key is bound to. Every staker who later stakes through that manager relies on this one grant.
 * **`auth-id`** is a replay guard. The tuple `(signer-key, signer-manager, auth-id)` can be consumed exactly once. Reusing it fails with `ERR_SIGNER_KEY_GRANT_USED` (u12). Pick a fresh value to issue a new grant.
 
-There is no `max-amount`, `period`, `reward-cycle`, or `pox-addr` field. The grant is not scoped to a single call.
+Those two fields are the whole scope. A grant authorises a signer-manager and stands until you revoke it.
 
 ### One grant covers every entrypoint
 
@@ -83,9 +83,9 @@ It must be sent directly by the Stacks principal derived from the signer key. No
 
 Revoking is not a kill switch. It stops the manager accepting new stake. Existing positions are left intact and wind down as their locks expire.
 
-### Doing it with the SDK
+### Using @stacks/bitcoin-staking
 
-`@stacks/bitcoin-staking` exposes the same flow for tooling:
+The SDK exposes the same flow for tooling:
 
 ```typescript
 import {
@@ -119,6 +119,6 @@ stacks-signer generate-stacking-signature \
   --config ./config.toml --json
 ```
 
-Three things changed. The command was renamed from `generate-stacking-signature` to `generate-staking-signature`. Five scoping flags collapsed into a single `--signer-manager`. And the result is reusable, so you run it once per manager rather than once per transaction.
+The command was renamed from `generate-stacking-signature` to `generate-staking-signature`. Five scoping flags collapsed into a single `--signer-manager`. The result is reusable, so you run it once per manager rather than once per transaction.
 
-The old per-function signature table no longer applies. There are no `--method`, `--max-amount`, `--period`, `--reward-cycle`, or `--pox-address` flags, because a grant authorises a signer-manager rather than a specific call.
+There are no `--method`, `--max-amount`, `--period`, `--reward-cycle`, or `--pox-address` flags, because a grant authorises a signer-manager rather than a specific call.
