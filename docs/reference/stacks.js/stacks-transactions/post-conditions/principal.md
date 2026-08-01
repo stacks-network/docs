@@ -2,7 +2,7 @@
 
 Entry point for building post conditions. Starts the post condition builder chain by specifying the principal (address) the condition applies to.
 
-The `Pc` builder uses a chainable API pattern: `PRINCIPAL → [AMOUNT] → CODE → ASSET`. PoX conditions are the exception: they terminate directly on the principal.
+The `Pc` builder uses a chainable API pattern: `PRINCIPAL → [AMOUNT] → CODE → ASSET`.
 
 ***
 
@@ -48,7 +48,7 @@ Pc.principal('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.my-contract')
 #### Notes
 
 * The address can be a standard principal (`ST...`) or a contract principal (`address.contract-name`).
-* After calling `Pc.principal()`, chain one of the amount/comparator methods, then finalize with an asset method. The PoX methods are the exception: they return a complete post condition on their own.
+* After calling `Pc.principal()`, chain one of the amount/comparator methods, then finalize with an asset method.
 * To apply a post condition to the transaction sender without naming an address, use [`Pc.origin`](origin.md).
 
 [**Reference Link**](https://github.com/stx-labs/stacks.js/blob/b7f0ed3f87cd4c5bfb7ab3c4bd8787c2018e3cec/packages/transactions/src/pc.ts)
@@ -87,7 +87,7 @@ An intermediate builder object. Chain with one of the following methods:
 | `.willSendLte(amount)`  | Amount sent will be **less than or equal to** the specified amount    |
 | `.willSendAsset()`      | The principal **will send** the NFT asset                             |
 | `.willNotSendAsset()`   | The principal **will not send** the NFT asset                         |
-| `.willMaybeSendAsset()` | The NFT asset **may or may not** be sent; always passes               |
+| `.willMaybeSendAsset()` | The NFT asset **may or may not** be sent (always passes)              |
 
 After an amount comparator, finalize with an asset method:
 
@@ -109,13 +109,13 @@ See [PostCondition](../types/PostCondition.md) for the shape each of these retur
 
 ### PoX methods
 
-These return a complete `PoxPostCondition` immediately. There is no amount and no asset to supply.
+The PoX methods do not follow the chain above. They return a complete `PoxPostCondition` directly from the principal, with no amount and no asset to supply.
 
-| Method                 | Condition code   | Description                                                 |
-| ---------------------- | ---------------- | ----------------------------------------------------------- |
-| `.willNotPerformPox()` | `WillNotPerform` | The principal **must not** perform a gated PoX action       |
-| `.mayPerformPox()`     | `MayPerform`     | The principal **may or may not** perform one; always passes |
-| `.willPerformPox()`    | `WillPerform`    | The principal **must** perform a gated PoX action           |
+| Method                 | Condition code   | Description                                                  |
+| ---------------------- | ---------------- | ------------------------------------------------------------ |
+| `.willNotPerformPox()` | `WillNotPerform` | The principal **must not** perform a gated PoX action        |
+| `.mayPerformPox()`     | `MayPerform`     | The principal **may or may not** perform one (always passes) |
+| `.willPerformPox()`    | `WillPerform`    | The principal **must** perform a gated PoX action            |
 
 See [PostConditionType](../types/PostConditionType.md) for the wire values behind these condition codes.
 

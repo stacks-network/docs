@@ -42,7 +42,7 @@ function postConditionToHex(postcondition: PostCondition): string;
 
 `string`
 
-The hex-encoded serialization of the post condition.
+The wire-format serialization: the same bytes the post condition occupies inside a signed transaction.
 
 ***
 

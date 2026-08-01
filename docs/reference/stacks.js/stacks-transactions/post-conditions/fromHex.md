@@ -53,6 +53,8 @@ type PostCondition =
   | PoxPostCondition;
 ```
 
+Which member of the union you get depends on the post condition type byte in the hex string.
+
 ***
 
 ### Parameters
