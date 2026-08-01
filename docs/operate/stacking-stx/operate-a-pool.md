@@ -56,19 +56,29 @@ The reference contract's staker claim covers **one member per call**. The contra
 
 #### BTC or sBTC: the member chooses
 
-When a member stakes, they can attach calldata containing a Bitcoin payout address and a **maximum L1 fee in sats**. What they receive on claim follows from it:
+When a member stakes, they can attach calldata carrying a Bitcoin payout address and a **maximum L1 fee in sats**. Your manager stores both against that member and reads them back at claim time:
 
-| Member supplied                                          | They receive                                            |
-| -------------------------------------------------------- | ------------------------------------------------------- |
-| A BTC address, and the fee fits within their maximum     | **Native BTC**, withdrawn from sBTC to L1               |
-| No BTC address                                           | **sBTC**, to the address they staked from (the default) |
-| A BTC address, but the L1 fee would exceed their maximum | **sBTC**. The withdrawal falls back rather than failing |
+| Member supplied                                               | They receive                                            |
+| ------------------------------------------------------------- | ------------------------------------------------------- |
+| No BTC address                                                | **sBTC**, to the address they staked from (the default) |
+| A BTC address, with rewards above the maximum L1 fee they set | **Native BTC**, withdrawn from sBTC to L1               |
+| A BTC address, with rewards below the maximum L1 fee they set | **Nothing.** The claim reverts                          |
 
-The L1 fee comes out of that member's own yield, before payout. Your fee is taken earlier, at the sBTC level, so choosing native BTC does not avoid it.
+{% hint style="warning" %}
+**A member whose rewards fall below their own stated maximum L1 fee cannot be paid at all.** The reference manager checks whether their share covers the fee budget they set. If it does not, the whole claim reverts with `ERR_NO_CLAIMABLE_REWARDS` (u1001). There is no fallback to sBTC.
 
-You can make the Bitcoin address mandatory in your own interface, and you can recommend it. A member who stakes to your contract through a different interface may not have supplied one, and your process is identical either way: you call the same claim, and they receive whichever asset their calldata implies.
+Their rewards stay in your contract until they accrue past that budget, or until the member re-stakes with a lower maximum. An auto-claim routine that does not skip these members will retry the same failing transaction every cycle.
+{% endhint %}
 
-Small positions do better in sBTC, which costs less to move and avoids creating tiny UTXOs.
+The maximum is a budget, not a prediction. The reference manager never compares it against the actual L1 fee. It subtracts the full budget from the member's share, hands that to the sBTC withdrawal system, and reconciles the unused remainder afterwards.
+
+Your fee comes off first, from the gross. The member's L1 fee budget then comes out of what remains, so choosing native BTC does not avoid your fee.
+
+You can make the Bitcoin address mandatory in your own interface, and you can recommend it. A member who stakes to your contract through a different interface may not have supplied one.
+
+One behaviour to warn members about: supplying no calldata on a later `stake` or `stake-update` **deletes** any address they previously set. The reference manager clears the stored entry rather than keeping the old value, so a member who re-stakes without resupplying their address reverts to sBTC payouts with no error.
+
+Small positions do better in sBTC. It costs less to move, it avoids creating tiny UTXOs, and it avoids the failed-claim case above.
 
 ### Claiming for members, or leaving it to them
 
@@ -81,7 +91,7 @@ Both are legitimate.
 State which one you do. Members who assume you are claiming for them will otherwise see nothing arrive.
 
 {% hint style="warning" %}
-If you claim for members, publish the practical minimum. A member with a small position who elected a BTC payout receives sBTC instead once the L1 fee exceeds their maximum. That is the correct outcome, and it surprises people who have not been told.
+If you claim for members, publish the practical minimum, and tell members who elect a BTC payout to set a maximum L1 fee their position can actually cover. A member who sets one too high gets a reverting claim rather than a smaller payout.
 {% endhint %}
 
 ### Your fee, and the ceiling on it
