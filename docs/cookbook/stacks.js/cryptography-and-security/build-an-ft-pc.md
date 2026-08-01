@@ -2,7 +2,7 @@
 
 {% code fullWidth="false" expandable="true" %}
 ```typescript
-import { Pc } from '@stacks/transactions';
+import { Pc, PostConditionMode } from '@stacks/transactions';
 
 // Create a post-condition for fungible token transfers
 const postCondition = Pc.principal("ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM")

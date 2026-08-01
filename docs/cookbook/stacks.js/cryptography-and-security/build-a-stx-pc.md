@@ -17,7 +17,7 @@ const pc = Pc.principal("ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM")
 const txOptions = {
   recipient: "ST1SJ3DTE5DN7X54YDH5D64R3BCB6A2AG2ZQ8YPD5",
   amount: 10000000,
-  senderKey: "753b7cc01a1a2e86221266a154af739463fce51219d97e4f856cd7200c3bd2a601",
+  senderKey: "753b7cc01a1a2e86221266a154af739463fce51219d97e4f856cd7200c3bd2a601", // demo key
   network: "testnet",
   postConditions: [pc],
   postConditionMode: PostConditionMode.Deny,
@@ -42,5 +42,5 @@ A helper function that creates a post-condition for STX token transfers using th
 ### Key Concepts
 
 * `Pc.principal()` - Specify the principal that will send tokens
-* `.willSendEq()` - Ensure exactly this amount is sent (also supports `willSendGte`, `willSendLte`, `willSendGt`, `willSendLt`)
+* `.willSendEq()` - Ensure exactly this amount is sent (also supports `willSendGt`, `willSendGte`, `willSendLt`, `willSendLte`)
 * `.ustx()` - Specify the token type (micro-STX)
