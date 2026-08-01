@@ -1,12 +1,12 @@
 # Post Conditions
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2Fgit-blob-3716767855649150a8a31e6cedc4c9d4139a7500%2Fimage.png?alt=media" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
 **Builder Resources**
 
-* For a deeper dive on post-conditions usage, [here](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/post-conditions/overview).
-* For post-conditions' technical specification outlined in SIP-005, [here](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-post-conditions).&#x20;
+* For a deeper dive on post-conditions usage, [here](https://docs.stacks.co/post-conditions/overview).
+* For post-conditions' technical specification outlined in SIP-005, [here](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md#transaction-post-conditions).
 * For Originator mode and the MAY SEND NFT condition outlined in SIP-040, [here](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md).
 * For the staking and PoX post-conditions outlined in SIP-045, [here](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md).
 {% endhint %}
