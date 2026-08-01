@@ -1,12 +1,12 @@
 # Examples
 
-These examples showcase the power of post-conditions through multiple scenarios you might encounter as a Stacks developer.
+These examples walk through multiple scenarios you might encounter as a Stacks developer.
 
 ## No transfers
 
 {% tabs %}
 {% tab title="Clarity" %}
-A simple contract function with no asset transfers specified.
+A contract function with no asset transfers specified.
 
 On the frontend, this should be set to a `postConditionMode` of "deny", without needing a specific post-condition statement.
 
@@ -324,7 +324,7 @@ const response = await request("stx_callContract", {
 
 Staking post-conditions guard STX being locked for staking rather than transferred. Calls to the pox-5 `stake`, `register-for-bond`, and `stake-update` functions are evaluated against them, and the transaction is rejected if the conditions are not met.
 
-Here the user expects to lock at least 1 STX when calling the pox-5 `stake` function. The `.ustxToLock()` method constrains the locked amount — a plain `.ustx()` post-condition would not cover it, since staking is not a transfer.
+Here the user expects to lock at least 1 STX when calling the pox-5 `stake` function. The `.ustxToLock()` method constrains the locked amount; a plain `.ustx()` post-condition would not cover it, since staking is not a transfer.
 
 ```typescript
 import { request } from "@stacks/connect";
@@ -355,7 +355,7 @@ const response = await request("stx_callContract", {
 
 ## Guarding PoX actions (SIP-045)
 
-PoX post-conditions guard PoX state changes that do not alter locking status — the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` functions. They carry only a principal and one of three condition codes:
+PoX post-conditions guard PoX state changes that do not alter locking status: the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` functions. They carry only a principal and one of three condition codes:
 
 ```typescript
 import { Pc } from '@stacks/transactions';

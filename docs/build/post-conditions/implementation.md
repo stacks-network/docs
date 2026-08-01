@@ -4,7 +4,7 @@ description: Learn how to add post-conditions to protect your Stacks transaction
 
 # Implementation
 
-Post-conditions are a powerful security feature in Stacks that protect users from unexpected transaction outcomes. This tutorial will walk you through implementing post-conditions in your applications to ensure transactions behave exactly as users expect.
+Post-conditions are a security feature in Stacks that protect users from unexpected transaction outcomes. This tutorial will walk you through implementing post-conditions in your applications to ensure transactions behave exactly as users expect.
 
 ### What you'll learn
 
@@ -20,7 +20,7 @@ Post-conditions are a powerful security feature in Stacks that protect users fro
 
 ## Constructing post-conditions
 
-The Pc helper in Stacks.js provides a fluent, BDD-inspired API for constructing post-conditions. Start with `Pc.principal()` to specify which address will be verified, then chain methods to define the condition.
+The Pc helper in Stacks.js provides a BDD-inspired API for constructing post-conditions. Start with `Pc.principal()` to specify which address will be verified, then chain methods to define the condition.
 
 ```ts
 import { Pc } from '@stacks/transactions';
@@ -32,7 +32,7 @@ const postCondition = Pc
   .ustx();
 ```
 
-The `Pc` helper uses method chaining for intuitive condition building. Your IDE will provide auto-completion for available methods at each step.
+The `Pc` helper uses method chaining to build conditions. Your IDE will provide auto-completion for available methods at each step.
 
 ***
 
@@ -67,7 +67,7 @@ Comparison methods available:
 // STX transfers
 .ustx()
 
-// STX staking (locking) — SIP-045, epoch 4.0+
+// STX staking (locking): SIP-045, epoch 4.0+
 .ustxToLock()
 
 // Fungible token transfers
@@ -96,7 +96,7 @@ Use `willMaybeSendAsset()` when an NFT/SFT transfer is conditional inside the co
 
 ### PoX-specific methods (SIP-045)
 
-PoX post-conditions constrain whether a principal performs a gated PoX action. They carry only a principal and a condition code — no asset or amount.
+PoX post-conditions constrain whether a principal performs a gated PoX action. They carry only a principal and a condition code, no asset or amount.
 
 ```ts
 // Principal will perform a gated PoX action
@@ -115,7 +115,7 @@ Staking and PoX post-conditions are introduced by SIP-045 and available from Sta
 
 ## Setting the post-condition mode
 
-The post-condition mode determines how the Stacks protocol handles asset transfers not explicitly covered by your post-conditions. This is a critical security setting.
+The post-condition mode determines how the Stacks protocol handles asset transfers not explicitly covered by your post-conditions. This is an important security setting.
 
 ```ts
 import { PostConditionMode, makeContractCall } from '@stacks/transactions';
@@ -264,7 +264,7 @@ import { Cl, Pc } from '@stacks/transactions';
 
 const senderAddress = 'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335';
 
-// SFT-as-NFT with MAY SEND — for contracts that may or may not transfer
+// SFT-as-NFT with MAY SEND: for contracts that may or may not transfer
 // a specific token-id depending on runtime state (e.g. DLMM/CLMM pools
 // where a bin's position SFT is burned only if its liquidity reaches zero).
 const sftBinCondition = Pc
@@ -307,7 +307,7 @@ const tx = await makeContractCall({
 
 ### Staking post-conditions (SIP-045)
 
-Staking post-conditions guard staking STX — or modifying staked STX — for a principal. Calls to the pox-5 `stake`, `register-for-bond`, and `stake-update` functions are evaluated against these post-conditions, and the transaction is rejected if the conditions are not met ([SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)). They use the same comparators as STX post-conditions, and amounts are denoted in uSTX.
+Staking post-conditions guard staking STX, or modifying staked STX, for a principal. Calls to the pox-5 `stake`, `register-for-bond`, and `stake-update` functions are evaluated against these post-conditions, and the transaction is rejected if the conditions are not met ([SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)). They use the same comparators as STX post-conditions, and amounts are denoted in uSTX.
 
 ```ts
 import { Pc, PostConditionMode, makeContractCall } from '@stacks/transactions';
@@ -331,11 +331,11 @@ const tx = await makeContractCall({
 });
 ```
 
-Note that `.ustxToLock()` constrains STX being locked for stacking, while `.ustx()` constrains STX being transferred. A staking operation does not transfer STX out of the account, so a plain STX post-condition will not cover it.
+`.ustxToLock()` constrains STX being locked for stacking, while `.ustx()` constrains STX being transferred. A staking operation does not transfer STX out of the account, so a plain STX post-condition will not cover it.
 
 ### PoX post-conditions (SIP-045)
 
-PoX post-conditions guard PoX state changes that do not alter locking status. This covers the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` functions ([SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)). Under SIP-045's Bitcoin staking framework, a participant's L1 commitment can be held as native BTC on Bitcoin L1 or as sBTC on Stacks — `unstake-sbtc` handles the sBTC-form withdrawal, and both are gated by the same PoX post-condition type.
+PoX post-conditions guard PoX state changes that do not alter locking status. This covers the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` functions ([SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)). Under SIP-045's Bitcoin staking framework, a participant's L1 commitment can be held as native BTC on Bitcoin L1 or as sBTC on Stacks; `unstake-sbtc` handles the sBTC-form withdrawal, and both are gated by the same PoX post-condition type.
 
 ```ts
 import { Pc } from '@stacks/transactions';
