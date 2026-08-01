@@ -132,6 +132,8 @@ const tx = await makeContractCall({
 ```ts
 import { Pc, PostConditionMode, makeContractCall } from '@stacks/transactions';
 
+const senderAddress = 'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335';
+
 // Originator mode: protect only the sender's assets in a multi-hop contract call
 const tx = await makeContractCall({
   // ... other transaction properties
@@ -162,7 +164,7 @@ Mode options:
 Protect STX transfers by specifying exact amounts or ranges.
 
 ```ts
-import { Pc, makeSTXTokenTransfer } from '@stacks/transactions';
+import { Pc, PostConditionMode, makeSTXTokenTransfer } from '@stacks/transactions';
 
 // Exact amount post-condition
 const exactAmountCondition = Pc
@@ -258,6 +260,10 @@ const sftFtCondition = Pc
 Multi-bin withdrawals (Bitflow DLMM, concentrated-liquidity pools) typically produce one `willMaybeSendAsset()` post-condition per affected bin. The position SFT for each bin may be burned (transferred to the contract) or kept depending on the remaining liquidity after the call. Pairing each per-bin condition with `willSendLte` conditions on the underlying FTs gives the signer a precise upper bound on what can leave their account while allowing the contract to skip burns for bins that retain liquidity.
 
 ```ts
+import { Cl, Pc } from '@stacks/transactions';
+
+const senderAddress = 'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335';
+
 // SFT-as-NFT with MAY SEND — for contracts that may or may not transfer
 // a specific token-id depending on runtime state (e.g. DLMM/CLMM pools
 // where a bin's position SFT is burned only if its liquidity reaches zero).
@@ -265,7 +271,7 @@ const sftBinCondition = Pc
   .principal(senderAddress)
   .willMaybeSendAsset()
   .nft(
-    'SP000...pool.dlmm-position::position',
+    'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335.pool::dlmm-position',
     Cl.tuple({
       'pool-id': Cl.uint(1),
       'bin-id': Cl.uint(8421),
@@ -282,7 +288,7 @@ When calling a contract that routes assets through several intermediate contract
 import { Pc, PostConditionMode, makeContractCall } from '@stacks/transactions';
 
 const tx = await makeContractCall({
-  contractAddress: 'SP000...router',
+  contractAddress: 'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335',
   contractName: 'multi-hop-swap',
   functionName: 'swap',
   functionArgs: [ /* ... */ ],
@@ -357,6 +363,12 @@ Staking and PoX post-conditions are introduced by SIP-045 and require Stacks epo
 Complex transactions often require multiple post-conditions to fully protect all asset transfers.
 
 ```ts
+import { Cl, Pc, PostConditionMode, makeContractCall } from '@stacks/transactions';
+
+const senderAddress = 'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335';
+const contractAddress = 'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335';
+const nftContract = 'SP3D6PV2ACBPEKYJTCMH7HEN02KP87QSP8KTEH335.my-nfts';
+
 const tx = await makeContractCall({
   // ... transaction properties
   postConditions: [

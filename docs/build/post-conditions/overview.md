@@ -139,7 +139,7 @@ Even with post-conditions set up on the frontend code, a user is still blind to 
 The `Pc` helper provides a fluent API for creating post-condition statements with better type safety and readability.
 
 ```ts
-import { Pc } from '@stacks/transactions';
+import { Cl, Pc } from '@stacks/transactions';
 
 // STX transfer post-condition
 const stxCondition = Pc
@@ -191,6 +191,7 @@ Create post-conditions manually using type definitions when building conditions 
 
 ```ts
 import {
+  Cl,
   StxPostCondition,
   FungiblePostCondition,
   NonFungiblePostCondition,

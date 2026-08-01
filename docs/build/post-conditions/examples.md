@@ -23,13 +23,15 @@ We will specify the `postConditionMode` to `deny`. No other post-condition state
 The user's expectation should be to deny any asset transfers.
 
 ```typescript
+import { request } from "@stacks/connect";
+
 const response = await request("stx_callContract", {
   contract: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.post-conditions",
   functionName: "no-transfers",
   network: "devnet",
   postConditions: [],
   postConditionMode: "deny"
-}) 
+})
 ```
 {% endtab %}
 {% endtabs %}
@@ -49,7 +51,7 @@ A function that contains a single asset transfer of 10 STX from the tx-sender to
 ```clarity
 (define-public (single-stx-transfer)
   (stx-transfer? u10000000 tx-sender (as-contract tx-sender))
-) 
+)
 ```
 {% endtab %}
 
@@ -57,6 +59,9 @@ A function that contains a single asset transfer of 10 STX from the tx-sender to
 A `StxPostCondition` will be set with the origin/user address, and how much the user expects to be sending out. The `postConditionMode` is set to `deny` to prevent any other unexpected transfers to happen.
 
 ```typescript
+import { request } from "@stacks/connect";
+import type { StxPostCondition } from "@stacks/transactions";
+
 const stxPostCondition: StxPostCondition = {
   type: 'stx-postcondition',
   address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
@@ -104,6 +109,9 @@ The contract first transfers 20 STX then transfers another 10 STX from the sende
 As the dev, you should notice that a total of 30 STX will be transferred from the user to the contract. This total amount should be accounted for as a single `StxPostCondition` since it's on the same asset and same principal. The `postConditionMode` is set to `deny`.
 
 ```typescript
+import { request } from "@stacks/connect";
+import type { StxPostCondition } from "@stacks/transactions";
+
 const stxPostCondition: StxPostCondition = {
   type: 'stx-postcondition',
   address: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM',
@@ -123,7 +131,7 @@ const response = await request("stx_callContract", {
 {% endtab %}
 {% endtabs %}
 
-**User Expectation:** Allow less than 30 STX to be transferred.
+**User Expectation:** Allow at most 30 STX to be transferred.
 
 **Result:** 30 STX was transferred out of the sender's wallet as expected. Transaction is confirmed.
 
@@ -149,9 +157,12 @@ A post-condition statement is needed for burn events, but not needed for mint ev
 A post-condition for the burn event will only be needed. Mint events are not considered a transfer and are treated differently.
 
 ```typescript
+import { request } from "@stacks/connect";
+import type { StxPostCondition } from "@stacks/transactions";
+
 const stxPostCondition: StxPostCondition = {
   type: "stx-postcondition",
-  address: userStxAddress.value,
+  address: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
   condition: "eq",
   amount: "10000000"
 }
@@ -197,16 +208,19 @@ We're able to setup an amount range using post-conditions. We'll have one post-c
 that the user will transfer less than or equal to 1 STX.
 
 ```typescript
+import { request } from "@stacks/connect";
+import type { StxPostCondition } from "@stacks/transactions";
+
 const stxPostCondition: StxPostCondition = {
   type: "stx-postcondition",
-  address: userStxAddress.value,
+  address: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
   condition: "gte",
   amount: "0"
 }
 
 const stxPostCondition1: StxPostCondition = {
   type: "stx-postcondition",
-  address: userStxAddress.value,
+  address: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
   condition: "lte",
   amount: "1000000"
 }
@@ -225,7 +239,7 @@ const response = await request("stx_callContract", {
 
 **User Expectation:** Allow between 0 STX and 1 STX to be transferred from the user.
 
-**Result:** If the actual amount of STX is within the specified expectated range, the transaction will confirm. If not, the transaction will abort and fail.
+**Result:** If the actual amount of STX is within the specified expected range, the transaction will confirm. If not, the transaction will abort and fail.
 
 ***
 
@@ -233,7 +247,7 @@ const response = await request("stx_callContract", {
 
 {% tabs %}
 {% tab title="Clarity" %}
-The function below contains a bunch of asset transfer events that are obfiscated in a way where it may not be noticeable at first glance. It's setup for the `tx-sender` to pay for a `cool-nft` for 2 STX, but unbeknownst to the user, the function will attempt to transfer out a few of the user's good tokens AND send the users some evil tokens.
+The function below contains a bunch of asset transfer events that are obfuscated in a way where it may not be noticeable at first glance. It's setup for the `tx-sender` to pay for a `cool-nft` for 2 STX, but unbeknownst to the user, the function will attempt to transfer out a few of the user's good tokens AND send the users some evil tokens.
 
 ```clarity
 (define-data-var nft-ids-sent uint u0)
@@ -269,9 +283,13 @@ In this scenario, we'll simulate a failed transaction as a way to demonstrate wh
 We'll specify those 2 corresponding post-conditions with the post-condition mode set to `deny`. But when the transaction is executed and evaluated, it will fail because other previously unknown transfer events tried to execute saving our user from malicious activity.
 
 ```typescript
+import { request } from "@stacks/connect";
+import { Cl } from "@stacks/transactions";
+import type { NonFungiblePostCondition, StxPostCondition } from "@stacks/transactions";
+
 const stxPostCondition: StxPostCondition = {
   type: "stx-postcondition",
-  address: userStxAddress.value,
+  address: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM",
   condition: "lte",
   amount: "2000000"
 }
@@ -279,7 +297,7 @@ const stxPostCondition: StxPostCondition = {
 const nftPostCondition1: NonFungiblePostCondition = {
   address: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.nft-contract",
   asset: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.cool-nft::cool-nft",
-  assetId: Cl.uint(nftIdNonce.value),
+  assetId: Cl.uint(1),
   condition: "sent",
   type: "nft-postcondition"
 }
@@ -309,6 +327,7 @@ Staking post-conditions guard STX being locked for staking rather than transferr
 Here the user expects to lock at least 1 STX when calling the pox-5 `stake` function. The `.ustxToLock()` method constrains the locked amount — a plain `.ustx()` post-condition would not cover it, since staking is not a transfer.
 
 ```typescript
+import { request } from "@stacks/connect";
 import { Pc } from '@stacks/transactions';
 
 const stakingPostCondition = Pc.principal(
@@ -343,15 +362,18 @@ import { Pc } from '@stacks/transactions';
 
 const principal = 'SP2ZD731ANQZT6J4K3F5N8A40ZXWXC1XFXHVVQFKE';
 
-Pc.principal(principal).willPerformPox(); //    principal will perform a gated PoX action
 Pc.principal(principal).willNotPerformPox(); // principal will not perform any gated PoX action
 Pc.principal(principal).mayPerformPox(); //     principal may or may not (always passes)
+Pc.principal(principal).willPerformPox(); //    principal will perform a gated PoX action
 ```
 
 For example, when calling an unfamiliar third-party contract, add `willNotPerformPox()` to guarantee it cannot change your PoX state as a side effect:
 
 ```typescript
-const poxPostCondition = Pc.principal(userStxAddress.value).willNotPerformPox();
+import { request } from "@stacks/connect";
+import { Pc } from '@stacks/transactions';
+
+const poxPostCondition = Pc.principal('ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM').willNotPerformPox();
 
 const response = await request("stx_callContract", {
   contract: "ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.third-party-contract",
