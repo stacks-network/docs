@@ -27,9 +27,14 @@ Pc.origin().willNotPerformPox();
 #### Notes
 
 * Use `Pc.origin()` when the post condition should apply to the sender of the transaction without specifying a specific address.
-* The builder chain is the same as `Pc.principal()`, including the staking and PoX terminals.
+* `Pc.origin()` takes no arguments.
+* The builder chain is the same as [`Pc.principal`](principal.md), including the staking and PoX terminals.
 
 [**Reference Link**](https://github.com/stx-labs/stacks.js/blob/b7f0ed3f87cd4c5bfb7ab3c4bd8787c2018e3cec/packages/transactions/src/pc.ts)
+
+{% hint style="info" %}
+`.ustxToLock()` and the PoX methods were added for Stacks epoch 4.0 and are available in `@stacks/transactions` 7.5.0 and later.
+{% endhint %}
 
 ***
 
@@ -45,4 +50,4 @@ function origin(): PartialPcWithPrincipal;
 
 `PartialPcWithPrincipal`
 
-An intermediate builder object. See `Pc.principal` for the full chain API.
+An intermediate builder object. See [`Pc.principal`](principal.md) for the full chain API.

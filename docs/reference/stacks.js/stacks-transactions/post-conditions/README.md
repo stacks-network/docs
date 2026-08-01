@@ -33,4 +33,4 @@ type PostCondition =
   | PoxPostCondition;
 ```
 
-`StakingPostCondition` and `PoxPostCondition` were added for Stacks epoch 4.0 and are available in `@stacks/transactions` 7.5.0 and later. See [PostConditionType](../types/PostConditionType.md) for the wire values and the condition codes each type pairs with.
+`StakingPostCondition` and `PoxPostCondition` were added for Stacks epoch 4.0 and are available in `@stacks/transactions` 7.5.0 and later. See [PostCondition](../types/PostCondition.md) for the shape of each, and [PostConditionType](../types/PostConditionType.md) for the wire values and the condition codes each type pairs with.

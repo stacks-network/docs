@@ -11,7 +11,7 @@ import { postConditionToHex } from '@stacks/transactions';
 
 const hex = postConditionToHex({
   type: 'stx-postcondition',
-  address: 'ST00000000000000000002Q6VF78',
+  address: 'SP000000000000000000002Q6VF78',
   condition: 'eq',
   amount: '1000000000000000000',
 });
@@ -19,10 +19,14 @@ const hex = postConditionToHex({
 
 #### Notes
 
-* The inverse of `Pc.fromHex`.
+* The inverse of [`Pc.fromHex`](fromHex.md).
 * Useful for serializing post conditions for storage or transmission.
 
 [**Reference Link**](https://github.com/stx-labs/stacks.js/blob/b7f0ed3f87cd4c5bfb7ab3c4bd8787c2018e3cec/packages/transactions/src/postcondition.ts)
+
+{% hint style="info" %}
+`StakingPostCondition` and `PoxPostCondition` were added for Stacks epoch 4.0 and are available in `@stacks/transactions` 7.5.0 and later.
+{% endhint %}
 
 ***
 
@@ -38,7 +42,7 @@ function postConditionToHex(postcondition: PostCondition): string;
 
 `string`
 
-A hex-encoded string representation of the post condition.
+The hex-encoded serialization of the post condition.
 
 ***
 
@@ -46,7 +50,7 @@ A hex-encoded string representation of the post condition.
 
 #### postcondition (required)
 
-* **Type**: `PostCondition`
+* **Type**: [`PostCondition`](../types/PostCondition.md)
 
 ```ts
 type PostCondition =
@@ -57,4 +61,4 @@ type PostCondition =
   | PoxPostCondition;
 ```
 
-The post condition object to serialize. `StakingPostCondition` and `PoxPostCondition` were added for Stacks epoch 4.0 and are available in `@stacks/transactions` 7.5.0 and later.
+The post condition object to serialize.

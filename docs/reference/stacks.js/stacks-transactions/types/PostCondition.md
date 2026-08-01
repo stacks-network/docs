@@ -1,6 +1,6 @@
 # PostCondition
 
-Union type representing the five kinds of post-conditions: STX, fungible token, non-fungible token, staking, and PoX.
+Union type representing every kind of post-condition: STX, fungible token, non-fungible token, staking, and PoX.
 
 ***
 
@@ -44,8 +44,19 @@ type PostCondition =
   | PoxPostCondition;
 ```
 
+See [PostConditionType](PostConditionType.md) for the wire value each of these serializes to.
+
+***
+
+### Availability
+
+| Member                                                  | Available from                                 |
+| ------------------------------------------------------- | ---------------------------------------------- |
+| `maybe-sent` on `NonFungiblePostCondition` (SIP-040)    | `@stacks/transactions` 7.4.0, Stacks epoch 3.4 |
+| `StakingPostCondition` and `PoxPostCondition` (SIP-045) | `@stacks/transactions` 7.5.0, Stacks epoch 4.0 |
+
 {% hint style="info" %}
-`StakingPostCondition` and `PoxPostCondition` were added for Stacks epoch 4.0 and are available in `@stacks/transactions` 7.5.0 and later. The source labels them SIP-044 in its JSDoc; the post-conditions themselves are specified in [SIP-045 §3.4.3](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md).
+Staking and PoX post-conditions are specified in [SIP-045 §3.4.3](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md). The `@stacks/transactions` JSDoc labels these SIP-044; the two SIPs activated together.
 {% endhint %}
 
 ***
@@ -100,13 +111,13 @@ interface NonFungiblePostCondition {
 }
 ```
 
-`maybe-sent` was added by [SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md) and is available in `@stacks/transactions` 7.4.0 and later. It always passes, and still counts as covering that NFT instance under `Deny` or `Originator` mode.
+`maybe-sent` was added by [SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md). It always passes, and still counts as covering that NFT instance under `Deny` or `Originator` mode.
 
 ***
 
 ### StakingPostCondition
 
-Guards staking STX, or modifying staked STX, for a principal — for example the pox-5 `stake`, `register-for-bond`, and `stake-update` calls. Uses the same comparators as `StxPostCondition`.
+Guards staking STX, or modifying staked STX, for a principal. For example, the pox-5 `stake`, `register-for-bond`, and `stake-update` calls. Uses the same comparators as `StxPostCondition`.
 
 ```ts
 interface StakingPostCondition {
@@ -124,7 +135,7 @@ interface StakingPostCondition {
 
 ### PoxPostCondition
 
-Guards PoX state changes that do not alter locking status — for example the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` calls. Carries only a principal and a condition code: there is no asset and no amount.
+Guards PoX state changes that do not alter locking status. For example, the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` calls. Carries only a principal and a condition code: there is no asset and no amount.
 
 ```ts
 interface PoxPostCondition {
@@ -140,8 +151,8 @@ interface PoxPostCondition {
 type PoxComparator = 'will-not-perform' | 'may-perform' | 'will-perform';
 ```
 
-| Comparator         | Meaning                                                  |
-| ------------------ | -------------------------------------------------------- |
-| `will-not-perform` | The principal must not perform a gated PoX action        |
-| `may-perform`      | The principal may or may not perform one — always passes |
-| `will-perform`     | The principal must perform a gated PoX action            |
+| Comparator         | Meaning                                                 |
+| ------------------ | ------------------------------------------------------- |
+| `will-not-perform` | The principal must not perform a gated PoX action       |
+| `may-perform`      | The principal may or may not perform one; always passes |
+| `will-perform`     | The principal must perform a gated PoX action           |

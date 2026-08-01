@@ -35,16 +35,27 @@ enum PostConditionType {
 
 ### Values
 
-| Value         | Number | Description                                                                                                                                  |
-| ------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `STX`         | `0x00` | STX token post-condition                                                                                                                     |
-| `Fungible`    | `0x01` | Fungible token (SIP-010) post-condition                                                                                                      |
-| `NonFungible` | `0x02` | Non-fungible token (SIP-009) post-condition                                                                                                  |
-| `Staking`     | `0x03` | Guards staking STX, or modifying staked STX, for a principal. Mirrors the `STX` shape — principal, a `FungibleConditionCode`, and an amount. |
-| `PoX`         | `0x04` | Guards PoX state changes that do not alter locking status. Carries a principal and a `PoxConditionCode`, with no amount.                     |
+| Value         | Number | Description                                                                                                                                 |
+| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `STX`         | `0x00` | STX token post-condition                                                                                                                    |
+| `Fungible`    | `0x01` | Fungible token (SIP-010) post-condition                                                                                                     |
+| `NonFungible` | `0x02` | Non-fungible token (SIP-009) post-condition                                                                                                 |
+| `Staking`     | `0x03` | Guards staking STX, or modifying staked STX, for a principal. Mirrors the `STX` shape: principal, a `FungibleConditionCode`, and an amount. |
+| `PoX`         | `0x04` | Guards PoX state changes that do not alter locking status. Carries a principal and a `PoxConditionCode`, with no amount.                    |
+
+See [PostCondition](PostCondition.md) for the object shape behind each of these.
+
+***
+
+### Availability
+
+| Member                        | Available from                                 |
+| ----------------------------- | ---------------------------------------------- |
+| `MaybeSent` (SIP-040)         | `@stacks/transactions` 7.4.0, Stacks epoch 3.4 |
+| `Staking` and `PoX` (SIP-045) | `@stacks/transactions` 7.5.0, Stacks epoch 4.0 |
 
 {% hint style="info" %}
-`Staking` and `PoX` were added for Stacks epoch 4.0 and are available in `@stacks/transactions` 7.5.0 and later. The source labels them SIP-044 in its JSDoc; the post-conditions themselves are specified in [SIP-045 §3.4.3](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md).
+Staking and PoX post-conditions are specified in [SIP-045 §3.4.3](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md). The `@stacks/transactions` JSDoc labels these SIP-044; the two SIPs activated together.
 {% endhint %}
 
 ***
@@ -75,7 +86,7 @@ enum NonFungibleConditionCode {
 }
 ```
 
-`MaybeSent` was added by [SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md), is enabled from epoch 3.4, and is available in `@stacks/transactions` 7.4.0 and later. It always passes, and still counts as covering that NFT instance under `Deny` or `Originator` mode.
+`MaybeSent` was added by [SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md). It always passes, and still counts as covering that NFT instance under `Deny` or `Originator` mode.
 
 `PoX` uses `PoxConditionCode`:
 
