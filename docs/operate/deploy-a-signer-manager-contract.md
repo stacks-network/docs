@@ -95,7 +95,7 @@ After deployment, the signer-manager contract itself calls `pox-5::register-sign
 
 `contract-caller` must equal the signer-manager. It cannot be forwarded through an intermediary contract, and it cannot be sent by an EOA on the manager's behalf. Violating this aborts with `ERR_UNAUTHORIZED_SIGNER_REGISTRATION (u26)`.
 
-Registration also re-checks the grant first, so the grant must already be in place. Read the registered key back on-chain with `get-signer-info`, or via `fetchSignerInfo` in the SDK.
+Registration also re-checks the grant first, so the grant must already be in place. [Generate a Signer Signature](stacking-stx/generate-signer-signature.md) has the `stacks-signer` command that produces it. Read the registered key back on-chain with `get-signer-info`, or via `fetchSignerInfo` in the SDK.
 
 ### Grant the signer-manager permission: `grant-signer-key`
 
