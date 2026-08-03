@@ -7,7 +7,7 @@ description: >-
 # Deploy a Signer Manager Contract
 
 {% hint style="info" %}
-All Clarity references on this page are pinned to [`pox-5.clar` at `stacks-core` 4.0.1](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar) and to a [pinned mainnet build of the reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/214c67eae2f1ce1c3c818ab6528ce4f2e1bdc22a/contracts/reference-manager/generated/mainnet/signer-manager.clar).
+All Clarity references on this page are pinned to [`pox-5.clar` at `stacks-core` 4.0.1](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar) and to a [pinned mainnet build of the reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar).
 {% endhint %}
 
 ### Who needs this page
@@ -68,10 +68,14 @@ Your contract must also gate `validate-stake!` so only pox-5 can call it. The re
 
 ### Deploy your contract
 
-Deploy a Clarity contract implementing `signer-manager-trait`. The [pinned mainnet reference manager](https://github.com/stx-labs/signer-sidekick/blob/214c67eae2f1ce1c3c818ab6528ce4f2e1bdc22a/contracts/reference-manager/generated/mainnet/signer-manager.clar) is the recommended starting point. It is generated for mainnet, so its pox-5 and sBTC principals are already correct.
+Deploy whichever signer-manager you have reviewed. The [reference implementation](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar) is the recommended starting point today, and more will follow, including [one with a lower fee ceiling](https://explorer.hiro.so/txid/SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager?chain=mainnet\&tab=sourceCode) (`MAX_FEE_BIPS u500`).
+
+The fee ceiling and the admin model are properties of the contract you deploy, not of pox-5, and they cannot be changed afterwards.
+
+Mainnet and testnet builds are not interchangeable. The embedded pox-5 boot principal and the sBTC contract addresses differ, so a mainnet build fails analysis on testnet.
 
 {% hint style="danger" %}
-Do not deploy the `stacks-core` test fixture under `contrib/core-contract-tests/`. Its pox-5 and sBTC principals do not match mainnet. Verify the canonical hash of whatever source you deploy against the expected value before broadcasting, and confirm the deployed principal on-chain afterwards. A transaction ID confirms submission, not success.
+Do not deploy the `stacks-core` test fixture under `contrib/core-contract-tests/`. Its pox-5 and sBTC principals do not match mainnet. Confirm the deployed principal on-chain afterwards. A transaction ID confirms submission, not success.
 {% endhint %}
 
 The reference manager's deployer becomes its first admin automatically (`(map-set admins tx-sender true)`).
@@ -81,6 +85,150 @@ The reference manager's deployer becomes its first admin automatically (`(map-se
 
 Ledger Stacks App versions through `0.26.17` cannot sign a deployment payload that carries an explicit Clarity version, so leave any "force Clarity 6 payload" option switched off. With the version omitted, the node defaults the contract to Clarity 6, which it does since Epoch 4.0 activated. The Leather extension omits the version for you from version `6.107.0` onward. Stacks App `0.27.x` is expected to remove the restriction.
 {% endhint %}
+
+### How to deploy with stacks-cli
+
+`stacks-cli` is the binary from `stacks-core`. It ships in the node image alongside `stacks-signer`, so there is nothing to build.
+
+You need a reviewed signer-manager `.clar` file, a hot key to deploy with, and a cold key to hand admin control to. **Fund the cold key too**: it signs the last step and pays that fee itself.
+
+The CLI cannot sign with a hardware wallet or a multisig, so the deploying key is always hot and the rotation in steps 4 and 5 is part of the deployment rather than an optional hardening pass.
+
+Examples use `docker`. For Fedora, RHEL and immutable Linux, see the note at the end of this section.
+
+#### Setup
+
+```bash
+IMG=ghcr.io/stacks-network/stacks-core:4.0.1@sha256:9fbe2a3b3b7dba73eec883873a5cf91f4b2dbfa28fa51751851e5586ec4791b6
+read -rs STX_SK && export STX_SK
+```
+
+`read -rs` takes the key without echoing it and keeps it out of shell history.
+
+Both variables live only in the current shell. Re-run this block in a new terminal. If you forget, the failure gives no hint: with `$IMG` empty, the runtime reads the next word as the image name and reports `short-name resolution enforced but cannot prompt without a TTY`.
+
+#### How broadcasting works
+
+Every command below writes a signed transaction as hex to stdout and stops. The CLI never broadcasts. Each step therefore ends the same way:
+
+```bash
+python3 -c "import binascii;open('tx.bin','wb').write(binascii.unhexlify(open('tx.hex').read().strip()))"
+curl -sS -X POST -H "Content-Type: application/octet-stream" --data-binary @tx.bin \
+  https://api.mainnet.hiro.so/v2/transactions   # or your own node RPC
+```
+
+A transaction ID confirms submission, not success. Confirm each step landed before starting the next, and increment the nonce as you go.
+
+#### 1. Deploy
+
+```bash
+docker run --rm -e STX_SK -v ./signer-manager.clar:/tmp/sm.clar:ro $IMG \
+  stacks-cli publish "$STX_SK" <fee> <nonce> <contract-name> /tmp/sm.clar > tx.hex
+```
+
+Five positionals in that order. Add `--testnet` for the default testnet, or `--testnet=0x<chain-id>` for a custom one.
+
+Broadcast, then confirm the contract published and that its Clarity version is 6.
+
+#### 2. Generate the signer-key grant
+
+Run this on the signer host, where the key and config already live.
+
+```bash
+docker run --rm -v /etc/stacks-signer/config.toml:/tmp/signer.toml:ro $IMG \
+  stacks-signer generate-staking-signature \
+  --config /tmp/signer.toml \
+  --signer-manager <deployer-address>.<contract-name> \
+  --auth-id <unique-uint> \
+  --json
+```
+
+Output is JSON containing `signerKey`, `signerSignature` and `authId`. It contains no private key, which is what makes it safe to move to wherever you build the next transaction.
+
+`auth-id` is a replay guard. The tuple of signer key, signer manager and auth-id can be consumed once.
+
+**The grant is bound to the network in your config.** There is no chain-id flag; it comes from the `network` field. A grant generated against the wrong network aborts at the next step with `ERR_INVALID_SIGNATURE_PUBKEY (u14)`, which reads as a wrong-key problem and sends you looking in the wrong place.
+
+#### 3. Register the manager against the signer key
+
+Admin-only, so run it while the deploying key is still the admin. The three values come from step 2.
+
+```bash
+docker run --rm -e STX_SK $IMG \
+  stacks-cli contract-call "$STX_SK" <fee> <nonce> \
+  <deployer-address> <contract-name> register-self \
+  -e \'<deployer-address>.<contract-name> \
+  -e 0x<signerKey> \
+  -e u<authId> \
+  -e 0x<signerSignature> > tx.hex
+```
+
+The first argument is a trait reference, passed as the contract's own principal.
+
+#### 4. Add the cold admin, from the hot deploy key
+
+```bash
+docker run --rm -e STX_SK $IMG \
+  stacks-cli contract-call "$STX_SK" <fee> <nonce> \
+  <deployer-address> <contract-name> update-admin \
+  -e \'SP<COLD-ADMIN-PRINCIPAL> -e true > tx.hex
+```
+
+Arguments come in flag and value pairs, `-e` to evaluate or `-x` for a hex-serialized Clarity value. The backslash-escaped apostrophe is the form the tool's own help uses for a principal literal.
+
+#### 5. Remove the hot key, from the cold admin
+
+Load the cold key into `STX_SK` and repeat with `false`. This proves the cold key can sign and retires the hot key in one call.
+
+```bash
+docker run --rm -e STX_SK $IMG \
+  stacks-cli contract-call "$STX_SK" <fee> <nonce> \
+  <deployer-address> <contract-name> update-admin \
+  -e \'SP<HOT-DEPLOYER-PRINCIPAL> -e false > tx.hex
+```
+
+**Keep the signer key.** Rotating admin does not transfer everything. Revoking a grant is authorised by the signer key, not by admin status, so a cold admin cannot revoke.
+
+There is no on-chain guard against removing the last admin. `(update-admin tx-sender false)` as the only admin permanently bricks every admin function, including `withdraw-fees`, and any accrued sBTC becomes unreachable. The ordering above is what protects against it: a wallet that is not an admin fails with `ERR_UNAUTHORIZED_ADMIN (u1002)` and changes nothing, so whoever succeeds at the removal is demonstrably not the last admin.
+
+#### Revoking, from the CLI
+
+Not part of setup. This call goes to `pox-5`, not to your manager, and is authorised by the signer key rather than by admin status.
+
+```bash
+docker run --rm -e STX_SK $IMG \
+  stacks-cli contract-call "$STX_SK" <fee> <nonce> \
+  SP000000000000000000002Q6VF78 pox-5 revoke-signer-grant \
+  -e \'<deployer-address>.<contract-name> \
+  -e 0x<signerKey> > tx.hex
+```
+
+Argument order is `signer-manager` then `signer-key`, the reverse of `grant-signer-key`. Getting it backwards aborts with `ERR_UNAUTHORIZED (u1)`, which looks like a permissions problem.
+
+**The registration is expected to persist.** `get-signer-info` still resolves your manager to that signer key after a successful revoke. Check grant state, not registration. See [Revoke a grant](deploy-a-signer-manager-contract.md#revoke-a-grant-revoke-signer-grant) below for why.
+
+#### On Fedora, RHEL and immutable Linux
+
+Substitute `podman` for `docker`. The commands are otherwise identical, with one exception.
+
+SELinux relabels bind mounts, so the two steps that mount a file, the deploy and the grant, need `z`:
+
+```bash
+podman run --rm -e STX_SK -v ./signer-manager.clar:/tmp/sm.clar:ro,z $IMG \
+  stacks-cli publish "$STX_SK" <fee> <nonce> <contract-name> /tmp/sm.clar > tx.hex
+```
+
+Without it the container cannot read the file and the tool reports `IO error reading CLI input: Permission denied (os error 13)`.
+
+#### Which key does which call
+
+`register-self`, `update-admin`, `update-fees`, `withdraw-fees` and `sweep-fee-refunds` are admin-gated. `revoke-signer-grant` is gated on the signer key. In a normal setup those are different keys and different people.
+
+Admin calls cannot be proxied: `authorize-admin` asserts `contract-caller` equals `tx-sender`, so an admin action must be a direct top-level call from the admin principal. A CLI-signed transaction satisfies this; a call routed through another contract does not.
+
+#### Why there is no Clarity version flag
+
+`publish` emits payload type `0x01` with no version byte, and the node applies its current default, which is Clarity 6 since Epoch 4.0.
 
 ### Register the signer key: `register-signer`
 

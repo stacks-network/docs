@@ -14,6 +14,10 @@ PoX-5 uses a one-time **signer-key grant**. You generate one grant per signer-ma
 
 The grant is what connects your signer node, the signer-manager contract that stakers stake to, and the pox-5 contract. Without an active grant, `stake` and every related call against your manager fails with `ERR_SIGNER_KEY_GRANT_NOT_FOUND` (u17).
 
+{% hint style="info" %}
+Doing the whole setup from the command line? [Deploy a Signer Manager Contract](../deploy-a-signer-manager-contract.md) runs this step in sequence with the deploy, registration and admin rotation.
+{% endhint %}
+
 ### Generate the grant
 
 Run this on the signer host, where the private key already lives:
@@ -62,6 +66,8 @@ domain:  { name: "pox-5-signer", version: "1.0.0", chain-id: <uint> }
 * **`auth-id`** is a replay guard. The tuple `(signer-key, signer-manager, auth-id)` can be consumed exactly once. Reusing it fails with `ERR_SIGNER_KEY_GRANT_USED` (u12). Pick a fresh value to issue a new grant.
 
 Those two fields are the whole scope. A grant authorises a signer-manager and stands until you revoke it.
+
+The `chain-id` in the domain comes from the `network` field in your signer config. A grant generated against the wrong network fails at `grant-signer-key` with `ERR_INVALID_SIGNATURE_PUBKEY` (u14), which reads as a wrong-key problem rather than a wrong-network one.
 
 ### One grant covers every entrypoint
 
