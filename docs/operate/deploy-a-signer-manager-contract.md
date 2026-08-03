@@ -29,13 +29,13 @@ Four roles are involved and they do not have to be the same key. Only the staker
 
 ### What a signer is in PoX-5
 
-* A signer is no longer a `{ btcRewardAddress, signerKey }` tuple in a reward set. It is a **signer-manager contract**, identified in all contract state by its principal, with one associated signer key.
-* Every staker (STX-only or bond participant) delegates to a signer-manager. There is no separate "solo" signer set: a solo staker is just a signer-manager with one member.
-* The pox-5 contract hooks into the manager during staking actions via `validate-stake!`, replacing PoX-4's per-transaction signer signatures that scoped each call by amount, period, and pox-addr.
+* A signer is a **signer-manager contract**, identified in all contract state by its principal, with one associated signer key.
+* Every staker (STX-only or bond participant) delegates to a signer-manager. A solo staker is a signer-manager with one member, so there is no separate "solo" signer set.
+* The pox-5 contract hooks into the manager during staking actions via `validate-stake!`.
 * Most operators do not need to write a contract at all. The reference signer-manager covers the common case: it accepts delegations, registers the signer key once, and handles reward accounting and onward distribution. Write your own only for custom needs: allowlisting members, different fee logic, custom sBTC routing.
 
 {% hint style="warning" %}
-**"Immutable" applies to the code, not the terms.** A deployed contract's Clarity source can never change, but the reference manager's _parameters_ can. An admin can call `update-fees` at any time, up to 99.99%, and `update-admin` lets any existing admin add another. Stakers should read a manager's admin set and current fee, not assume its economics are fixed.
+**"Immutable" applies to the code, not the terms.** A deployed contract's Clarity source can never change, but the reference manager's _parameters_ can. An admin can call `update-fees` at any time, up to 99.99%, and `update-admin` lets any existing admin add or remove an admin, including itself. Stakers should read a manager's admin set and current fee rather than assume its economics are fixed.
 {% endhint %}
 
 ### The `signer-manager` trait
@@ -68,6 +68,20 @@ Your contract must also gate `validate-stake!` so only pox-5 can call it. The re
 )
 ```
 
+#### `signer-calldata` is yours to define
+
+pox-5 treats `signer-calldata` as opaque bytes. It forwards the buffer to `validate-stake!` and discards it, storing nothing and parsing nothing. Any meaning it carries is a convention your contract defines, and any value that must survive to claim time is state your contract has to persist itself.
+
+The reference manager uses it to let a staker elect a native BTC payout. It deserializes the buffer with `from-consensus-buff?` into `{ pox-addr: { version, hashbytes }, max-fee }`, validates the address with `check-pox-addr`, and stores it in a `pox-addrs` map keyed by the staker principal:
+
+```clarity
+(map-set pox-addrs staker pox-addr)
+```
+
+At claim time `claim-staker-rewards` reads that entry back. With a record it calls `sbtc-withdrawal::initiate-withdrawal-request`, and without one it transfers sBTC directly.
+
+Two consequences worth building around if you write your own manager. `validate-stake!` fires again on every `stake-update`, so a second call overwrites whatever the first stored, giving stakers rotation for free. And in the reference manager, calldata of `none` on a later call **deletes** the stored entry rather than preserving it, so a staker who re-stakes without resupplying their address reverts to sBTC payouts with no error.
+
 ### Deploy your contract
 
 Deploy whichever signer-manager you have reviewed. The [reference implementation](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar) is the recommended starting point today, and more will follow, including [one with a lower fee ceiling](https://explorer.hiro.so/txid/SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager?chain=mainnet\&tab=sourceCode) (`MAX_FEE_BIPS u500`).
@@ -88,22 +102,9 @@ The reference manager's deployer becomes its first admin automatically (`(map-se
 Ledger Stacks App versions through `0.26.17` cannot sign a deployment payload that carries an explicit Clarity version, so leave any "force Clarity 6 payload" option switched off. With the version omitted, the node defaults the contract to Clarity 6, which it does since Epoch 4.0 activated. The Leather extension omits the version for you from version `6.107.0` onward. Stacks App `0.27.x` is expected to remove the restriction.
 {% endhint %}
 
-### Register the signer key: `register-signer`
-
-After deployment, the signer-manager contract itself calls `pox-5::register-signer` to bind itself to a signer key.
-
-```clarity
-;; Only the signer contract itself can register itself
-(asserts! (is-eq contract-caller signer)
-    ERR_UNAUTHORIZED_SIGNER_REGISTRATION
-)
-```
-
-`contract-caller` must equal the signer-manager. It cannot be forwarded through an intermediary contract, and it cannot be sent by an EOA on the manager's behalf. Violating this aborts with `ERR_UNAUTHORIZED_SIGNER_REGISTRATION (u26)`.
-
-Registration also re-checks the grant first, so the grant must already be in place. [Generate a Signer Signature](stacking-stx/generate-signer-signature.md) has the `stacks-signer` command that produces it. Read the registered key back on-chain with `get-signer-info`, or via `fetchSignerInfo` in the SDK.
-
 ### Grant the signer-manager permission: `grant-signer-key`
+
+The grant comes first. Registration re-checks it, so a manager cannot register a key it has not already been granted. [Generate a Signer Signature](stacking-stx/generate-signer-signature.md) has the `stacks-signer` command that produces one.
 
 {% stepper %}
 {% step %}
@@ -126,13 +127,13 @@ Registration also re-checks the grant first, so the grant must already be in pla
 }
 ```
 
-The grant binds a signer key to a signer-manager and **nothing else**: no `max-amount`, `period`, `reward-cycle`, or `pox-addr`. The on-chain grant map is keyed only on `{ signer-key, signer-manager }`; replay protection adds `auth-id` in a separate map. This is the substantive break from PoX-4's per-transaction scoped signatures.
+The grant binds a signer key to a signer-manager and **nothing else**: no `max-amount`, `period`, `reward-cycle`, or `pox-addr`. The on-chain grant map is keyed only on `{ signer-key, signer-manager }`; replay protection adds `auth-id` in a separate map.
 {% endstep %}
 
 {% step %}
 #### Sign it off-chain, then submit from the manager
 
-The signer-key holder signs the hash off-chain with `signSignerGrant`. The **signer-manager contract** then submits `grant-signer-key`, which enforces the same caller rule as registration:
+The signer-key holder signs the hash off-chain with `signSignerGrant`. The **signer-manager contract** then submits `grant-signer-key`, and `contract-caller` must be the manager itself:
 
 ```clarity
 ;; Only the signer contract itself can call this function to grant a signer key
@@ -199,6 +200,21 @@ Generate the signature on the signer host. Never paste a signer private key or s
 Builders in `@stacks/bitcoin-staking` attach no post-conditions and default to `Deny` mode. Any transaction you build that moves an asset needs explicit post-conditions.
 {% endhint %}
 
+### Register the signer key: `register-signer`
+
+With the grant in place, the signer-manager contract calls `pox-5::register-signer` to bind itself to the signer key.
+
+```clarity
+;; Only the signer contract itself can register itself
+(asserts! (is-eq contract-caller signer)
+    ERR_UNAUTHORIZED_SIGNER_REGISTRATION
+)
+```
+
+Same caller rule as the grant: `contract-caller` must equal the signer-manager. It cannot be forwarded through an intermediary contract, and it cannot be sent by an EOA on the manager's behalf. Violating this aborts with `ERR_UNAUTHORIZED_SIGNER_REGISTRATION (u26)`.
+
+Read the registered key back on-chain with `get-signer-info`, or via `fetchSignerInfo` in the SDK.
+
 ### Revoke a grant: `revoke-signer-grant`
 
 Takes `signer-manager` first, then `signer-key`. It must be sent **directly** by the Stacks principal derived from the signer key. `contract-caller` is the authorization, so it cannot be forwarded through an intermediary contract, and no SIP-018 message is needed:
@@ -237,14 +253,21 @@ From pox-5:
 | `u26` | `ERR_UNAUTHORIZED_SIGNER_REGISTRATION` | `register-signer` or `grant-signer-key` invoked with `contract-caller != signer-manager`.                    |
 | `u49` | `ERR_REENTRANT_CALL`                   | Reentrant call into pox-5 while a `signer-manager-validate-stake` call was in flight.                        |
 
-The reference signer-manager has its own separate error namespace, which you will hit during setup rather than staking:
+The reference signer-manager has its own separate error namespace, which you will hit during setup and distribution rather than staking:
 
-| Code    | Constant                  | Meaning                                                             |
-| ------- | ------------------------- | ------------------------------------------------------------------- |
-| `u1002` | `ERR_UNAUTHORIZED_ADMIN`  | An admin-only call from a non-admin, or proxied through a contract. |
-| `u1005` | `ERR_INVALID_FEES_BIPS`   | Fee outside the allowed range.                                      |
-| `u1006` | `ERR_UNAUTHORIZED_CALLER` | `validate-stake!` invoked by something other than pox-5.            |
-| `u1007` | `ERR_INSUFFICIENT_FEES`   | Attempted to withdraw more fees than have accrued.                  |
+| Code    | Constant                         | Meaning                                                                             |
+| ------- | -------------------------------- | ----------------------------------------------------------------------------------- |
+| `u1001` | `ERR_NO_CLAIMABLE_REWARDS`       | Nothing to claim, or a staker's share does not cover the maximum L1 fee they set.   |
+| `u1002` | `ERR_UNAUTHORIZED_ADMIN`         | An admin-only call from a non-admin, or proxied through a contract.                 |
+| `u1003` | `ERR_INVALID_CALLDATA`           | `signer-calldata` did not deserialize into the expected pox-addr and max-fee tuple. |
+| `u1004` | `ERR_INVALID_POX_ADDR`           | Address version above `u6`, or hashbytes the wrong length for that version.         |
+| `u1005` | `ERR_INVALID_FEES_BIPS`          | Fee outside the allowed range.                                                      |
+| `u1006` | `ERR_UNAUTHORIZED_CALLER`        | `validate-stake!` invoked by something other than pox-5.                            |
+| `u1007` | `ERR_INSUFFICIENT_FEES`          | Attempted to withdraw more fees than have accrued.                                  |
+| `u1008` | `ERR_UNKNOWN_WITHDRAWAL_REQUEST` | Settlement or reclaim referenced a withdrawal request the manager has no record of. |
+| `u1009` | `ERR_WITHDRAWAL_NOT_REJECTED`    | Reclaim attempted on a withdrawal the sBTC registry has not rejected.               |
+| `u1010` | `ERR_NO_REFUNDS`                 | Nothing available to sweep.                                                         |
+| `u1011` | `ERR_WITHDRAWAL_NOT_ACCEPTED`    | Settlement attempted on a withdrawal the sBTC registry has not accepted.            |
 
 ### Signer fees
 
@@ -257,7 +280,7 @@ In the reference manager:
 
 Both require a direct call from an admin EOA: `authorize-admin` asserts `(is-eq contract-caller tx-sender)`, so admin actions cannot be proxied through another contract.
 
-The fee is a percentage of sBTC rewards, deducted before payout, including before an sBTC-to-L1 BTC withdrawal. It applies to both bond participants and STX-only stakers. A dedicated **Take a signer fee** guide covers the operator workflow in detail.
+The fee is a percentage of sBTC rewards, deducted before payout, including before an sBTC-to-L1 BTC withdrawal. It applies to both bond participants and STX-only stakers. [Take a Signer Fee](take-a-signer-fee.md) covers the operator workflow in detail.
 
 ### Use stacks-cli to deploy the signer manager contract
 
@@ -402,3 +425,13 @@ Admin calls cannot be proxied: `authorize-admin` asserts `contract-caller` equal
 #### Why there is no Clarity version flag
 
 `publish` emits payload type `0x01` with no version byte, and the node applies its current default, which is Clarity 6 since Epoch 4.0.
+
+### What changed from PoX-4
+
+If you operated under PoX-4, three things are different.
+
+A signer used to be a `{ btcRewardAddress, signerKey }` tuple in a reward set. It is now a contract principal with one associated signer key.
+
+PoX-4 scoped every staking call with a per-transaction signer signature carrying an amount, a period, and a pox-addr. PoX-5 replaces all of that with the one-time grant above, which carries a signer-manager and an `auth-id` and nothing else. See [Generate a Signer Signature](stacking-stx/generate-signer-signature.md).
+
+Reward routing has moved out of the protocol. `register-for-bond` carries no `pox-addr` argument, and pox-5 pays sBTC to the manager rather than BTC to an address in a reward set. Electing a native BTC payout is now a signer-manager concern, handled through `signer-calldata`.
