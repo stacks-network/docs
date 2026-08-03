@@ -112,6 +112,7 @@ chain = "bitcoin"
 mode = "krypton"
 peer_host = "bitcoin.regtest.hiro.so"
 peer_port = 18444
+rpc_port = 18443
 pox_prepare_length = 100
 pox_reward_length = 900
 
@@ -142,6 +143,30 @@ amount = 10000000000000000
 [[ustx_balance]]
 address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
 amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST31XHNM0GZ2K978FPP4QA3STNQ73Z8C9G9MJEPK2"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST1B38CGQRPXEMRH7B66VXTS22DQTNMSW4YJJ7QK1"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "STDMN71Z0H9EF8CRKAWTGBB5YS0BNV26HZ79QFFP"
+amount = 1000000000000000
+
+[[ustx_balance]]
+address = "ST1E0PSCH72JMQH9QCH293ZTEEH7BPA40Y3F39XQ"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3QBTK0Q438YVNX8EG6Z85HN0WKQPXYT25H5SPPK"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST10BX04F9PC6N1WBXKW3H7CG0NS0A3PK650T3P3R"
+amount = 10000000000000
 
 [fee_estimation]
 fee_estimator = "fuzzed_weighted_median_fee_rate"
@@ -180,23 +205,27 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 1_900
+start_height = 1802
 
 [[burnchain.epochs]]
 epoch_name = "3.1"
-start_height = 2000
+start_height = 1803
 
 [[burnchain.epochs]]
 epoch_name = "3.2"
-start_height = 71525
+start_height = 1804
 
 [[burnchain.epochs]]
 epoch_name = "3.3"
-start_height = 109280
+start_height = 1805
 
 [[burnchain.epochs]]
 epoch_name = "3.4"
-start_height = 159350
+start_height = 1806
+
+[[burnchain.epochs]]
+epoch_name = "4.0"
+start_height = 2702
 ```
 
 #### Mainnet signer
