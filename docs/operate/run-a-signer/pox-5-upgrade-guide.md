@@ -64,13 +64,13 @@ For a new signer, generate the key offline with `stacks-cli make_keychain` or yo
 
 #### Prepare the signer-manager
 
-The signer-manager is the on-chain contract that connects stake to the signer and handles reward accounting — pool operators deploy and administer it. Because its code cannot be changed after deployment, get the source, canonical hash, wallet roles, and test results right before you go to mainnet. For the detail behind each action here, see the [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers).
+The signer-manager is the on-chain contract that connects stake to the signer and handles reward accounting — pool operators deploy and administer it. Because its code cannot be changed after deployment, get the source, wallet roles, and test results right before you go to mainnet. For the detail behind each action here, see the [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers).
 
 Before activation:
 
-* Use the [mainnet reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/f0248dc0be7ab2d6f2958289f05f2b0833fa871f/contracts/reference-manager/generated/mainnet/signer-manager.clar) by default. Customize it only if your integration requires different behavior. Independently review and test any custom manager; do not deploy the unmodified `stacks-core` test fixture because it is not configured for mainnet.
-* Record the expected canonical SHA-256, `7fd58a7591ff0ae1643eb7e71ea2867385bcac237a3ea819f52301310c0d2e27`, the contract name, and the intended principal.
-* Use a compatible wallet, such as [Leather](https://leather.io/), for deployment. If the deployment wallet will not remain the administrator, rotate admin control to your cold wallet before registration.
+* Use the [mainnet reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar) by default. Customize it only if your integration requires different behavior. Independently review and test any custom manager; do not deploy the unmodified `stacks-core` test fixture because it is not configured for mainnet.
+* Verify the source you are about to deploy on the [Signer Sidekick deploy page](https://stx.fan/signer/03-deploy-manager.html), which computes three hashes of it and compares them against the reference. Use the **structure** hash: it tokenises the Clarity and ignores whitespace, comments and commas, so it still matches after `clarinet format` or any re-indentation, where the raw and canonical hashes shift for reasons unrelated to the code. The structure hash does not cover comment text.
+* Record the contract name and the intended principal.
 * In Signer Sidekick, select **Testnet** and complete steps 1–7 in the next section. Test your reward-claim procedure separately using the process under **Operate rewards**.
 * Assign owners for rewards, accounting, monitoring, and support.
 
@@ -82,15 +82,15 @@ This section walks through the seven on-chain steps to bring a PoX-5 stacking po
 
 Use [Signer Sidekick](https://stx.fan/signer/) to rehearse on **Testnet** first; select **Mainnet** only after PoX-5 is active, and confirm the network indicator on every page. Signer Sidekick is one tool; the links below open its individual steps, and the [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers) covers the detail behind each one.
 
-| Step              | Owner and action                                                                                                                                                                          | Signer Sidekick page / signing identity                                                                  |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| 1. Preflight      | Confirm the network, PoX-5 contract, balance, cycle, and signer-set minimum.                                                                                                              | [Preflight](https://stx.fan/signer/01-connect-preflight.html); connect the admin wallet, no transaction. |
-| 2. Deploy         | Deploy the mainnet reference signer-manager approved for your rollout. Continue only if its canonical SHA-256 matches `7fd58a7591ff0ae1643eb7e71ea2867385bcac237a3ea819f52301310c0d2e27`. | [Deploy manager](https://stx.fan/signer/03-deploy-manager.html); deployment wallet.                      |
-| 3. Secure admin   | Add the cold admin, reconnect as that admin, then remove the temporary deployer. Never remove the last working admin.                                                                     | Deploy page → **Admin rotation**; deployment wallet, then cold admin if needed.                          |
-| 4. Generate grant | On the signer host, create the one-time signer-manager grant using a fresh `auth-id`.                                                                                                     | Signer key; off-chain command below.                                                                     |
-| 5. Register       | Submit `register-self` and verify that the manager resolves to the expected signer public key.                                                                                            | [Register-self](https://stx.fan/signer/04-register-self.html); manager admin.                            |
-| 6. Stake          | Lock STX for 1–96 cycles. The signer needs at least 50,000 STX in aggregate for the upcoming cycle; an individual stake may be smaller.                                                   | [Stake](https://stx.fan/signer/05-stake.html); staker wallet.                                            |
-| 7. Verify         | Confirm registration, grant validity, assigned STX, and eligibility for the upcoming cycle.                                                                                               | [Rewards + status](https://stx.fan/signer/06-rewards-status.html); read-only.                            |
+| Step              | Owner and action                                                                                                                        | Signer Sidekick page / signing identity                                                                  |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| 1. Preflight      | Confirm the network, PoX-5 contract, balance, cycle, and signer-set minimum.                                                            | [Preflight](https://stx.fan/signer/01-connect-preflight.html); connect the admin wallet, no transaction. |
+| 2. Deploy         | Deploy the mainnet reference signer-manager approved for your rollout. Check its structure hash against the reference first.            | [Deploy manager](https://stx.fan/signer/03-deploy-manager.html); deployment wallet.                      |
+| 3. Secure admin   | Add the cold admin, reconnect as that admin, then remove the temporary deployer. Never remove the last working admin.                   | Deploy page → **Admin rotation**; deployment wallet, then cold admin if needed.                          |
+| 4. Generate grant | On the signer host, create the one-time signer-manager grant using a fresh `auth-id`.                                                   | Signer key; off-chain command below.                                                                     |
+| 5. Register       | Submit `register-self` and verify that the manager resolves to the expected signer public key.                                          | [Register-self](https://stx.fan/signer/04-register-self.html); manager admin.                            |
+| 6. Stake          | Lock STX for 1–96 cycles. The signer needs at least 50,000 STX in aggregate for the upcoming cycle; an individual stake may be smaller. | [Stake](https://stx.fan/signer/05-stake.html); staker wallet.                                            |
+| 7. Verify         | Confirm registration, grant validity, assigned STX, and eligibility for the upcoming cycle.                                             | [Rewards + status](https://stx.fan/signer/06-rewards-status.html); read-only.                            |
 
 New to these actions? The [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers) and [PoX-5 STX staking guide](https://pox-5.vercel.app/docs/development/solo-stx) give step-by-step detail behind each Signer Sidekick page.
 
@@ -150,7 +150,7 @@ Provide Stacks with the running versions, signer-manager principal, registration
 * [SIP-045: PoX-5 Bitcoin Staking](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)
 * [PoX-5 signer integration guide](https://pox-5.vercel.app/docs/development/advanced/signers)
 * [PoX-5 STX staking guide](https://pox-5.vercel.app/docs/development/solo-stx)
-* [PoX-5 mainnet reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/f0248dc0be7ab2d6f2958289f05f2b0833fa871f/contracts/reference-manager/generated/mainnet/signer-manager.clar)
+* [PoX-5 mainnet reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar)
 * [PoX-5 contract](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar)
 
 For native BTC bonds or whitelisted sBTC community pools, use the separate [PoX-5 pools integration guide](https://pox-5.vercel.app/docs/development/pools).
