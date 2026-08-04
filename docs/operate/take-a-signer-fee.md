@@ -7,14 +7,14 @@ description: >-
 # Take a Signer Fee
 
 {% hint style="info" %}
-All Clarity on this page comes from a [pinned mainnet build of the reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/214c67eae2f1ce1c3c818ab6528ce4f2e1bdc22a/contracts/reference-manager/generated/mainnet/signer-manager.clar). If you deploy a different contract, its fee behaviour is whatever you wrote — see [Deploy a Signer Manager Contract](deploy-a-signer-manager-contract.md).
+All Clarity on this page comes from a [pinned mainnet build of the reference signer-manager](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar). If you deploy a different contract, its fee behaviour is whatever you wrote. See [Deploy a Signer Manager Contract](deploy-a-signer-manager-contract.md).
 {% endhint %}
 
 A signer can take a percentage of the sBTC rewards it distributes. This is the **pool fee**: running a Stacks node and signer software costs money, and the fee is how an operator covers that and claims on behalf of the people staking through them.
 
 A signer and a pool operator are usually the same party, but they don't have to be. Anyone can stake to a signer-manager contract, so any signer-manager can accumulate members whether or not it markets itself as a pool.
 
-The fee applies to both bond participants and STX-only stakers, and it is deducted before payout — including before an sBTC-to-L1 BTC withdrawal, so choosing native BTC payouts does not avoid it.
+The fee applies to both bond participants and STX-only stakers, and it is deducted before payout, including before an sBTC-to-L1 BTC withdrawal, so choosing native BTC payouts does not avoid it.
 
 ### Where the fee lives
 
@@ -29,7 +29,7 @@ It defaults to `u0`, so a freshly deployed manager takes nothing until an admin 
 
 pox-5 settles per-staker rewards to your manager; your manager decides what to retain before distributing onward. Nothing about the fee is enforced or capped by pox-5 itself.
 
-### Set the fee — `update-fees`
+### Set the fee: `update-fees`
 
 ```clarity
 (define-public (update-fees (new-fees uint))
@@ -43,18 +43,20 @@ pox-5 settles per-staker rewards to your manager; your manager decides what to r
 )
 ```
 
-Admin-only. The bound is one-sided and strict — `MAX_BIPS` is `u10000`, and `new-fees` must be _less than_ it — so the accepted range is `u0` to `u9999`, i.e. 0% to 99.99%.
+Admin-only. The bound is one-sided and strict. `MAX_BIPS` is `u10000`, and `new-fees` must be _less than_ it, so the accepted range is `u0` to `u9999`, meaning 0% to 99.99%.
 
-There is no minimum, so an admin can also set the fee back to `u0`. There is no timelock and no cap on how much the fee can move in one call.
+An admin can move the fee to any value in that range in a single call, including back to `u0`. Nothing rate-limits or delays the change, though the contract's own ceiling still applies.
 
-| Value   | Fee              |
-| ------- | ---------------- |
-| `u0`    | 0% (default)     |
-| `u100`  | 1%               |
-| `u500`  | 5%               |
-| `u9999` | 99.99% (maximum) |
+**That ceiling is fixed at deploy time and differs between managers.** The reference manager sets `MAX_BIPS` to `u10000`, which is permissive. Others are deliberately tighter: [fastpool-max500](https://explorer.hiro.so/txid/SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager?chain=mainnet\&tab=sourceCode) sets `MAX_FEE_BIPS u500`, so no admin of that contract can ever charge more than 5%. Which ceiling a manager has is readable on-chain, and it is one of the things a staker should check before staking to it.
 
-### Collect accrued fees — `withdraw-fees`
+| Value   | Fee                                       |
+| ------- | ----------------------------------------- |
+| `u0`    | 0% (default)                              |
+| `u100`  | 1%                                        |
+| `u500`  | 5%                                        |
+| `u9999` | 99.99% (maximum in the reference manager) |
+
+### Collect accrued fees: `withdraw-fees`
 
 ```clarity
 (define-public (withdraw-fees
@@ -69,10 +71,10 @@ There is no minimum, so an admin can also set the fee back to `u0`. There is no 
 )
 ```
 
-Admin-only. Takes an amount and a recipient, and transfers sBTC out of the contract. You cannot withdraw more than has actually accrued — check the balance first with the `get-earned-fees` read-only.
+Admin-only. Takes an amount and a recipient, and transfers sBTC out of the contract. You cannot withdraw more than has actually accrued. Check the balance first with the `get-earned-fees` read-only.
 
 {% hint style="warning" %}
-There is no function named `claim-fees`. The contract does expose `claim-rewards` and `claim-staker-rewards`, but those are permissionless staker-side calls for distributing rewards — not the admin fee withdrawal. Use `withdraw-fees`.
+The contract exposes `claim-rewards` and `claim-staker-rewards`, which makes `claim-fees` a natural guess. It does not exist. Those two are permissionless staker-side calls for distributing rewards, not the admin fee withdrawal. Use `withdraw-fees`.
 {% endhint %}
 
 ### Both calls require a direct admin transaction
@@ -85,7 +87,7 @@ There is no function named `claim-fees`. The contract does expose `claim-rewards
 )
 ```
 
-The `(is-eq contract-caller tx-sender)` clause means admin actions cannot be proxied through another contract — they must be sent directly from an admin account. The contract's deployer becomes the first admin automatically, and any existing admin can add or remove others with `update-admin`.
+The `(is-eq contract-caller tx-sender)` clause means admin actions cannot be proxied through another contract. They must be sent directly from an admin account. The contract's deployer becomes the first admin automatically, and any existing admin can add or remove others with `update-admin`.
 
 Rotate admin control to a cold wallet before accepting stake, and never remove the last working admin.
 
@@ -116,14 +118,16 @@ Note it reads `get-fee-bips-for-cycle`, not the live `fees-bips` variable. The r
 ```
 
 {% hint style="warning" %}
-**Confirm the timing before you rely on it.** Because the applied rate comes from a per-cycle record rather than the current variable, calling `update-fees` does not obviously repopulate already-recorded cycles — which is good for stakers, but it means "when does a fee change take effect?" is not answerable from `update-fees` alone. Verify against your own deployment on testnet before announcing a fee change to members.
+**Confirm the timing before you rely on it.** Because the applied rate comes from a per-cycle record rather than the current variable, calling `update-fees` does not obviously repopulate already-recorded cycles. That is good for stakers, but it means "when does a fee change take effect?" is not answerable from `update-fees` alone. Verify against your own deployment on testnet before announcing a fee change to members.
 {% endhint %}
 
 ### Choosing a fee
 
 Pools commonly charge a low single-digit percentage, around 5%, which covers node and signer running costs.
 
-The headroom above that exists for a reason: a pool can be set up around a specific goal, where members deliberately commit their rewards to a cause, with the fee set far higher — up to the full 99.99%. Because the rate is public on-chain and readable at any time, members can verify what a pool charges before staking to it.
+The headroom above that exists for a reason: a pool can be set up around a specific goal, where members deliberately commit their rewards to a cause, with the fee set far higher, up to the full 99.99%. Because the rate is public on-chain and readable at any time, members can verify what a pool charges before staking to it.
+
+If you would rather your members did not have to trust that, deploy a manager whose ceiling is low enough to make the question moot.
 
 ### Read-only helpers
 
