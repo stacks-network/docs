@@ -99,13 +99,17 @@ The `[connection_options]` and `[[events_observer]]` sections and the `stacker =
 
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
+bootstrap_node = "0348af7ce1b224476e8f042727af3f84dcf49a69bb3c9dd2a1afaa783acfffb729@seed.testnet.hiro.so:20444"
 prometheus_bind = "127.0.0.1:9153"
 working_dir = "/hirosystems/data"
 local_peer_seed = "{{ redacted }}"
 
 # Required for nodes attached to signers, optional for other nodes
 stacker = true
+
+pox_5_sbtc_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-token"
+pox_5_sbtc_registry_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-registry"
+pox_5_bond_admin = "ST1V2ASRWGR81W7GBN1Z4W2JQKXJWCADPVZG30X45"
 
 [burnchain]
 chain = "bitcoin"
@@ -166,6 +170,14 @@ amount = 10000000000000
 
 [[ustx_balance]]
 address = "ST10BX04F9PC6N1WBXKW3H7CG0NS0A3PK650T3P3R"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3AF1BBQAFSFCM8K4ZBR1FBXP3P8J1CKGSGDHWR5"
+amount = 100000000000000
+
+[[ustx_balance]]
+address = "STHY13V44422NAN6D3NSJPY9CDR3ED1M6HH9WZ6Y"
 amount = 10000000000000
 
 [fee_estimation]
