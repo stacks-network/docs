@@ -84,7 +84,14 @@ Two consequences worth building around if you write your own manager. `validate-
 
 ### Deploy your contract
 
-Deploy whichever signer-manager you have reviewed. The [reference implementation](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar) is the recommended starting point today, and more will follow, including [one with a lower fee ceiling](https://explorer.hiro.so/txid/SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager?chain=mainnet\&tab=sourceCode) (`MAX_FEE_BIPS u500`).
+Deploy whichever signer-manager you have reviewed. Which one to pick depends on what the manager is for, since a solo signer and a public pool want different limits on the operator.
+
+Deployed examples you can read on the explorer:
+
+* [`fastpool-1-signer-manager`](https://explorer.hiro.so/txid/SP21YTSM60CAY6D011EZVEVNKXVW8FVZE198XEFFP.fastpool-1-signer-manager?chain=mainnet) matches the [pinned reference implementation](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar). It allows any fee from 0 to 99.99%, and an admin can remove any admin including themselves.
+* [`fastpool-max500-signer-manager`](https://explorer.hiro.so/txid/SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager?chain=mainnet) caps the fee at 500 bips (`MAX_FEE_BIPS u500`, 5%) and blocks an admin from removing themselves (`ERR_CANNOT_REMOVE_SELF`), so it cannot be left with no admin. The tighter limits matter most for a public pool, where stakers hand STX to an operator they do not know.
+
+More managers will appear, and they differ in more than these two properties. Read the one you deploy.
 
 The fee ceiling and the admin model are properties of the contract you deploy, not of pox-5, and they cannot be changed afterwards.
 
@@ -269,6 +276,8 @@ The reference signer-manager has its own separate error namespace, which you wil
 | `u1010` | `ERR_NO_REFUNDS`                 | Nothing available to sweep.                                                         |
 | `u1011` | `ERR_WITHDRAWAL_NOT_ACCEPTED`    | Settlement attempted on a withdrawal the sBTC registry has not accepted.            |
 
+Other managers extend this namespace. `fastpool-max500-signer-manager` adds `u1012` through `u1017`.
+
 ### Signer fees
 
 A signer-manager may take a commission on the rewards it distributes. This is contract-level logic, not a pox-5 protocol feature: pox-5 settles per-staker rewards to the manager, and the manager decides whether to retain a fee before onward distribution.
@@ -324,7 +333,7 @@ docker run --rm -e STX_SK -v ./signer-manager.clar:/tmp/sm.clar:ro $IMG \
 
 Five positionals in that order. Add `--testnet` for the default testnet, or `--testnet=0x<chain-id>` for a custom one.
 
-Broadcast, then confirm the contract published and that its Clarity version is 6.
+Broadcast, then confirm the contract published.
 
 #### 2. Generate the signer-key grant
 
@@ -385,7 +394,7 @@ docker run --rm -e STX_SK $IMG \
 
 **Keep the signer key.** Rotating admin does not transfer everything. Revoking a grant is authorised by the signer key, not by admin status, so a cold admin cannot revoke.
 
-There is no on-chain guard against removing the last admin. `(update-admin tx-sender false)` as the only admin permanently bricks every admin function, including `withdraw-fees`, and any accrued sBTC becomes unreachable. The ordering above is what protects against it: a wallet that is not an admin fails with `ERR_UNAUTHORIZED_ADMIN (u1002)` and changes nothing, so whoever succeeds at the removal is demonstrably not the last admin.
+The reference manager has no on-chain guard against removing the last admin. `(update-admin tx-sender false)` as the only admin permanently bricks every admin function, including `withdraw-fees`, and any accrued sBTC becomes unreachable. The ordering above is what protects against it: a wallet that is not an admin fails with `ERR_UNAUTHORIZED_ADMIN (u1002)` and changes nothing, so whoever succeeds at the removal is demonstrably not the last admin. `fastpool-max500-signer-manager` blocks self-removal in the contract and rejects the call with `ERR_CANNOT_REMOVE_SELF`.
 
 #### Revoking, from the CLI
 
