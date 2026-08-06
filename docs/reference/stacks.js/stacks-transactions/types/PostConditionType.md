@@ -7,12 +7,14 @@ Enum representing the type of a post-condition. Used internally for serializatio
 ### Usage
 
 ```ts
-import { PostConditionType } from '@stacks/transactions';
+import { Pc, PostConditionType } from '@stacks/transactions';
 
-// Check post-condition type
-if (pc.type === 'stx-postcondition') {
-  // PostConditionType.STX
-}
+const pc = Pc.principal('STB44HYPYAT2BB2QE513NSP81HTMYWBJP02HPGK6')
+  .willSendEq(10000)
+  .ustx();
+
+pc.type; // 'stx-postcondition'
+PostConditionType.STX; // 0x00, the wire value that tag serializes to
 ```
 
 [**Reference Link**](https://github.com/stx-labs/stacks.js/blob/b7f0ed3f87cd4c5bfb7ab3c4bd8787c2018e3cec/packages/transactions/src/constants.ts)
