@@ -117,7 +117,7 @@ interface NonFungiblePostCondition {
 
 ### StakingPostCondition
 
-Guards staking STX, or modifying staked STX, for a principal. For example, the pox-5 `stake`, `register-for-bond`, and `stake-update` calls. Uses the same comparators as `StxPostCondition`.
+Guards staking STX or modifying staked STX for a principal. For example, the pox-5 `stake`, `register-for-bond`, and `stake-update` calls. Uses the same comparators as `StxPostCondition`.
 
 ```ts
 interface StakingPostCondition {
@@ -135,7 +135,7 @@ interface StakingPostCondition {
 
 ### PoxPostCondition
 
-Guards PoX state changes that do not alter locking status. For example, the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` calls. Carries only a principal and a condition code: there is no asset and no amount.
+Guards PoX state changes that do not alter locking status. For example, the pox-5 `unstake`, `unstake-sbtc`, `update-bond-registration`, and `announce-l1-early-exit` calls. Carries only a principal and a condition code.
 
 ```ts
 interface PoxPostCondition {

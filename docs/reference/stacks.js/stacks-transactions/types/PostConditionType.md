@@ -35,13 +35,13 @@ enum PostConditionType {
 
 ### Values
 
-| Value         | Number | Description                                                                                                                                 |
-| ------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `STX`         | `0x00` | STX token post-condition                                                                                                                    |
-| `Fungible`    | `0x01` | Fungible token (SIP-010) post-condition                                                                                                     |
-| `NonFungible` | `0x02` | Non-fungible token (SIP-009) post-condition                                                                                                 |
-| `Staking`     | `0x03` | Guards staking STX, or modifying staked STX, for a principal. Mirrors the `STX` shape: principal, a `FungibleConditionCode`, and an amount. |
-| `PoX`         | `0x04` | Guards PoX state changes that do not alter locking status. Carries a principal and a `PoxConditionCode`, with no amount.                    |
+| Value         | Number | Description                                                                                                                               |
+| ------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `STX`         | `0x00` | STX token post-condition                                                                                                                  |
+| `Fungible`    | `0x01` | Fungible token (SIP-010) post-condition                                                                                                   |
+| `NonFungible` | `0x02` | Non-fungible token (SIP-009) post-condition                                                                                               |
+| `Staking`     | `0x03` | Guards staking STX or modifying staked STX for a principal. Mirrors the `STX` shape: principal, a `FungibleConditionCode`, and an amount. |
+| `PoX`         | `0x04` | Guards PoX state changes that do not alter locking status. Carries a principal and a `PoxConditionCode`, with no amount.                  |
 
 See [PostCondition](PostCondition.md) for the object shape behind each of these.
 
