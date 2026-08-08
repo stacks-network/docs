@@ -16,7 +16,7 @@
 
 If you want to get up and running as an active signer as quickly as possible, here is a list of the commands you need to run and actions to take.
 
-If you are not familiar with how signing works yet, be sure to check out the [Signing concept guide](../../learn/block-production/signing.md).
+If you are not familiar with how signing works yet, be sure to check out the [Signing concept guide](https://github.com/stacks-network/docs/blob/master/docs/learn/block-production/signing.md).
 
 {% hint style="danger" %}
 The CLI examples below may show outdated release versions. For the latest releases, always refer to the links above in the top info block.

@@ -16,21 +16,18 @@ It is of the utmost importance to follow the recommendations below.
 
 {% stepper %}
 {% step %}
-
 #### Prevent unauthorized access to signer infrastructure
 
 Prevent unauthorized access to the sBTC Signer infrastructure (the signer itself, its private key, and the associated PostgreSQL database).
 {% endstep %}
 
 {% step %}
-
 #### Keep an offline, secure backup of the Signer private key
 
 Keep an offline, secure backup of the sBTC Signer private key.
 {% endstep %}
 
 {% step %}
-
 #### Regularly backup PostgreSQL database
 
 Regularly backup the PostgreSQL database and store it in a secure location.
@@ -50,8 +47,6 @@ Below are the **minimum required specs** to be able to run a sBTC signer.
 Note that these are in _addition_ to the hardware requirements for running a Stacks node and Bitcoin node outlined in the [How to Run a Signer doc](../run-a-signer/).
 
 ## Connection diagram
-
-<figure><img src="../.gitbook/assets/image%20(8).png" alt=""><figcaption></figcaption></figure>
 
 ## Configure your Bitcoin node
 
@@ -74,21 +69,18 @@ The signer connects to Bitcoin Core via RPC and polls for new bitcoin blocks. Th
 
 {% stepper %}
 {% step %}
-
 #### Bitcoin Core validates a new block
 
 Bitcoin Core validates a new block.
 {% endstep %}
 
 {% step %}
-
 #### Signer detects the block via RPC polling
 
 Signer detects the block via RPC polling.
 {% endstep %}
 
 {% step %}
-
 #### Signer processes relevant sBTC transactions
 
 Signer processes relevant sBTC transactions.

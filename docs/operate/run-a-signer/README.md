@@ -6,7 +6,7 @@
 
 This guide is a step-by-step walkthrough for setting up and running a signer. It covers only the signer infrastructure: the signer software and the Stacks node it connects to.
 
-If you are not familiar with the concept of signing, be sure to check out the [Stackers and Signing concept guide](../../learn/block-production/signing.md).
+If you are not familiar with the concept of signing, be sure to check out the [Stackers and Signing concept guide](https://github.com/stacks-network/docs/blob/master/docs/learn/block-production/signing.md).
 
 ### Background and High-Level Process
 
@@ -17,7 +17,7 @@ This doc provides instructions to set up both using either Docker or the release
 ### Knowledge Prerequisites
 
 * Docker and basic knowledge of pulling and running images
-* Basic knowledge of [Stacks accounts](../../learn/network-fundamentals/wallets-and-accounts.md)
+* Basic knowledge of [Stacks accounts](https://github.com/stacks-network/docs/blob/master/docs/learn/network-fundamentals/wallets-and-accounts.md)
 
 {% stepper %}
 {% step %}
@@ -114,7 +114,7 @@ Signers are intended to work with a local node. The node<->signer connection is 
 
 ## Create a Configuration File
 
-Create a file named `signer-config.toml`. Populate it with the example signer config file contents from the [Sample Configuration Files](../../reference/node-operations/signer-configuration.md) page. Each field is described on that page.
+Create a file named `signer-config.toml`. Populate it with the example signer config file contents from the [Sample Configuration Files](https://github.com/stacks-network/docs/blob/master/docs/reference/node-operations/signer-configuration.md) page. Each field is described on that page.
 
 ***
 
@@ -229,7 +229,7 @@ Start the Stacks node after the signer is running. The node will not run unless 
 
 ### Stacks Node Configuration
 
-Create `node-config.toml`. See the [Sample Configuration Files](../../reference/node-operations/signer-configuration.md) page for the full contents.
+Create `node-config.toml`. See the [Sample Configuration Files](https://github.com/stacks-network/docs/blob/master/docs/reference/node-operations/signer-configuration.md) page for the full contents.
 
 Important fields to change:
 

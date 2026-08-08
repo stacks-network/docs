@@ -16,6 +16,10 @@ For STX-only staking, use [app.leather.io/staking](https://app.leather.io/stakin
 
 Whichever you use, the transaction goes to `pox-5` and locks your STX in your own account.
 
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
 [Watch the flow end to end](https://x.com/Stacks/status/2083267023916662923)
 
 {% hint style="warning" %}
@@ -23,6 +27,8 @@ Staking and staking updates are blocked during the prepare phase, the last 100 B
 {% endhint %}
 
 A transaction ID confirms submission, not success. Confirm the position on-chain or in your wallet before treating yourself as staked.
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="warning" %}
 **One position per Stacks principal.** STX-only staking and a protocol bond are mutually exclusive. Registering a bond while staked fails with `ERR_ALREADY_STAKED (u19)`.
@@ -37,7 +43,7 @@ If you took whichever manager your app offered, you can skip this. Everything be
 * **Admin set.** Who can change the fee and withdraw accrued fees. Some managers block an admin from removing themselves, so the contract can never be left with no admin. Others have no such guard.
 * **An active signer-key grant.** A manager without one cannot accept new stake, and your transaction fails with `ERR_SIGNER_KEY_GRANT_NOT_FOUND (u17)`.
 
-A manager needs 50,000 STX (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it before it enters the signer set. That threshold is fixed and applies to the manager rather than to you, so your own stake can be any size.
+A manager needs 50,000 STX (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it before it enters the signer set. That threshold is fixed and applies to the manager rather than to you, so your own stake can be any size as long as the signer-manager doesn't restrict it.
 
 {% hint style="info" %}
 **Immutable code, mutable terms.** A deployed contract's Clarity source can never change, but its parameters can. An admin can change the fee at any time, up to whatever ceiling that contract fixed at deployment. Read the current fee and the admin set rather than assuming the economics are settled.
