@@ -29,7 +29,6 @@
 * [Snapshot the Chainstate](snapshot-the-chainstate.md)
 * [Staking STX](staking-stx/README.md)
   * [What's Changed in PoX-5](staking-stx/whats-changed-in-pox-5.md)
-  * [Solo Stacking](staking-stx/solo-stacking.md)
   * [Stake to an Existing Signer-Manager](staking-stx/stack-with-a-pool.md)
   * [Operate a Pool](staking-stx/operate-a-pool.md)
   * [Generate a Signer Signature](staking-stx/generate-signer-signature.md)
