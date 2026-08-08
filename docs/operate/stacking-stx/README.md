@@ -1,11 +1,48 @@
 # Staking STX
 
-Staking is the process of locking STX, or STX paired with BTC or sBTC, to support the network's consensus and earn Bitcoin-denominated rewards. If you aren't familiar with how it works, read the [Stacking](https://github.com/stacks-network/docs/blob/master/docs/learn/block-production/stacking.md) and [Stackers and Signing](https://github.com/stacks-network/docs/blob/master/docs/learn/block-production/signing.md) concept guides first.
+Staking is locking STX, or STX paired with BTC or sBTC, to support the network's consensus and earn Bitcoin-denominated rewards. If you aren't familiar with how it works, read the [Stacking](https://docs.stacks.co/learn/block-production/stacking) and [Stackers and Signing](https://docs.stacks.co/learn/block-production/signing) concept guides first.
 
 Staking uses the `pox-5` contract, deployed at `SP000000000000000000002Q6VF78.pox-5`. You can [read its source on the Explorer](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-5?chain=mainnet\&tab=sourceCode). PoX-5 activated with the Epoch 4.0 hard fork and replaces `pox-4`.
 
 {% hint style="warning" %}
-**Every PoX-4 position unlocked at activation.** If you were stacking under PoX-4, your STX is already unlocked and you must re-enrol under PoX-5 to keep earning. See What's Changed in PoX-5.
+**Every PoX-4 position unlocked at activation.** If you were stacking under PoX-4, your STX is already unlocked and you must re-enroll under PoX-5 to keep earning. See [What's Changed in PoX-5](whats-changed-in-pox-5.md).
+{% endhint %}
+
+### Start here
+
+{% stepper %}
+{% step %}
+#### What's Changed in PoX-5
+
+If you were stacking under PoX-4: what unlocked, how to re-enroll, what changed about rewards, and the deadlines for the next cycle.
+
+* [What's Changed in PoX-5](whats-changed-in-pox-5.md)
+{% endstep %}
+
+{% step %}
+#### Stake to an existing signer-manager
+
+The common path, and what most people should do. You keep custody of your STX; the signer-manager you choose handles registration and reward distribution. Pick one whose fee and admin set you are comfortable with. Both are readable on-chain.
+
+* [Stake to an Existing Signer-Manager](stack-with-a-pool.md)
+{% endstep %}
+
+{% step %}
+#### Run your own signer-manager
+
+For operators. This means deploying a contract and running infrastructure: a Bitcoin node, a Stacks node, and the signer software.
+
+* [Deploy a Signer Manager Contract](../deploy-a-signer-manager-contract.md)
+* [Generate a Signer Signature](generate-signer-signature.md)
+* [Take a Signer Fee](../take-a-signer-fee.md)
+* [Run a Signer](../run-a-signer/)
+* [PoX-5 Upgrade Guide](../run-a-signer/pox-5-upgrade-guide.md)
+* [Run a Node](../run-a-node/) and [Run a Bitcoin Node](../run-a-node/run-a-bitcoin-node.md)
+{% endstep %}
+{% endstepper %}
+
+{% hint style="info" %}
+The minimum for a signer-manager to enter the signer set is a **fixed 50,000 STX** (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it. An individual stake may be smaller. This replaces PoX-4's cycle-varying `min_threshold_ustx`.
 {% endhint %}
 
 ### Definitions and roles
@@ -21,48 +58,17 @@ Staking uses the `pox-5` contract, deployed at `SP000000000000000000002Q6VF78.po
 A solo staker in the old sense is someone running their own signer-manager, which is operationally the same thing as offering a pool service, because anyone can stake to that contract. There is no `delegator` or `pool operator` role at the protocol layer.
 {% endhint %}
 
-### Start here
-
-{% stepper %}
-{% step %}
-#### What's Changed in PoX-5
-
-If you were stacking under PoX-4: what unlocked, how to re-enrol, what changed about rewards, and the deadlines for the next cycle.
-{% endstep %}
-
-{% step %}
-#### Stake to an existing signer-manager
-
-The common path, and what most people should do. You keep custody of your STX; the signer-manager you choose handles registration and reward distribution. Pick one whose fee and admin set you are comfortable with, both are readable on-chain.
-{% endstep %}
-
-{% step %}
-#### Run your own signer-manager
-
-For operators. This means deploying a contract and running infrastructure: a Bitcoin node, a Stacks node, and the signer software.
-
-* [Deploy a Signer Manager Contract](https://docs.stacks.co/operate/deploy-a-signer-manager-contract)
-* [Generate a Signer Signature](https://docs.stacks.co/operate/stacking-stx/generate-signer-signature)
-* [Take a Signer Fee](https://docs.stacks.co/operate/take-a-signer-fee)
-* [Run a Signer](https://docs.stacks.co/operate/run-a-signer)
-* [PoX-5 Upgrade Guide](https://docs.stacks.co/operate/run-a-signer/pox-5-upgrade-guide)
-* [Run a Node](https://docs.stacks.co/operate/run-a-node) and [Run a Bitcoin Node](https://docs.stacks.co/operate/run-a-node/run-a-bitcoin-node)
-{% endstep %}
-{% endstepper %}
-
-{% hint style="info" %}
-The minimum for a signer-manager to enter the signer set is a **fixed 50,000 STX** (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it. An individual stake may be smaller. This replaces PoX-4's cycle-varying `min_threshold_ustx`, so there is no longer a dynamic minimum to check.
-{% endhint %}
-
 ### Reference guides
 
-* Generate a Signer Signature. Updated for PoX-5.
+Updated for PoX-5:
+
+* [Stake to an Existing Signer-Manager](stack-with-a-pool.md)
+* [Generate a Signer Signature](generate-signer-signature.md)
 
 {% hint style="warning" %}
-The guides below were written for PoX-4 and are being updated for PoX-5. Treat their contract calls and arguments as out of date until then. In particular, per-transaction signer signatures and the `delegate-stx` / `stack-aggregation-commit` flow no longer exist.
+The guides below were written for PoX-4 and are being updated for PoX-5. Treat their contract calls and arguments as out of date until then. Per-transaction signer signatures and the `delegate-stx` / `stack-aggregation-commit` flow no longer exist.
 {% endhint %}
 
-* Solo Stacking
-* Stack with a Pool
-* Operate a Pool
-* Key and Address Rotation
+* [Solo Stacking](solo-stacking.md)
+* [Operate a Pool](operate-a-pool.md)
+* [Key and Address Rotation](key-and-address-rotation.md)
