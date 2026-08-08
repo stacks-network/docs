@@ -71,5 +71,5 @@ The guides below were written for PoX-4. Where a page has been rewritten for PoX
 {% endhint %}
 
 * Stack with a Pool → [Stake to an Existing Signer-Manager](stack-with-a-pool.md)
-* Solo Stacking → [Stake to an Existing Signer-Manager](stack-with-a-pool.md), or [Deploy a Signer Manager Contract](../deploy-a-signer-manager-contract.md) to run your own
+* Solo Stacking → [Stake to an Existing Signer-Manager](stack-with-a-pool.md), or [Run a Signer](../run-a-signer/) to run your own
 * [Key and Address Rotation](key-and-address-rotation.md)
