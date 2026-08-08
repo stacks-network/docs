@@ -64,11 +64,12 @@ Updated for PoX-5:
 
 * [Stake to an Existing Signer-Manager](stack-with-a-pool.md)
 * [Generate a Signer Signature](generate-signer-signature.md)
+* [Operate a Pool](operate-a-pool.md)
 
 {% hint style="warning" %}
-The guides below were written for PoX-4 and are being updated for PoX-5. Treat their contract calls and arguments as out of date until then. Per-transaction signer signatures and the `delegate-stx` / `stack-aggregation-commit` flow no longer exist.
+The guides below were written for PoX-4. Where a page has been rewritten for PoX-5, its old name is shown first and the link goes to the page that replaced it. Anything still carrying its original name is being updated, so treat its contract calls and arguments as out of date. Per-transaction signer signatures and the `delegate-stx` / `stack-aggregation-commit` flow no longer exist.
 {% endhint %}
 
-* [Solo Stacking](solo-stacking.md)
-* [Operate a Pool](operate-a-pool.md)
+* Stack with a Pool → [Stake to an Existing Signer-Manager](stack-with-a-pool.md)
+* Solo Stacking → [Stake to an Existing Signer-Manager](stack-with-a-pool.md), or [Deploy a Signer Manager Contract](../deploy-a-signer-manager-contract.md) to run your own
 * [Key and Address Rotation](key-and-address-rotation.md)
