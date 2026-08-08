@@ -14,11 +14,11 @@ You keep custody throughout: the STX locks in your own account and the manager n
 
 For STX-only staking, use [app.leather.io/staking](https://app.leather.io/staking), which lists signer-managers you can pick from. Several pool operators run their own staking apps as well.
 
-Whichever you use, the transaction goes to `pox-5` and locks your STX in your own account.
+Whichever you use, the transaction goes to `pox-5`.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4065274862-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4cpTb2lbw0LAOuMHrvhA%2Fuploads%2FjDg22iamidwOWL66JBSd%2Fimage.png?alt=media&#x26;token=f61519b1-c36c-4d8e-85e6-b3bd26cbd4c1" alt="A list of signer-manager contracts to choose from in the Leather staking app"><figcaption><p>Choosing a signer-manager</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4065274862-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4cpTb2lbw0LAOuMHrvhA%2Fuploads%2FP4PeRg1y6jTAyRGrwZCu%2Fimage.png?alt=media&#x26;token=e90baa33-27dc-4f5c-9744-ca43ec67e537" alt="Fields for the amount of STX to stake and the number of cycles to run"><figcaption><p>Setting the amount and the number of cycles</p></figcaption></figure>
 
 [Watch the flow end to end](https://x.com/Stacks/status/2083267023916662923)
 
@@ -28,7 +28,7 @@ Staking and staking updates are blocked during the prepare phase, the last 100 B
 
 A transaction ID confirms submission, not success. Confirm the position on-chain or in your wallet before treating yourself as staked.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://4065274862-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4cpTb2lbw0LAOuMHrvhA%2Fuploads%2FVfufmVUm8XT7n8FYjIYS%2Fimage.png?alt=media&#x26;token=2a179bd9-4535-49cc-9c9f-ade4bd5c44b8" alt="An active staking position shown in the app after the transaction confirmed"><figcaption><p>The position confirmed after the transaction lands</p></figcaption></figure>
 
 {% hint style="warning" %}
 **One position per Stacks principal.** STX-only staking and a protocol bond are mutually exclusive. Registering a bond while staked fails with `ERR_ALREADY_STAKED (u19)`.
@@ -36,10 +36,10 @@ A transaction ID confirms submission, not success. Confirm the position on-chain
 
 ### Choosing between signer-managers
 
-If you took whichever manager your app offered, you can skip this. Everything below is readable on-chain before you commit.
+If you took whichever manager your app offered, you can skip this. Everything below is readable on-chain before you stake.
 
 * **Current fee.** A percentage of your sBTC rewards, deducted by the manager before it pays you.
-* **Fee ceiling.** Fixed in the deployed code and unchangeable afterwards. Some managers permit anything up to 99.99%. Others cap far lower, at 5%.
+* **Fee ceiling.** Fixed in the deployed code and unchangeable afterwards. Some managers permit anything up to 99.99%. Others cap at 5%.
 * **Admin set.** Who can change the fee and withdraw accrued fees. Some managers block an admin from removing themselves, so the contract can never be left with no admin. Others have no such guard.
 * **An active signer-key grant.** A manager without one cannot accept new stake, and your transaction fails with `ERR_SIGNER_KEY_GRANT_NOT_FOUND (u17)`.
 
@@ -53,13 +53,13 @@ A manager needs 50,000 STX (`SIGNER_SET_MIN_USTX`) in aggregate across everyone 
 
 Rewards reach your signer-manager as sBTC and the manager distributes them. To be paid in native BTC on Bitcoin L1 instead, supply a `signer-calldata` buffer when you stake, if the manager contract supports it. pox-5 forwards that buffer to the manager and stores nothing itself, so what it means is defined by the manager you chose.
 
-Both `app.leather.io/staking` and pool operators' own apps can supply those extra details. A general-purpose app offers the options it knows about, so a custom signer-manager may accept choices that only its operator's own app can work with.
+Both [app.leather.io/staking](https://app.leather.io/staking) and pool operators' own apps can supply those extra details. A general-purpose app offers the options it knows about, so a custom signer-manager may accept choices that only its operator's own app can work with.
 
 {% hint style="warning" %}
 **Re-staking without resupplying your Bitcoin address reverts you to sBTC.** In the reference manager, `signer-calldata` of `none` on a later call deletes the stored entry rather than preserving it, and you get no error.
 {% endhint %}
 
-Claiming is non-custodial and anyone can call it. It takes two steps: rewards move from `pox-5` to the signer-manager, then the manager's `claim-staker-rewards` moves them on to you. Your manager will normally do both, and since Stacks 4.0 you can also do them yourself.
+Claiming is non-custodial and anyone can call it. Rewards move from `pox-5` to the signer-manager, then the manager's `claim-staker-rewards` moves them on to you. Your manager will normally do both, and since PoX-5 (Stacks 4.x) you can also do them yourself.
 
 ### Change or end your position
 
