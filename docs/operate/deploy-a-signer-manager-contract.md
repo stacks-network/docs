@@ -111,7 +111,7 @@ Ledger Stacks App versions through `0.26.17` cannot sign a deployment payload th
 
 ### Grant the signer-manager permission: `grant-signer-key`
 
-The grant comes first. Registration re-checks it, so a manager cannot register a key it has not already been granted. [Generate a Signer Signature](stacking-stx/generate-signer-signature.md) has the `stacks-signer` command that produces one.
+The grant comes first. Registration re-checks it, so a manager cannot register a key it has not already been granted. [Generate a Signer Signature](staking-stx/generate-signer-signature.md) has the `stacks-signer` command that produces one.
 
 {% stepper %}
 {% step %}
@@ -441,6 +441,6 @@ If you operated under PoX-4, three things are different.
 
 A signer used to be a `{ btcRewardAddress, signerKey }` tuple in a reward set. It is now a contract principal with one associated signer key.
 
-PoX-4 scoped every staking call with a per-transaction signer signature carrying an amount, a period, and a pox-addr. PoX-5 replaces all of that with the one-time grant above, which carries a signer-manager and an `auth-id` and nothing else. See [Generate a Signer Signature](stacking-stx/generate-signer-signature.md).
+PoX-4 scoped every staking call with a per-transaction signer signature carrying an amount, a period, and a pox-addr. PoX-5 replaces all of that with the one-time grant above, which carries a signer-manager and an `auth-id` and nothing else. See [Generate a Signer Signature](staking-stx/generate-signer-signature.md).
 
 Reward routing has moved out of the protocol. `register-for-bond` carries no `pox-addr` argument, and pox-5 pays sBTC to the manager rather than BTC to an address in a reward set. Electing a native BTC payout is now a signer-manager concern, handled through `signer-calldata`.
