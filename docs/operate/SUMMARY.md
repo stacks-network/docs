@@ -30,7 +30,7 @@
 * [Staking STX](stacking-stx/README.md)
   * [What's Changed in PoX-5](stacking-stx/whats-changed-in-pox-5.md)
   * [Solo Stacking](stacking-stx/solo-stacking.md)
-  * [Stack with a Pool](stacking-stx/stack-with-a-pool.md)
+  * [Stake to an Existing Signer-Manager](stacking-stx/stack-with-a-pool.md)
   * [Operate a Pool](stacking-stx/operate-a-pool.md)
   * [Generate a Signer Signature](stacking-stx/generate-signer-signature.md)
   * [Key and Address Rotation](stacking-stx/key-and-address-rotation.md)

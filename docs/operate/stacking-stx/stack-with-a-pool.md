@@ -1,178 +1,79 @@
-# Stack with a Pool
+---
+description: >-
+  How to stake STX-only under PoX-5 by choosing a signer-manager contract, what
+  to check before you do, and how you get paid.
+---
 
-This guide covers delegated stacking from the **delegator** perspective: how to delegate your STX to a pool, increase your delegation, revoke it, and stop stacking.
+# Stake to an Existing Signer-Manager
 
-{% hint style="info" %}
-This guide assumes you are familiar with stacking at a conceptual level. If not, read the [Stacking](../../learn/block-production/stacking.md) concept guide first.
-{% endhint %}
+Staking STX-only under PoX-5 (Stacks 4.x) means locking your STX and naming a signer-manager contract to act for you. You choose how many cycles it runs, from 1 to 96. You can unstake at any time and your STX unlocks at the start of the next cycle, so you are never locked for more than one cycle.
 
-Delegating is the most common stacking scenario. It applies when you do not meet the minimum STX threshold to solo stack and want a pool operator to stack on your behalf. This is a **non-custodial** delegation. Your STX do not leave your wallet.
+You keep custody throughout: the STX locks in your own account and the manager never holds it.
 
-The minimum stacking amount is dynamic and can be found at the [pox endpoint](https://api.mainnet.hiro.so/v2/pox) under `min_threshold_ustx` (1 STX = 1,000,000 uSTX).
+### Stake
 
-{% hint style="info" %}
-Pool operators have control over how they implement stacking and reward distribution. Usually you will interact with a wrapper contract the pool operator has created.
-{% endhint %}
+For STX-only staking, use [app.leather.io/staking](https://app.leather.io/staking), which lists signer-managers you can pick from. Several pool operators run their own staking apps as well.
 
-If you want to operate a pool instead, see the [Operate a Pool](operate-a-pool.md) guide.
+Whichever you use, the transaction goes to `pox-5` and locks your STX in your own account.
 
-***
-
-## Delegate to a Pool
-
-{% stepper %}
-{% step %}
-#### Find a pool
-
-The Stacks website has a [page on stacking](https://www.stacks.co/learn/stacking) that links to several pool operators. Do your research, as operators differ in reward distribution, fees, and trust models.
-{% endstep %}
-
-{% step %}
-#### Call `delegate-stx`
-
-Use your pool operator's UI or call the function directly to delegate. This does not lock your STX. It gives the pool operator **permission** to stack on your behalf.
-
-<details>
-
-<summary>Function source code</summary>
-
-```clojure
-;; Delegate to `delegate-to` the ability to stack from a given address.
-;;  This method _does not_ lock the funds, rather, it allows the delegate
-;;  to issue the stacking lock.
-;; The caller specifies:
-;;   * amount-ustx: the total amount of ustx the delegate may be allowed to lock
-;;   * until-burn-ht: an optional burn height at which this delegation expires
-;;   * pox-addr: an optional address to which any rewards *must* be sent
-(define-public (delegate-stx (amount-ustx uint)
-                             (delegate-to principal)
-                             (until-burn-ht (optional uint))
-                             (pox-addr (optional { version: (buff 1), hashbytes: (buff 32) })))
-
-    (begin
-      ;; must be called directly by the tx-sender or by an allowed contract-caller
-      (asserts! (check-caller-allowed)
-                (err ERR_STACKING_PERMISSION_DENIED))
-
-      ;; pox-addr, if given, must be valid
-      (match pox-addr
-         address
-            (asserts! (check-pox-addr-version (get version address))
-                (err ERR_STACKING_INVALID_POX_ADDRESS))
-         true)
-
-      ;; tx-sender must not be delegating
-      (asserts! (is-none (get-check-delegation tx-sender))
-        (err ERR_STACKING_ALREADY_DELEGATED))
-
-      ;; add delegation record
-      (map-set delegation-state
-        { stacker: tx-sender }
-        { amount-ustx: amount-ustx,
-          delegated-to: delegate-to,
-          until-burn-ht: until-burn-ht,
-          pox-addr: pox-addr })
-
-      (ok true)))
-```
-
-</details>
-
-The arguments are:
-
-* **Amount**: Denoted in uSTX (1 STX = 1,000,000 uSTX). The maximum amount the pool operator is allowed to lock.
-* **Delegate to**: the STX address of the pool operator.
-* **Until burn height**: optional BTC block height when the delegation expires. If not set, the delegation permission expires only when explicitly revoked.
-* **Pox Address**: optional BTC address that, if specified, the pool operator must use when accepting this delegation.
-{% endstep %}
-
-{% step %}
-#### Pool operator stacks your tokens
-
-Once you've delegated, the pool operator takes over. They call `delegate-stack-stx` to lock your STX, and then `stack-aggregation-commit-indexed` to commit the pool's total to the reward cycle. Your STX will be locked at this point.
-
-The pool operator may offer the option to automatically continue stacking for up to 12 continuous cycles.
-{% endstep %}
-
-{% step %}
-#### Pool operator distributes rewards
-
-The pool operator tracks the proportion of rewards you've earned and distributes them in BTC or STX, depending on their model. Research your pool's reward distribution mechanism to ensure you understand and trust it.
-{% endstep %}
-{% endstepper %}
-
-***
-
-## Increase Your Delegation
-
-To increase the amount of STX you've delegated, you need to revoke your current delegation and re-delegate with a higher amount.
-
-{% stepper %}
-{% step %}
-#### Revoke your current delegation
-
-Call `revoke-delegate-stx` to cancel the existing delegation. See [Revoke and Stop Stacking](#revoke-and-stop-stacking) below for details.
-{% endstep %}
-
-{% step %}
-#### Delegate with a higher amount
-
-After the revocation is confirmed, call `delegate-stx` again with the new, higher amount to the same pool operator.
-
-{% hint style="info" %}
-Make sure the revocation is successful before initiating a new delegation. Otherwise, the `delegate-stx` transaction will fail.
-{% endhint %}
-{% endstep %}
-{% endstepper %}
-
-***
-
-## Revoke and Stop Stacking
-
-To stop stacking as a delegator, you must cancel the delegation with the pool operator by calling `revoke-delegate-stx`.
-
-<details>
-
-<summary>Function source code</summary>
-
-```clojure
-;; Revokes the delegation to the current stacking pool.
-;; New in pox-4: Fails if the delegation was already revoked.
-;; Returns the last delegation state.
-(define-public (revoke-delegate-stx)
-  (let ((last-delegation-state (get-check-delegation tx-sender)))
-    ;; must be called directly by the tx-sender or by an allowed contract-caller
-    (asserts! (check-caller-allowed)
-              (err ERR_STACKING_PERMISSION_DENIED))
-    (asserts! (is-some last-delegation-state) (err ERR_DELEGATION_ALREADY_REVOKED))
-    (asserts! (map-delete delegation-state { stacker: tx-sender }) (err ERR_DELEGATION_ALREADY_REVOKED))
-    (ok last-delegation-state)))
-```
-
-</details>
-
-You can call this through the pool's interface or directly on the [pox-4](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet) contract.
+[Watch the flow end to end](https://x.com/Stacks/status/2083267023916662923)
 
 {% hint style="warning" %}
-Revoking delegation **does not immediately unlock** your STX. Your tokens remain locked until the end of the last stacking cycle chosen by the pool operator (can be at most 12 cycles). Revoking only prevents the pool from stacking your STX in future cycles.
-
-Failing to revoke means you continue to allow the pool to stack your STX until the burn block height specified in the `delegate-stx` call.
+Staking and staking updates are blocked during the prepare phase, the last 100 Bitcoin blocks of every reward cycle. A `stake` submitted then fails with `ERR_STAKE_IN_PREPARE_PHASE (u47)`. This recurs every cycle rather than happening once.
 {% endhint %}
 
-After revoking, wait for the current lock period to expire. The unlock occurs automatically.
+A transaction ID confirms submission, not success. Confirm the position on-chain or in your wallet before treating yourself as staked.
 
-***
+{% hint style="warning" %}
+**One position per Stacks principal.** STX-only staking and a protocol bond are mutually exclusive. Registering a bond while staked fails with `ERR_ALREADY_STAKED (u19)`.
+{% endhint %}
 
-## Liquid Stacking
+### Choosing between signer-managers
 
-Liquid stacking is when you delegate your STX to a liquid stacking provider who issues you a new token (e.g., stSTX) that you can use in the ecosystem while your STX are locked. This lets you participate in DeFi protocols even while stacking.
+If you took whichever manager your app offered, you can skip this. Everything below is readable on-chain before you commit.
 
-Links to liquid stacking providers can be found on the [Stacks website](https://www.stacks.co/learn/stacking).
+* **Current fee.** A percentage of your sBTC rewards, deducted by the manager before it pays you.
+* **Fee ceiling.** Fixed in the deployed code and unchangeable afterwards. Some managers permit anything up to 99.99%. Others cap far lower, at 5%.
+* **Admin set.** Who can change the fee and withdraw accrued fees. Some managers block an admin from removing themselves, so the contract can never be left with no admin. Others have no such guard.
+* **An active signer-key grant.** A manager without one cannot accept new stake, and your transaction fails with `ERR_SIGNER_KEY_GRANT_NOT_FOUND (u17)`.
 
-***
+A manager needs 50,000 STX (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it before it enters the signer set. That threshold is fixed and applies to the manager rather than to you, so your own stake can be any size.
 
-## Considerations
+{% hint style="info" %}
+**Immutable code, mutable terms.** A deployed contract's Clarity source can never change, but its parameters can. An admin can change the fee at any time, up to whatever ceiling that contract fixed at deployment. Read the current fee and the admin set rather than assuming the economics are settled.
+{% endhint %}
 
-* **Monitor your stacking status**: Use your wallet's interface or the [Hiro Explorer](https://explorer.hiro.so/?chain=mainnet) to track your lock period.
-* **Using the API**: Hiro's API offers an endpoint to [Get account STX balance](https://docs.hiro.so/stacks/api/accounts/stx-balances), which includes the `burnchain_unlock_height` representing when your STX unlock.
-* **Plan ahead**: Unlocking is bound to cycle timing. Plan your revocation accordingly to minimize delays in accessing your funds.
+### How you are paid
+
+Rewards reach your signer-manager as sBTC and the manager distributes them. To be paid in native BTC on Bitcoin L1 instead, supply a `signer-calldata` buffer when you stake, if the manager contract supports it. pox-5 forwards that buffer to the manager and stores nothing itself, so what it means is defined by the manager you chose.
+
+Both `app.leather.io/staking` and pool operators' own apps can supply those extra details. A general-purpose app offers the options it knows about, so a custom signer-manager may accept choices that only its operator's own app can work with.
+
+{% hint style="warning" %}
+**Re-staking without resupplying your Bitcoin address reverts you to sBTC.** In the reference manager, `signer-calldata` of `none` on a later call deletes the stored entry rather than preserving it, and you get no error.
+{% endhint %}
+
+Claiming is non-custodial and anyone can call it. It takes two steps: rewards move from `pox-5` to the signer-manager, then the manager's `claim-staker-rewards` moves them on to you. Your manager will normally do both, and since Stacks 4.0 you can also do them yourself.
+
+### Change or end your position
+
+`stake-update` re-runs the manager's validation. A second call overwrites whatever the first stored, which is also how a stored payout address is rotated. You can change:
+
+* **The signer-manager**, which is how you switch pools. It takes effect from the start of the next cycle, with no cooldown.
+* **The amount**, to increase your stake.
+* **The duration**, to extend how many cycles it runs.
+* **The Bitcoin payout address and max fee.** When a manager starts paying to a new address depends on its own policy, typically from the next payout. Check the operator's site.
+
+`unstake` ends the position. Like staking, it is blocked during the prepare phase, failing with `ERR_UNSTAKE_IN_PREPARE_PHASE (u28)`. Unlocks happen at the start of the next cycle.
+
+### If you stacked under PoX-4
+
+Every PoX-4 position unlocked when Epoch 4.0 activated, so you are not stacking until you re-enroll.
+
+This used to be called joining a pool, and the word still works. PoX-5 has no separate pooling mechanism, so a manager with one staker and a manager with a thousand are the same kind of thing.
+
+`delegate-stx` and `revoke-delegate-stx` are gone. PoX-5 has no delegation map, so there is no permission grant to inspect or revoke. You stake to a manager directly and you end it with `unstake`.
+
+`stack-aggregation-commit` is gone. No operator commits per cycle on your behalf.
+
+Solo and pooled stacking were separate mechanisms under PoX-4. They are not separate now.
