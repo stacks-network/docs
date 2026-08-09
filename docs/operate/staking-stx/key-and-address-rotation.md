@@ -7,7 +7,7 @@ description: >-
 
 # Key and Address Rotation
 
-An operator rotates the **signer key** their signer-manager is bound to. A staker changes the **Bitcoin payout address** their rewards are sent to. Neither requires anyone to unstake, and beyond both being called rotation the two have nothing in common.
+An operator rotates the **signer key** their signer-manager is bound to, and the **admin key** that controls the manager itself. A staker changes the **Bitcoin payout address** their rewards are sent to. None of these requires anyone to unstake.
 
 If you are arriving from the PoX-4 model, where `stack-extend` carried a `signer-key` argument and pools had an operator key that could not be rotated at all, read [If you knew rotation under PoX-4](key-and-address-rotation.md#if-you-knew-rotation-under-pox-4) first.
 
@@ -107,7 +107,7 @@ Seeing the old key on chain once the prepare phase has opened means the rotation
 
 ### 5. Restart the signer at the cycle boundary
 
-Covered below. This is the step with no room in it.
+Covered in the next section. This is the one step with no room in it.
 
 ### 6. Revoke the old grant, last and optionally
 
@@ -169,6 +169,30 @@ pox-5 does not check whether a signer key is already bound to another manager, a
 
 ***
 
+## Rotate the manager admin key
+
+Admin is a map on your signer-manager, so this is two calls on your own contract and pox-5 never sees it. Both deployed managers expose `(update-admin (admin principal) (enabled bool))`.
+
+1. From the old admin, call `update-admin` with the new principal and `enabled: true`.
+2. From the **new** admin, call `update-admin` with the old principal and `enabled: false`.
+
+Doing the removal from the new admin is the check. If the new principal did not take, step 2 fails with `ERR_UNAUTHORIZED_ADMIN` and the old admin is still in place. Removing the old admin from the old admin gives you no way to find that out.
+
+On `SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager` step 2 is the only route, because an admin cannot remove themselves and trying fails with `ERR_CANNOT_REMOVE_SELF` (`u1015`). Since the caller has already been established as an admin and cannot be the principal being removed, at least one admin always survives the call. `SP21YTSM60CAY6D011EZVEVNKXVW8FVZE198XEFFP.fastpool-1-signer-manager` has no such guard, so an admin there can remove themselves and leave the contract with none.
+
+Both check the caller the same way:
+
+```clarity
+(asserts! (and (is-eq contract-caller tx-sender) (is-admin tx-sender))
+  ERR_UNAUTHORIZED_ADMIN)
+```
+
+So the call has to come from the admin account directly rather than through another contract. Confirm the result with the read-only `is-admin`, which takes a principal. There is no cap on the number of admins.
+
+Admin controls `register-self`, `update-fees`, `withdraw-fees` and `sweep-fee-refunds`, so a manager left with no admin can never register a signer key again and any accrued fees are stranded.
+
+***
+
 ## Rotate a Bitcoin payout address
 
 This is a staker action, and it lives at the signer-manager layer rather than in pox-5. pox-5 has no `pox-addr` parameter anywhere: rewards are sBTC by default, and a native BTC payout is an election carried in `signer-calldata` alongside a staking action.
@@ -189,7 +213,7 @@ The deployed signer-managers do not all take the same calldata. `SP21YTSM60CAY6D
 
 **Keep the signer key and the manager admin key separate.** They authorize different things and neither substitutes for the other. Only an admin can call `register-self`. Only the principal derived from the signer key can revoke a grant. In a normal setup they belong to different people.
 
-**Secure the admin key, and consider holding two.** The admin key can be rotated, which is an improvement on the PoX-4 pool operator key, but it also controls the manager's fee and fee withdrawal. Two admin keys, one warm and one in deeper cold storage, means neither a lost key nor a compromised one is terminal. The case gets stronger the more the manager handles: a manager taking a high fee holds proportionally more of other people's rewards, and `fastpool-1-signer-manager` has no on-chain guard against removing its last admin, while `fastpool-max500-signer-manager` blocks an admin from removing themselves. [Deploy a Signer-Manager Contract](../deploy-a-signer-manager-contract.md) covers which contract has which guard.
+**Secure the admin key, and consider holding two.** The admin key can be rotated, which is an improvement on the PoX-4 pool operator key, but it also controls the manager's fee and fee withdrawal. Two admin keys, one warm and one in deeper cold storage, means neither a lost key nor a compromised one is terminal. The case gets stronger the more the manager handles: a manager taking a high fee holds proportionally more of other people's rewards. [Deploy a Signer-Manager Contract](../deploy-a-signer-manager-contract.md) covers the differences between the deployed contracts.
 
 **Limit signer key exposure.** It lives on the signer host and is the one key that has to be online. It signs the grant and it signs blocks, and it should do nothing else. See [OpSec Best Practices](../run-a-signer/opsec-best-practices.md).
 
