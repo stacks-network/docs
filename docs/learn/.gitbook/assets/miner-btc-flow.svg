@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 940" font-family="Instrument Sans, Helvetica, Arial, sans-serif">
+  <rect width="1536" height="940" fill="#0A0A0A"/>
+
+  <!-- Title bar -->
+  <rect x="20" y="20" width="1496" height="84" rx="26" fill="#F65B27"/>
+  <path fill="#111111" stroke="#111111" stroke-width="1.5" stroke-linejoin="round" d="M52.000,62.000 C52.000,45.431 65.431,32.000 82.000,32.000 C98.569,32.000 112.000,45.431 112.000,62.000 C112.000,78.569 98.569,92.000 82.000,92.000 C65.431,92.000 52.000,78.569 52.000,62.000 Z"/>
+  <g fill="#FFFFFF"><path fill-rule="evenodd" transform="translate(-3.68,-115.07) scale(0.714)" d="M127.15,241.02c-.15-.26-.13-.59.04-.86l7.33-10.88c.2-.31.22-.68.04-.99-.18-.33-.51-.51-.86-.51h-2.85c-.31,0-.61.15-.81.44l-8.56,12.75c-.22.33-.57.51-.97.51h-1.08c-.4,0-.75-.2-.97-.51l-8.52-12.77c-.18-.29-.5-.44-.81-.44h-2.85c-.35,0-.7.2-.86.53-.18.33-.13.7.04.99l7.33,10.9c.18.24.2.57.04.84-.15.29-.42.44-.72.44h-11.22c-.55,0-.97.44-.97.97v2.37c0,.55.44.97.97.97h38.18c.55,0,.97-.44.97-.97v-2.37c0-.51-.37-.9-.86-.97h-11.33c-.31,0-.59-.15-.72-.44ZM118.5,255.02l-8.56,12.75c-.18.29-.5.44-.81.44h-2.85c-.35,0-.68-.2-.86-.51-.18-.31-.15-.7.04-.99l7.31-10.88c.18-.26.2-.57.04-.86-.15-.26-.42-.44-.72-.44h-11.18c-.53,0-.97-.42-.97-.97v-2.37c0-.53.42-.97.97-.97h38.18c.53,0,.97.42.97.97v2.37c0,.53-.42.97-.97.97h-11.2c-.33,0-.59.15-.72.44-.15.29-.13.59.04.84l7.33,10.9c.18.29.22.66.04.99-.18.33-.5.53-.86.53h-2.85c-.33,0-.61-.15-.79-.42l-8.56-12.75c-.22-.33-.57-.51-.97-.51h-1.08c-.4,0-.75.2-.97.51l-.02-.04Z"/></g>
+  <text x="132" y="75" font-size="36" font-weight="500" fill="#FFFFFF">Where Miner BTC Goes</text>
+
+  <!-- ===== Lane 1: the block commit, Bitcoin L1 ===== -->
+  <rect x="20" y="128" width="1496" height="280" rx="24" fill="#161618"/>
+  <text x="64" y="180" font-size="21" fill="#8E8E93" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2">THE BLOCK COMMIT - ONE BITCOIN TRANSACTION</text>
+
+  <!-- Miner node -->
+  <circle cx="280" cy="272" r="38" fill="#F9A03F"/>
+  <text x="280" y="288" font-size="44" fill="#111111" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace">&#8383;</text>
+  <text x="280" y="348" font-size="26" fill="#FFFFFF" text-anchor="middle">Miner address</text>
+
+  <!-- Commit arrow -->
+  <line x1="340" y1="272" x2="1128" y2="272" stroke="#F65B27" stroke-width="3" stroke-dasharray="5 7" stroke-linecap="round"/>
+  <path d="M1118 262 L1128 272 L1118 282" stroke="#F65B27" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="740" y="252" font-size="21" fill="#F65B27" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2">ONE POX OUTPUT</text>
+
+  <!-- Bridge node -->
+  <circle cx="1200" cy="272" r="38" fill="#F65B27"/>
+  <text x="1200" y="288" font-size="44" fill="#FFFFFF" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace">&#8383;</text>
+  <text x="1200" y="348" font-size="26" fill="#FFFFFF" text-anchor="middle">sBTC bridge address</text>
+
+  <text x="740" y="388" font-size="22" fill="#C7C7CC" text-anchor="middle">Every block of the cycle pays this same output, prepare phase included. Nothing is sent to a burn address.</text>
+
+  <!-- Bridge-to-Stacks connector -->
+  <path d="M1200 312 V446 H400 V582" stroke="#F9A03F" stroke-width="3" stroke-dasharray="5 7" fill="none" stroke-linecap="round"/>
+  <path d="M390 572 L400 582 L410 572" stroke="#F9A03F" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="800" y="436" font-size="21" fill="#F9A03F" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2">BRIDGE MINTS SBTC INTO POX-5</text>
+
+  <!-- ===== Lane 2: automated, on Stacks ===== -->
+  <rect x="20" y="470" width="1496" height="360" rx="24" fill="#161618"/>
+  <text x="64" y="522" font-size="21" fill="#8E8E93" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2">AUTOMATED - ON STACKS</text>
+
+  <!-- pox-5 node -->
+  <circle cx="400" cy="646" r="38" fill="#FFFFFF"/>
+  <text x="400" y="654" font-size="20" fill="#111111" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace">sBTC</text>
+  <text x="400" y="722" font-size="26" fill="#FFFFFF" text-anchor="middle">pox-5 contract</text>
+
+  <!-- pox-5 -> manager -->
+  <line x1="446" y1="646" x2="806" y2="646" stroke="#8E8E93" stroke-width="3" stroke-dasharray="5 7" stroke-linecap="round"/>
+  <path d="M796 636 L806 646 L796 656" stroke="#8E8E93" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="626" y="624" font-size="21" fill="#8E8E93" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2">WATERFALL CREDIT</text>
+
+  <!-- Signer-manager node -->
+  <circle cx="880" cy="646" r="38" fill="#F65B27"/>
+  <text x="880" y="722" font-size="26" fill="#FFFFFF" text-anchor="middle">Signer-Manager</text>
+
+  <!-- manager -> staker -->
+  <line x1="926" y1="646" x2="1246" y2="646" stroke="#F9A03F" stroke-width="3" stroke-dasharray="5 7" stroke-linecap="round"/>
+  <path d="M1236 636 L1246 646 L1236 656" stroke="#F9A03F" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="1086" y="624" font-size="21" fill="#F9A03F" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2">SBTC, OR NATIVE BTC</text>
+
+  <!-- Staker node -->
+  <circle cx="1320" cy="646" r="38" fill="#F9A03F"/>
+  <text x="1320" y="722" font-size="26" fill="#FFFFFF" text-anchor="middle">Staker</text>
+
+  <text x="768" y="788" font-size="22" fill="#C7C7CC" text-anchor="middle">pox-5 credits the waterfall once per 1,050-block distribution: bonds first, then the reserve, then STX-only stakers. Managers claim any time.</text>
+
+  <!-- Footer -->
+  <rect x="20" y="854" width="1496" height="64" rx="20" fill="#3A3A3C" opacity="0.6"/>
+  <text x="768" y="894" font-size="24" fill="#F2F2F4" text-anchor="middle">Two separate steps: the block commit pays a Bitcoin address; bridging and distribution happen on Stacks automatically.</text>
+</svg>
