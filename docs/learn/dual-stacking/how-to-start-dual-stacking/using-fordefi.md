@@ -112,7 +112,7 @@ Let's deploy sBTC with Zest. Supplying sBTC in Zest will provide users with a su
 
 After deploying sBTC into Zest, navigate back to the Dual Stacking web app to see your current estimated APY and rewards composition.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (1) (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (1).png" alt=""><figcaption></figcaption></figure></div>
 
 Check back on the Dual Stacking dashboard to stay current with your rewards and rewards composition. All rewards are distributed in sBTC, redeemable 1:1 for BTC anytime.
 {% endstep %}

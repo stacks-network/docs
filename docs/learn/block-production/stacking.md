@@ -6,7 +6,7 @@
 **Builder Resources**
 
 * All stacking operations happen in the PoX contract implementation, [here](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46).
-* To start stacking STX, [here](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/stacking-stx).
+* To start stacking STX, [here](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/staking-stx).
 {% endhint %}
 
 #### The Big Picture
@@ -40,7 +40,7 @@ While stacking on the Stacks network can be conceptually similar to staking, Sta
 
 There are two primary differences between stacking in Stacks and staking in PoS networks.
 
-#### Yield generated in burnchain token
+**Yield generated in burnchain token**
 
 In staking, users lock one token and earn their yield in the same token. In stacking, users lock one token (STX) and earn a yield in the "burnchain" token (BTC), rather than the same token that was locked. In PoX, the yield comes from a finite, external source (Bitcoin deposits from Stacks miners). In PoS, the yield comes from the currency's issuance schedule itself.
 
@@ -48,7 +48,7 @@ How are these issuance rates set? In Ethereum, issuance rates are determined by 
 
 Stacking doesn't generate yield in the same token and therefore doesn't need to issue new STX for stacking rewards. Stacking yield requires an input of an external token (BTC). Stacks does have an issuance rate and does generate new STX tokens, but that process is separate from stacking and the stacking yield mechanism.
 
-#### No slashing
+**No slashing**
 
 Although stackers do fulfill a consensus-critical role in Stacks by serving as signers, there is no concept of slashing in PoX (Proof of Transfer).
 
@@ -130,7 +130,7 @@ Keep in mind that the target duration for a reward cycle is \~2 weeks. This dura
 
 ### Delegated (Pool) Stacking Flow
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-delegation-contract-flow (1).png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-delegation-contract-flow.png" alt=""><figcaption></figcaption></figure></div>
 
 * Before stacking on behalf of a token holder, the delegator must be granted permission by the account owner. Permission is restricted to a maximum amount the delegator may stack; the maximum can be set higher than available funds. An account can be associated with only one delegator.
 * The account sets the delegation relationship. They can optionally restrict the Bitcoin reward address that must be used for payouts and specify an expiration burn block height to limit the delegation duration.
@@ -174,7 +174,7 @@ This process is handled by [running a signer](https://app.gitbook.com/s/4cpTb2lb
 
 Stacking and signing are distinct actions, but both are necessary. Signers must stack their STX tokens, and you cannot stack STX without associated signing information. The nuance depends on solo vs delegated stacking.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-vs-signing-graphic.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-vs-signing.png" alt=""><figcaption></figcaption></figure></div>
 
 #### Solo Stacking
 
@@ -184,7 +184,7 @@ If you are solo stacking, you have two options for signing.
 You can run your own signer by following the How to Run a Signer guide. This requires technical knowledge and resources for running a machine. See the guide for details.
 
 **Work with another signer:**\
-If you don't want to run your own signer, you can collaborate with another signer and include their signature in your stacking transactions. Details on how to do this are in the [Stack STX](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/stacking-stx) guide.
+If you don't want to run your own signer, you can collaborate with another signer and include their signature in your stacking transactions. Details on how to do this are in the [Stack STX](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/staking-stx) guide.
 
 #### Delegated Stacking
 
@@ -198,7 +198,7 @@ If you are a pool operator, see the [operate-a-pool guide](https://app.gitbook.c
 
 Options for stacking include solo stacking, participating in a pool, using an exchange, and liquid stacking. The Stacks website has a [stacking page](https://www.stacks.co/learn/stacking) describing these options.
 
-For detailed instructions on how to stack, see the [Stack STX guides](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/stacking-stx).
+For detailed instructions on how to stack, see the [Stack STX guides](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/staking-stx).
 
 Tools and explorers for stacking data and statistics:
 

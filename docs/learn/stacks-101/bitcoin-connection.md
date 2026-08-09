@@ -41,7 +41,7 @@ It is important to define what is meant by a Bitcoin layer. While there are seve
 6. The ability to pay for L2 transactions in BTC
 7. The ability to unilaterally withdraw your BTC back from the L2 with no counterparty risk
 
-Stacks V1 had properties 1 and 2, but was missing the rest. The Nakamoto upgrade brings properties 3, 4, and 5, with discussions and work currently underway to accomplish 6. Currently, Lightning is the only L2 that has property 7, and the only way to truly take advantage of this is to run your own Lightning node, a complex undertaking few users engage in. Furthermore, Lightning is missing property 2, which means we cannot unlock any additional functionality beyond what that Bitcoin L1 is already capable of.&#x20;
+Stacks V1 had properties 1 and 2, but was missing the rest. The Nakamoto upgrade brings properties 3, 4, and 5, with discussions and work currently underway to accomplish 6. Currently, Lightning is the only L2 that has property 7, and the only way to truly take advantage of this is to run your own Lightning node, a complex undertaking few users engage in. Furthermore, Lightning is missing property 2, which means we cannot unlock any additional functionality beyond what that Bitcoin L1 is already capable of.
 
 It’s important to acknowledge that Bitcoin L2s have fundamentally different goals than L2s on other L1s like Ethereum. While the primary motivation for L2s on Ethereum is to enhance\
 scalability, Bitcoin L2s serve the purpose of enhancing both scalability and functionality.\
@@ -130,7 +130,7 @@ The DevEx for a Bitcoin L2 should abstract away Bitcoin’s complexity but also 
 
 {% stepper %}
 {% step %}
-#### Sustain bitcoin movements with sBTC
+**Sustain bitcoin movements with sBTC**
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure></div>
 
@@ -138,7 +138,7 @@ sBTC unlocks Bitcoin’s programmability. You get L2 expressivity without losing
 {% endstep %}
 
 {% step %}
-#### Plug directly into BTCFi
+**Plug directly into BTCFi**
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure></div>
 
@@ -146,7 +146,7 @@ Zest, Bitflow, StackingDAO, Dual Stacking, and other major DeFi protocols on Sta
 {% endstep %}
 
 {% step %}
-#### One cryptographic identity
+**One cryptographic identity**
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure></div>
 
@@ -156,17 +156,17 @@ Different layers. Same cryptographic private key.
 {% endstep %}
 
 {% step %}
-#### React to Bitcoin state
+**React to Bitcoin state**
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure></div>
 
-One of the often-touted features of Clarity is that it has access to the state of the Bitcoin chain built in, but how does it actually do that? Because of Stacks' PoX mechanism, every Stacks block is connected to a Bitcoin block, and can query Bitcoin block header hashes with the `get-burn-block-info?` function.&#x20;
+One of the often-touted features of Clarity is that it has access to the state of the Bitcoin chain built in, but how does it actually do that? Because of Stacks' PoX mechanism, every Stacks block is connected to a Bitcoin block, and can query Bitcoin block header hashes with the `get-burn-block-info?` function.
 
 Clarity can read Bitcoin state directly. Parse BTC transactions. Trigger logic based on Bitcoin activity.
 {% endstep %}
 
 {% step %}
-#### Capture time on the L2 at Bitcoin speed
+**Capture time on the L2 at Bitcoin speed**
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure></div>
 

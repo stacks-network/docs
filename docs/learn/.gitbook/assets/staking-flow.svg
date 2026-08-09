@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1330" font-family="Instrument Sans, Helvetica, Arial, sans-serif">
+  <rect width="1536" height="1330" fill="#0A0A0A"/>
+
+  <!-- Title bar -->
+  <rect x="20" y="20" width="1496" height="84" rx="26" fill="#F65B27"/>
+  <path fill="#111111" stroke="#111111" stroke-width="1.5" stroke-linejoin="round" d="M52.000,62.000 C52.000,45.431 65.431,32.000 82.000,32.000 C98.569,32.000 112.000,45.431 112.000,62.000 C112.000,78.569 98.569,92.000 82.000,92.000 C65.431,92.000 52.000,78.569 52.000,62.000 Z"/>
+  <g fill="#FFFFFF"><path fill-rule="evenodd" transform="translate(-3.68,-115.07) scale(0.714)" d="M127.15,241.02c-.15-.26-.13-.59.04-.86l7.33-10.88c.2-.31.22-.68.04-.99-.18-.33-.51-.51-.86-.51h-2.85c-.31,0-.61.15-.81.44l-8.56,12.75c-.22.33-.57.51-.97.51h-1.08c-.4,0-.75-.2-.97-.51l-8.52-12.77c-.18-.29-.5-.44-.81-.44h-2.85c-.35,0-.7.2-.86.53-.18.33-.13.7.04.99l7.33,10.9c.18.24.2.57.04.84-.15.29-.42.44-.72.44h-11.22c-.55,0-.97.44-.97.97v2.37c0,.55.44.97.97.97h38.18c.55,0,.97-.44.97-.97v-2.37c0-.51-.37-.9-.86-.97h-11.33c-.31,0-.59-.15-.72-.44ZM118.5,255.02l-8.56,12.75c-.18.29-.5.44-.81.44h-2.85c-.35,0-.68-.2-.86-.51-.18-.31-.15-.7.04-.99l7.31-10.88c.18-.26.2-.57.04-.86-.15-.26-.42-.44-.72-.44h-11.18c-.53,0-.97-.42-.97-.97v-2.37c0-.53.42-.97.97-.97h38.18c.53,0,.97.42.97.97v2.37c0,.53-.42.97-.97.97h-11.2c-.33,0-.59.15-.72.44-.15.29-.13.59.04.84l7.33,10.9c.18.29.22.66.04.99-.18.33-.5.53-.86.53h-2.85c-.33,0-.61-.15-.79-.42l-8.56-12.75c-.22-.33-.57-.51-.97-.51h-1.08c-.4,0-.75.2-.97.51l-.02-.04Z"/></g>
+  <text x="132" y="75" font-size="36" font-weight="600" fill="#FFFFFF">Staking Flow: Three Ways In</text>
+
+  <!-- Column cards -->
+  <rect x="24" y="132" width="480" height="1050" rx="24" fill="#161618"/>
+  <rect x="528" y="132" width="480" height="1050" rx="24" fill="#161618"/>
+  <rect x="1032" y="132" width="480" height="1050" rx="24" fill="#161618"/>
+
+  <!-- Column headers -->
+  <rect x="24" y="132" width="480" height="104" rx="24" fill="#3A3A3C"/>
+  <rect x="24" y="212" width="480" height="24" fill="#161618"/>
+  <text x="264" y="178" font-size="27" font-weight="600" fill="#FFFFFF" text-anchor="middle">STX-Only Staking</text>
+  <text x="264" y="208" font-size="18" fill="#C7C7CC" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace">uncapped - residual yield</text>
+
+  <rect x="528" y="132" width="480" height="104" rx="24" fill="#B23E17"/>
+  <rect x="528" y="212" width="480" height="24" fill="#161618"/>
+  <text x="768" y="178" font-size="27" font-weight="600" fill="#FFFFFF" text-anchor="middle">Protocol Bond: sBTC</text>
+  <text x="768" y="208" font-size="18" fill="#FFD9C7" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace">capacity by auction - target APY</text>
+
+  <rect x="1032" y="132" width="480" height="104" rx="24" fill="#F65B27"/>
+  <rect x="1032" y="212" width="480" height="24" fill="#161618"/>
+  <text x="1272" y="178" font-size="27" font-weight="600" fill="#FFFFFF" text-anchor="middle">Protocol Bond: Native BTC</text>
+  <text x="1272" y="208" font-size="18" fill="#FFD9C7" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace">Bitcoin staking - self-custodial L1</text>
+
+  <!-- ===== Column A: STX-only ===== -->
+  <g>
+    <circle cx="76" cy="292" r="22" fill="#3A3A3C"/>
+    <text x="76" y="300" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">1</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="116" y="286" fill="#FFFFFF" font-weight="600">Choose a signer-manager</tspan>
+      <tspan x="116" y="316">Fee and admin set are readable</tspan>
+      <tspan x="116" y="346">on-chain before you commit.</tspan>
+    </text>
+
+    <circle cx="76" cy="424" r="22" fill="#3A3A3C"/>
+    <text x="76" y="432" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">2</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="116" y="418" fill="#FFFFFF" font-weight="600">stake</tspan>
+      <tspan x="116" y="448">Amount + 1 to 96 cycles. STX</tspan>
+      <tspan x="116" y="478">locks in your own account.</tspan>
+      <tspan x="116" y="508">No minimum for you; 50k STX</tspan>
+      <tspan x="116" y="538">threshold is the manager's.</tspan>
+    </text>
+
+    <circle cx="76" cy="616" r="22" fill="#3A3A3C"/>
+    <text x="76" y="624" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">3</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="116" y="610" fill="#FFFFFF" font-weight="600">Earn per cycle</tspan>
+      <tspan x="116" y="640">Miner BTC left after bond</tspan>
+      <tspan x="116" y="670">obligations: 85% to STX-only</tspan>
+      <tspan x="116" y="700">stakers, 15% to the reserve.</tspan>
+      <tspan x="116" y="730">Credited every 1,050 blocks.</tspan>
+    </text>
+
+    <circle cx="76" cy="808" r="22" fill="#3A3A3C"/>
+    <text x="76" y="816" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">4</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="116" y="802" fill="#FFFFFF" font-weight="600">Get paid</tspan>
+      <tspan x="116" y="832">Your manager claims any time</tspan>
+      <tspan x="116" y="862">and distributes sBTC, or native</tspan>
+      <tspan x="116" y="892">BTC if you elected that.</tspan>
+    </text>
+
+    <circle cx="76" cy="970" r="22" fill="#3A3A3C"/>
+    <text x="76" y="978" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">5</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="116" y="964" fill="#FFFFFF" font-weight="600">unstake any time</tspan>
+      <tspan x="116" y="994">Outside the prepare phase.</tspan>
+      <tspan x="116" y="1024">STX unlocks at the start of</tspan>
+      <tspan x="116" y="1054">the next cycle. Or roll into</tspan>
+      <tspan x="116" y="1084">a bond as it opens.</tspan>
+    </text>
+  </g>
+
+  <!-- ===== Column B: sBTC bond ===== -->
+  <g>
+    <circle cx="580" cy="292" r="22" fill="#B23E17"/>
+    <text x="580" y="300" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">1</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="620" y="286" fill="#FFFFFF" font-weight="600">Win capacity</tspan>
+      <tspan x="620" y="316">Bid in the bond period's</tspan>
+      <tspan x="620" y="346">auction for a sats allowance.</tspan>
+    </text>
+
+    <circle cx="580" cy="424" r="22" fill="#B23E17"/>
+    <text x="580" y="432" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">2</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="620" y="418" fill="#FFFFFF" font-weight="600">register-for-bond</tspan>
+      <tspan x="620" y="448">Before the bond starts: sBTC</tspan>
+      <tspan x="620" y="478">moves into pox-5 custody, and</tspan>
+      <tspan x="620" y="508">paired STX at the set ratio</tspan>
+      <tspan x="620" y="538">locks in your own account.</tspan>
+    </text>
+
+    <circle cx="580" cy="616" r="22" fill="#B23E17"/>
+    <text x="580" y="624" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">3</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="620" y="610" fill="#FFFFFF" font-weight="600">Bond runs 12 cycles</tspan>
+      <tspan x="620" y="640">~6 months. The sBTC earns the</tspan>
+      <tspan x="620" y="670">bond's target APY, paid first</tspan>
+      <tspan x="620" y="700">in the waterfall, credited in</tspan>
+      <tspan x="620" y="730">24 weekly distributions.</tspan>
+    </text>
+
+    <circle cx="580" cy="808" r="22" fill="#B23E17"/>
+    <text x="580" y="816" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">4</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="620" y="802" fill="#FFFFFF" font-weight="600">Get paid</tspan>
+      <tspan x="620" y="832">Same as every path: your</tspan>
+      <tspan x="620" y="862">manager claims and distributes.</tspan>
+      <tspan x="620" y="892">Paired STX earns no yield.</tspan>
+    </text>
+
+    <circle cx="580" cy="970" r="22" fill="#B23E17"/>
+    <text x="580" y="978" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">5</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="620" y="964" fill="#FFFFFF" font-weight="600">End or exit</tspan>
+      <tspan x="620" y="994">At term: sBTC returns, STX</tspan>
+      <tspan x="620" y="1024">unlocks, or roll into bond i+6.</tspan>
+      <tspan x="620" y="1054">Early: unstake-sbtc forfeits</tspan>
+      <tspan x="620" y="1084">future yield; STX stays locked.</tspan>
+    </text>
+  </g>
+
+  <!-- ===== Column C: native BTC bond ===== -->
+  <g>
+    <circle cx="1084" cy="292" r="22" fill="#F65B27"/>
+    <text x="1084" y="300" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">1</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="1124" y="286" fill="#FFFFFF" font-weight="600">Win capacity</tspan>
+      <tspan x="1124" y="316">Same auction, same bond, same</tspan>
+      <tspan x="1124" y="346">yield as the sBTC form.</tspan>
+    </text>
+
+    <circle cx="1084" cy="424" r="22" fill="#F65B27"/>
+    <text x="1084" y="432" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">2</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="1124" y="418" fill="#FFFFFF" font-weight="600">Timelock BTC on Bitcoin</tspan>
+      <tspan x="1124" y="448">OP_CLTV under your own keys,</tspan>
+      <tspan x="1124" y="478">expiring 1,050 blocks before</tspan>
+      <tspan x="1124" y="508">bond end. register-for-bond</tspan>
+      <tspan x="1124" y="538">with an SPV proof + paired STX.</tspan>
+    </text>
+
+    <circle cx="1084" cy="616" r="22" fill="#F65B27"/>
+    <text x="1084" y="624" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">3</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="1124" y="610" fill="#FFFFFF" font-weight="600">Bond runs 12 cycles</tspan>
+      <tspan x="1124" y="640">BTC never leaves your keys or</tspan>
+      <tspan x="1124" y="670">Bitcoin L1. Target APY on the</tspan>
+      <tspan x="1124" y="700">locked sats, credited in 24</tspan>
+      <tspan x="1124" y="730">weekly distributions.</tspan>
+    </text>
+
+    <circle cx="1084" cy="808" r="22" fill="#F65B27"/>
+    <text x="1084" y="816" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">4</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="1124" y="802" fill="#FFFFFF" font-weight="600">Get paid</tspan>
+      <tspan x="1124" y="832">Your manager claims and</tspan>
+      <tspan x="1124" y="862">distributes, as BTC on L1 or</tspan>
+      <tspan x="1124" y="892">sBTC on Stacks.</tspan>
+    </text>
+
+    <circle cx="1084" cy="970" r="22" fill="#F65B27"/>
+    <text x="1084" y="978" font-size="24" font-weight="600" fill="#FFFFFF" text-anchor="middle">5</text>
+    <text font-size="22" fill="#C7C7CC">
+      <tspan x="1124" y="964" fill="#FFFFFF" font-weight="600">Re-lock window, then end</tspan>
+      <tspan x="1124" y="994">Timelock expires ~1 week early:</tspan>
+      <tspan x="1124" y="1024">re-lock BTC for the next bond.</tspan>
+      <tspan x="1124" y="1054">STX unlocks at bond end. Early</tspan>
+      <tspan x="1124" y="1084">exit forfeits remaining yield.</tspan>
+    </text>
+  </g>
+
+  <!-- Footer band -->
+  <rect x="24" y="1210" width="1488" height="92" rx="24" fill="#161618"/>
+  <circle cx="86" cy="1256" r="24" fill="#F65B27"/>
+  <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M76 1256 L84 1264 L98 1246"/>
+  </g>
+  <text x="132" y="1248" font-size="22" fill="#FFFFFF" font-weight="600">Every path routes through a signer-manager, and the STX always locks in your own account.</text>
+  <text x="132" y="1280" font-size="20" fill="#8E8E93">One path per Stacks principal at a time. Rewards credit every 1,050 Bitcoin blocks; managers claim on their own schedule.</text>
+</svg>

@@ -4,9 +4,9 @@ Several third-party security audits have been conducted on the sBTC protocol and
 
 ### Ottersec Audit Reports
 
-{% file src="../../.gitbook/assets/Ottersec - WSTS (1).pdf" %}
+{% file src="../../.gitbook/assets/Ottersec - WSTS.pdf" %}
 
-{% file src="../../.gitbook/assets/Ottersec - sBTC Withdrawal (1).pdf" %}
+{% file src="../../.gitbook/assets/Ottersec - sBTC Withdrawal.pdf" %}
 
 ### Immunefi Audit Reports
 
@@ -15,8 +15,8 @@ Several third-party security audits have been conducted on the sBTC protocol and
 
 ### CoinFabrik Audit Reports
 
-{% file src="../../.gitbook/assets/CoinFabrik_WSTS (1).pdf" %}
+{% file src="../../.gitbook/assets/CoinFabrik_WSTS.pdf" %}
 
 ### Clarity Alliance Audit Reports
 
-{% file src="../../.gitbook/assets/Clarity Alliance - sBTC (1).pdf" %}
+{% file src="../../.gitbook/assets/Clarity Alliance - sBTC.pdf" %}

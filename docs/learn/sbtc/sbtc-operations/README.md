@@ -1,10 +1,10 @@
-# sBTC Operations
+# How sBTC Moves
 
 This section covers the main operations in the sBTC system. These operations form the core functionality of sBTC, allowing users to permissionlessly move value between the Bitcoin and Stacks ecosystems.
 
 {% stepper %}
 {% step %}
-#### Deposit
+**Deposit**
 
 Converting BTC to sBTC.
 
@@ -16,7 +16,7 @@ Converting BTC to sBTC.
 {% endstep %}
 
 {% step %}
-#### Withdrawal
+**Withdrawal**
 
 Converting sBTC back to BTC.
 

@@ -8,7 +8,7 @@ In Stacks, the terms 'address' and 'principal' are used interchangeably.
 
 ## Introduction
 
-Stacks wallets are software or hardware tools for storing cryptocurrencies, NFTs, and other digital assets. They are also used for establishing on-chain identity in decentralized applications (dApps). These wallets cryptographically store and manage each user’s identity and funds through a single blockchain address, which leverage public-key cryptography.&#x20;
+Stacks wallets are software or hardware tools for storing cryptocurrencies, NFTs, and other digital assets. They are also used for establishing on-chain identity in decentralized applications (dApps). These wallets cryptographically store and manage each user’s identity and funds through a single blockchain address, which leverage public-key cryptography.
 
 ### Purpose of a Stacks wallet
 
@@ -82,7 +82,7 @@ There are a few different ways to create a Stacks account as both a developer an
 
 {% stepper %}
 {% step %}
-### Using Stacks.js
+#### Using Stacks.js
 
 For programmatic wallet generation or when restoring accounts from backup, you can derive addresses from a mnemonic seed phrase. Each wallet can contain multiple accounts, all derived from the same seed phrase using different derivation paths.
 
@@ -118,11 +118,11 @@ For more ways on programmaticly generating keys and accounts, check out the guid
 {% endstep %}
 
 {% step %}
-### Using the Stacks CLI tool
+#### Using the Stacks CLI tool
 
 Using the Stacks CLI tool allows you to manage wallets on the command line.
 
-#### `make_keychain`
+**`make_keychain`**
 
 ```bash
 # Install CLI globally
@@ -145,7 +145,7 @@ stx make_keychain -t > cli_keychain.json
 }
 ```
 
-#### `get_address`
+**`get_address`**
 
 ```bash
 # Get the address of a private key or multisig private key bundle.
@@ -168,7 +168,7 @@ For more usage examples, check out the Stacks CLI repo [here](https://github.com
 {% endstep %}
 
 {% step %}
-### Using Bitcoin L2 wallet extensions/apps
+#### Using Bitcoin L2 wallet extensions/apps
 
 There are many popular Bitcoin wallets that support Bitcoin layers and metaprotocols. Leather and Xverse are popular options for getting started with Stacks.
 
@@ -176,7 +176,7 @@ There are many popular Bitcoin wallets that support Bitcoin layers and metaproto
 {% endstep %}
 
 {% step %}
-### Using other community built tools
+#### Using other community built tools
 
 Check out the [Stacks Devtools Catalog](https://app.gitbook.com/s/Zz9BLmTU9oydDpL3qiUh/stacks-devtools-catalog) for other creative devtools for creating and managing Stacks wallets.
 {% endstep %}
@@ -234,7 +234,7 @@ Programmatically, you could also use a method called `b58ToC32`, from the `c32ch
 ### Additional Resources
 
 * \[[Hiro Blog](https://www.hiro.so/blog/understanding-the-differences-between-bitcoin-address-formats-when-developing-your-app)] Understanding the Differences Between Bitcoin Address Formats
-* \[[Hiro Blog](https://www.hiro.so/blog/how-every-stacks-address-has-a-corresponding-bitcoin-address)] How Every Stacks Address Has a Corresponding Bitcoin Address&#x20;
+* \[[Hiro Blog](https://www.hiro.so/blog/how-every-stacks-address-has-a-corresponding-bitcoin-address)] How Every Stacks Address Has a Corresponding Bitcoin Address
 * \[[Hiro Blog](https://www.hiro.so/blog/an-intro-to-web3-wallets-for-web3-founders)] An Intro to Web3 Wallets for Web3 Founders
 * \[[Hiro Blog](https://www.hiro.so/blog/why-web3-needs-bitcoin-centric-wallet-standards)] Why Web3 Needs Bitcoin-Centric Wallet Standards
 * \[[Stacks YT](https://youtu.be/RvTuex1jbGY?si=KGEGESS3sr38G_Tj)] How to Set Up Your First Bitcoin L2 Wallet

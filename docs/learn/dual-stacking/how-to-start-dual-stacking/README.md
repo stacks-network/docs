@@ -29,7 +29,7 @@ Once connected to the web app, you'll see the dashboard that lays out all the me
 
 The 'Boost your rewards' section will layout the steps for you to enroll and boost your rewards. All rewards are distributed in sBTC, redeemable 1:1 for BTC anytime.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (1) (1).png" alt=""><figcaption><p>Track your balances, rewards and payouts at anytime on the Dual Stacking dashboard.</p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image 75 (1).png" alt=""><figcaption><p>Track your balances, rewards and payouts at anytime on the Dual Stacking dashboard.</p></figcaption></figure></div>
 
 Use the Dual Stacking calculator for estimated rewards based on the ratio of sBTC in your wallet and STX stacked. For more details on how your rewards are calculated and the math behind it, check out the section on the Dual Stacking [reward function](../economic-model.md#reward-function-parameters).
 

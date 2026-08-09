@@ -10,7 +10,7 @@ Stacks is a different type of Bitcoin layer for smart contracts than sidechains,
 ongoing connection to Bitcoin. Stacks enables applications and smart contracts to use\
 BTC as their asset or money and to settle their transactions on the Bitcoin main chain. **The goal**\
 **of Stacks is to grow the Bitcoin economy, by turning BTC into a productive rather**\
-**than passive asset, and by enabling various decentralized applications.**&#x20;
+**than passive asset, and by enabling various decentralized applications.**
 
 The Stacks layer has its own global ledger and execution environment, to support smart contracts and to not overwhelm the Bitcoin blockchain with additional transactions. However, the Stacks layer is unique as it has most of the ideal properties that native Bitcoin smart contracts would have, but it does this without needing to add additional functionality or complexity to Bitcoin. It also provides mechanisms for higher performance and additional functionality, such as fast block times and the decentralized peg.
 
@@ -90,7 +90,7 @@ This is a major theme in the design decisions for Stacks. A bit of a contradicti
 
 {% stepper %}
 {% step %}
-#### Proof of Transfer
+**Proof of Transfer**
 
 Proof of Transfer (PoX) is the block production mechanism of the Stacks chain. Essentially, it attempts to recreate the block production patterns of PoW programmatically. Stacks miners spend BTC for a chance to mine new Stacks blocks. Under the hood, this block production mechanism anchors Stacks blocks to Bitcoin blocks, making it as hard to reverse a Stacks block as it is to reverse a Bitcoin block. That's a big claim, and we unpack it in further detail in the sections on Nakamoto block production.
 
@@ -98,13 +98,13 @@ Proof of Transfer (PoX) is the block production mechanism of the Stacks chain. E
 {% endstep %}
 
 {% step %}
-#### Stacks' Native Token: STX
+**Stacks' Native Token: STX**
 
 The Stacks layer’s native token (STX) is essential to PoX consensus: STX is needed for (a) incentivizing Stacks miners to maintain the Stacks layer global ledger outside the Bitcoin L1, and (b) incentives for threshold signers that participate in the peg mechanism. Existing approaches to Bitcoin pegs, which lack a native token, cannot support a permissionless, open system and fallback to using custodians or trusting known federation members.
 {% endstep %}
 
 {% step %}
-#### Clarity
+**Clarity**
 
 Clarity is the smart contract language that Stacks uses. It has been designed from the ground up to make it easier for developers to write safe, secure smart contracts. Additionally, since it has been purpose-built for Stacks and Bitcoin, there are built-in functions for reading Bitcoin state, which means you can use Bitcoin state to perform actions in Clarity. For example, you could set up a check to make sure a particular Bitcoin transaction has occurred before executing a mint function in Clarity, which just so happens to be what happens with the third component: sBTC.
 
@@ -112,7 +112,7 @@ Clarity is the smart contract language that Stacks uses. It has been designed fr
 {% endstep %}
 
 {% step %}
-#### sBTC
+**sBTC**
 
 sBTC is the trust-minimized 2-way Bitcoin peg on the Stacks layer. sBTC is the key to making Bitcoin programmable and bringing full smart contract functionality to Bitcoin via Stacks. sBTC is not a federation, but operates as an open-network, decentralized 2-way peg solution to bring smart contract functionality to Bitcoin with as little counterparty risk as possible.
 

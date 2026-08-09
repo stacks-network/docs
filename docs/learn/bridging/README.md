@@ -10,4 +10,4 @@ A blockchain bridge is a protocol or mechanism that serves as a connection betwe
 
 #### Explore the different bridges available with Stacks
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h4>USDCx</h4></td><td>Learn how USDC can flow to and from the bitcoin layer 2.</td><td><a href="usdcx/">usdcx</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>USDCx</strong></td><td>Learn how USDC can flow to and from the bitcoin layer 2.</td><td><a href="usdcx/">usdcx</a></td></tr></tbody></table>

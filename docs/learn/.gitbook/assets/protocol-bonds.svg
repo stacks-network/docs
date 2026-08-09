@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1250" font-family="Instrument Sans, Helvetica, Arial, sans-serif">
+  <rect width="1536" height="1250" fill="#0A0A0A"/>
+
+  <!-- Title bar -->
+  <rect x="20" y="20" width="1496" height="84" rx="26" fill="#F65B27"/>
+  <path fill="#111111" stroke="#111111" stroke-width="1.5" stroke-linejoin="round" d="M52.000,62.000 C52.000,45.431 65.431,32.000 82.000,32.000 C98.569,32.000 112.000,45.431 112.000,62.000 C112.000,78.569 98.569,92.000 82.000,92.000 C65.431,92.000 52.000,78.569 52.000,62.000 Z"/>
+  <g fill="#FFFFFF"><path fill-rule="evenodd" transform="translate(-3.68,-115.07) scale(0.714)" d="M127.15,241.02c-.15-.26-.13-.59.04-.86l7.33-10.88c.2-.31.22-.68.04-.99-.18-.33-.51-.51-.86-.51h-2.85c-.31,0-.61.15-.81.44l-8.56,12.75c-.22.33-.57.51-.97.51h-1.08c-.4,0-.75-.2-.97-.51l-8.52-12.77c-.18-.29-.5-.44-.81-.44h-2.85c-.35,0-.7.2-.86.53-.18.33-.13.7.04.99l7.33,10.9c.18.24.2.57.04.84-.15.29-.42.44-.72.44h-11.22c-.55,0-.97.44-.97.97v2.37c0,.55.44.97.97.97h38.18c.55,0,.97-.44.97-.97v-2.37c0-.51-.37-.9-.86-.97h-11.33c-.31,0-.59-.15-.72-.44ZM118.5,255.02l-8.56,12.75c-.18.29-.5.44-.81.44h-2.85c-.35,0-.68-.2-.86-.51-.18-.31-.15-.7.04-.99l7.31-10.88c.18-.26.2-.57.04-.86-.15-.26-.42-.44-.72-.44h-11.18c-.53,0-.97-.42-.97-.97v-2.37c0-.53.42-.97.97-.97h38.18c.53,0,.97.42.97.97v2.37c0,.53-.42.97-.97.97h-11.2c-.33,0-.59.15-.72.44-.15.29-.13.59.04.84l7.33,10.9c.18.29.22.66.04.99-.18.33-.5.53-.86.53h-2.85c-.33,0-.61-.15-.79-.42l-8.56-12.75c-.22-.33-.57-.51-.97-.51h-1.08c-.4,0-.75.2-.97.51l-.02-.04Z"/></g>
+  <text x="132" y="75" font-size="36" font-weight="600" fill="#FFFFFF">Protocol Bonds</text>
+
+  <!-- ============ PANEL 1: staggered bond periods ============ -->
+  <text x="24" y="164" font-size="27" font-weight="600" fill="#FFFFFF">Six bonds run at once, staggered</text>
+  <text x="24" y="196" font-size="21" fill="#8E8E93" font-family="JetBrains Mono, Menlo, monospace">new bond period every 2 reward cycles (4,200 blocks, ~1 month) - each runs 12 cycles (25,200 blocks, ~6 months)</text>
+
+  <!-- cycle axis: 24 cycles, x from 150 to 1494, w=56 -->
+  <g font-size="17" fill="#6E6E73" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace">
+    <text x="150" y="232">0</text>
+    <text x="262" y="232">2</text>
+    <text x="374" y="232">4</text>
+    <text x="486" y="232">6</text>
+    <text x="598" y="232">8</text>
+    <text x="710" y="232">10</text>
+    <text x="822" y="232">12</text>
+    <text x="934" y="232">14</text>
+    <text x="1046" y="232">16</text>
+    <text x="1158" y="232">18</text>
+    <text x="1270" y="232">20</text>
+    <text x="1382" y="232">22</text>
+    <text x="1494" y="232">24</text>
+  </g>
+  <text x="88" y="232" font-size="17" fill="#6E6E73" text-anchor="start" font-family="JetBrains Mono, Menlo, monospace">cycle</text>
+  <line x1="150" y1="244" x2="1494" y2="244" stroke="#2C2C2E" stroke-width="2"/>
+  <!-- light gridlines every 2 cycles -->
+  <g stroke="#1C1C1E" stroke-width="1.5">
+    <line x1="150" y1="244" x2="150" y2="700"/><line x1="262" y1="244" x2="262" y2="700"/>
+    <line x1="374" y1="244" x2="374" y2="700"/><line x1="486" y1="244" x2="486" y2="700"/>
+    <line x1="598" y1="244" x2="598" y2="700"/><line x1="710" y1="244" x2="710" y2="700"/>
+    <line x1="822" y1="244" x2="822" y2="700"/><line x1="934" y1="244" x2="934" y2="700"/>
+    <line x1="1046" y1="244" x2="1046" y2="700"/><line x1="1158" y1="244" x2="1158" y2="700"/>
+    <line x1="1270" y1="244" x2="1270" y2="700"/><line x1="1382" y1="244" x2="1382" y2="700"/>
+    <line x1="1494" y1="244" x2="1494" y2="700"/>
+  </g>
+
+  <!-- bond bars: 12 cycles = 672 wide, start every 112. rows y=260..: h=44 gap=14 -->
+  <!-- bond i (orange, the one we follow) -->
+  <g font-size="19" font-weight="600" fill="#FFFFFF">
+    <rect x="150" y="260" width="672" height="44" rx="10" fill="#F65B27"/>
+    <text x="166" y="289">bond i</text>
+    <rect x="262" y="318" width="672" height="44" rx="10" fill="#3A3A3C"/>
+    <text x="278" y="347" fill="#C7C7CC">bond i+1</text>
+    <rect x="374" y="376" width="672" height="44" rx="10" fill="#3A3A3C"/>
+    <text x="390" y="405" fill="#C7C7CC">bond i+2</text>
+    <rect x="486" y="434" width="672" height="44" rx="10" fill="#3A3A3C"/>
+    <text x="502" y="463" fill="#C7C7CC">bond i+3</text>
+    <rect x="598" y="492" width="672" height="44" rx="10" fill="#3A3A3C"/>
+    <text x="614" y="521" fill="#C7C7CC">bond i+4</text>
+    <rect x="710" y="550" width="672" height="44" rx="10" fill="#3A3A3C"/>
+    <text x="726" y="579" fill="#C7C7CC">bond i+5</text>
+    <rect x="822" y="608" width="672" height="44" rx="10" fill="#E8E8ED"/>
+    <text x="838" y="637" fill="#111111">bond i+6</text>
+  </g>
+
+  <!-- roll-over marker: bond i ends at x=822 where bond i+6 starts -->
+  <line x1="822" y1="252" x2="822" y2="668" stroke="#F65B27" stroke-width="2.5" stroke-dasharray="6 6"/>
+  <path d="M826 282 C 880 282, 880 616, 832 626" stroke="#F65B27" stroke-width="3" fill="none"/>
+  <path d="M842 630 L828 632 L836 618 Z" fill="#F65B27"/>
+  <text x="850" y="676" font-size="20" fill="#F65B27" font-weight="600">bond i ends at the block where bond i+6 starts: direct roll-over</text>
+
+  <!-- six-active slice -->
+  <line x1="766" y1="252" x2="766" y2="600" stroke="#8E8E93" stroke-width="2" stroke-dasharray="3 6"/>
+  <text x="758" y="700" font-size="19" fill="#8E8E93" text-anchor="end">any moment: 6 bonds active</text>
+
+  <!-- ============ PANEL 2: anatomy of one bond ============ -->
+  <text x="24" y="768" font-size="27" font-weight="600" fill="#FFFFFF">One bond period, start to finish</text>
+
+  <!-- timeline bar: before-phase 150..430, bond 430..1380, after 1380..1494 -->
+  <!-- enrollment (before start) -->
+  <rect x="150" y="826" width="280" height="72" rx="14" fill="#3A3A3C"/>
+  <text x="290" y="857" font-size="21" font-weight="600" fill="#FFFFFF" text-anchor="middle">Enrollment</text>
+  <text x="290" y="884" font-size="18" fill="#C7C7CC" text-anchor="middle">opens &#8804; 2 cycles before start</text>
+  <!-- bond term -->
+  <rect x="438" y="826" width="852" height="72" rx="14" fill="#F65B27"/>
+  <text x="864" y="857" font-size="21" font-weight="600" fill="#FFFFFF" text-anchor="middle">Bond term: 12 cycles (~6 months)</text>
+  <text x="864" y="884" font-size="18" fill="#FFD9C7" text-anchor="middle">BTC + STX locked &#183; rewards credited every 1,050 blocks</text>
+  <!-- re-lock window overlay: exactly the last 1,050-block interval of the bond -->
+  <rect x="1250" y="814" width="46" height="96" rx="10" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="7 6"/>
+  <line x1="1273" y1="812" x2="1273" y2="770" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="1273" y="756" font-size="19" fill="#FFFFFF" text-anchor="middle" font-weight="600">re-lock window</text>
+  <!-- after end -->
+  <rect x="1298" y="826" width="196" height="72" rx="14" fill="#E8E8ED"/>
+  <text x="1396" y="857" font-size="21" font-weight="600" fill="#111111" text-anchor="middle">Bond ends</text>
+  <text x="1396" y="884" font-size="18" fill="#3A3A3C" text-anchor="middle">STX unlocks here</text>
+
+  <!-- distribution ticks along bond term -->
+  <g stroke="#FFFFFF" stroke-width="2" opacity="0.55">
+    <line x1="473" y1="900" x2="473" y2="912"/><line x1="508" y1="900" x2="508" y2="912"/>
+    <line x1="543" y1="900" x2="543" y2="912"/><line x1="578" y1="900" x2="578" y2="912"/>
+    <line x1="613" y1="900" x2="613" y2="912"/><line x1="648" y1="900" x2="648" y2="912"/>
+    <line x1="683" y1="900" x2="683" y2="912"/><line x1="718" y1="900" x2="718" y2="912"/>
+    <line x1="753" y1="900" x2="753" y2="912"/><line x1="788" y1="900" x2="788" y2="912"/>
+    <line x1="823" y1="900" x2="823" y2="912"/><line x1="858" y1="900" x2="858" y2="912"/>
+    <line x1="893" y1="900" x2="893" y2="912"/><line x1="928" y1="900" x2="928" y2="912"/>
+    <line x1="963" y1="900" x2="963" y2="912"/><line x1="998" y1="900" x2="998" y2="912"/>
+    <line x1="1033" y1="900" x2="1033" y2="912"/><line x1="1068" y1="900" x2="1068" y2="912"/>
+    <line x1="1103" y1="900" x2="1103" y2="912"/><line x1="1138" y1="900" x2="1138" y2="912"/>
+    <line x1="1173" y1="900" x2="1173" y2="912"/><line x1="1208" y1="900" x2="1208" y2="912"/>
+    <line x1="1243" y1="900" x2="1243" y2="912"/><line x1="1278" y1="900" x2="1278" y2="912"/>
+  </g>
+  <text x="864" y="938" font-size="18" fill="#8E8E93" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace">24 distributions, one per 1,050 blocks (~weekly) - claimable by your signer-manager any time after</text>
+
+  <!-- D0 marker -->
+  <line x1="438" y1="812" x2="438" y2="904" stroke="#FFFFFF" stroke-width="2.5"/>
+  <text x="438" y="795" font-size="19" fill="#FFFFFF" text-anchor="middle" font-weight="600">start</text>
+
+  <!-- callout cards -->
+  <rect x="24" y="972" width="486" height="250" rx="24" fill="#161618"/>
+  <rect x="530" y="972" width="486" height="250" rx="24" fill="#161618"/>
+  <rect x="1036" y="972" width="480" height="250" rx="24" fill="#161618"/>
+
+  <circle cx="88" cy="1032" r="26" fill="#3A3A3C"/>
+  <text x="88" y="1042" font-size="28" font-weight="600" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text font-size="23" fill="#C7C7CC">
+    <tspan x="62" y="1102">Before the start: win capacity in</tspan>
+    <tspan x="62" y="1136">the bond's auction, then register</tspan>
+    <tspan x="62" y="1170">with your BTC (L1 timelock or</tspan>
+    <tspan x="62" y="1204">sBTC) and the paired STX.</tspan>
+  </text>
+
+  <circle cx="594" cy="1032" r="26" fill="#FFFFFF"/>
+  <text x="594" y="1042" font-size="28" font-weight="600" fill="#111111" text-anchor="middle">2</text>
+  <text font-size="23" fill="#C7C7CC">
+    <tspan x="568" y="1102">Last 1,050 blocks (~1 week): the</tspan>
+    <tspan x="568" y="1136">L1 BTC timelock expires early, so</tspan>
+    <tspan x="568" y="1170">you can re-lock BTC for the next</tspan>
+    <tspan x="568" y="1204">bond. STX stays locked to the end.</tspan>
+  </text>
+
+  <circle cx="1100" cy="1032" r="26" fill="#F65B27"/>
+  <text x="1100" y="1042" font-size="28" font-weight="600" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text font-size="23" fill="#C7C7CC">
+    <tspan x="1074" y="1102">Roll over: register for bond i+6</tspan>
+    <tspan x="1074" y="1136">during the window and the STX</tspan>
+    <tspan x="1074" y="1170">lock simply extends. Otherwise</tspan>
+    <tspan x="1074" y="1204">STX unlocks when the bond ends.</tspan>
+  </text>
+</svg>

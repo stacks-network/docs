@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1536 880">
+  <!-- Generator: Adobe Illustrator 30.6.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 109)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke: #fff;
+        stroke-width: 4.5px;
+      }
+
+      .st0, .st1, .st2, .st3, .st4, .st5 {
+        fill: none;
+      }
+
+      .st0, .st1, .st5 {
+        stroke-linecap: round;
+      }
+
+      .st6 {
+        fill: #f9a03f;
+      }
+
+      .st6, .st7, .st8, .st9, .st10, .st11, .st12, .st13, .st14, .st15, .st16 {
+        isolation: isolate;
+      }
+
+      .st6, .st11, .st14, .st15 {
+        font-size: 21px;
+      }
+
+      .st6, .st11, .st15 {
+        font-family: 'JetBrains Mono', Menlo, monospace;
+        letter-spacing: .1em;
+      }
+
+      .st1, .st4 {
+        stroke: #8e8e93;
+        stroke-width: 3px;
+      }
+
+      .st17, .st11 {
+        fill: #f65b27;
+      }
+
+      .st18, .st9 {
+        fill: #111;
+      }
+
+      .st7 {
+        font-size: 28px;
+      }
+
+      .st7, .st9, .st10, .st12, .st13, .st14 {
+        font-family: 'Instrument Sans', Helvetica, Arial, sans-serif;
+        font-weight: 500;
+      }
+
+      .st7, .st19, .st10, .st12, .st13, .st14 {
+        fill: #fff;
+      }
+
+      .st20 {
+        fill: #6e6e73;
+      }
+
+      .st9 {
+        font-size: 25px;
+      }
+
+      .st2, .st3, .st5 {
+        stroke: #f65b27;
+      }
+
+      .st2, .st5 {
+        stroke-width: 4px;
+      }
+
+      .st10 {
+        font-size: 30px;
+      }
+
+      .st3 {
+        stroke-width: 2px;
+      }
+
+      .st21, .st13, .st16 {
+        font-size: 24px;
+      }
+
+      .st21, .st16 {
+        fill: #c7c7cc;
+        font-family: 'Instrument Sans', Helvetica, Arial, sans-serif;
+      }
+
+      .st4 {
+        stroke-dasharray: 5 7;
+      }
+
+      .st12 {
+        font-size: 36px;
+      }
+
+      .st15 {
+        fill: #8e8e93;
+      }
+
+      .st22 {
+        fill: #0a0a0a;
+      }
+
+      .st23 {
+        fill: #161618;
+      }
+    </style>
+  </defs>
+  <rect class="st22" width="1536" height="880"/>
+  <rect class="st17" x="20" y="20" width="1496" height="84" rx="26" ry="26"/>
+  <path fill="#111111" stroke="#111111" stroke-width="1.5" stroke-linejoin="round" d="M66.330,62.000 C66.330,45.431 79.761,32.000 96.330,32.000 C112.899,32.000 126.330,45.431 126.330,62.000 C126.330,78.569 112.899,92.000 96.330,92.000 C79.761,92.000 66.330,78.569 66.330,62.000 Z"/>
+  <g fill="#FFFFFF"><path fill-rule="evenodd" transform="translate(10.65,-115.07) scale(0.714)" d="M127.15,241.02c-.15-.26-.13-.59.04-.86l7.33-10.88c.2-.31.22-.68.04-.99-.18-.33-.51-.51-.86-.51h-2.85c-.31,0-.61.15-.81.44l-8.56,12.75c-.22.33-.57.51-.97.51h-1.08c-.4,0-.75-.2-.97-.51l-8.52-12.77c-.18-.29-.5-.44-.81-.44h-2.85c-.35,0-.7.2-.86.53-.18.33-.13.7.04.99l7.33,10.9c.18.24.2.57.04.84-.15.29-.42.44-.72.44h-11.22c-.55,0-.97.44-.97.97v2.37c0,.55.44.97.97.97h38.18c.55,0,.97-.44.97-.97v-2.37c0-.51-.37-.9-.86-.97h-11.33c-.31,0-.59-.15-.72-.44ZM118.5,255.02l-8.56,12.75c-.18.29-.5.44-.81.44h-2.85c-.35,0-.68-.2-.86-.51-.18-.31-.15-.7.04-.99l7.31-10.88c.18-.26.2-.57.04-.86-.15-.26-.42-.44-.72-.44h-11.18c-.53,0-.97-.42-.97-.97v-2.37c0-.53.42-.97.97-.97h38.18c.53,0,.97.42.97.97v2.37c0,.53-.42.97-.97.97h-11.2c-.33,0-.59.15-.72.44-.15.29-.13.59.04.84l7.33,10.9c.18.29.22.66.04.99-.18.33-.5.53-.86.53h-2.85c-.33,0-.61-.15-.79-.42l-8.56-12.75c-.22-.33-.57-.51-.97-.51h-1.08c-.4,0-.75.2-.97.51l-.02-.04Z"/></g>
+  <text class="st12" transform="translate(146.33 75)"><tspan x="0" y="0">Staking and Signing</tspan></text>
+  <rect class="st23" x="20" y="128" width="360" height="732" rx="24" ry="24"/>
+  <g class="st8">
+    <text class="st16" transform="translate(64 196)"><tspan x="0" y="0">Staking transactions are</tspan></text>
+    <text class="st21" transform="translate(323.15 196)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 230)"><tspan x="0" y="0">sent manually: stake,</tspan></text>
+    <text class="st21" transform="translate(289.86 230)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 264)"><tspan x="0" y="0">stake-update, unstake.</tspan></text>
+    <text class="st21" transform="translate(310.76 264)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 330)"><tspan x="0" y="0">Signing is automatic. A</tspan></text>
+    <text class="st21" transform="translate(310.72 330)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 364)"><tspan x="0" y="0">signer-manager is bound</tspan></text>
+    <text class="st21" transform="translate(331.19 364)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 398)"><tspan x="0" y="0">to one signer key through</tspan></text>
+    <text class="st21" transform="translate(337.4 398)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 432)"><tspan x="0" y="0">a one-time grant. The</tspan></text>
+    <text class="st21" transform="translate(294.73 432)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 466)"><tspan x="0" y="0">signer software detects</tspan></text>
+    <text class="st21" transform="translate(314.65 466)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 500)"><tspan x="0" y="0">whether its manager is in</tspan></text>
+    <text class="st21" transform="translate(332.03 500)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 534)"><tspan x="0" y="0">the signer set fixed for</tspan></text>
+    <text class="st21" transform="translate(303.11 534)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 568)"><tspan x="0" y="0">the upcoming cycle, and</tspan></text>
+    <text class="st21" transform="translate(328.09 568)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 602)"><tspan x="0" y="0">validates and signs</tspan></text>
+    <text class="st21" transform="translate(269.36 602)"><tspan x="0" y="0"> </tspan></text>
+    <text class="st16" transform="translate(64 636)"><tspan x="0" y="0">blocks when it is.</tspan></text>
+  </g>
+  <line class="st2" x1="64" y1="686" x2="124" y2="686"/>
+  <rect class="st23" x="400" y="128" width="1116" height="732" rx="24" ry="24"/>
+  <rect class="st3" x="452" y="188" width="280" height="150" rx="18" ry="18"/>
+  <g>
+    <path class="st5" d="M576,216l16-8,16,8"/>
+    <path class="st5" d="M576,226l16-8,16,8"/>
+  </g>
+  <text class="st7" text-anchor="middle" transform="translate(592 272)"><tspan x="0" y="0">Staking</tspan></text>
+  <text class="st7" text-anchor="middle" transform="translate(592 308)"><tspan x="0" y="0">Transactions</tspan></text>
+  <line class="st4" x1="732" y1="263" x2="812" y2="263"/>
+  <path class="st1" d="M802,253l10,10-10,10"/>
+  <text class="st6" text-anchor="middle" transform="translate(966 255)"><tspan x="0" y="0">MANUAL,</tspan></text>
+  <text class="st6" text-anchor="middle" transform="translate(966 291)"><tspan x="0" y="0">OUT-OF-BAND</tspan></text>
+  <rect class="st3" x="1210" y="188" width="264" height="150" rx="18" ry="18"/>
+  <g>
+    <circle class="st5" cx="1332" cy="221" r="9"/>
+    <path class="st5" d="M1339,228l17,17M1350,239l6-6"/>
+  </g>
+  <text class="st13" text-anchor="middle" transform="translate(1342 284)"><tspan x="0" y="0">One-time</tspan></text>
+  <text class="st13" text-anchor="middle" transform="translate(1342 314)"><tspan x="0" y="0">signer-key grant</tspan></text>
+  <g>
+    <line class="st4" x1="592" y1="337.02" x2="592" y2="418"/>
+    <line class="st4" x1="1342" y1="337.02" x2="1342" y2="418"/>
+  </g>
+  <g>
+    <path class="st1" d="M582,407l9.7,10,9.7-10"/>
+    <path class="st1" d="M1332.6,407l9.7,10,9.7-10"/>
+  </g>
+  <rect class="st17" x="452" y="431" width="740" height="104" rx="20" ry="20"/>
+  <text class="st10" text-anchor="middle" transform="translate(822 495)"><tspan x="0" y="0">Reward Phase (Proof of Transfer)</tspan></text>
+  <rect class="st20" x="1210" y="431" width="264" height="104" rx="20" ry="20"/>
+  <text class="st10" text-anchor="middle" transform="translate(1342 495)"><tspan x="0" y="0">Prepare Phase</tspan></text>
+  <rect class="st3" x="452" y="646" width="280" height="120" rx="18" ry="18"/>
+  <g>
+    <circle class="st5" cx="579.86" cy="677.3" r="10"/>
+    <path class="st5" d="M567.86,701.3c3.98-6.63,12.58-8.77,19.21-4.79,1.96,1.18,3.61,2.82,4.79,4.79"/>
+  </g>
+  <text class="st13" text-anchor="middle" transform="translate(592 741.3)"><tspan x="0" y="0">In the signer set?</tspan></text>
+  <line class="st4" x1="589.86" y1="646" x2="589.86" y2="548"/>
+  <path class="st1" d="M579.86,558l10-10,10,10"/>
+  <text class="st11" text-anchor="middle" transform="translate(518 597)"><tspan x="0" y="0">[ NO ]</tspan></text>
+  <path class="st4" d="M700,646v-46h400v-52"/>
+  <path class="st1" d="M1090,558l10-10,10,10"/>
+  <text class="st11" text-anchor="middle" transform="translate(786 632)"><tspan x="0" y="0">[ YES ]</tspan></text>
+  <text class="st15" text-anchor="middle" transform="translate(1052 632)"><tspan x="0" y="0">VALIDATE + SIGN</tspan></text>
+  <path class="st19" d="M886,676h200c16.57,0,30,13.43,30,30h0c0,16.57-13.43,30-30,30h-200c-16.57,0-30-13.43-30-30h0c0-16.57,13.43-30,30-30Z"/>
+  <text class="st9" text-anchor="middle" transform="translate(986 715)"><tspan x="0" y="0">Automated Actions</tspan></text>
+  <g>
+    <line class="st4" x1="856" y1="706" x2="756" y2="706"/>
+    <line class="st4" x1="1116" y1="706" x2="1240" y2="706"/>
+  </g>
+  <g>
+    <path class="st1" d="M766,696l-10,10,10,10"/>
+    <path class="st1" d="M1230,696l10,10-10,10"/>
+  </g>
+  <g>
+    <rect class="st17" x="1284" y="648" width="116" height="116" rx="14" ry="14" transform="translate(-106.1547 1155.7199) rotate(-45)"/>
+    <text class="st14" text-anchor="middle" transform="translate(1342 700)"><tspan x="0" y="0">Signer</tspan></text>
+    <text class="st14" text-anchor="middle" transform="translate(1342 726)"><tspan x="0" y="0">set fixed</tspan></text>
+  </g>
+  <line class="st4" x1="1342" y1="612" x2="1342" y2="552"/>
+  <path class="st1" d="M1332,558l10-10,10,10"/>
+</svg>

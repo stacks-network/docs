@@ -91,7 +91,7 @@ Below is a conceptual walkthrough, with visual responses from the API, of how th
 
 {% stepper %}
 {% step %}
-#### Initial state (no pending transactions)
+**Initial state (no pending transactions)**
 
 ```json
 {
@@ -112,7 +112,7 @@ Below is a conceptual walkthrough, with visual responses from the API, of how th
 {% endstep %}
 
 {% step %}
-#### Submitting a future nonce (`245`)
+**Submitting a future nonce (`245`)**
 
 ```json
 {
@@ -133,7 +133,7 @@ Below is a conceptual walkthrough, with visual responses from the API, of how th
 {% endstep %}
 
 {% step %}
-#### Submitting a partial gap (`243`)
+**Submitting a partial gap (`243`)**
 
 ```json
 {
@@ -156,7 +156,7 @@ Below is a conceptual walkthrough, with visual responses from the API, of how th
 {% endstep %}
 
 {% step %}
-#### Filling more gaps (`244`)
+**Filling more gaps (`244`)**
 
 ```json
 {
@@ -176,7 +176,7 @@ Below is a conceptual walkthrough, with visual responses from the API, of how th
 {% endstep %}
 
 {% step %}
-#### All required nonces present (`242`)
+**All required nonces present (`242`)**
 
 ```json
 {
@@ -196,7 +196,7 @@ Below is a conceptual walkthrough, with visual responses from the API, of how th
 {% endstep %}
 
 {% step %}
-#### After execution completes
+**After execution completes**
 
 ```json
 {
