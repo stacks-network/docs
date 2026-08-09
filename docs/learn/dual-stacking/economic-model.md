@@ -12,7 +12,7 @@ All participants receive a baseline BTC-denominated reward on the sBTC enrolled 
 
 For Stacking STX, Bitcoin rewards grow based on an individuals STX-to-sBTC ratio relative to other participants, up to 10× the base yield. The system uses a square-root curve, meaning the first stacked STX has the greatest impact, with smaller boosts as more STX is stacked. The DeFi boost is straightforward, you automatically earn 10x multiple for any amount of sBTC deployed in DeFi.
 
-At the same time, an individual's stacked STX continues earning standard [stacking](../block-production/stacking.md) rewards.
+At the same time, an individual's stacked STX continues earning standard [stacking](../block-production/staking.md) rewards.
 
 {% hint style="info" %}
 The following Reward Function Parameters section is taken directly from the [Dual Stacking litepaper](https://github.com/stx-labs/papers/blob/main/Dual%20Stacking%20Litepaper.pdf).

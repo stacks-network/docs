@@ -61,7 +61,7 @@ The signer software detects from chain state whether its manager is in the upcom
 
 When a miner proposes a block, each signer validates it independently and signs it with its granted signer key. The block carries the resulting set of signatures, and a node accepts it only when the signatures are valid, free of duplicates, ordered consistently with the signer set, and together carry at least 70% of the total signer weight for the cycle. The threshold is a consensus constant in the node ([`NAKAMOTO_SIGNER_BLOCK_APPROVAL_THRESHOLD`](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/core/mod.rs)).
 
-Weight, in this protocol, is stake: a signer-manager representing 10% of all staked STX carries 10% of the vote on every block. Blocks are accepted by an economic majority of the locked capital, which is what ties block production back to the staking described on the [Staking page](stacking.md).
+Weight, in this protocol, is stake: a signer-manager representing 10% of all staked STX carries 10% of the vote on every block. Blocks are accepted by an economic majority of the locked capital, which is what ties block production back to the staking described on the [Staking page](staking.md).
 
 ***
 

@@ -20,7 +20,7 @@
   * [Audits](network-fundamentals/audits.md)
 * [Block Production](block-production/README.md)
   * [How Are Blocks Mined?](block-production/mining.md "Mining")
-  * [Staking: How STX Holders Contribute](block-production/stacking.md "Stacking")
+  * [Staking: How STX Holders Contribute](block-production/staking.md "Staking")
   * [Signing: Verifying Block Validity](block-production/signing.md "Signing")
   * [Bitcoin Finality](block-production/bitcoin-finality.md)
   * [Bitcoin Reorgs](block-production/bitcoin-reorgs.md)
