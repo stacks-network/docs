@@ -1,216 +1,207 @@
-# Stacking: How STX Holders Contribute
+---
+description: >-
+  How staking works under PoX-5: locking STX to a signer-manager contract,
+  earning Bitcoin-denominated rewards, and what the lock does and does not do.
+---
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/staking-cover.png" alt=""><figcaption></figcaption></figure></div>
+# Staking: How STX Holders Contribute
+
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FAkgFBWqIWWeT5ZeNwVzp%2Fstaking-cover.png?alt=media&#x26;token=82fd722d-efae-4218-ae0e-42ac6215fe4a" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
 **Builder Resources**
 
-* All stacking operations happen in the PoX contract implementation, [here](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46).
-* To start stacking STX, [here](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/staking-stx).
+* All staking operations happen in the PoX contract implementation, [pox-5 on the Explorer](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-5?chain=mainnet).
+* To start staking STX, see the [Staking STX guides](https://docs.stacks.co/operate/staking-stx).
 {% endhint %}
 
 #### The Big Picture
 
-* Stacking locks STX to help secure the network and earn BTC rewards.
-* It’s part of Proof of Transfer (PoX), where miners spend BTC and that BTC goes to Stackers.
-* STX is locked for fixed cycles and cannot be moved during that time.
-* There’s a minimum threshold to Stack directly, but users can delegate to pools.
-* The model aligns miner and holder incentives while anchoring to Bitcoin.
+* Staking locks STX to help secure the network and earn Bitcoin-denominated rewards.
+* It is part of Proof of Transfer (PoX): miners commit BTC, and that BTC pays stakers.
+* You stake by naming a signer-manager contract. The STX locks in your own account and never moves.
+* There is no per-staker minimum. A signer-manager needs 50,000 STX in aggregate to enter the signer set.
+* You can unstake an STX-only position at any time, and the STX unlocks at the start of the next cycle. Bond-paired STX is committed for the bond term.
+* Rewards arrive as sBTC by default. A native BTC payout can be elected through your signer-manager.
 
 ***
 
-## Intro
+### Intro
 
-Stacking rewards Stacks (STX) token holders with bitcoin for providing a valuable service to the network by locking up their tokens for a certain time and participating as consensus-critical signers. If you aren't familiar with the concept of signers in Stacks, be sure to check out the [Signing section](signing.md). This document is a conceptual overview of stacking and how it works.
+Staking rewards Stacks (STX) token holders with Bitcoin-denominated payouts for locking their tokens and backing the signers that validate blocks. Signers are covered in the [Signing section](signing.md). This page is a conceptual overview of staking under PoX-5.
 
-{% hint style="info" %}
-Note that SIP-007 describes stacking before Nakamoto. While much of the functionality remains the same, stackers now have the additional responsibility of operating as signers as outlined in [SIP-021](https://github.com/stacksgov/sips/blob/feat/sip-021-nakamoto/sips/sip-021/sip-021-nakamoto.md).
-{% endhint %}
+`pox-5.clar` is the staking contract. It activated with the Epoch 4.0 hard fork at Bitcoin block 960,230 and replaced `pox-4`. Every staking function lives at the deployed contract:
 
-`pox-4.clar` is the stacking contract. If you are interested in experimenting with proof of transfer use cases including state changes, solo stacking, and pool stacking, all the functions you’ll need can be found at the deployed contract:
+* Mainnet: [`SP000000000000000000002Q6VF78.pox-5`](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-5?chain=mainnet)
+* Testnet: the primary Hiro testnet runs PoX-5, with Epoch 4.0 activating at burnchain height 2,702. To run a node against it, start from the [example testnet follower configuration](https://docs.stacks.co/reference/node-operations/readme-1#example-testnet-follower-configuration), which carries the PoX-5 parameters (`pox_5_sbtc_contract`, `pox_5_sbtc_registry_contract`, `pox_5_bond_admin`).
+* Devnet: [Clarinet](https://github.com/hirosystems/clarinet) 3.23.0 and later runs devnet on Epoch 4.0 and Clarity 6 by default, with pox-5 available out of the box from a devnet snapshot that starts at block 163.
 
-* Testnet: [ST000000000000000000002AMW42H.pox-4](https://explorer.hiro.so/txid/0xfba7f786fae1953fa56f4e56aeac053575fd48bf72360523366d739e96613da3?chain=testnet)
-* Mainnet: [SP000000000000000000002Q6VF78.pox-4](https://explorer.hiro.so/txid/0xc6d6e6ec82cabb2d7a9f4b85fcc298778d01186cabaee01685537aca390cdb46?chain=mainnet)
+The pinned source is [`pox-5.clar` at release 4.0.1](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar), and [SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md) specifies the design.
 
 <details>
 
-<summary>Stacking vs Staking</summary>
+<summary>How this differs from proof-of-stake staking</summary>
 
-While stacking on the Stacks network can be conceptually similar to staking, Stacks is not a PoS network and there are a couple key differences.
+The mechanism shares the shape of staking: lock a token, back consensus, earn yield. What still differs from staking on a proof-of-stake network:
 
-There are two primary differences between stacking in Stacks and staking in PoS networks.
+**Yield comes from an external token, not issuance**
 
-**Yield generated in burnchain token**
-
-In staking, users lock one token and earn their yield in the same token. In stacking, users lock one token (STX) and earn a yield in the "burnchain" token (BTC), rather than the same token that was locked. In PoX, the yield comes from a finite, external source (Bitcoin deposits from Stacks miners). In PoS, the yield comes from the currency's issuance schedule itself.
-
-How are these issuance rates set? In Ethereum, issuance rates are determined by network usage. Ethereum's goal is to create a deflationary money supply, so the issuance rate is determined depending on the usage of the network. In order for an Ethereum transaction to be considered valid, it must include a base fee that is burned during transaction execution. The [issuance rate is algorithmically determined](https://ethereum.org/en/roadmap/merge/issuance/#post-merge) block-by-block depending on how much ETH is being burned by these base fees plus normal gas fees.
-
-Stacking doesn't generate yield in the same token and therefore doesn't need to issue new STX for stacking rewards. Stacking yield requires an input of an external token (BTC). Stacks does have an issuance rate and does generate new STX tokens, but that process is separate from stacking and the stacking yield mechanism.
+In proof-of-stake, you lock one token and earn yield in the same token, funded by the currency's issuance schedule. [Ethereum's issuance rate](https://ethereum.org/en/roadmap/merge/issuance/#post-merge) is set algorithmically against how much ETH is burned in fees. In PoX, you lock STX and the yield is denominated in the burnchain token: BTC, committed by Stacks miners, paid out as sBTC or native BTC. Stacks does issue new STX, but that issuance is separate from staking and does not fund staking rewards.
 
 **No slashing**
 
-Although stackers do fulfill a consensus-critical role in Stacks by serving as signers, there is no concept of slashing in PoX (Proof of Transfer).
-
-Rather, if stackers do not perform their duties as signers, they simply cannot unlock their STX tokens and will not receive their BTC rewards.
-
-Stacking is a built-in action, required by the "proof-of-transfer" (PoX) mechanism. The PoX mechanism is executed by every miner on the Stacks network.
+Stakers back a consensus-critical role, but PoX has no slashing. Locked STX is never destroyed or seized. A signer that fails to perform forfeits rewards, not principal.
 
 </details>
 
 #### Locking and Unlocking STX
 
-When STX tokens are "locked", no transfer of STX tokens occurs. Locking STX tokens is non-custodial, and STX tokens remain in your wallet. When you initiate a stacking transaction those tokens are locked and unspendable at the protocol level, but they do not leave the stacker's wallet.
+When STX locks, no transfer occurs. Locking is non-custodial: the tokens stay in your account and become unspendable at the protocol level. Neither the signer-manager nor the pox-5 contract ever holds them.
 
-At the end of the lock period, they will be automatically unlocked (spendable at the protocol level). This occurs implicitly; there is no direct transaction that unlocks them.
+Unlocking is implicit. At the start of the cycle after your chosen duration ends, or after you unstake, the tokens become spendable again. No transaction unlocks them.
 
 ***
 
-## Stacking Flow Breakdown
+### The Signer-Manager Relationship
 
-### Solo Stacking Flow
+Staking means locking STX and naming a signer-manager contract to act for you. The signer-manager is the contract your stake routes through: it validates your stake when you enter, is bound to the signer key that signs blocks, and distributes your rewards.
 
-Solo stacking follows the general stacking flow. You stack your own STX tokens and run your own signer. To operate as a solo stacker, you must have a minimum amount of STX tokens. This minimum is dynamic and can be found by viewing the [pox endpoint of the API](https://api.testnet.hiro.so/v2/pox) in the `min_threshold_ustx` field.
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2Fnu3PqBlGDIaRxEP6nQqi%2Fsigner-manager-relationship.svg?alt=media&#x26;token=5c316a3e-78de-42ec-9672-b3d627068302" alt="The staker, the signer-manager contract, and pox-5, with the STX lock staying in the staker&#x27;s account and rewards flowing back through the manager"><figcaption></figcaption></figure></div>
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-contract-flow.png" alt=""><figcaption></figcaption></figure></div>
+Who does what:
+
+* **You, the staker**, lock STX in your own account and choose how many cycles it covers, from 1 to 96.
+* **The signer-manager contract** is bound to a signer key once, through a one-time [SIP-018](https://github.com/stacksgov/sips/blob/main/sips/sip-018/sip-018-signed-structured-data.md) grant, and receives your settled rewards for onward distribution. It may take a fee, which is contract-level logic rather than a protocol feature.
+* **The pox-5 contract** registers your position for every cycle you chose in the single staking transaction, and settles rewards per staker to the manager.
+
+A signer-manager enters the signer set once at least 50,000 STX (`SIGNER_SET_MIN_USTX`) is staked to it in aggregate. The threshold is fixed, and it applies to the manager rather than to you: your own stake can be any size.
+
+Running your own signer-manager and staking to someone else's are the same mechanism. A "solo" staker is someone running their own manager, which is operationally identical to offering a pool, because anyone can stake to that contract. The protocol has no delegator or pool operator role.
+
+{% hint style="info" %}
+Choosing a manager means reading its fee, fee ceiling, admin set, and grant status, all of which are on-chain. [Stake to an Existing Signer-Manager](https://docs.stacks.co/operate/staking-stx/stack-with-a-pool) covers what to check.
+{% endhint %}
+
+***
+
+### Staking Flow
+
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FMoTziSfczlR3SjOjfzDd%2Fstaking-flow.svg?alt=media&#x26;token=f9ddaeb1-c46f-496b-92d7-0ca2b83f1224" alt="The staking flow between a staker and the pox-5 contract: choose a signer-manager, stake, earn across cycles, get paid, unstake"><figcaption></figcaption></figure></div>
 
 {% stepper %}
 {% step %}
-**Make API calls to get details about the upcoming reward cycle**
+**Choose a signer-manager**
 
-Query the network to discover the upcoming cycle parameters and timing.
+Pick a contract whose fee and admin set you accept; both are readable on-chain before you commit.
 {% endstep %}
 
 {% step %}
-**Confirm eligibility for a specific Stacks account**
+**Broadcast the staking transaction**
 
-Verify the account meets the minimum requirements and is eligible to participate.
+`stake` names the manager, the amount, and a duration of 1 to 96 cycles, and locks the STX in your account.
 {% endstep %}
 
 {% step %}
-**Confirm the BTC reward address and lockup duration**
+**Earn across cycles**
 
-Specify the Bitcoin address to receive payouts and input the desired lockup period.
+The one transaction registers you for every cycle you chose, and no further action keeps you in the reward set.
 {% endstep %}
 
 {% step %}
-**Broadcast the stacking transaction to lock STX**
+**Get paid**
 
-The transaction is broadcast and the STX tokens are locked. This must happen before the prepare phase of the next reward cycle (the last 100 Bitcoin blocks of the ongoing reward phase).
+pox-5 settles rewards per staker to your manager, which distributes them as sBTC, or as native BTC if you elected that.
 {% endstep %}
 
 {% step %}
-**Reward cycles execute and BTC rewards are sent**
+**Unstake when you choose**
 
-The stacking mechanism executes reward cycles and sends out rewards to the configured BTC reward address.
-{% endstep %}
-
-{% step %}
-**Monitor unlocking timing and rewards during lockup**
-
-During the lockup period, you can obtain details about unlocking timing, expected rewards, and more.
-{% endstep %}
-
-{% step %}
-**Tokens are released after the lockup period**
-
-Once the lockup period has passed, the tokens become spendable again.
-{% endstep %}
-
-{% step %}
-**Display reward history**
-
-Show historical details like earnings for previous reward cycles.
+`unstake` ends the position and the STX unlocks at the start of the next cycle.
 {% endstep %}
 {% endstepper %}
 
-{% hint style="info" %}
-Keep in mind that the target duration for a reward cycle is \~2 weeks. This duration is based on the target block time of the Bitcoin network (10 minutes) and can be higher at times due to [confirmation time variances](https://www.blockchain.com/charts/median-confirmation-time) of the Bitcoin network.
+{% hint style="warning" %}
+Staking, staking updates, and unstaking are blocked during the prepare phase, the last 100 Bitcoin blocks of every reward cycle, while the upcoming cycle's signer set is frozen. This recurs every cycle.
 {% endhint %}
 
-### Delegated (Pool) Stacking Flow
+`stake-update` changes a live position without a cooldown: switch managers, increase the amount, extend the duration, or rotate a payout address. Changes take effect from the start of the next cycle.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-delegation-contract-flow.png" alt=""><figcaption></figcaption></figure></div>
+### Staking Cycles
 
-* Before stacking on behalf of a token holder, the delegator must be granted permission by the account owner. Permission is restricted to a maximum amount the delegator may stack; the maximum can be set higher than available funds. An account can be associated with only one delegator.
-* The account sets the delegation relationship. They can optionally restrict the Bitcoin reward address that must be used for payouts and specify an expiration burn block height to limit the delegation duration.
-* Delegators lock STX from different accounts ("pooling phase") until they reach the minimum required to participate in stacking.
-* Once the delegator locks enough STX, they can finalize and commit participation in the next reward cycle.
-* Some delegation relationships may allow the STX holder to receive payouts directly from the miner.
-* Delegation can terminate automatically based on expiration rules or by actively revoking delegation rights.
+Staking happens in reward cycles of 2,100 Bitcoin blocks (roughly two weeks). The last 100 Bitcoin blocks of each cycle are the prepare phase, in which the upcoming cycle's signer set is fixed and staking transactions are rejected.
 
-***
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FAxvhLfLPRKhyCVCvfbmC%2Fstaking-cycles.svg?alt=media&#x26;token=2a73a6a0-c479-40f6-8308-77595ba389f4" alt="A reward cycle of 2,100 Bitcoin blocks ending in a 100-block prepare phase, with reward distributions every 1,050 blocks and unlocks at the cycle boundary"><figcaption></figcaption></figure></div>
 
-## Token holder eligibility
+* The prepare phase fixes the signer set for the upcoming cycle: every signer-manager with at least 50,000 STX staked to it in aggregate.
+* During the reward phase, miners commit BTC to mine Stacks blocks, and that BTC funds staker rewards.
+* Rewards are credited once per distribution interval of 1,050 Bitcoin blocks (roughly one week), two intervals per reward cycle. The interval gates crediting only: your signer-manager can claim credited rewards at any time.
+* Unlocks happen at a cycle boundary: at the start of the cycle after your chosen duration ends, or after you unstake.
 
-Stacks (STX) token holders don't automatically receive stacking rewards. To participate, they must:
-
-* Commit to participation before a reward cycle begins
-* Commit at least the minimum amount of STX tokens to secure a reward slot, or pool with others to reach the minimum
-* Lock up STX tokens for a specified period
-* Provide a supported Bitcoin address to receive rewards
-* Maintain their signer software (if they operate a signer)
-
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-dynamic-minimum.png" alt=""><figcaption></figcaption></figure></div>
-
-Token holders have a variety of providers and tools to support their participation in stacking. The Stacks website contains a [list of pools and stacking options](https://www.stacks.co/learn/stacking#startstacking).
-
-## Stacking Cycles
-
-Stacking happens in reward cycles of 2100 Bitcoin blocks (roughly two weeks). Reward cycles are split into two phases: the Prepare phase and the Reward phase.
-
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-cycles.png" alt=""><figcaption></figcaption></figure></div>
-
-* The prepare phase lasts 100 Bitcoin blocks and is where the new stackers for the upcoming reward phase are selected by the PoX anchor block (see SIP-007 for details).
-* Because Stacks does not fork after the Nakamoto upgrade, the PoX anchor block is always known 100 Bitcoin blocks before the start of the next reward cycle. It is the last tenure-start block that precedes the prepare phase.
-* The PoX anchor block identifies the next stackers. They have 100 Bitcoin blocks to prepare for signing Stacks blocks, including completing a Distributed Key Generation round for signing blocks.
-* The PoX contract requires stackers to register their block-signing keys when they stack or delegate-stack STX, so the entire network can validate signatures on blocks.
-
-This process is handled by [running a signer](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-signer) and then subsequently conducting stacking operations as that signer.
+{% hint style="info" %}
+The two-week target comes from Bitcoin's 10-minute target block time, so a cycle stretches when Bitcoin blocks run slow.
+{% endhint %}
 
 ***
 
-## Stacking vs Signing
+### Two Ways to Participate
 
-Stacking and signing are distinct actions, but both are necessary. Signers must stack their STX tokens, and you cannot stack STX without associated signing information. The nuance depends on solo vs delegated stacking.
+PoX-5 has two participation paths, and a Stacks principal can hold one position in one path at a time.
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/stacking-vs-signing.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FfPEb9hdThjoyavbG7gaF%2Fstaking-participation-paths.svg?alt=media&#x26;token=193444bd-e899-48d6-866c-e1e70bf1f56f" alt="STX-only staking beside a Bitcoin-paired protocol bond, mutually exclusive per Stacks principal"><figcaption></figcaption></figure></div>
 
-#### Solo Stacking
+**STX-only staking** locks STX alone. You choose 1 to 96 cycles, you can unstake at any time outside the prepare phase with the unlock at the next cycle start, and there is no capacity limit. Rewards come from the miner BTC left after protocol bond obligations, split 85% to STX-only stakers pro rata and 15% to the protocol reserve.
 
-If you are solo stacking, you have two options for signing.
+**Bitcoin-paired protocol bonds** pair a BTC commitment with an STX lock for a bond term of 12 cycles (roughly six months). The BTC side is either a timelocked UTXO on Bitcoin L1 that stays under your own keys, or sBTC, which pox-5 holds for the term. Bonds target a fixed yield rate on the BTC side; the paired STX earns no yield. Capacity is allocated per bonding period, so registering requires an allowance for that period, and `register-for-bond` is the entry point.
 
-**Run your own signer:**\
-You can run your own signer by following the How to Run a Signer guide. This requires technical knowledge and resources for running a machine. See the guide for details.
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FjBkZw5LyLETb8YCfTw3q%2Fprotocol-bonds.svg?alt=media&#x26;token=9216fcc6-80e3-4e66-9b71-3e74ca0f0634" alt="Six staggered bonding periods overlapping, and the anatomy of one bond period from enrollment to STX unlock"><figcaption></figcaption></figure></div>
 
-**Work with another signer:**\
-If you don't want to run your own signer, you can collaborate with another signer and include their signature in your stacking transactions. Details on how to do this are in the [Stack STX](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/staking-stx) guide.
+Bonding periods are staggered: a new one opens every two reward cycles (about a month), each runs twelve cycles, and six are active at any moment, so a bond that ends is immediately followed by one that starts. The BTC timelock expires 1,050 Bitcoin blocks (about a week) before the bond ends, and that window is when you can re-lock BTC for the next bond. On a roll-over the STX lock extends without unlocking; otherwise the STX unlocks when the bond ends. Exiting early (`unstake-sbtc`, or the L1 early-exit path) forfeits the remaining yield, never principal, and the paired STX stays locked to term.
 
-#### Delegated Stacking
+Both paths route through a signer-manager, and both keep the STX in your account. Registering a bond while STX-only staking, or the reverse, is rejected by the contract.
 
-If you delegate your STX to a pool operator, you do not need to run a signer. The pool operator conducts the actual stacking transaction and is responsible for running the signer.
-
-If you are a pool operator, see the [operate-a-pool guide](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/stacking-stx/operate-a-stacking-pool).
+The bond mechanics in depth are in [SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md) and the [Bitcoin Staking whitepaper](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-5.pdf).
 
 ***
 
-## How and Where to Stack
+### Staking and Signing
 
-Options for stacking include solo stacking, participating in a pool, using an exchange, and liquid stacking. The Stacks website has a [stacking page](https://www.stacks.co/learn/stacking) describing these options.
+Staking and signing are distinct actions, and both are necessary. The staked STX decides how much weight a signer carries, and the signer key does the signing. A signer-manager connects the two: it is bound to one signer key through a one-time grant, and the signer software detects from chain state whether its manager is in the signer set for the upcoming cycle.
 
-For detailed instructions on how to stack, see the [Stack STX guides](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/staking-stx).
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FlvBLhI7D2ThkIs3oW5jR%2Fstaking-and-signing.svg?alt=media&#x26;token=4ccaf8db-6e07-4cf3-b378-e19584a49526" alt="Manual staking transactions feeding the reward phase, and the signer software acting automatically once its manager is in the signer set"><figcaption></figcaption></figure></div>
 
-Tools and explorers for stacking data and statistics:
+You do not run a signer to stake. The manager you stake to is bound to one, and your stake adds to its weight. Running your own signer means deploying a signer-manager, binding your signer key to it, and operating the signer software: see [Deploy a Signer Manager Contract](https://docs.stacks.co/operate/deploy-a-signer-manager-contract) and [Run a Signer](https://docs.stacks.co/operate/run-a-signer).
 
-* [https://app.signal21.io/stacks](https://app.signal21.io/stacks)
-* [https://www.stacking-tracker.com/](https://www.stacking-tracker.com/)
-* [https://www.stakingrewards.com/calculator?asset=stacks](https://www.stakingrewards.com/calculator?asset=stacks)
-* [https://stacking.tools/](https://stacking.tools/)
+Signing itself is covered in [Signing: Verifying Block Validity](signing.md).
 
 ***
 
-### Additional Resources
+### How and Where to Stake
 
-* \[[Stacks YT](https://youtu.be/x3ESWoA61yM?si=9M3s2QgarTfYzm0s)] What is Stacking? Earn Bitcoin on Stacks ft. Kate Parkman
-* \[[Stacks YT](https://youtu.be/cUq4_vbZfUM?si=anrHyckZS5mi1Wu-)] Earn Bitcoin Rewards: How Stacking your STX Works (Step-by-Step)
-* \[[Stacks YT](https://youtu.be/Taa7fb3dSqA?si=doqOLpi3YmbwJ-Lg)] An Introduction to Stacking ft. Hank Stoever
+Anyone with STX in their own account can stake. [app.leather.io/staking](https://app.leather.io/staking) lists signer-managers to pick from, and several pool operators run their own staking apps. Whichever you use, the transaction goes to `pox-5`.
+
+For step-by-step instructions, see the [Staking STX guides](https://docs.stacks.co/operate/staking-stx).
+
+***
+
+### If You Knew Stacking Under PoX-4
+
+The network renamed stacking to staking with PoX-5, and the mechanics changed with the name. The corrections to the old model, in one place:
+
+* Every PoX-4 position unlocked when Epoch 4.0 activated. Re-enroll under PoX-5 to keep earning.
+* Solo and pooled stacking were separate mechanisms. Both are replaced by staking to a signer-manager; the only question is who deployed the contract.
+* `delegate-stx`, `revoke-delegate-stx`, and `stack-aggregation-commit` no longer exist. No operator commits per cycle on your behalf, so a missed commit can no longer cost a pool a cycle of rewards.
+* The dynamic minimum is gone, and the `min_threshold_ustx` field with it. The fixed 50,000 STX signer-set threshold applies to the manager in aggregate, with no per-staker minimum.
+* Per-transaction signer signatures are gone, replaced by the one-time signer-key grant.
+* The cooldown cycle is gone. Switching managers, increasing the amount, or extending the duration happens in one transaction with no missed cycle.
+* [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md) describes PoX before Nakamoto, and [SIP-021](https://github.com/stacksgov/sips/blob/main/sips/sip-021/sip-021-nakamoto.md) describes Nakamoto. Read both as history rather than current behavior.
+
+[What's Changed in PoX-5](https://docs.stacks.co/operate/staking-stx/whats-changed-in-pox-5) covers the migration in operator detail.
+
+***
+
+#### Additional Resources
+
+* [SIP-045: PoX-5, Bitcoin Staking](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)
+* [Bitcoin Staking whitepaper](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-5.pdf)
+* [pox-5.clar at release 4.0.1](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar)
+* [Staking STX guides](https://docs.stacks.co/operate/staking-stx)
