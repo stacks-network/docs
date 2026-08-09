@@ -50,7 +50,7 @@ The signer software detects from chain state whether its manager is in the upcom
 
 #### The relationship between stakers and signers
 
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FlvBLhI7D2ThkIs3oW5jR%2Fstaking-and-signing.svg?alt=media&#x26;token=4ccaf8db-6e07-4cf3-b378-e19584a49526" alt="Manual staking transactions feeding the reward phase, and the signer software acting automatically once its manager is in the signer set"><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FS1L4pYrXDd1Ju74JhJkr%2Fstaking-and-signing.png?alt=media&#x26;token=3395cd31-c1fa-4f1a-97e0-f762285052c7" alt="Manual staking transactions feeding the reward phase, and the signer software acting automatically once its manager is in the signer set"><figcaption></figcaption></figure></div>
 
 * Stakers are not signers. Signing is done by the key granted to the signer-manager they stake to, and running that signer is the manager operator's job.
 * Every signer is backed by staked STX. To be in the signer set, a manager must represent at least the 50,000 STX aggregate threshold, and its weight grows with the stake it represents.
