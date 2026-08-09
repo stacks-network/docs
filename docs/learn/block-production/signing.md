@@ -36,7 +36,7 @@ The bulk of the complexity in the Nakamoto changes went into separating these tw
 
 Signers are required to acknowledge and validate a miner's block before it can be appended to the chain. To do so, they must first agree on the canonical chain tip, then apply the block on that tip to determine its validity. Once enough signers agree that the block is both canonical and valid, their signatures accompany the block as it replicates to the rest of the Stacks peer network, and only at that point do nodes append it to their chain histories.
 
-This behavior prevents forks from arising. If a miner builds a block atop a stale tip, signers refuse to sign it. If signers cannot agree on the canonical Stacks tip, no block is appended in the first place. The failure mode this creates, a chain that halts while signers disagree, is mitigated by keeping the signer set large and diverse enough that quorum is met at all times, and by paying signers through PoX rewards to stay online.
+This behavior prevents forks. If a miner builds a block atop a stale tip, signers refuse to sign it. If signers cannot agree on the canonical Stacks tip, no block is appended in the first place. The failure mode this creates, a chain that halts while signers disagree, is mitigated by keeping the signer set large and diverse enough that quorum is met at all times, and by paying signers through PoX rewards to stay online.
 
 ***
 
@@ -50,7 +50,7 @@ The signer software detects from chain state whether its manager is in the upcom
 
 #### The relationship between stakers and signers
 
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FS1L4pYrXDd1Ju74JhJkr%2Fstaking-and-signing.png?alt=media&#x26;token=3395cd31-c1fa-4f1a-97e0-f762285052c7" alt="Manual staking transactions feeding the reward phase, and the signer software acting automatically once its manager is in the signer set"><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FS1L4pYrXDd1Ju74JhJkr%2Fstaking-and-signing.png?alt=media&#x26;token=3395cd31-c1fa-4f1a-97e0-f762285052c7" alt="Manual staking transactions feeding the reward phase, and the signer software acting automatically once its manager is in the signer set"><figcaption><p>Manual on the staker's side, automatic on the signer's</p></figcaption></figure></div>
 
 * Stakers are not signers. Signing is done by the key granted to the signer-manager they stake to, and running that signer is the manager operator's job.
 * Every signer is backed by staked STX. To be in the signer set, a manager must represent at least the 50,000 STX aggregate threshold, and its weight grows with the stake it represents.

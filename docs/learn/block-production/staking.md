@@ -56,7 +56,7 @@ Stakers back a consensus-critical role, but PoX has no slashing. Locked STX is n
 
 #### Locking and Unlocking STX
 
-When STX locks, no transfer occurs. Locking is non-custodial: the tokens stay in your account and become unspendable at the protocol level. Neither the signer-manager nor the pox-5 contract ever holds them.
+When STX locks, no transfer occurs. Locking is non-custodial: the tokens stay in your account and become unspendable at the protocol level.
 
 Unlocking is implicit. At the start of the cycle after your chosen duration ends, or after you unstake, the tokens become spendable again. No transaction unlocks them.
 
@@ -66,7 +66,7 @@ Unlocking is implicit. At the start of the cycle after your chosen duration ends
 
 Staking means locking STX and naming a signer-manager contract to act for you. The signer-manager is the contract your stake routes through: it validates your stake when you enter, is bound to the signer key that signs blocks, and distributes your rewards.
 
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FtgQWu2VHlMNA9q0uE9YH%2Fsigner-manager-relationship.png?alt=media&#x26;token=11367cc6-5f5a-4d1c-aada-8cefd809551b" alt="The staker, the signer-manager contract, and pox-5, with the STX lock staying in the staker&#x27;s account and rewards flowing back through the manager"><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FtgQWu2VHlMNA9q0uE9YH%2Fsigner-manager-relationship.png?alt=media&#x26;token=11367cc6-5f5a-4d1c-aada-8cefd809551b" alt="The staker, the signer-manager contract, and pox-5, with the STX lock staying in the staker&#x27;s account and rewards flowing back through the manager"><figcaption><p>How a stake reaches the signer set</p></figcaption></figure></div>
 
 Who does what:
 
@@ -76,7 +76,7 @@ Who does what:
 
 A signer-manager enters the signer set once at least 50,000 STX (`SIGNER_SET_MIN_USTX`) is staked to it in aggregate. The threshold is fixed, and it applies to the manager rather than to you: your own stake can be any size.
 
-Running your own signer-manager and staking to someone else's are the same mechanism. A "solo" staker is someone running their own manager, which is operationally identical to offering a pool, because anyone can stake to that contract. The protocol has no delegator or pool operator role.
+Running your own signer-manager and staking to someone else's are the same mechanism. A "solo" staker is someone running their own manager, which is operationally identical to offering a pool, because anyone can stake to that contract.
 
 {% hint style="info" %}
 Choosing a manager means reading its fee, fee ceiling, admin set, and grant status, all of which are on-chain. [Stake to an Existing Signer-Manager](https://docs.stacks.co/operate/staking-stx/stack-with-a-pool) covers what to check.
@@ -86,7 +86,7 @@ Choosing a manager means reading its fee, fee ceiling, admin set, and grant stat
 
 ### Staking Flow
 
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FNSXVJ0OeRMpl5Ll36AHh%2Fstaking-flow.png?alt=media&#x26;token=91152a0a-f449-46ae-a146-65df613ba9c9" alt="The staking flow between a staker and the pox-5 contract: choose a signer-manager, stake, earn across cycles, get paid, unstake"><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FNSXVJ0OeRMpl5Ll36AHh%2Fstaking-flow.png?alt=media&#x26;token=91152a0a-f449-46ae-a146-65df613ba9c9" alt="The staking flow between a staker and the pox-5 contract: choose a signer-manager, stake, earn across cycles, get paid, unstake"><figcaption><p>Staking, start to finish</p></figcaption></figure></div>
 
 {% stepper %}
 {% step %}
@@ -124,13 +124,13 @@ pox-5 settles rewards per staker to your manager, which distributes them as sBTC
 Staking, staking updates, and unstaking are blocked during the prepare phase, the last 100 Bitcoin blocks of every reward cycle, while the upcoming cycle's signer set is frozen. This recurs every cycle.
 {% endhint %}
 
-`stake-update` changes a live position without a cooldown: switch managers, increase the amount, extend the duration, or rotate a payout address. Changes take effect from the start of the next cycle.
+`stake-update` changes a live position without a cooldown: switch managers, increase the amount, extend the duration, or rotate a payout address. Changes take effect from the start of the next cycle. Reducing your locked amount is the exception, and still costs a cycle.
 
 ### Staking Cycles
 
 Staking happens in reward cycles of 2,100 Bitcoin blocks (roughly two weeks). The last 100 Bitcoin blocks of each cycle are the prepare phase, in which the upcoming cycle's signer set is fixed and staking transactions are rejected.
 
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2Ffz7B1xYNMnl5u5ICddZi%2Fstaking-cycles.png?alt=media&#x26;token=7aea0cf7-4dee-42af-a195-acf5c9aade65" alt="A reward cycle of 2,100 Bitcoin blocks ending in a 100-block prepare phase, with reward distributions every 1,050 blocks and unlocks at the cycle boundary"><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2Ffz7B1xYNMnl5u5ICddZi%2Fstaking-cycles.png?alt=media&#x26;token=7aea0cf7-4dee-42af-a195-acf5c9aade65" alt="A reward cycle of 2,100 Bitcoin blocks ending in a 100-block prepare phase, with reward distributions every 1,050 blocks and unlocks at the cycle boundary"><figcaption><p>One reward cycle, block by block</p></figcaption></figure></div>
 
 * The prepare phase fixes the signer set for the upcoming cycle: every signer-manager with at least 50,000 STX staked to it in aggregate.
 * During the reward phase, miners commit BTC to mine Stacks blocks, and that BTC funds staker rewards.
@@ -147,13 +147,13 @@ The two-week target comes from Bitcoin's 10-minute target block time, so a cycle
 
 PoX-5 has two participation paths, and a Stacks principal can hold one position in one path at a time.
 
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FE8dFBwzzAgg3X2CtEBn4%2Fstaking-participation-paths.png?alt=media&#x26;token=469a09a9-c442-42cc-9907-2cb7f763294d" alt="STX-only staking beside a Bitcoin-paired protocol bond, mutually exclusive per Stacks principal"><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FE8dFBwzzAgg3X2CtEBn4%2Fstaking-participation-paths.png?alt=media&#x26;token=469a09a9-c442-42cc-9907-2cb7f763294d" alt="STX-only staking beside a Bitcoin-paired protocol bond, mutually exclusive per Stacks principal"><figcaption><p>The two paths, side by side</p></figcaption></figure></div>
 
 **STX-only staking** locks STX alone. You choose 1 to 96 cycles, you can unstake at any time outside the prepare phase with the unlock at the next cycle start, and there is no capacity limit. Rewards come from the miner BTC left after protocol bond obligations, split 85% to STX-only stakers pro rata and 15% to the protocol reserve.
 
 **Bitcoin-paired protocol bonds** pair a BTC commitment with an STX lock for a bond term of 12 cycles (roughly six months). The BTC side is either a timelocked UTXO on Bitcoin L1 that stays under your own keys, or sBTC, which pox-5 holds for the term. Bonds target a fixed yield rate on the BTC side; the paired STX earns no yield. Capacity is allocated per bonding period, so registering requires an allowance for that period, and `register-for-bond` is the entry point.
 
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FRIZYeYjWEOj7wqhN6rM2%2Fprotocol-bonds.png?alt=media&#x26;token=c62adaed-b393-483e-b600-8ec0389d72b0" alt="Six staggered bonding periods overlapping, and the anatomy of one bond period from enrollment to STX unlock"><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FRIZYeYjWEOj7wqhN6rM2%2Fprotocol-bonds.png?alt=media&#x26;token=c62adaed-b393-483e-b600-8ec0389d72b0" alt="Six staggered bonding periods overlapping, and the anatomy of one bond period from enrollment to STX unlock"><figcaption><p>Six bonds running at once</p></figcaption></figure></div>
 
 Bonding periods are staggered: a new one opens every two reward cycles (about a month), each runs twelve cycles, and six are active at any moment, so a bond that ends is immediately followed by one that starts. The BTC timelock expires 1,050 Bitcoin blocks (about a week) before the bond ends, and that window is when you can re-lock BTC for the next bond. On a roll-over the STX lock extends without unlocking; otherwise the STX unlocks when the bond ends. Exiting early (`unstake-sbtc`, or the L1 early-exit path) forfeits the remaining yield, never principal, and the paired STX stays locked to term.
 
@@ -167,7 +167,7 @@ The bond mechanics in depth are in [SIP-045](https://github.com/stacksgov/sips/b
 
 Staking and signing are distinct actions, and both are necessary. The staked STX decides how much weight a signer carries, and the signer key does the signing. A signer-manager connects the two: it is bound to one signer key through a one-time grant, and the signer software detects from chain state whether its manager is in the signer set for the upcoming cycle.
 
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FS1L4pYrXDd1Ju74JhJkr%2Fstaking-and-signing.png?alt=media&#x26;token=3395cd31-c1fa-4f1a-97e0-f762285052c7" alt="Manual staking transactions feeding the reward phase, and the signer software acting automatically once its manager is in the signer set"><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FS1L4pYrXDd1Ju74JhJkr%2Fstaking-and-signing.png?alt=media&#x26;token=3395cd31-c1fa-4f1a-97e0-f762285052c7" alt="Manual staking transactions feeding the reward phase, and the signer software acting automatically once its manager is in the signer set"><figcaption><p>What you do, and what the signer does</p></figcaption></figure></div>
 
 You do not run a signer to stake. The manager you stake to is bound to one, and your stake adds to its weight. Running your own signer means deploying a signer-manager, binding your signer key to it, and operating the signer software: see [Deploy a Signer Manager Contract](https://docs.stacks.co/operate/deploy-a-signer-manager-contract) and [Run a Signer](https://docs.stacks.co/operate/run-a-signer).
 
@@ -188,11 +188,11 @@ For step-by-step instructions, see the [Staking STX guides](https://docs.stacks.
 The network renamed stacking to staking with PoX-5, and the mechanics changed with the name. The corrections to the old model, in one place:
 
 * Every PoX-4 position unlocked when Epoch 4.0 activated. Re-enroll under PoX-5 to keep earning.
-* Solo and pooled stacking were separate mechanisms. Both are replaced by staking to a signer-manager; the only question is who deployed the contract.
+* Solo and pooled stacking were separate mechanisms. Both are replaced by staking to a signer-manager, and the protocol has no delegator or pool operator role.
 * `delegate-stx`, `revoke-delegate-stx`, and `stack-aggregation-commit` no longer exist. No operator commits per cycle on your behalf, so a missed commit can no longer cost a pool a cycle of rewards.
-* The dynamic minimum is gone, and the `min_threshold_ustx` field with it. The fixed 50,000 STX signer-set threshold applies to the manager in aggregate, with no per-staker minimum.
+* The dynamic minimum is gone, and the `min_threshold_ustx` field with it.
 * Per-transaction signer signatures are gone, replaced by the one-time signer-key grant.
-* The cooldown cycle is gone. Switching managers, increasing the amount, or extending the duration happens in one transaction with no missed cycle.
+* The cooldown cycle is gone for everything except reducing your locked amount, which still costs a cycle.
 * [SIP-007](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md) describes PoX before Nakamoto, and [SIP-021](https://github.com/stacksgov/sips/blob/main/sips/sip-021/sip-021-nakamoto.md) describes Nakamoto. Read both as history rather than current behavior.
 
 [What's Changed in PoX-5](https://docs.stacks.co/operate/staking-stx/whats-changed-in-pox-5) covers the migration in operator detail.
