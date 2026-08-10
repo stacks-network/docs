@@ -1,330 +1,108 @@
+---
+description: >-
+  What a Stacks signer is made of, what it needs from the machine and the
+  network, and where each piece is set up.
+---
+
 # Run a Signer
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/run-a-signer-cover.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="https://4065274862-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4cpTb2lbw0LAOuMHrvhA%2Fuploads%2Fn6Drb2IOHQHE6IPyghA7%2Frun-a-signer-cover.png?alt=media&#x26;token=8791bf7e-2040-4e81-8cff-9337cdcd4a1b" alt="Run a Signer"><figcaption></figcaption></figure></div>
 
-### How to Use This Guide
+A signer validates proposed Stacks blocks and signs the ones it accepts. This section covers the infrastructure: what has to be running, what it needs from the machine and the network, and where each piece is set up.
 
-This guide is a step-by-step walkthrough for setting up and running a signer. It covers only the signer infrastructure: the signer software and the Stacks node it connects to.
+If signing is new to you, start with the [Signing concept guide](https://docs.stacks.co/learn/block-production/signing).
 
-If you are not familiar with the concept of signing, be sure to check out the [Stackers and Signing concept guide](https://github.com/stacks-network/docs/blob/master/docs/learn/block-production/signing.md).
+***
 
-### Background and High-Level Process
+## What has to be running
 
-To run a signer you'll run a signer and a Stacks node side-by-side. Specifically, run a follower node. The signer monitors events from the Stacks node and uses the generated account (see Preflight Setup) to sign incoming Stacks blocks sent from the Stacks node.
+These run alongside each other, and each depends on the one below it.
 
-This doc provides instructions to set up both using either Docker or the release binaries available in the [stacks core releases](https://github.com/stacks-network/stacks-core/releases/latest) repository, and how to configure them so the signer and Stacks node communicate correctly.
+<table><thead><tr><th width="170">Process</th><th>What it does</th><th>Where to set it up</th></tr></thead><tbody><tr><td><code>stacks-signer</code></td><td>Validates proposed blocks and signs them with your signer key</td><td><a href="signer-quickstart.md">Signer Quickstart</a>, step 2</td></tr><tr><td><code>stacks-node</code></td><td>Follows the chain and streams block proposals to the signer. A follower, not a miner</td><td><a href="signer-quickstart.md">Signer Quickstart</a>, step 4</td></tr><tr><td><code>bitcoind</code></td><td>Feeds the Stacks node its view of Bitcoin. Run your own, dedicated to this signer</td><td><a href="../run-a-node/run-a-bitcoin-node.md">Run a Bitcoin Node</a> or <a href="../run-a-node/run-a-pruned-bitcoin-node.md">Run a Pruned Bitcoin Node</a></td></tr></tbody></table>
 
-### Knowledge Prerequisites
+A shared or third-party Bitcoin node is the usual reason a Stacks node falls behind tip and stays there, and a signer whose node is behind tip stops signing. Treat a dedicated Bitcoin node as part of the signer, not as an optional extra.
 
-* Docker and basic knowledge of pulling and running images
-* Basic knowledge of [Stacks accounts](https://github.com/stacks-network/docs/blob/master/docs/learn/network-fundamentals/wallets-and-accounts.md)
+The Quickstart runs both the signer and the node end to end, with binary and Docker paths. Field-by-field descriptions of both config files live in [Signer Configuration](https://docs.stacks.co/reference/node-operations/signer-configuration) and [Stacks Node Configuration](https://docs.stacks.co/reference/node-operations/readme-1).
+
+***
+
+## Minimum system requirements
+
+These are minimums for the signer, the Stacks node and a Bitcoin node together. Provision above them if you can.
+
+* 4 vCPU
+* 8 GB memory for the signer and Stacks node, 16 GB with a Bitcoin node alongside them
+* 1.5 TB storage or more: roughly 1 TB for the Bitcoin node, 500 GB for the Stacks node, 50 GB for the signer
+
+***
+
+## Networking
+
+The signer and the node talk over plain HTTP. The signer builds its node URL as `http://{node_host}`, and the `auth_password` it sends is your node's `auth_token`, in the clear. Anything that can observe that link can read the token and impersonate your node to the signer.
+
+Keep both on the same private network, with the signer reachable only from the node. Loopback on a single machine is the simplest way to do that. Separate hosts on a trusted private subnet is the better one, because a host running `stacks-node` participates in the peer-to-peer network and is easier to enumerate, so keeping the signer off it hides the signer. Either way, the signer's `endpoint` must never be reachable from the public internet.
+
+User separation, systemd hardening and firewalling are covered in [OpSec Best Practices](opsec-best-practices.md).
+
+***
+
+## Setup checklist
 
 {% stepper %}
 {% step %}
-#### Signer Checklist: Pre-Launch Setup
+#### Provision the machine
 
-Quick reference of major setup steps prior to launching a signer.
-
-* Ensure your system meets the [minimum system requirements](./#minimum-system-requirements).
-* Acquire Docker and basic knowledge of Stacks accounts (links above).
+Meet the requirements above, and decide now whether the signer and node share a host or sit on a private subnet.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist: Preflight Setup
+#### Generate the signer key
 
-* Generate a new private key using stacks-cli (see Preflight Setup).
-* Save the generated account information securely.
+A fresh Stacks account, whose private key becomes `stacks_private_key`. Store it somewhere you can restore from. See [Signer Quickstart](signer-quickstart.md), step 1.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist: Configuration Setup
+#### Configure and start the signer
 
-* Create a `signer-config.toml` file with necessary configurations:
-  * node\_host
-  * endpoint
-  * network
-  * db\_path
-  * auth\_password
-  * stacks\_private\_key
-* Store `signer-config.toml` securely and note down the values used.
+`signer-config.toml` needs `node_host`, `endpoint`, `network`, `db_path`, `auth_password` and `stacks_private_key`. Verify it with `stacks-signer check-config` before starting.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist: Running the Signer
+#### Configure and start the Stacks node
 
-* Decide whether to run the signer using Docker (recommended) or as a binary.
-* If using Docker:
-  * Set up the necessary ports and volumes.
-  * Run the Docker container with the appropriate settings.
-* If running as a binary:
-  * Build `stacks-core` from source or download the pre-built binary.
-  * Run the signer using: `stacks-signer run --config <path_to_config>`.
+`node-config.toml` needs `stacker = true`, an `auth_token` matching the signer's `auth_password`, and an `[[events_observer]]` pointing at the signer's `endpoint`. Start the signer first: the node will not run unless it can reach that endpoint.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist: Verify Signer Operation
+#### Confirm both are healthy
 
-* Check that the signer is listening on its configured endpoint.
-* Confirm that there are no errors and that the system is ready for connections.
+The signer logs `Signer spawned successfully`. The node logs `Registering event observer at` with your signer's endpoint, then begins syncing Bitcoin headers. Until your signer is in a reward set it will also log that it is not registered for the current cycle, which is expected.
 {% endstep %}
 
 {% step %}
-#### Signer Checklist: Setting Up the Stacks Node
+#### Register the signer
 
-* Create a `node-config.toml`, include:
-  * connection\_options.sauth\_token
-  * events\_observer.endpoint (matching signer config)
-* Decide whether to run the Stacks node using Docker or as a binary and follow the respective run steps.
-{% endstep %}
-
-{% step %}
-#### Signer Checklist: Verify Stacks Node Operation
-
-* Check Stacks node logs for successful connection to the signer.
-* Confirm the node is syncing Bitcoin headers properly.
+Bind your signer key to a signer-manager contract. Until that happens the signer is running but has no stake behind it and signs nothing.
 {% endstep %}
 {% endstepper %}
 
-### Minimum System Requirements
+***
 
-These are the minimum required specs to run a node and signer. More resources are recommended for optimal performance.
+## Registering, once it runs
 
-#### Signer, Stacks node and Bitcoin node
+A running signer is not yet part of the signer set. Your signer key has to be bound to a signer-manager contract, and stakers have to route at least 50,000 STX through that manager in aggregate before it enters a cycle's signer set.
 
-* 4 vCPU
-* 8 GB memory if running only a Stacks node and signer
-* 16 GB memory if running Stacks + Bitcoin node + signer
-* 1.5+ TB storage (1 TB for Bitcoin node, 500 GB for Stacks node, and 50 GB for signer)
+Under PoX-5 that binding is a standing on-chain grant rather than PoX-4's per-transaction signature: you sign a SIP-018 message with your signer key, the signer-manager submits it through `grant-signer-key`, and then calls `register-signer`.
+
+* [Generate a Signer Signature](../staking-stx/generate-signer-signature.md) produces the grant
+* [Staking STX](../staking-stx/) covers the staking side
+* [Key and Address Rotation](../staking-stx/key-and-address-rotation.md) covers changing the key later
 
 ***
 
-## Preflight Setup
-
-Before you get your signer set up, you'll need to [generate a new private key](https://docs.stacks.co/stacks-101/accounts#creation). The `stacks-cli` provides a mechanism for quickly generating a new account keychain via a simple CLI interface. The linked guide shows how to create one of those accounts on testnet.
-
-Save the generated account information securely; you'll need it later.
-
-{% hint style="info" %}
-What should the networking setup look like?
-
-Signers are intended to work with a local node. The node<->signer connection is not run over SSL, which means you can be exposed to a man-in-the-middle attack if your signer and node are hosted on separate machines. Ensure your signer isn't allowing requests from the public internet. We recommend having the signer and node running locally on the same machine or using internal networking between them.
-{% endhint %}
-
-***
-
-## Create a Configuration File
-
-Create a file named `signer-config.toml`. Populate it with the example signer config file contents from the [Sample Configuration Files](https://github.com/stacks-network/docs/blob/master/docs/reference/node-operations/signer-configuration.md) page. Each field is described on that page.
-
-***
-
-## Running the Signer
-
-Two options: Docker (recommended) or binary. Binaries are available on the [Stacks Core releases page](https://github.com/stacks-network/stacks-core/releases/latest).
-
-### Running the Signer with Docker
-
-You can run the signer as a Docker container using the `blockstack/stacks-signer:3.1.0.0.5.0` image.
-
-Requirements when running the container:
-
-* The port configured as the `endpoint` (example: 30000) must be exposed to your Stacks node (endpoint should not be public).
-* A volume with at least a few GB available that contains the folder specified by your `db_path` (example: `/var`).
-* Mount your `signer-config.toml` file as a volume.
-
-Example docker run command:
-
-```bash
-IMG="blockstack/stacks-signer"
-VER="3.1.0.0.5.0"
-STX_SIGNER_PATH="./"
-STX_SIGNER_DATA="$STX_SIGNER_PATH/data"
-STX_SIGNER_CONFIG="$STX_SIGNER_PATH/signer-config.toml"
-
-docker run -d \
-    -v $STX_SIGNER_CONFIG:/config.toml \
-    -v $STX_SIGNER_DATA:/var/stacks \
-    -p 30000:30000 \
-    -e RUST_BACKTRACE=full \
-    -e BLOCKSTACK_DEBUG=0 \
-    --name stacks-signer \
-    $IMG:$VER \
-    stacks-signer run \
-    --config /config.toml
-```
-
-{% hint style="info" %}
-If you get an error about the manifest not found or the image platform not matching the host platform, you probably are running on an architecture other than x64. Add `--platform=linux/amd64` to the command (for example, on M1 Mac).
-{% endhint %}
-
-Or, using a custom Dockerfile:
-
-```docker
-FROM blockstack/stacks-signer:3.1.0.0.5.0
-COPY signer-config.toml /config.toml
-EXPOSE 30000
-CMD ["stacks-signer", "run", "--config", "/config.toml"]
-```
-
-### Running the Signer as a Binary
-
-Download the pre-built binaries from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases/latest), unzip the archive for your architecture. It includes the `stacks-signer` binary.
-
-Run the signer:
-
-```bash
-stacks-signer run --config ../signer-config.toml
-```
-
-(Replace `../signer-config.toml` with the actual path to your config.)
-
-***
-
-## Verify the Signer is Running
-
-List running containers:
-
-```bash
-docker ps
-```
-
-Check the container logs:
-
-```bash
-docker logs <container-id>
-```
-
-You should see:
-
-Signer spawned successfully. Waiting for messages to process...
-
-You may also see a warning like:
-
-```
-WARN [1712003997.160121] [stacks-signer/src/runloop.rs:247] [signer_runloop] Signer is not registered for reward cycle 556. Waiting for confirmed registration...
-```
-
-This means your signer is running and awaiting registration; proceed to set up the Stacks node and then begin stacking.
-
-{% hint style="warning" %}
-You may see messages saying the signer is not registered for the current or next reward cycle. This is normal until the prepare phase for your chosen reward cycle; assuming you meet the stacking minimum, the signer will be registered during that phase.
-{% endhint %}
-
-***
-
-## Set Up Your Bitcoin Node
-
-Optional but recommended to improve signer health and performance.
-
-Guides:
-
-* Run a full Bitcoin node: https://docs.stacks.co/guides-and-tutorials/nodes-and-miners/run-a-bitcoin-node
-* Run a pruned Bitcoin node: https://docs.stacks.co/guides-and-tutorials/nodes-and-miners/run-a-pruned-bitcoin-node
-
-***
-
-## Set Up Your Stacks Node
-
-Start the Stacks node after the signer is running. The node will not run unless it can send events to the signer.
-
-### Stacks Node Configuration
-
-Create `node-config.toml`. See the [Sample Configuration Files](https://github.com/stacks-network/docs/blob/master/docs/reference/node-operations/signer-configuration.md) page for the full contents.
-
-Important fields to change:
-
-* `working_dir`: directory where the node persists data
-* `auth_token`: authentication token used by signer (must match signer `auth_password`)
-* `events_observer.endpoint`: host and port where your signer listens (example: `127.0.0.1:30000` or `stacks-signer.local:30000`)
-
-### Start with an archive
-
-Starting from an archive snapshot is much faster than syncing from genesis. Archives are at https://archive.hiro.so.
-
-Example to download and extract the latest mainnet snapshot:
-
-```bash
-curl -# https://archive.hiro.so/mainnet/stacks-blockchain/mainnet-stacks-blockchain-latest.tar.gz -o stacks-snapshot.tar.gz
-tar -zxvf stacks-snapshot.tar.gz
-```
-
-This creates a `mainnet` folder where downloaded. Set `working_dir` to the parent directory containing `mainnet`.
-
-See best practices for snapshots: ../best-practices-to-snapshot-the-chainstate.md
-
-### Run a Stacks Node with Docker
-
-Use the `blockstack/stacks-core` image (example tag: `3.1.0.0.13`).
-
-When running the container:
-
-* Expose the port configured for `p2p_bind` to the internet.
-* Make the port configured for `rpc_bind` accessible by your signer.
-* `working_dir` needs 500 GB–1 TB storage.
-* Include your `node-config.toml`.
-
-Example docker run:
-
-```bash
-IMG="blockstack/stacks-core"
-VER="3.1.0.0.13"
-STX_NODE_CONFIG="./node-config.toml"
-
-docker run -d \
-    -v $STX_NODE_CONFIG:/config.toml \
-    -v /var/stacks \
-    -p 20443:20443 \
-    -p 20444:20444 \
-    -e RUST_BACKTRACE=full \
-    --name stacks-node \
-    $IMG:$VER \
-    stacks-node start \
-    --config /config.toml
-```
-
-Or with a custom Dockerfile:
-
-```docker
-FROM blockstack/stacks-core:3.1.0.0.13
-COPY node-config.toml /config.toml
-EXPOSE 20444
-EXPOSE 20443
-CMD ["stacks-node", "start", "--config", "/config.toml"]
-```
-
-If you get connection refused errors, you may need to point `events_observer.endpoint` to the Docker signer container. If using default Docker bridge mode, `localhost` inside the container is not the host. Point the endpoint to the Docker host or the signer container hostname accordingly.
-
-### Run a Stacks Node with a Binary
-
-Download the pre-built `stacks-node` binary from the [Stacks Core releases](https://github.com/stacks-network/stacks-core/releases/latest).
-
-Start the node:
-
-```bash
-./stacks-node start --config node-config.toml
-```
-
-### Verify Stacks Node is Running
-
-Typical startup logs:
-
-```bash
-Mar  6 19:35:08.212848 INFO stacks-node 0.1.0
-Mar  6 19:35:08.213084 INFO Loading config at path ./Stacks-config.toml
-Mar  6 19:35:08.216674 INFO Registering event observer at: localhost:30000
-Mar  6 19:35:08.221603 INFO Migrating sortition DB to the latest schema version
-Mar  6 19:35:08.224082 INFO Migrating chainstate DB to the latest schema version
-Mar  6 19:35:08.227404 INFO Start syncing Bitcoin headers, feel free to grab a cup of coffee, this can take a while
-```
-
-Ensure you see the `Registering event observer at XXX` log with your signer endpoint. Once Bitcoin headers are synced, you can GET `/v2/info` on the node RPC endpoint (default port 20443).
-
-You may see many logs while syncing; refer to How to Read the Signer Logs if concerned.
-
-***
-
-## Next Steps: Stacking
-
-Once your signer and Stacks node are running and verified, the next step is to stack STX to register your signer for a reward cycle. See the [Stacking STX](../staking-stx/) guide for complete instructions on solo stacking, delegated stacking, and managing your keys.
-
-You will need to [generate a signer signature](../staking-stx/generate-signer-signature.md) before making any stacking transaction.
+## Running it well
+
+* [How to Read Signer Logs](how-to-read-signer-logs.md)
+* [How to Monitor Signer](how-to-monitor-signer.md)
+* [Best Practices to Run a Signer](best-practices-to-run-a-signer.md), including redundancy, fall-back deployments and auto-restart
+* [OpSec Best Practices](opsec-best-practices.md)

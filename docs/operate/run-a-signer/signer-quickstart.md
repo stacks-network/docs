@@ -234,11 +234,11 @@ On a host that is not x64, add `--platform=linux/amd64`, or the run fails with a
 {% endstep %}
 
 {% step %}
-#### Optional: Set up a Bitcoin node (strongly recommended)
+#### Set up a Bitcoin node
 
-Run your own Bitcoin node rather than relying on a third-party one. A hosted node can leave your Stacks node behind tip and unsynced.
+Run your own, dedicated to this signer. A shared or third-party node is the usual reason a Stacks node falls behind tip, and a signer whose node is behind tip stops signing.
 
-We have created guides for running both a [full Bitcoin node](../run-a-node/run-a-bitcoin-node.md) and a [pruned Bitcoin node](../run-a-node/run-a-pruned-bitcoin-node.md) you can follow.
+Follow either the [full Bitcoin node](../run-a-node/run-a-bitcoin-node.md) or [pruned Bitcoin node](../run-a-node/run-a-pruned-bitcoin-node.md) guide.
 {% endstep %}
 
 {% step %}
