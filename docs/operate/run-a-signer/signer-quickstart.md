@@ -82,11 +82,13 @@ From this file, you'll need the `privateKey` value.
 {% step %}
 #### Set Up Your Stacks Signer
 
-**Download the stacks-signer binary**
+**Get the stacks-signer**
 
+{% tabs %}
+{% tab title="Binary" %}
 Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server's architecture and decompress it. Inside that folder is a `stacks-signer` binary.
 
-Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the signer binary look like this:
+Assuming a `Linux x64 glibc` machine:
 
 ```bash
 # Enter the signer directory
@@ -98,6 +100,19 @@ wget https://github.com/stacks-network/stacks-core/releases/latest/download/linu
 # Unzip the signer binary archive
 unzip linux-glibc-x64.zip
 ```
+{% endtab %}
+
+{% tab title="Docker" %}
+Pull the image, pinned by digest so the same bytes land on every architecture:
+
+```bash
+IMG="ghcr.io/stacks-network/stacks-signer"
+VER="4.0.1@sha256:815b5518ec0f3a9b4c30d7fdca8f048a1fe8c263790ca65c5785e119b87d8590"
+
+docker pull $IMG:$VER
+```
+{% endtab %}
+{% endtabs %}
 
 **Create the configuration file**
 
@@ -120,8 +135,6 @@ db_path = "$HOME/stacks-signer/data/signer.sqlite"
 auth_password = "$AUTH_TOKEN"
 stacks_private_key = "$PRIVATE_KEY"
 metrics_endpoint = "127.0.0.1:9154"
-block_proposal_timeout_ms = 180000
-tenure_idle_timeout_secs = 120
 EOF
 ```
 {% endcode %}
@@ -143,12 +156,22 @@ db_path = "$HOME/stacks-signer/data/signer.sqlite"
 auth_password = "$AUTH_TOKEN"
 stacks_private_key = "$PRIVATE_KEY"
 metrics_endpoint = "127.0.0.1:9154"
-block_proposal_timeout_ms = 180000
 EOF
 ```
 {% endcode %}
 {% endtab %}
 {% endtabs %}
+
+{% hint style="info" %}
+**Running under Docker?** Some values change, because the signer and the node sit in separate containers rather than on one loopback interface:
+
+```toml
+node_host = "stacks-node:20443"       # the node container's name
+endpoint = "0.0.0.0:30000"            # so the node container can reach the signer
+db_path = "/var/stacks/signer.sqlite" # inside the mounted volume
+metrics_endpoint = "0.0.0.0:9154"
+```
+{% endhint %}
 
 **Verify the setup**
 
@@ -174,7 +197,7 @@ Stacks address: SP1G... # address from keychain file
 Public key: 03a3... # publicKey from keychain file
 Network: mainnet # or testnet
 Chain ID: 0x1 # or 0x80000000 for testnet
-Database path: /home/admin/stacks-signer/data/signer.sqlite
+Database path: /home/user/stacks-signer/data/signer.sqlite
 Metrics endpoint: 127.0.0.1:9154
 Dry run: false
 ```
@@ -183,9 +206,31 @@ Dry run: false
 
 If the output is correct, start the signer:
 
+{% tabs %}
+{% tab title="Binary" %}
 ```bash
 ~/stacks-signer/stacks-signer run -c ~/stacks-signer/signer-config.toml
 ```
+{% endtab %}
+
+{% tab title="Docker" %}
+```bash
+docker run -d \
+    --restart unless-stopped \
+    --name stacks-signer \
+    -v ~/stacks-signer/signer-config.toml:/config.toml \
+    -v ~/stacks-signer/data:/var/stacks \
+    -p 30000:30000 \
+    -e RUST_BACKTRACE=full \
+    $IMG:$VER \
+    stacks-signer run --config /config.toml
+```
+
+The port you set as `endpoint` has to reach your Stacks node and nothing else, and the volume holding `db_path` needs a few GB free.
+
+On a host that is not x64, add `--platform=linux/amd64`, or the run fails with a manifest or platform mismatch.
+{% endtab %}
+{% endtabs %}
 {% endstep %}
 
 {% step %}
@@ -199,11 +244,13 @@ We have created guides for running both a [full Bitcoin node](../run-a-node/run-
 {% step %}
 #### Set Up Your Stacks Node
 
-**Download the stacks-node binary**
+**Get the stacks-node**
 
+{% tabs %}
+{% tab title="Binary" %}
 Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server's architecture and decompress it. Inside that folder is a `stacks-node` binary.
 
-Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the node binary look like this:
+Assuming a `Linux x64 glibc` machine:
 
 ```bash
 # Enter the node directory
@@ -215,6 +262,17 @@ wget https://github.com/stacks-network/stacks-core/releases/latest/download/linu
 # Unzip the node binary archive
 unzip linux-glibc-x64.zip
 ```
+{% endtab %}
+
+{% tab title="Docker" %}
+```bash
+NODE_IMG="ghcr.io/stacks-network/stacks-core"
+NODE_VER="4.0.1@sha256:ceb768f881ef52a1d2792a2b4a89d81e092b1df11293b04c31ce36613c3f9711"
+
+docker pull $NODE_IMG:$NODE_VER
+```
+{% endtab %}
+{% endtabs %}
 
 **Create the configuration file**
 
@@ -255,6 +313,8 @@ events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 EOF
 ```
 {% endcode %}
+
+Based on the [mainnet follower example](https://docs.stacks.co/reference/node-operations/readme-1#example-mainnet-follower-configuration), with `stacker`, the auth token and the events observer added so the node can serve a signer.
 {% endtab %}
 
 {% tab title="Testnet" %}
@@ -401,6 +461,8 @@ start_height = 2702
 EOF
 ```
 {% endcode %}
+
+Based on the [Stacks node testnet config](https://docs.stacks.co/reference/node-operations/signer-configuration#stacks-node-testnet-config), which is the follower config plus the fields a node serving a signer needs.
 {% endtab %}
 {% endtabs %}
 
@@ -459,17 +521,40 @@ stacks-node 4.0.1 (62e03cc, release build, linux [x86_64])
 
 # Output:
 INFO [1786366428.987308] [stacks-node/src/main.rs:329] [main] stacks-node 4.0.1 (62e03cc, release build, linux [x86_64])
-INFO [1786366428.987352] [stacks-node/src/main.rs:359] [main] Loading config at path /home/admin/stacks-node/node-config.toml
+INFO [1786366428.987352] [stacks-node/src/main.rs:359] [main] Loading config at path /home/user/stacks-node/node-config.toml
 INFO [1786366429.090617] [stacks-node/src/main.rs:372] [main] Loaded config!
 ```
 
 **Start the node**
 
-If the output is correct, start the node:
+Start the signer first. The node will not run unless it can reach the endpoint it is configured to send events to.
 
+{% tabs %}
+{% tab title="Binary" %}
 ```bash
 ~/stacks-node/stacks-node start --config ~/stacks-node/node-config.toml
 ```
+{% endtab %}
+
+{% tab title="Docker" %}
+```bash
+docker run -d \
+    --restart unless-stopped \
+    --name stacks-node \
+    -v ~/stacks-node/node-config.toml:/config.toml \
+    -v ~/stacks-node/data:/root/stacks-node/data \
+    -p 20443:20443 \
+    -p 20444:20444 \
+    -e RUST_BACKTRACE=full \
+    $NODE_IMG:$NODE_VER \
+    stacks-node start --config /config.toml
+```
+
+Expose `p2p_bind` to the internet and keep `rpc_bind` reachable only by your signer. `working_dir` needs 500 GB to 1 TB.
+
+In Docker's default bridge network, `localhost` inside a container is that container, not the host, so `events_observer.endpoint` has to name the signer container rather than `127.0.0.1`. Connection refused errors here almost always mean that.
+{% endtab %}
+{% endtabs %}
 {% endstep %}
 
 {% step %}
