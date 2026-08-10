@@ -3,24 +3,20 @@
 {% hint style="info" %}
 **Current Signer and Stacks Node Versions**
 
-**Stacks Signer - latest**
+**Stacks Signer**
 
-* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-signer/latest)
+* [Container image](https://github.com/stacks-network/stacks-core/pkgs/container/stacks-signer) (`ghcr.io/stacks-network/stacks-signer`)
 * [GitHub Release](https://github.com/stacks-network/stacks-core/releases/latest)
 
-**Stacks Node - latest**
+**Stacks Node**
 
-* [Docker Image](https://hub.docker.com/layers/blockstack/stacks-core/latest)
+* [Container image](https://github.com/stacks-network/stacks-core/pkgs/container/stacks-core) (`ghcr.io/stacks-network/stacks-core`)
 * [GitHub Release](https://github.com/stacks-network/stacks-core/releases/latest)
 {% endhint %}
 
-If you want to get up and running as an active signer as quickly as possible, here is a list of the commands you need to run and actions to take.
+The commands below take a fresh Ubuntu machine to a running signer and Stacks node.
 
-If you are not familiar with how signing works yet, be sure to check out the [Signing concept guide](https://github.com/stacks-network/docs/blob/master/docs/learn/block-production/signing.md).
-
-{% hint style="danger" %}
-The CLI examples below may show outdated release versions. For the latest releases, always refer to the links above in the top info block.
-{% endhint %}
+If you are not familiar with how signing works yet, be sure to check out the [Signing concept guide](https://docs.stacks.co/learn/block-production/signing).
 
 {% stepper %}
 {% step %}
@@ -64,7 +60,7 @@ stx make_keychain -t | jq > ~/stacks-signer/keychain.json
 {% endtab %}
 {% endtabs %}
 
-The account file previously created looks like this:
+The account file looks like this:
 
 ```json
 {
@@ -88,12 +84,11 @@ From this file, you'll need the `privateKey` value.
 
 **Download the stacks-signer binary**
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases/latest). Each release includes pre-built binaries. Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-signer` binary.
+Download the [latest signer release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server's architecture and decompress it. Inside that folder is a `stacks-signer` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the signer binary look like this:
 
 ```bash
-# The CLI examples below may show outdated release versions.
 # Enter the signer directory
 cd ~/stacks-signer
 
@@ -106,12 +101,12 @@ unzip linux-glibc-x64.zip
 
 **Create the configuration file**
 
-Create the configuration file required to start the signer (be sure to replace `<your_token>` and `<your_private_key>` with your auth token and private key values):
+Create the configuration file required to start the signer (be sure to replace `<your_token>` and `<your_private_key>` with your auth token and private key values). Every option is documented in [Signer Configuration](https://docs.stacks.co/reference/node-operations/signer-configuration).
 
 {% tabs %}
 {% tab title="Mainnet" %}
+{% code title="signer-config.toml" %}
 ```bash
-# The CLI examples below may show outdated release versions.
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication
 PRIVATE_KEY=<your_private_key> # privateKey from Step 1, this is the signer's private key
@@ -129,9 +124,11 @@ block_proposal_timeout_ms = 180000
 tenure_idle_timeout_secs = 120
 EOF
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="Testnet" %}
+{% code title="signer-config.toml" %}
 ```bash
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication
@@ -149,26 +146,28 @@ metrics_endpoint = "127.0.0.1:9154"
 block_proposal_timeout_ms = 180000
 EOF
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
 **Verify the setup**
 
-To ensure the signer has been set up correctly, you can run the following commands:
+Check the version and the config file:
 
 ```bash
-# The CLI examples below may show outdated release versions.
 # Verify the signer's version
 ~/stacks-signer/stacks-signer --version
 
 # Output:
-stacks-signer stacks-signer signer-3.1.0.0.5.0 (release/signer-3.1.0.0.5.0:513dbc5, release build, linux [x86_64])
+stacks-signer 4.0.1 (62e03cc, release build, linux [x86_64])
 
 # Verify the config file
 ~/stacks-signer/stacks-signer check-config -c ~/stacks-signer/signer-config.toml
 
 # Output:
+Signer version: stacks-signer 4.0.1 (62e03cc, release build, linux [x86_64])
 Config: 
+
 Stacks node host: 127.0.0.1:20443
 Signer endpoint: 127.0.0.1:30000
 Stacks address: SP1G... # address from keychain file
@@ -177,11 +176,12 @@ Network: mainnet # or testnet
 Chain ID: 0x1 # or 0x80000000 for testnet
 Database path: /home/admin/stacks-signer/data/signer.sqlite
 Metrics endpoint: 127.0.0.1:9154
+Dry run: false
 ```
 
 **Start the signer**
 
-If the outputs of the previous commands are correct, you can proceed and start the signer:
+If the output is correct, start the signer:
 
 ```bash
 ~/stacks-signer/stacks-signer run -c ~/stacks-signer/signer-config.toml
@@ -191,7 +191,7 @@ If the outputs of the previous commands are correct, you can proceed and start t
 {% step %}
 #### Optional: Set up a Bitcoin node (strongly recommended)
 
-In order to optimize signer health and performance, we highly recommend setting up your own Bitcoin node rather than relying on a third-party node.
+Run your own Bitcoin node rather than relying on a third-party one. A hosted node can leave your Stacks node behind tip and unsynced.
 
 We have created guides for running both a [full Bitcoin node](../run-a-node/run-a-bitcoin-node.md) and a [pruned Bitcoin node](../run-a-node/run-a-pruned-bitcoin-node.md) you can follow.
 {% endstep %}
@@ -201,12 +201,11 @@ We have created guides for running both a [full Bitcoin node](../run-a-node/run-
 
 **Download the stacks-node binary**
 
-Official binaries are available from the [Stacks Core releases page on Github](https://github.com/stacks-network/stacks-core/releases/latest). Each release includes pre-built binaries. Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server’s architecture and decompress it. Inside of that folder is a `stacks-node` binary.
+Download the [latest node release ZIP file](https://github.com/stacks-network/stacks-core/releases/latest) for your server's architecture and decompress it. Inside that folder is a `stacks-node` binary.
 
 Assuming a `Linux x64 glibc` machine, the commands to download and uncompress the node binary look like this:
 
 ```bash
-# The CLI examples below may show outdated release versions.
 # Enter the node directory
 cd ~/stacks-node
 
@@ -219,18 +218,16 @@ unzip linux-glibc-x64.zip
 
 **Create the configuration file**
 
-Create the configuration file required to start the node (be sure to replace `<your_token>` with your auth token value):
+Create the configuration file required to start the node (be sure to replace `<your_token>` with your auth token value). Every option is documented in [Stacks Node Configuration](https://docs.stacks.co/reference/node-operations/readme-1).
 
 {% tabs %}
 {% tab title="Mainnet" %}
 {% hint style="warning" %}
-For mainnet, we strongly recommended that you run your own bitcoin node (you can follow guides on how to run a [full Bitcoin node](https://docs.stacks.co/guides-and-tutorials/nodes-and-miners/run-a-bitcoin-node) or a [pruned Bitcoin node](https://docs.stacks.co/guides-and-tutorials/nodes-and-miners/run-a-pruned-bitcoin-node)) in order to ensure you have no connection issues when downloading bitcoin blocks. A hosted bitcoin node may cause your stacks node to fall behind tip and remain unsynced.
-
 If you run your own bitcoin node, you'll have to update `peer_host` and optionally add `rpc_port`, `peer_port`, `username` and `password` fields under the `[burnchain]` section of the node's configuration file.
 {% endhint %}
 
+{% code title="node-config.toml" %}
 ```bash
-# The CLI examples below may show outdated release versions.
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication, same token as the one set up in the signer configuration
 
@@ -257,9 +254,11 @@ endpoint = "127.0.0.1:30000"
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 EOF
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="Testnet" %}
+{% code title="node-config.toml" %}
 ```bash
 # Set environment variables
 AUTH_TOKEN=<your_token> # Used for signer-node authentication, same token as the one set up in the signer configuration
@@ -270,16 +269,20 @@ cat <<EOF> ~/stacks-node/node-config.toml
 working_dir = "$HOME/stacks-node/data"
 rpc_bind = "127.0.0.1:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
+bootstrap_node = "0348af7ce1b224476e8f042727af3f84dcf49a69bb3c9dd2a1afaa783acfffb729@seed.testnet.hiro.so:20444"
 prometheus_bind = "127.0.0.1:9153" 
 stacker = true
 pox_sync_sample_secs = 30
 always_use_affirmation_maps = true
 require_affirmed_anchor_blocks = true
+pox_5_sbtc_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-token"
+pox_5_sbtc_registry_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-registry"
+pox_5_bond_admin = "ST1V2ASRWGR81W7GBN1Z4W2JQKXJWCADPVZG30X45"
 
 [burnchain]
 mode = "krypton"
 peer_host = "bitcoin.regtest.hiro.so"
+rpc_port = 18443
 peer_port = 18444
 pox_prepare_length = 100
 pox_reward_length = 900
@@ -307,6 +310,38 @@ amount = 10000000000000000
 [[ustx_balance]]
 address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
 amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST31XHNM0GZ2K978FPP4QA3STNQ73Z8C9G9MJEPK2"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST1B38CGQRPXEMRH7B66VXTS22DQTNMSW4YJJ7QK1"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "STDMN71Z0H9EF8CRKAWTGBB5YS0BNV26HZ79QFFP"
+amount = 1000000000000000
+
+[[ustx_balance]]
+address = "ST1E0PSCH72JMQH9QCH293ZTEEH7BPA40Y3F39XQ"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3QBTK0Q438YVNX8EG6Z85HN0WKQPXYT25H5SPPK"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST10BX04F9PC6N1WBXKW3H7CG0NS0A3PK650T3P3R"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3AF1BBQAFSFCM8K4ZBR1FBXP3P8J1CKGSGDHWR5"
+amount = 100000000000000
+
+[[ustx_balance]]
+address = "STHY13V44422NAN6D3NSJPY9CDR3ED1M6HH9WZ6Y"
+amount = 10000000000000
 
 [[burnchain.epochs]]
 epoch_name = "1.0"
@@ -342,31 +377,36 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 1_900
+start_height = 1802
 
 [[burnchain.epochs]]
 epoch_name = "3.1"
-start_height = 2000
+start_height = 1803
 
 [[burnchain.epochs]]
 epoch_name = "3.2"
-start_height = 71525
+start_height = 1804
 
 [[burnchain.epochs]]
 epoch_name = "3.3"
-start_height = 109280
+start_height = 1805
 
 [[burnchain.epochs]]
 epoch_name = "3.4"
-start_height = 159350
+start_height = 1806
+
+[[burnchain.epochs]]
+epoch_name = "4.0"
+start_height = 2702
 EOF
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
 **Optional: Start the node with a data archive**
 
-You can [download a chainstate archive](https://archive.hiro.so/) in order to quickly sync your node, otherwise it will take a long time to get up-to-date with the other nodes.
+You can [download a chainstate archive](https://archive.hiro.so/) instead of syncing from genesis.
 
 {% tabs %}
 {% tab title="Mainnet" %}
@@ -404,29 +444,28 @@ rm testnet-stacks-blockchain-latest.tar.gz
 
 **Verify the setup**
 
-To ensure the node has been set up correctly, you can run the following commands:
+Check the version and the config file:
 
 ```bash
-# The CLI examples below may show outdated release versions.
 # Verify the node's version
 ~/stacks-node/stacks-node version
 
 # Output:
-INFO [1738695915.769633] [testnet/stacks-node/src/main.rs:278] [main] stacks-node 3.1.0.0.5 (release/3.1.0.0.5:513dbc5, release build, linux [x86_64])
-stacks-node 3.1.0.0.5 (release/3.1.0.0.5:513dbc5, release build, linux [x86_64])
+INFO [1786366428.758607] [stacks-node/src/main.rs:329] [main] stacks-node 4.0.1 (62e03cc, release build, linux [x86_64])
+stacks-node 4.0.1 (62e03cc, release build, linux [x86_64])
 
 # Verify the node's config
 ~/stacks-node/stacks-node check-config --config ~/stacks-node/node-config.toml
 
 # Output:
-INFO [1738695915.769633] [testnet/stacks-node/src/main.rs:278] [main] stacks-node 3.1.0.0.5 (release/3.1.0.0.5:513dbc5, release build, linux [x86_64])
-INFO [1729788064.913175] [testnet/stacks-node/src/main.rs:318] [main] Loading config at path /home/admin/stacks-node/node-config.toml
-INFO [1729788064.969551] [testnet/stacks-node/src/main.rs:331] [main] Loaded config!
+INFO [1786366428.987308] [stacks-node/src/main.rs:329] [main] stacks-node 4.0.1 (62e03cc, release build, linux [x86_64])
+INFO [1786366428.987352] [stacks-node/src/main.rs:359] [main] Loading config at path /home/admin/stacks-node/node-config.toml
+INFO [1786366429.090617] [stacks-node/src/main.rs:372] [main] Loaded config!
 ```
 
 **Start the node**
 
-If the outputs of the previous commands are correct, you can proceed and start the node:
+If the output is correct, start the node:
 
 ```bash
 ~/stacks-node/stacks-node start --config ~/stacks-node/node-config.toml
@@ -440,10 +479,13 @@ If you would like to learn more about monitoring your signer and its correspondi
 {% endstep %}
 
 {% step %}
-#### Next Steps: Stacking
+#### Next Steps: Register Your Signer
 
-Once your signer and Stacks node are running and verified, the next step is to stack STX to register your signer for a reward cycle. See the [Stacking STX](../staking-stx/) guide for complete instructions on solo stacking, delegated stacking, and managing your keys.
+Once your signer and Stacks node are running and verified, this signer key has to be bound to a signer-manager contract before stakers can route to it. PoX-5 replaces the PoX-4 per-transaction signer signature with a standing on-chain grant:
 
-You will need to [generate a signer signature](../staking-stx/generate-signer-signature.md) before making any stacking transaction.
+1. You produce a SIP-018 signature off-chain with this signer's private key, binding it to a specific signer-manager and an `auth-id`. See [Generate a Signer Signature](../staking-stx/generate-signer-signature.md).
+2. That signer-manager submits `grant-signer-key` carrying your signature, then calls `register-signer` to bind itself to your key on chain.
+
+See [Staking STX](../staking-stx/) for the full PoX-5 staking flow, and [Key and Address Rotation](../staking-stx/key-and-address-rotation.md) for changing this key later.
 {% endstep %}
 {% endstepper %}
