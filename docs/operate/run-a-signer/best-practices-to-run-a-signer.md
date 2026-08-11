@@ -12,13 +12,13 @@ tl;dr: avoid single point of failures, introduce redundancy, monitor things.
 
 ### Monitor your Signer and collect logs
 
-* See [here](how-to-monitor-signer.md) on how to set up monitoring.
+* See [How to Monitor Signer](how-to-monitor-signer.md) on how to set up monitoring.
 * Retain at least 1 week of logs for both the Signer and the Stacks node.
 
 ### Downstream components
 
 * Run a dedicated Bitcoin node and Stacks node per Signer.
-  * Ensure the nodes are provisioned with the minimum hardware requirements described [here](https://docs.stacks.co/guides-and-tutorials/running-a-signer#minimum-system-requirements).
+  * Ensure the nodes are provisioned with the [minimum hardware requirements](./#minimum-system-requirements).
   * Nodes should be exclusively dedicated to serve the Signer. Avoid re-using them to serve other clients as that may negatively affect performance (no mock-signing, no Stacks API nodes).
 * If running dedicated nodes is not possible, then ensure that the Bitcoin / Stacks nodes do not become single points of failure for multiple signers depending on them.
   * Introduce redundancy, load balancing, rely on a robust Bitcoin RPC provider, etc.
@@ -118,7 +118,7 @@ docker run -d \
     --config /config.toml
 ```
 
-The `unless-stopped` policy restarts the container automatically if it crashes or the host reboots, but not if you explicitly stop it. Apply the same policy to your Stacks node container.
+The `unless-stopped` policy restarts the container automatically if it crashes or the host reboots, but not if you explicitly stop it. Apply the same policy to your Stacks node container. The [Signer Quickstart](signer-quickstart.md) has the full `docker run` commands, with `$IMG` and `$VER` pinned by digest.
 
 #### systemd
 
