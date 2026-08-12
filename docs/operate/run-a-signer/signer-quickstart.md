@@ -14,7 +14,7 @@
 * [GitHub Release](https://github.com/stacks-network/stacks-core/releases/latest)
 {% endhint %}
 
-The commands below take a fresh Ubuntu machine to a running signer and Stacks node. Or [this dApp](https://stx.fan/zero_to/signing) can be used to go through the necessary steps to start signing.&#x20;
+The commands below take a fresh Ubuntu machine to a running signer and Stacks node. And [this dApp](https://stx.fan/zero_to/signing) can be used after the software is running for the necessary steps to start signing.&#x20;
 
 If you are not familiar with how signing works yet, be sure to check out the [Signing concept guide](https://docs.stacks.co/learn/block-production/signing).
 
