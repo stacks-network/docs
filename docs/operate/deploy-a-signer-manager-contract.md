@@ -80,6 +80,25 @@ The reference manager uses it to let a staker elect a native BTC payout. It dese
 
 At claim time `claim-staker-rewards` reads that entry back. With a record it calls `sbtc-withdrawal::initiate-withdrawal-request`, and without one it transfers sBTC directly.
 
+**What the deployed managers do with it**
+
+The convention is per contract, so calldata built for one manager is not portable to another. Read the contract you are staking to.
+
+| Contract                         | Shape it deserializes                                                               | Stored in        | Changeable without a staking transaction |
+| -------------------------------- | ----------------------------------------------------------------------------------- | ---------------- | ---------------------------------------- |
+| `fastpool-1-signer-manager`      | `{ pox-addr, max-fee }`                                                             | `pox-addrs`      | No                                       |
+| `xverse-signer-manager-1`        | `{ pox-addr, max-fee }`                                                             | `pox-addrs`      | No                                       |
+| `fastpool-max500-signer-manager` | `{ pox-addr, max-fee, min-claim }`, and the two-field shape above is still accepted | `payout-configs` | Yes, via `set-payout-config`             |
+| `native-pool-signer-manager`     | None. The buffer is ignored entirely                                                | Nothing          | Not applicable                           |
+
+Three consequences follow from that table.
+
+**A manager can decline the feature.** `native-pool-signer-manager` never parses the buffer, so every staker on it is paid in sBTC and there is no Bitcoin payout to elect. Supplying calldata is not an error there, it simply has no effect.
+
+**A shape can be extended compatibly.** `fastpool-max500-signer-manager` accepts its own three-field tuple and the reference implementation's two-field one, filling in `min-claim` with `max-fee` plus 547 when it is absent. That default is the lowest value it will accept, so a staker rolling over from a reference-implementation signer gets no meaningful floor until they set one.
+
+**Where the value can be changed differs.** On the reference implementations the only writer is `validate-stake!`, so changing a payout address means another staking transaction, which is refused during the prepare phase. `fastpool-max500-signer-manager` adds `set-payout-config` and `clear-payout-config` as direct staker calls, both asserting `contract-caller` equals `tx-sender`, so they cannot be driven by an operator or through an intermediary contract.
+
 Two consequences worth building around if you write your own manager. `validate-stake!` fires again on every `stake-update`, so a second call overwrites whatever the first stored, giving stakers rotation for free. And in the reference manager, calldata of `none` on a later call **deletes** the stored entry rather than preserving it, so a staker who re-stakes without resupplying their address reverts to sBTC payouts with no error.
 
 ### Deploy your contract
@@ -89,9 +108,11 @@ Deploy whichever signer-manager you have reviewed. Which one to pick depends on 
 Deployed examples you can read on the explorer:
 
 * [`fastpool-1-signer-manager`](https://explorer.hiro.so/txid/SP21YTSM60CAY6D011EZVEVNKXVW8FVZE198XEFFP.fastpool-1-signer-manager?chain=mainnet) matches the [pinned reference implementation](https://github.com/stx-labs/signer-sidekick/blob/11f8ff79e309db14357c4adfbbe31e1aeb7cd17e/contracts/reference-manager/generated/mainnet/signer-manager.clar). It allows any fee from 0 to 99.99%, and an admin can remove any admin including themselves.
+* [`xverse-signer-manager-1`](https://explorer.hiro.so/txid/SP8HK160YD5GHXP69VGA0TC7AQJ1X4CDW3XVERSE.xverse-signer-manager-1?chain=mainnet) is an **earlier revision** of the same reference implementation, with identical behaviour for stakers. The one difference is for integrators: its `claim-staker-rewards` returns only the amount claimed, where the current revision returns `{ earned, withdrawal-request }`. Code that reads the sBTC withdrawal request ID from the call return will not work against it.
 * [`fastpool-max500-signer-manager`](https://explorer.hiro.so/txid/SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager?chain=mainnet) caps the fee at 500 bips (`MAX_FEE_BIPS u500`, 5%) and blocks an admin from removing themselves (`ERR_CANNOT_REMOVE_SELF`), so it cannot be left with no admin. The tighter limits matter most for a public pool, where stakers hand STX to an operator they do not know.
+* [`native-pool-signer-manager`](https://explorer.hiro.so/txid/SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.native-pool-signer-manager?chain=mainnet) is a different contract implementing the same trait rather than a variant of the reference. It gates entry on an external allowlist, takes no fee of its own, offers no Bitcoin payout election, and its `claim-staker-rewards` takes no staker argument, so each staker claims for themselves and nobody can claim on their behalf.
 
-More managers will appear, and they differ in more than these two properties. Read the one you deploy.
+Because each deployment is immutable, "the reference implementation" is not one thing on chain. It is whichever revision its operator deployed on the day they deployed. More managers will appear, and they differ in more than these properties. Read the one you deploy.
 
 The fee ceiling and the admin model are properties of the contract you deploy, not of pox-5, and they cannot be changed afterwards.
 
@@ -276,7 +297,7 @@ The reference signer-manager has its own separate error namespace, which you wil
 | `u1010` | `ERR_NO_REFUNDS`                 | Nothing available to sweep.                                                         |
 | `u1011` | `ERR_WITHDRAWAL_NOT_ACCEPTED`    | Settlement attempted on a withdrawal the sBTC registry has not accepted.            |
 
-Other managers extend this namespace. `fastpool-max500-signer-manager` adds `u1012` through `u1017`.
+Other managers do not share that namespace. `fastpool-max500-signer-manager` extends it with `u1012` through `u1017`, while `native-pool-signer-manager` uses `u37001` through `u37003` and reuses none of the codes above. Do not map a manager error by number without knowing which contract produced it.
 
 ### Signer fees
 
@@ -304,7 +325,7 @@ Examples use `docker`. For Fedora, RHEL and immutable Linux, see the note at the
 #### Setup
 
 ```bash
-IMG=ghcr.io/stacks-network/stacks-core:4.0.1@sha256:9fbe2a3b3b7dba73eec883873a5cf91f4b2dbfa28fa51751851e5586ec4791b6
+IMG=ghcr.io/stacks-network/stacks-core:4.0.1@sha256:ceb768f881ef52a1d2792a2b4a89d81e092b1df11293b04c31ce36613c3f9711
 read -rs STX_SK && export STX_SK
 ```
 
