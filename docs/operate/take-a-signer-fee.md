@@ -117,9 +117,30 @@ Note it reads `get-fee-bips-for-cycle`, not the live `fees-bips` variable. The r
 )
 ```
 
-{% hint style="warning" %}
-**Confirm the timing before you rely on it.** Because the applied rate comes from a per-cycle record rather than the current variable, calling `update-fees` does not obviously repopulate already-recorded cycles. That is good for stakers, but it means "when does a fee change take effect?" is not answerable from `update-fees` alone. Verify against your own deployment on testnet before announcing a fee change to members.
-{% endhint %}
+### When a fee change takes effect
+
+The rate for a cycle is recorded the first time that cycle is crystallized, and never revised afterwards. `claim-rewards` writes it with `map-insert`:
+
+```clarity
+(map-insert fee-bips-for-cycle {
+    reward-cycle: reward-cycle,
+    bond-index: none,
+}
+    (var-get fees-bips)
+)
+```
+
+`map-insert` writes only when the key is absent, so the first `claim-rewards` for a cycle fixes the rate for it and a later call cannot move it.
+
+Two consequences, and they point in opposite directions.
+
+**A change never reaches back into a crystallized cycle.** Members whose rewards were already pulled at the old rate keep that rate, whether or not they have claimed their share yet.
+
+**A change does apply to rewards already earned in a cycle nobody has crystallized.** Those cycles have no recorded rate, so they take whatever is set when `claim-rewards` finally runs. The reference manager says so in its own header comment: if a staker has not claimed or crystallized rewards in some time and a new rate is then set, their next claim has fees taken from rewards earned before the rate existed.
+
+So the practical rule for raising a fee is to crystallize outstanding cycles with `claim-rewards` first, then change the rate. Announcing it the other way round means members earning at the old rate are charged at the new one.
+
+`fastpool-max500-signer-manager` removes the question rather than answering it: fee **increases** there are queued and only become snapshottable two reward cycles later, so members can unstake first, while **decreases** apply at once. If you would rather members did not have to trust your sequencing, that is the property to deploy for.
 
 ### Choosing a fee
 
@@ -146,3 +167,5 @@ If you would rather your members did not have to trust that, deploy a manager wh
 | `u1005` | `ERR_INVALID_FEES_BIPS`  | `new-fees` was `u10000` or higher.                                  |
 | `u1007` | `ERR_INSUFFICIENT_FEES`  | Tried to withdraw more than has accrued.                            |
 | `u1010` | `ERR_NO_REFUNDS`         | `sweep-fee-refunds` called with nothing to sweep.                   |
+
+Those codes are the reference manager's. Other deployed managers do not share the namespace: `fastpool-max500-signer-manager` extends it to `u1017`, and `native-pool-signer-manager` uses `u37001` through `u37003` and reuses none of them.
