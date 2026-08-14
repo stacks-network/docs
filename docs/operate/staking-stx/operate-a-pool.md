@@ -9,7 +9,9 @@ description: >-
 After you have deployed a signer-manager contract and bound your signer key to it, your ongoing job is to **run the signer**. Everything else is optional.
 
 {% hint style="info" %}
-This page covers the **STX-only pool**: any signer-manager contract that multiple STX stakers stake to. The whitelisted community-tranche sBTC bond pool works differently. There the pool contract is itself the staker via `register-for-bond`, and it must be on a bond's capacity allowlist. That path is documented separately.
+This page covers the **STX-only pool**: any signer-manager contract that multiple STX stakers stake to.
+
+Liquid staking tokens and the whitelisted community-tranche sBTC bond pool work differently. There the staker is a pool-controlled **staking-account contract**, allowlisted for a bond's capacity, which registers the aggregate sBTC and paired STX through `register-for-bond` while the pool keeps member-level shares, rewards and withdrawals itself. It is one such account per bond position rather than one per pool, because a principal can hold only one bond membership at a time and bonding periods overlap. That path is documented separately.
 {% endhint %}
 
 ### What you do
