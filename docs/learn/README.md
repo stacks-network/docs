@@ -7,7 +7,7 @@ Check out the recently approved [Bitcoin Staking SIP](https://github.com/stacksg
 {% endhint %}
 
 {% hint style="warning" %}
-Note that PoX-5 is now live on the network - various areas of this documentation are in the process of being updated to fully reflect that. You can browse PoX-5 documentation, temporarily presented standalone, [here](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/O1OP6yvkOPdUXxiHS0te/).
+Note that PoX-5 is now live on the network - various areas of this documentation are in the process of being updated to fully reflect that. You can browse PoX-5 documentation, temporarily presented as a standalone section, [here](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/O1OP6yvkOPdUXxiHS0te/).
 {% endhint %}
 
 ### Stacks: The TL;DR
