@@ -23,6 +23,7 @@
   * [Advanced](development/advanced/README.md)
     * [Signers](development/advanced/signers.md)
     * [Eligibility Preflights](development/advanced/eligibility.md)
+    * [Early Exit](development/advanced/early-exit.md)
 * [Smart Contract Function Index](contract/README.md)
   * [Data Structure](contract/data-structure.md)
 * [Glossary](glossary.md)
