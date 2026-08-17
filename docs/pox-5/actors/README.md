@@ -4,7 +4,7 @@ description: The main actors involved in PoX-5 Bitcoin Staking.
 
 # Actors
 
-PoX-5 is the managed bootstrap phase of Bitcoin Staking. This section maps the actors involved before turning them into deeper journeys, flows, or user stories.
+This section maps the actors involved before turning them into deeper journeys, flows, or user stories.
 
 ## Core Participants
 

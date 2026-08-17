@@ -5,19 +5,19 @@ An L1-locked bond participant can spend their BTC before the timelock expires. T
 An early exit has two parts:
 
 1. **A Stacks transaction** (`announce-l1-early-exit`) that tells the contract the position exits. Only the staker can send it.
-2. **A Bitcoin transaction** that spends the lockup UTXO through the script's early-exit branch. Two signatures are required: the staker's own signature, and a co-signature from the [early-exit signing service](../../glossary.md#early-exit-signer-set-1-of-n).
+2. **A Bitcoin transaction** that spends the lockup UTXO through the script's early-exit branch. Two signatures are required: the staker's own signature, and a co-signature from the [early-exit signing service](../../glossary.md#early-exit-signer-set).
 
 The announcement comes first: the co-signer only signs after it finds the staker's announce transaction on Stacks. The position also stops earning once the announcement lands. Co-signing is only needed **before** the timelock height; after the CLTV height the staker reclaims alone through the normal path. This page covers signing and co-signing only. How the co-signer key is provisioned is internal to the service.
 
 The TypeScript snippets below are illustrative. The flow needs no SDK: it is a standard HTTP call plus standard Bitcoin transaction signing, in any language. The canonical lock-script construction is the contract's [`construct-lockup-script`](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711); `buildLockScript` in `@stacks/bitcoin-staking` is its TypeScript equivalent.
 
-### What both parties sign
+## What both parties sign
 
 The early-exit spend is a single-input P2WSH transaction: it spends the lockup UTXO and sweeps the value, minus fee, to an address of the staker's choice. Both parties sign the **same** BIP-143 sighash (`SIGHASH_ALL`) over input 0, the lockup witness script, and the UTXO amount. Because `SIGHASH_ALL` commits to the outputs, any change to the destination or fee after signing invalidates both signatures.
 
 The finished witness carries, in order: the staker's signature, the co-signer's signature, the staker's 32-byte commitment preimage, an empty element that selects the early-exit branch, and the witness script. The SDK assembles this for you.
 
-### Step 1: announce the exit on Stacks
+## Step 1: announce the exit on Stacks
 
 The announcement must land before the co-signer will sign the Bitcoin spend. The staker announces the early exit with `announce-l1-early-exit`. The call must come from the staker directly — not through another contract — and names the staker's current signer manager. The contract then removes the position's remaining reward shares; the locked STX stays locked until the bond's normal end. The call is rejected during the prepare phase, and a position can announce only once.
 
@@ -39,7 +39,7 @@ const announced = await fetchHasAnnouncedL1EarlyExit({ bondIndex, address: stake
 
 Use the eligible helper before you broadcast; it surfaces the same conditions the contract checks.
 
-### Step 2: build and sign the Bitcoin spend
+## Step 2: build and sign the Bitcoin spend
 
 With the announcement confirmed, rebuild the witness script from the same inputs used at registration. The script must match the on-chain P2WSH output exactly, or no signature will be valid.
 
@@ -79,7 +79,7 @@ const signedTx = btc.Transaction.fromPSBT(signedPsbt);
 // co-signer request and finalizeReclaim call on signedTx.
 ```
 
-### Step 3: request the co-signature
+## Step 3: request the co-signature
 
 The early-exit signing service co-signs over HTTP. Send it the unsigned transaction and the prevout data; it computes the sighash independently, signs with the co-signer key, and echoes back what it signed.
 
@@ -117,7 +117,7 @@ Two notes on the request fields:
 * `bip32_derivation` selects the co-signer key on the service side. It is fixed per bond, it is not designed to rotate, and it has nothing to do with the staker's wallet. Pass the value as given — to your user this parameter is invisible.
 * The service computes its own sighash from `tx`, `prevout`, and `witness_script`, and echoes it back with the key it used.
 
-### Step 4: finalize and broadcast
+## Step 4: finalize and broadcast
 
 ```ts
 import { finalizeReclaim } from '@stacks/bitcoin-staking';

@@ -12,25 +12,38 @@ The same `register-for-bond` entrypoint serves both cases. For native-BTC enroll
 
 A few structural constraints to design around:
 
-* **L1&#x20;**_**or**_**&#x20;sBTC, never both.** The `btc-lockup` argument is a `response`: the `ok` branch carries a list of L1 timelock outputs (up to 10, so a participant _can_ spread their BTC across multiple timelock UTXOs), the `err` branch carries an sBTC amount in sats. You pick one branch per registration — you cannot mix native L1 locks and sBTC in the same bond.
-* **Registration is atomic and one-shot.** A principal registers once per bond; a second `register-for-bond` that overlaps the existing membership reverts with `ERR_ALREADY_REGISTERED`. There is currently no way to add more locked BTC to a bond after registering — commit the full amount up front.
+* **L1 BTC or sBTC, never both.** A staker locks native BTC under a timelock, or locks sBTC in the contract. Choose one type per registration. You cannot mix native BTC and sBTC in the same bond.
+* **Registration is atomic and one-shot.** A principal registers once per bond. A second registration that overlaps the existing membership is rejected. There is no way to add more locked BTC to a bond after registration — commit the full amount up front.
 * **One bond at a time.** Bond participation excludes STX-only staking and any other concurrent bond for the same STX principal. See [Concepts › One position per principal](../concepts.md#one-position-per-principal).
+
+***
+
+### Which leg, under which conditions
+
+Registration commits one BTC leg. The staker selects the leg at `register-for-bond` time, and the leg is fixed for the term:
+
+| Leg        | At registration                                                                                                                                                                                                                          | During the term                                                                            |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| **L1 BTC** | The staker proves each timelock UTXO with an SPV proof. Each output carries its own unlock height, at or above the bond's minimum unlock height. The contract rebuilds and checks the lock script for each output. No sBTC is custodied. | Each output unlocks at its own committed height, once the bond reaches its unlocked phase. |
+| **sBTC**   | The contract transfers the sBTC amount from the staker.                                                                                                                                                                                  | Withdraw sBTC at any time — not gated by the rollover window.                              |
+
+Beyond these checks, every registration also verifies: the staker is on the bond's allowlist, the locked sats stay under the staker's cap, the paired STX amount meets the minimum for that BTC at the bond's ratio, the chosen signer is registered with an active key grant, and no overlapping STX-only stake or bond membership exists.
 
 ***
 
 ### Enroll with native BTC
 
-Native-BTC enrollment is a three-step sequence with a real wait in the middle. The L1 lock must confirm on Bitcoin **before** the L2 registration is sent, because PoX-5 verifies — at registration time — that the cited output exists in a confirmed Bitcoin block under the expected P2WSH lockup script.
+Native-BTC enrollment has three steps. Fund the lock address on Bitcoin and let the deposit confirm before you send the registration call. At registration, PoX-5 checks that the funded output exists in a confirmed Bitcoin block and matches the expected lock script.
 
 ```
-1. Allowlist check (L2 read)
+1. Check the allowlist (contact the Endowment to get allowlisted for a bond, before it is announced)
    ↓
-2. Derive lock address  →  fund it on Bitcoin  →  wait for confirmations
+2. Derive the lock address, then fund it on Bitcoin
    ↓
-3. Gather SPV proofs for each lockup output  →  register on L2
+3. Call the register function on Stacks
 ```
 
-Expect step 2 to dominate the wall-clock time. Confirmations on Bitcoin take \~10 minutes per block, and you'll typically want 1–6 before assembling the proofs in step 3.
+Expect step 2 to dominate the wall-clock time. Confirmations on Bitcoin take \~10 minutes per block, and you'll typically want 1–6 before moving to step 3.
 
 #### Step 1 — Confirm the allowlist entry
 
@@ -82,7 +95,7 @@ import {
   buildLockScript,
   computeBondUnlockHeight,
   fetchPoxInfo,
-  lockScriptToAddress,
+  scriptToAddress,
 } from '@stacks/bitcoin-staking';
 
 const pox = await fetchPoxInfo({ network });
@@ -100,7 +113,7 @@ const script = buildLockScript({
   unlockBytes,
   earlyUnlockBytes: bond.earlyUnlockBytes,
 });
-const lockingAddress = lockScriptToAddress(script, 'mainnet');
+const lockingAddress = scriptToAddress(script, 'mainnet');
 ```
 
 Show `lockingAddress` and `intendedSats` to the user and have them send the funds — typically from a Bitcoin wallet they control, or via a custodian. The SDK does not construct or broadcast this Bitcoin transaction; that's whatever Bitcoin tooling your user is on.
@@ -109,10 +122,10 @@ Once the BTC has been sent, wait until the deposit lands and has enough confirma
 
 Timing notes:
 
-* **Hard deadline.** Step 3 must land on Stacks **before** the bond's start height. The contract hard-asserts `burn-block-height < bond-start-height` and otherwise returns `ERR_BOND_ALREADY_STARTED (u43)`. There is no grace period.
-* **Prepare-phase guard.** Step 3 must also land outside the prepare phase. The contract rejects `register-for-bond` calls made during the prepare phase with `ERR_STAKE_IN_PREPARE_PHASE (u47)`; broadcast earlier in the cycle, or wait for the next.
-* **Late deposit, locked BTC.** If the deposit lands too late and step 3 reverts, the BTC stays locked until the script's `unlockHeight` — the L1 timelock is independent of L2 registration succeeding.
-* **In-flight rollover.** A caller already holding a non-overlapping STX-only stake or a bond inside its L1 unlock window can move directly into a new bond via the same `register-for-bond` call: `bond-overlaps-new-position?` gates overlap, `verify-bond-rollover-window` gates timing (returns `ERR_ROLLOVER_TOO_EARLY (u48)` if the prior bond hasn't reached its L1 unlock), and any custodied sBTC moves over via `roll-sbtc` as a net-difference transfer.
+* **Hard deadline.** Step 3 must land on Stacks before the bond's start height. There is no grace period.
+* **Prepare-phase guard.** Step 3 must also land outside the prepare phase. Broadcast earlier in the cycle, or wait for the next one.
+* **Late deposit, locked BTC.** If the deposit lands too late and step 3 reverts, the BTC stays locked until the script's unlock height. The L1 timelock does not depend on L2 registration succeeding.
+* **In-flight rollover.** A caller already holding a non-overlapping STX-only stake, or a bond inside its L1 unlock window, can move directly into a new bond through the same registration call. Any custodied sBTC moves over as a net-difference transfer. Check with the eligible helpers first to confirm timing.
 
 #### Step 3 — Register on L2 with SPV proofs
 
@@ -125,25 +138,9 @@ Timing notes:
 * the sats amount of the lockup output,
 * and the unlock burn height committed in that output's timelock.
 
-Each output's `unlockBurnHeight` is the CLTV height baked into its P2WSH script. It may be **any** height at or above the bond's minimum L1 unlock height (`get-bond-l1-unlock-height`) and below `500,000,000` (Bitcoin reads larger CLTV values as Unix timestamps), and the choice is per-output — a registration can mix outputs with different unlock heights as long as each one stays in that range. The contract reconstructs the expected script per output from this height, so the value you commit on Bitcoin must equal the one you supply here.
+Each output's `unlockBurnHeight` is the CLTV height baked into its P2WSH script. It must be at or above the bond's minimum unlock height and below `500,000,000` (Bitcoin reads larger values as Unix timestamps, not block heights). Outputs in the same registration can use different unlock heights. The value you commit on Bitcoin must match the value you supply here.
 
-The TypeScript shape per output (see `BondL1LockupOutput`):
-
-```ts
-interface BondL1LockupOutput {
-  height: number;                          // BTC block height containing the tx
-  tx: Uint8Array | string;                 // raw BTC tx bytes (buff 100000)
-  outputIndex: number;                     // index of the lockup output in tx
-  header: Uint8Array | string;             // 80-byte BTC block header
-  leafHashes: (Uint8Array | string)[];     // merkle sibling hashes, bottom-up
-  txCount: number;                         // total tx count in the block
-  txIndex: number;                         // 0-indexed position of tx in block
-  amount: bigint;                          // sats — must match parsed output
-  unlockBurnHeight: number;                // CLTV height in this output's script; >= bond minimum
-}
-```
-
-The SDK assembles this tuple for you. `buildLockProof` takes the four Esplora-compatible indexer responses (raw tx hex, 80-byte block header, `/tx/:txid/merkle-proof` — the `EsploraMerkleProof` shape `{ block_height, merkle, pos }`, with `merkle` sibling hashes in display order — and the block's `tx_count`) plus exactly one way to locate the lockup output: `outputScript` (the 34-byte P2WSH `scriptPubKey`, from `buildLockOutputScript`) or `lockScript` (the witness script it commits to — what `buildRegisterMetadata` returns, converted internally). It strips the segwit witness so the bytes hash to the txid, reverses the sibling hashes from display to internal endianness, and locates the lockup output by matching its `scriptPubKey` against the expected script. For callers driving `bitcoind` directly without an `/merkle-proof` endpoint, `buildLockProofFromBlock` derives the position and merkle branch from `getblock`'s `tx` array.
+The SDK assembles this tuple for you. `buildLockProof` takes the raw indexer responses — the transaction, block header, merkle proof, and block transaction count — plus either the output script or the lock script from step 2. It handles the byte-level details of matching the lockup output and folding the merkle proof. For callers driving `bitcoind` directly, `buildLockProofFromBlock` builds the same proof from a raw `getblock` response.
 
 ```ts
 import {
@@ -221,28 +218,28 @@ await broadcastTransaction({
 });
 ```
 
-The preflight rebuilds the contract's gate order client-side (allowlist, timing, STX minimum and balance, signer registration and key grant, overlaps, rollover window). It does not cover the signer-manager's `validate-stake!` trait call, nor the merkle-proof (u41), output-script (u42), amount (u45), and tx-parse (u39) checks — those are verified only on-chain.
+The preflight rebuilds most of the contract's checks client-side — allowlist, timing, STX minimum and balance, signer registration, overlaps, and the rollover window. It does not decide whether the signer manager accepts the stake: that call belongs to the signer manager contract, which validates and accepts or rejects the stake at registration time. The SPV checks on the lockup proof are also verified only on-chain.
 
 After this tx confirms on Stacks (typically a few minutes), the position is live. Use [`fetchBondMembership`](read-only.md) to verify it landed and to read the canonical record back.
 
 **What the contract checks for each output**
 
-The private helpers `verify-l1-lockups` and `validate-l1-lockup` ([pox-5.clar:1984:2113](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1984-L2113)) fold over the outputs and assert, per output, in this order:
+For each lockup output, the contract checks, in order:
 
-1. **Unlock height is in range.** The output's `unlock-burn-height` must be `>=` the bond's minimum L1 unlock height from `get-bond-l1-unlock-height` (carried into the fold as `minimum-unlock-height`) and below `BITCOIN_LOCKTIME_THRESHOLD` (`u500000000` — Bitcoin treats locktimes at or above this as Unix timestamps, not block heights), and below 2³⁹ (`u549755813888`, the cap of the script-number encoding used for the CLTV push). Any violation → `ERR_INVALID_UNLOCK_HEIGHT (u52)`. The SDK mirrors the cap client-side: `buildLockScript` and `fetchConstructLockupOutputScript` throw `ERR_INVALID_UNLOCK_HEIGHT` for a height at or above 2³⁹.
-2. **Script matches.** The output decodes via `get-bitcoin-tx-output?`, which parses the raw tx at `outputIndex` and recovers `{ amount, script, txid }` (a truncated or malformed tx returns `ERR_READ_TX_OUT_OF_BOUNDS (u39)`). The parsed `scriptPubKey` must equal `construct-lockup-output-script(staker, unlock-burn-height, stakerUnlockBytes, earlyUnlockBytes)` — the deterministic P2WSH reconstructed from that output's own `unlock-burn-height`. Otherwise `ERR_INVALID_LOCKUP_SCRIPT (u42)`.
-3. **Amount matches.** The decoded output value must equal the caller-supplied `amount` field. Mismatch → `ERR_INVALID_LOCKUP_AMOUNT (u45)`.
-4. **Outpoint uniqueness.** The same `(txid, output-index)` cannot appear twice across the registration's lockup list (max 10 outpoints). Repeat → `ERR_DUPLICATE_LOCKUP_OUTPOINT (u46)`.
-5. **Header is canonical.** `verify-block-header(header, height)` compares `sha256(sha256(header))` (reversed) against `(get-burn-block-info? header-hash height)`. Mismatch → `ERR_INVALID_BTC_HEADER (u40)`.
-6. **Merkle proof folds to the root.** The Clarity built-in invoked by `verify-merkle-proof` rehashes the leaf with each sibling in `leafHashes`, picking left/right by the LSB-first bits of `txIndex`, until it reconstructs the merkle root parsed out of `header`. Mismatch → `ERR_INVALID_MERKLE_PROOF (u41)`. (Single-tx blocks are accepted directly when the root equals the txid.)
+1. **Unlock height is in range.** The height must be at or above the bond's minimum unlock height, and below the point where Bitcoin would read it as a timestamp instead of a block height. The SDK mirrors this cap client-side, so `buildLockScript` and `fetchConstructLockupOutputScript` reject an out-of-range height before you fund anything.
+2. **Script matches.** The output's script must match the expected lock script for that staker and unlock height.
+3. **Amount matches.** The output's value must equal the amount you supplied.
+4. **Outpoint is unique.** The same output cannot appear twice in one registration.
+5. **Header is canonical.** The block header must hash to the header Stacks itself recorded for that height.
+6. **Merkle proof is valid.** The proof must fold up to the block's merkle root. A single-transaction block is accepted directly when the root equals the transaction ID.
 
-The total sats summed across all outputs becomes the BTC-side commitment recorded for the membership.
+The total sats across all outputs becomes the BTC-side commitment recorded for the membership.
 
 ***
 
 ### Enroll with sBTC (no L1 lock)
 
-Same call, but `lockup: { kind: 'sbtc', sbtcSats }`. No timelock script, no Bitcoin transaction, no SPV proofs — the contract custodies sBTC directly via `roll-sbtc` ([pox-5.clar:1943](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1943)), which transfers the net delta from the staker to the contract. The whole flow is a single Stacks transaction once the allowlist check passes.
+Same call, but `lockup: { kind: 'sbtc', sbtcSats }`. No timelock script, no Bitcoin transaction, no SPV proofs — the contract custodies sBTC directly via `roll-sbtc` ([pox-5.clar:1943](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1943)), which transfers the net delta from the staker to the contract. The whole flow is a single Stacks transaction once the allowlist check passes.
 
 Because `roll-sbtc` pulls the sBTC **from the caller**, the transaction must carry a `postConditions` entry covering that transfer — the default post-condition deny mode aborts it otherwise.
 
@@ -299,7 +296,7 @@ await broadcastTransaction({
 
 #### Exit an sBTC position
 
-`unstake-sbtc` withdraws part or all of the custodied sBTC; the contract transfers it back to the staker via `sbtc-token.transfer`. It's only valid on sBTC-backed memberships (`is-l1-lock = false`, otherwise `ERR_CANNOT_UNSTAKE_SBTC`), `signerManager` must match the staker's current signer (`ERR_INVALID_OLD_SIGNER_MANAGER`), the amount must be at or below the staker's current sBTC shares (`ERR_INVALID_UNSTAKE_SBTC_AMOUNT`), and calls during the prepare phase are rejected. The L1 counterpart of leaving early is `announce-l1-early-exit` — see [mid-bond mutations](paired-btc.md#mid-bond-mutations).
+`unstake-sbtc` withdraws part or all of the custodied sBTC and transfers it back to the staker. It only works on sBTC-backed memberships, the signer manager must match the staker's current signer, the amount must be at or below the staker's current sBTC shares, and calls during the prepare phase are rejected. Check with the eligible helpers first. The L1 counterpart of leaving early is `announce-l1-early-exit` — see [mid-bond mutations](paired-btc.md#mid-bond-mutations).
 
 ```ts
 import { buildUnstakeSbtc, fetchEligibleUnstakeSbtc } from '@stacks/bitcoin-staking';
@@ -328,7 +325,7 @@ const tx = await buildUnstakeSbtc({
 
 ### The expected P2WSH lockup script
 
-The deterministic script the contract recomputes for SPV verification is, per `construct-lockup-script` ([pox-5.clar:3711:3731](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)):
+The deterministic script the contract recomputes for SPV verification is, per `construct-lockup-script` ([pox-5.clar:3711:3731](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)):
 
 ```
 OP_IF
@@ -359,84 +356,12 @@ The same `unlockBytes` value you passed at registration time is what the SDK fee
 
 ***
 
-### Verify the L1 BTC lock
-
-Given a bond membership on L2, reconstruct the deterministic P2WSH address and check Bitcoin to confirm the UTXO is still unspent and report when it unlocks.
-
-```ts
-import {
-  buildLockScript,
-  computeBondUnlockHeight,
-  fetchBond,
-  fetchBondMembership,
-  fetchPoxInfo,
-  lockScriptToAddress,
-} from '@stacks/bitcoin-staking';
-
-const address = user.stxAddress;
-
-// `unlockBytes` is the tail script the staker chose at registration time. It
-// isn't recorded on-chain — the staker (or their UI) must persist it locally.
-const unlockBytes: Uint8Array = await myStorage.loadUnlockBytes(address);
-
-const [pox, membership] = await Promise.all([
-  fetchPoxInfo({ network }),
-  fetchBondMembership({ address, network }),
-]);
-if (!membership) throw new Error('no paired bond for this address');
-
-// `amountSats` is on the membership row directly — bond legs are keyed per reward cycle.
-const lockedSats = membership.amountSats;
-
-const bond = await fetchBond({ bondIndex: membership.bondIndex, network });
-
-// Same formula as at lock time — get-bond-l1-unlock-height for this bond index.
-const unlockHeight = computeBondUnlockHeight({
-  bondIndex: membership.bondIndex,
-  poxInfo: pox,
-});
-const script = buildLockScript({
-  stxAddress: address,
-  unlockHeight,
-  unlockBytes,
-  earlyUnlockBytes: bond.earlyUnlockBytes,
-});
-const lockingAddress = lockScriptToAddress(script, 'mainnet');
-
-// Out-of-SDK: query any Bitcoin explorer / node for the UTXO state.
-const utxos = await fetch(
-  `https://mempool.space/api/address/${lockingAddress}/utxo`,
-).then(r => r.json());
-const stillLocked = utxos.some((u: any) => BigInt(u.value) === lockedSats);
-
-const status = {
-  lockingAddress,
-  stillLocked,
-  lockedSats,
-  unlockBurnHeight: unlockHeight,
-  blocksUntilUnlock: Math.max(0, unlockHeight - pox.currentBurnchainBlockHeight),
-};
-```
-
-#### Cross-check against the contract
-
-When an SPV proof is rejected and you need to isolate which piece is wrong, the contract's SPV primitives are exposed as read-only mirrors:
-
-* `fetchVerifyBlockHeader({ header, expectedBlockHeight })` — `true` iff the 80-byte header double-SHA256s to the burnchain header hash the node records at that height; the exact `u40` gate.
-* `fetchParseBlockHeader({ header })` — decodes the header into a `ParsedBlockHeader` (`version`, `parent`, `merkleRoot`, `timestamp`, `nbits`, `nonce`; hashes in display order), so you can compare `merkleRoot` against what your proof folds to.
-* `fetchReversedTxid({ tx })` — the contract's little-endian (internal-order) txid of the raw tx bytes; the reverse of the explorer-displayed txid. Mirrors the local, pure `computeBitcoinTxid`.
-* `fetchBurnBlockHeaderHash({ burnHeight })` — the burnchain header hash at a burn height (`undefined` if the node has none); the value `fetchVerifyBlockHeader` compares against.
-
-For the script side, `parseUnlockScript(unlockBytes)` decodes an unlock-script tail: it returns the 33-byte compressed public key when the tail is the default `<pubkey> OP_CHECKSIG` shape, or `undefined` for anything else.
-
-***
-
 ### Mid-bond mutations
 
 Two contract functions touch an existing native-BTC membership without ending it. Full coverage lives in the dedicated flows; the brief is:
 
-* **`update-bond-registration`** ([pox-5.clar:850](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L850)) rotates the signer-manager mid-bond. The new signer-manager takes effect from `clamp(currentCycle + 1, bondStartCycle, bondEndCycle)` — i.e. the next cycle, raised to the bond's start if the rotation lands before the bond is active and capped at the bond's end. `settle-rewards` and `settle-staker-rewards` run on both the old and new signers so the rotation can't smear accrued sBTC. Same signer is rejected with `ERR_UPDATE_BOND_SAME_SIGNER (u44)`. Rejected during the prepare phase (`ERR_STAKE_IN_PREPARE_PHASE u47`).
-* **`announce-l1-early-exit`** ([pox-5.clar:1196](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196)) is the L2 mirror of an off-cycle BTC unlock. The staker themselves calls it directly (`contract-caller`, `tx-sender`, and the `staker` argument must all match), and only on L1-locked memberships. Rejected during the prepare phase (`ERR_STAKE_IN_PREPARE_PHASE u47`). It walks each remaining bond cycle via `unstake-sats-from-bond-cycles`, resolving that cycle's signer from `staker-signer-cycle-memberships` (so a participant who rotated signers mid-bond is unwound correctly), settling signer-level and per-staker rewards per cycle, and zeroing the staker's per-cycle share count. It then zeroes `amount-sats` on the membership, debits `protocol-bonds-total-staked`, and flips `protocol-bond-l1-early-exit-announced` for `{ bond-index, staker }`. The staker's STX remains locked through the bond's normal unlock cycle. Calling twice fails with `ERR_L1_EARLY_EXIT_ALREADY_ANNOUNCED (u50)`.
+* **`update-bond-registration`** rotates the signer manager mid-bond. The new signer manager takes effect from the next cycle, adjusted to stay within the bond's start and end. Rewards settle on both the old and new signers before the switch, so the rotation cannot affect accrued sBTC. The new signer manager must differ from the current one, and the call is rejected during the prepare phase.
+* **`announce-l1-early-exit`** is the L2 mirror of an off-cycle BTC unlock. Only the staker can call it, and only on L1-locked memberships. It settles rewards for each remaining bond cycle, then marks the membership's BTC amount as withdrawn and records that the staker has announced an early exit. The staker's STX stays locked through the bond's normal unlock cycle. The call is rejected during the prepare phase, and a staker cannot announce twice.
 
 Both have eligibility preflights. Rotating the signer:
 
@@ -515,7 +440,7 @@ import {
   computeBondUnlockHeight,
   fetchConstructLockupOutputScript,
   fetchPoxInfo,
-  lockScriptToAddress,
+  scriptToAddress,
 } from '@stacks/bitcoin-staking';
 import { bytesToHex } from '@stacks/common';
 
@@ -532,7 +457,7 @@ const script = buildLockScript({
   unlockBytes,
   earlyUnlockBytes: next.earlyUnlockBytes,
 });
-const newLockingAddress = lockScriptToAddress(script, 'mainnet');
+const newLockingAddress = scriptToAddress(script, 'mainnet');
 
 // Same proof shape as initial enrollment — assembled from indexer responses.
 const outputScript = buildLockOutputScript({
@@ -680,6 +605,8 @@ A missing staker signature — or, on the early-exit path, a missing cosigner si
 
 #### Cosigned early exit
 
+The full sign and co-sign flow, including the signing-service API, is on the [Early Exit](advanced/early-exit.md) page.
+
 The early-exit spend needs two signatures over the same sighash, typically produced on different machines. The staker builds and part-signs the tx, ships it to the cosigner as a PSBT, and finalizes once the cosigner's signature comes back:
 
 ```ts
@@ -718,23 +645,23 @@ If the cosigner adjusts outputs or fee, both parties must re-sign — recompute 
 
 `register-for-bond` surfaces a focused set of error codes:
 
-| Code  | Constant                        | Meaning                                                                                                                                                                                                                                                                                    |
-| ----- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `u7`  | `ERR_BOND_NOT_FOUND`            | No `protocol-bonds` entry for the supplied `bond-index`.                                                                                                                                                                                                                                   |
-| `u8`  | `ERR_INSUFFICIENT_STX`          | Paired STX amount below `min-ustx-for-sats-amount` for the cited sats.                                                                                                                                                                                                                     |
-| `u9`  | `ERR_ALREADY_REGISTERED`        | Caller has an existing bond membership that _overlaps_ the new bond's term. Non-overlapping memberships are allowed to roll over via the same call.                                                                                                                                        |
-| `u10` | `ERR_TOO_MUCH_SATS`             | Lockup sats total exceeds the caller's allowlist cap.                                                                                                                                                                                                                                      |
-| `u11` | `ERR_NOT_ALLOWLISTED`           | Caller has no `protocol-bond-allowances` entry for the bond.                                                                                                                                                                                                                               |
-| `u19` | `ERR_ALREADY_STAKED`            | Caller has an STX-only stake that _overlaps_ the new bond's term. Non-overlapping STX-only stakes roll over.                                                                                                                                                                               |
-| `u23` | `ERR_SIGNER_NOT_FOUND`          | The cited signer has no `get-signer-info` entry.                                                                                                                                                                                                                                           |
-| `u39` | `ERR_READ_TX_OUT_OF_BOUNDS`     | Raw BTC tx bytes truncated or malformed at `outputIndex`.                                                                                                                                                                                                                                  |
-| `u40` | `ERR_INVALID_BTC_HEADER`        | Header doesn't hash to the burn-chain header at `height`.                                                                                                                                                                                                                                  |
-| `u41` | `ERR_INVALID_MERKLE_PROOF`      | Merkle path doesn't reconstruct the block's merkle root.                                                                                                                                                                                                                                   |
-| `u42` | `ERR_INVALID_LOCKUP_SCRIPT`     | Output's scriptPubKey doesn't match the expected P2WSH lockup for `(staker, unlockHeight, …)`.                                                                                                                                                                                             |
-| `u43` | `ERR_BOND_ALREADY_STARTED`      | Registration window closed — `burn-block-height >= bond-start-height`.                                                                                                                                                                                                                     |
-| `u45` | `ERR_INVALID_LOCKUP_AMOUNT`     | Decoded output value doesn't equal the supplied `amount` field.                                                                                                                                                                                                                            |
-| `u46` | `ERR_DUPLICATE_LOCKUP_OUTPOINT` | The same `(txid, output-index)` appears twice in the registration's lockup list.                                                                                                                                                                                                           |
-| `u47` | `ERR_STAKE_IN_PREPARE_PHASE`    | Call landed during the prepare phase. Broadcast earlier in the cycle.                                                                                                                                                                                                                      |
-| `u48` | `ERR_ROLLOVER_TOO_EARLY`        | Rollover attempted before the existing bond's L1 unlock window opened.                                                                                                                                                                                                                     |
-| `u49` | `ERR_REENTRANT_CALL`            | Reentrant call into PoX-5 detected while a `signer-manager-validate-stake` call was in flight.                                                                                                                                                                                             |
-| `u52` | `ERR_INVALID_UNLOCK_HEIGHT`     | A lockup output's committed `unlock-burn-height` is below the bond's minimum L1 unlock height, at/above `BITCOIN_LOCKTIME_THRESHOLD` (`u500000000` — Bitcoin's locktime/timestamp boundary), or at/above 2³⁹ (the ceiling a 5-byte minimally-encoded Bitcoin script number can represent). |
+| Code  | Constant                        | Meaning                                                                                                        |
+| ----- | ------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `u7`  | `ERR_BOND_NOT_FOUND`            | No bond exists at the given index.                                                                             |
+| `u8`  | `ERR_INSUFFICIENT_STX`          | Paired STX amount is below the minimum for the given sats.                                                     |
+| `u9`  | `ERR_ALREADY_REGISTERED`        | Caller has a membership that overlaps the new bond's term. A non-overlapping membership can roll over instead. |
+| `u10` | `ERR_TOO_MUCH_SATS`             | Lockup sats total exceeds the caller's allowlist cap.                                                          |
+| `u11` | `ERR_NOT_ALLOWLISTED`           | Caller is not allowlisted for this bond.                                                                       |
+| `u19` | `ERR_ALREADY_STAKED`            | Caller has an STX-only stake that overlaps the new bond's term. A non-overlapping stake can roll over instead. |
+| `u23` | `ERR_SIGNER_NOT_FOUND`          | The cited signer is not registered.                                                                            |
+| `u39` | `ERR_READ_TX_OUT_OF_BOUNDS`     | The raw BTC transaction is truncated or malformed at the given output index.                                   |
+| `u40` | `ERR_INVALID_BTC_HEADER`        | The header does not hash to the burn-chain header at that height.                                              |
+| `u41` | `ERR_INVALID_MERKLE_PROOF`      | The merkle path does not reconstruct the block's merkle root.                                                  |
+| `u42` | `ERR_INVALID_LOCKUP_SCRIPT`     | The output's script does not match the expected lock script.                                                   |
+| `u43` | `ERR_BOND_ALREADY_STARTED`      | The registration window is closed — the bond has already started.                                              |
+| `u45` | `ERR_INVALID_LOCKUP_AMOUNT`     | The decoded output value does not match the supplied amount.                                                   |
+| `u46` | `ERR_DUPLICATE_LOCKUP_OUTPOINT` | The same output appears twice in the registration's lockup list.                                               |
+| `u47` | `ERR_STAKE_IN_PREPARE_PHASE`    | The call landed during the prepare phase. Broadcast earlier in the cycle.                                      |
+| `u48` | `ERR_ROLLOVER_TOO_EARLY`        | Rollover attempted before the existing bond reached its L1 unlock window.                                      |
+| `u49` | `ERR_REENTRANT_CALL`            | A reentrant call into PoX-5 was detected during a signer-manager call.                                         |
+| `u52` | `ERR_INVALID_UNLOCK_HEIGHT`     | The output's unlock height is below the bond's minimum, or too high to be read as a block height.              |

@@ -8,11 +8,11 @@ description: >-
 
 Topics in this section aren't part of the typical integration journey. They're here for integrators with a specific need: a custodial wrapper that calls PoX-5 on behalf of users, or an operator running signer infrastructure.
 
-All examples use `@stacks/bitcoin-staking` for the PoX-5 surface and `@stacks/transactions` for signing and broadcast.
+* [Signers](signers.md) — Signer-key grants and revocations for operators running signer infrastructure on behalf of stakers.
+* [Eligibility Preflights](eligibility.md) — Dry-run any PoX-5 entrypoint's assert chain client-side and get back the contract's own error codes before broadcasting.
 
 ### Calling PoX-5 from another contract
 
-PoX-5 identifies the staker as `tx-sender` and imposes no contract-caller gate on the staker-facing entrypoints (`register-for-bond`, `update-bond-registration`, `stake`, `stake-update`, `unstake`, `unstake-sbtc`). They can be invoked directly by the staker or routed through an intermediary contract — a wallet's batching helper, a relayer, a custodial wrapper — with no pre-authorization step. The wrapper must carry the appropriate STX/sBTC post-conditions on the originating transaction, since `tx-sender` is the principal whose assets move.
+PoX-5 treats the staker as `tx-sender` and does not gate the staker-facing entrypoints by caller (`register-for-bond`, `update-bond-registration`, `stake`, `stake-update`, `unstake`, `unstake-sbtc`). The staker can call these directly, or route them through another contract — a wallet's batching helper, a relayer, a custodial wrapper — with no separate pre-authorization step. When routing through another contract, that contract must carry the correct STX and sBTC post-conditions on the transaction, because `tx-sender` remains the principal whose assets move.
 
-A few entrypoints do constrain the caller: `announce-l1-early-exit` requires the staker to call it directly (`contract-caller == tx-sender == staker`); `claim-rewards` and `claim-staker-rewards-for-signer` treat `contract-caller` as the signer-manager principal; and the signer-key grant/revoke, bond-admin (`set-bond-admin`), and pause-admin (`set-pause-admin`, `pause-rewards`) entrypoints assert their respective `contract-caller`.
-
+A few entrypoints do restrict the caller. `announce-l1-early-exit` requires the staker to call it directly, with no intermediary contract in between. `claim-rewards` and `claim-staker-rewards-for-signer` require the caller to be the signer-manager principal. The signer-key grant and revoke calls, the bond-admin call, and the pause-admin calls each require their own specific caller.

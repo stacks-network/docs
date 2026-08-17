@@ -11,23 +11,9 @@ description: >-
 
 How much BTC (and paired STX at the published ratio) a whitelisted partner or pool may commit for a bonding period. The app shows allocation state as **Allocated**, **Pending**, or **Not whitelisted** after wallet connect.
 
-### Andon Cord
-
-An on-chain brake on signer reward claims. `pox-5.clar` carries a `pause-admin` principal (data var, [pox-5.clar:353](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L353)) and a `rewards-paused` boolean ([pox-5.clar:354](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L354), default `false`). The current `pause-admin` is the only principal allowed to call `pause-rewards` ([pox-5.clar:489](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L489)), which sets `rewards-paused` to `true`; the role itself is transferable via `set-pause-admin` ([pox-5.clar:470](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L470)), and both calls are reentrancy-guarded. Once paused, `claim-rewards` ([pox-5.clar:2387](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2387)) fails its `(not (var-get rewards-paused))` assertion with `ERR_REWARDS_PAUSED (u53)`, so signers can no longer pull sBTC out of the contract.
-
-The pause can **stop** claims but cannot **redirect** rewards: amounts keep accruing in-contract while paused. It is **one-way and irreversible** — there is no unpause function — so recovery requires a hard fork.
-
-### announce-l1-early-exit
-
-L2-side public function ([pox-5.clar:1196](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196)) called by the staker themselves **after** the L1 BTC timelock has been spent off-cycle via the lockup script's `OP_ELSE` branch. The caller's `contract-caller`, `tx-sender`, and the `staker` argument must all match (`ERR_UNAUTHORIZED u1`); the call cannot be forwarded through an intermediary contract. The `old-signer-manager` trait argument must resolve to the staker's currently-recorded signer on the membership (`ERR_INVALID_OLD_SIGNER_MANAGER u36`). Rejected during the prepare phase (`ERR_STAKE_IN_PREPARE_PHASE u47`). It marks the L1-locked bond participant as having exited, zeros their `amount-sats` on the membership, and walks each remaining bond cycle via `unstake-sats-from-bond-cycles` — for each cycle the helper resolves the staker's signer from `staker-signer-cycle-memberships`, settles signer-level and per-staker rewards for that cycle, and decrements the per-cycle share totals. It then debits `protocol-bonds-total-staked` and flips `protocol-bond-l1-early-exit-announced` for `{ bond-index, staker }`. The staker's locked STX remains locked through the bond's normal unlock cycle. Each `{ bond-index, staker }` pair may successfully announce at most once (`ERR_L1_EARLY_EXIT_ALREADY_ANNOUNCED u50`). Only callable for L1-locked memberships — sBTC-locked participants must use [`unstake-sbtc`](glossary.md#unstake-sbtc) instead.
-
 ### APY (target)
 
 Annual percentage yield framing for what the program **targets** on paired BTC for a bonding period—not a guaranteed return; realized payouts depend on miner revenue, reserve, and waterfall distribution.
-
-### ATC-C (Assumed Total Commitment with Carryforward)
-
-An MEV-oriented mining mitigation used when reasoning about miner bid data; the white paper cites it as filtering extreme bids when using miner bids as an implied STX/BTC reference.
 
 ### Auction (capacity allocation)
 
@@ -47,7 +33,7 @@ Two principal parameters the Endowment sets manually each bonding period in boot
 
 ### Bitcoin Staking
 
-Stacks’ evolution of Proof-of-Transfer: participants can earn **BTC-denominated** yield while BTC remains under self-custodial timelocks (native BTC path) or, via pools, as sBTC on L2. Eligibility and tranches differ from PoX-4.
+Stacks' evolution of Proof-of-Transfer: participants can earn **BTC-denominated** yield while BTC remains under self-custodial timelocks (native BTC path) or, via pools, as sBTC on L2. Eligibility and tranches differ from PoX-4.
 
 ### Bitcoin bond
 
@@ -55,7 +41,7 @@ Shorthand in the white paper for a **protocol bond** whose Bitcoin leg is native
 
 ### Bond period index
 
-Zero-indexed key for each entry in the contract's `protocol-bonds` map (keyed `uint -> { … }`). Bond period **0** is the first; the admin chooses each new `bond-index` directly in `setup-bond`, and `map-insert` rejects a duplicate `bond-index` with `ERR_BOND_ALREADY_SETUP u4`. `register-for-bond` takes an explicit `bond-index` argument naming the bond being joined; `unstake-sbtc`, `announce-l1-early-exit`, and `update-bond-registration` each operate on a single bond — the caller's recorded `protocol-bond-memberships` entry supplies the `bond-index`. The reward entrypoints `calculate-rewards` and `claim-rewards` take an explicit `(list 6 uint)` of bond periods to address several at once. The `(first-index, num-indexes)` pair is the trait-side convention used in `validate-stake!` callbacks (where `first-index` is a bond index for bond flows and a reward cycle for STX-only flows).
+A whole number that identifies one bonding period's entry in the contract. Bond period **0** is the first; the admin picks each new `bond-index` when setting up a bond, and setup rejects a repeated index. Functions that touch a single bond — `register-for-bond`, `unstake-sbtc`, `announce-l1-early-exit`, `update-bond-registration` — take or look up this index to know which bond period they are acting on. The reward entrypoints `calculate-rewards` and `claim-rewards` can address up to six bond periods at once.
 
 ### Bonding period
 
@@ -65,17 +51,15 @@ About **six months** of Bitcoin blocks (**25,200** in the time-intervals table),
 
 Managed program phase before full on-chain auction and algorithmic parameters: Endowment sets capacity, ratio, allocations, and comms; reserve may accrue in a constrained mode until PoX-6 activates further behaviors.
 
-### Break-even framing
-
-Messaging and models that relate STX downside, pairing ratio, and BTC-side yield so participants can reason about economics; called out for dashboard and investor audiences in launch/comms notes.
-
 ### BTC capacity envelope (pool)
 
 The Endowment-negotiated **cap** on how much BTC-equivalent exposure a whitelisted pool can enroll against from the community tranche.
 
 ### BTC SPV proof
 
-`register-for-bond` takes a `btc-lockup` argument typed `(response { outputs, staker-unlock-bytes } uint)`. The `ok` branch carries `outputs: (list 10 { header, leaf-hashes, tx-count, tx-index, tx, output-index, height, amount, unlock-burn-height })` plus `staker-unlock-bytes: (buff 683)` for an L1 BTC lockup; the `err` branch carries an sBTC amount in sats for an L2-only lockup. `staker-unlock-bytes` is the staker's signature subscript embedded in the L1 lockup witness script (the same value the locking address was derived from). The contract verifies the Bitcoin block header (`verify-block-header`), the merkle inclusion of the transaction in that block (the Clarity built-in invoked by `verify-merkle-proof`), and that the targeted output's script-pubkey matches the expected [P2WSH lockup output](glossary.md#lockup-script-p2wsh-lockup-output) (`validate-l1-lockup`). The per-output decode is a Clarity built-in invoked by `get-bitcoin-tx-output?`. Each output commits its own `unlock-burn-height`, and `validate-l1-lockup` reconstructs the expected P2WSH script per-output for that height via `construct-lockup-output-script`. The committed height may be any value at or above the bond's minimum L1 unlock height (`get-bond-l1-unlock-height`) and must stay below `BITCOIN_LOCKTIME_THRESHOLD` (`u500000000` — Bitcoin treats locktimes at or above that value as timestamps, not heights); `validate-l1-lockup` asserts `(>= unlock-burn-height minimum-unlock-height)` and `(< unlock-burn-height BITCOIN_LOCKTIME_THRESHOLD)` (both `ERR_INVALID_UNLOCK_HEIGHT u52`), that the decoded output amount equals the caller-supplied `amount` field (`ERR_INVALID_LOCKUP_AMOUNT u45`), and that no outpoint `(txid, output-index)` repeats across the registration's lockup list (`ERR_DUPLICATE_LOCKUP_OUTPOINT u46`, max 10 outpoints).
+A Simplified Payment Verification (SPV) proof shows that a Bitcoin transaction is confirmed on the Bitcoin chain, without needing a full Bitcoin node. It bundles a block header with a merkle-path (a set of hashes) that ties one transaction's output to that header. Anyone holding the header and the path can check the transaction was included in that block.
+
+At registration, `register-for-bond` submits this proof for each L1 lockup output. The contract checks the Bitcoin block header, confirms the transaction's merkle inclusion in that block, and confirms the targeted output's script matches the expected [P2WSH lockup output](glossary.md#lockup-script-p2wsh-lockup-output). It also confirms the output's committed unlock height falls within the bond's allowed window, that the output amount matches what the staker declared, and that the same output is not reused across a registration. Any failed check reverts the registration. See [Bitcoin's SPV documentation](https://developer.bitcoin.org/devguide/operating_modes.html#simplified-payment-verification-spv) for the general mechanism.
 
 ### Burn address (PoX-4 prepare phase)
 
@@ -111,23 +95,27 @@ Health metric: **reward pool per cycle ÷ paired BTC obligations per cycle**; ba
 
 ### Cycle boundary
 
-Stacks/PoX timing milestone used for signer set transitions, payouts, and UI copy (e.g. STX unlock “at the next cycle boundary” after period rules are satisfied).
+Stacks/PoX timing milestone used for signer set transitions, payouts, and UI copy (e.g. STX unlock "at the next cycle boundary" after period rules are satisfied).
 
 ### Cycle excess
 
-Miner revenue remaining after **Tranche 1** obligations in a cycle; split per policy between **STX-only** participants (Tranche 2) and the **reserve** (Tranche 3).
+Miner revenue remaining after **Tranche 1** obligations in a cycle; split per policy between **reserve** (Tranche 2) and **STX-only** participants (Tranche 3).
 
 ### Custodial aggregation
 
-Custody providers aggregating many clients’ positions; bounded in reward design notes by **actually locked STX** and auction economics.
+Custody providers aggregating many clients' positions; bounded in reward design notes by **actually locked STX** and auction economics.
 
 ### D0, D172, and D182 (bond timeline)
 
-**D0** is the cutoff when paired BTC (L1) and STX (L2) must be locked to be eligible. **D172** is when the **L1 timelock expires** — the minimum L1 unlock height sits half a reward cycle (1,050 blocks, \~7 days on mainnet) before the bond's L2 end, per `get-bond-l1-unlock-height`. **D182** ends the bonding period on L2; STX unlock follows protocol rules.
+"D" numbers count days since the start of a bonding period. **D0** is day zero: the cutoff when paired BTC (L1) and STX (L2) must be locked to be eligible. **D172** is around day 172: the day the **L1 timelock expires**. **D182** is around day 182: the day the bond ends on L2.
+
+* **D0** — the bond's start and lock cutoff. Paired BTC and STX must both be locked by this point.
+* **D172** — the L1 timelock expires. STX remains locked on L2.
+* **D182** — the bond ends on L2. STX unlock follows protocol rules.
 
 ### Drawdown priority (paired BTC)
 
-White-paper design term for how a shortfall would be distributed among paired positions if the reserve were exhausted (ordering by STX price at lock time). `pox-5.clar` defines no per-position shortfall ordering: reward accounting is flat per-token ([`rewards-per-token-for-cycle`](contract/data-structure.md)), and the reserve accrues a fixed `RESERVE_RATIO` cut ([pox-5.clar:107](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L107)) into `reserve-balance`.
+White-paper design term for how a shortfall would be distributed among paired positions if the reserve were exhausted (ordering by STX price at lock time). `pox-5.clar` defines no per-position shortfall ordering: reward accounting is flat per-token (`rewards-per-token-for-cycle`), and the reserve accrues a fixed `RESERVE_RATIO` cut ([pox-5.clar:107](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L107)) into `reserve-balance`.
 
 ### Dual-asset commitment
 
@@ -139,7 +127,7 @@ Separate legacy yield product slated to wind down alongside Bitcoin Staking mess
 
 ### Distribution cycle
 
-A reward-accounting unit **twice as frequent** as a reward cycle. `current-distribution-cycle` advances by 1 every `(reward-cycle-length / 2)` burn blocks (1,050 on mainnet). `calculate-rewards` runs at each distribution-cycle boundary, and the per-bond target-yield formula divides the annualised target rate by **50** (≈ distribution cycles per year). Distribution cycles are also what `settle-rewards` uses as the granularity for `signer-rewards-per-token-settled-for-cycle` and `signer-unclaimed-rewards-for-cycle`.
+A reward-accounting unit **twice as frequent** as a reward cycle (also called a [signer cycle](glossary.md#signer-cycle)). `current-distribution-cycle` advances by 1 every `(reward-cycle-length / 2)` burn blocks (1,050 on mainnet). `calculate-rewards` runs at each distribution-cycle boundary, and the per-bond target-yield formula divides the annualised target rate by **50** (≈ distribution cycles per year). Distribution cycles are also what `settle-rewards` uses as the granularity for `signer-rewards-per-token-settled-for-cycle` and `signer-unclaimed-rewards-for-cycle`.
 
 ### Early exit
 
@@ -149,8 +137,8 @@ Optional path to spend BTC from the timelock before expiry using a **pre-authori
 
 The early-exit machinery has **two distinct sides** that the contract treats separately:
 
-* **BTC side:** `early-unlock-bytes` is the early-exit subscript stored in each `protocol-bonds` entry (`(buff 683)`) and concatenated into the L1 lockup script by `construct-lockup-script` as the `OP_ELSE` branch. It is a pre-pushed Bitcoin script fragment that validates the early-exit key(s) signature and **must leave a valid boolean result on the stack** — consumed by the shared `OP_VERIFY` that follows `OP_ENDIF` — e.g. `<pubkey> OP_CHECKSIG`, or an M-of-N `OP_CHECKMULTISIG` template. This is the predicate that guards the pre-expiry spend path, but it is not sufficient on its own: `staker-unlock-bytes` runs unconditionally after `OP_ENDIF`, so an early-exit spend requires a signature satisfying `early-unlock-bytes` **and** the staker's own signature, plus the staker's 32-byte commitment preimage.
-* **L2 side:** `announce-l1-early-exit` is gated on the staker themselves — `contract-caller`, `tx-sender`, and the `staker` argument must all match — not on a separately stored principal. Once BTC has been spent off-cycle via the `OP_ELSE` branch, the staker announces the exit on L2 so the contract zeros their shares.
+* **BTC side:** `early-unlock-bytes` is the early-exit subscript stored on each bond ([pox-5.clar:126](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L126)) and folded into the `OP_ELSE` branch of the L1 lockup script ([pox-5.clar:3711](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)). It must leave a valid boolean result on the stack for the shared `OP_VERIFY` after `OP_ENDIF`. In practice this is always a single cosigner public key with `OP_CHECKSIG` — one key managed by a redundant, KMS-backed early-exit signing service, not an on-chain multisig script. The cosigner signature alone is not sufficient: `staker-unlock-bytes` runs unconditionally after `OP_ENDIF`, so an early-exit spend also requires the staker's own signature plus the staker's 32-byte commitment preimage.
+* **L2 side:** the early-exit announcement ([pox-5.clar:1196](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196-L1257)) is gated on the staker themselves: `contract-caller`, `tx-sender`, and the `staker` argument must all match. No separate admin or signer principal is stored on the bond. After the staker's BTC is spent off-cycle through the `OP_ELSE` branch, the staker announces the exit on L2 so the contract zeros their shares; their locked STX stays locked through the normal bond period.
 
 ### Endowment (Stacks Endowment)
 
@@ -168,10 +156,6 @@ Explicit product penalty: user gives up **remaining Tranche 1 BTC yield** after 
 
 Voting weight on SIPs; **pure function of locked STX**—BTC does not govern.
 
-### get-earned
-
-Read-only function ([pox-5.clar:2341](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2341)) returning a signer's total currently-earned sBTC for a given `{ reward-cycle, bond-index }` slot, where `bond-index` is `(some N)` for a bond cycle and `none` for STX-only. It computes `unclaimed-rewards + (shares × (rewards-per-token-current − rewards-per-token-settled)) / PRECISION` via `compute-earned-rewards`, combining the already-settled balance in `signer-unclaimed-rewards-for-cycle` with the still-accruing delta against the latest `rewards-per-token`.
-
 ### Hard fork (activation)
 
 Consensus upgrade that activates PoX-5, releases PoX-4 locks, and sequences **first bond D0**; may include minimum committed STX thresholds in governance drafts.
@@ -179,10 +163,6 @@ Consensus upgrade that activates PoX-5, releases PoX-4 locks, and sequences **fi
 ### Indexer / API
 
 Off-chain data surface the app reads for period state, positions, payouts, and pauses.
-
-### is-l1-lock
-
-Boolean field on each `protocol-bond-memberships` entry indicating whether the bond participant locked **BTC on L1** (`true`) or **sBTC on L2** (`false`). The flag determines which exit path applies: L1-locked memberships use [`announce-l1-early-exit`](glossary.md#announce-l1-early-exit); L2 sBTC-locked memberships use [`unstake-sbtc`](glossary.md#unstake-sbtc). Bond-cycle accounting is selected by passing `(some bond-index)` to the reward maps' `bond-index` key; STX-only accounting uses `none`.
 
 ### L1 and L2 (commitment layers)
 
@@ -194,7 +174,7 @@ sBTC-based pooling and LST directions described as future work once protocol bon
 
 ### Lockup script / P2WSH lockup output
 
-The Bitcoin output the contract expects to see for each L1 lockup. `construct-lockup-script` builds the witness script: an `OP_IF` (CLTV) / `OP_ELSE` (`early-unlock-bytes` subscript) / `OP_ENDIF` `OP_VERIFY` envelope followed unconditionally by the staker's `staker-unlock-bytes` subscript. `construct-lockup-output-script` wraps that witness script as `0x0020 || sha256(witness-script)` — i.e. a standard **P2WSH** output. `staker-unlock-bytes` and `early-unlock-bytes` are pre-pushed Bitcoin script fragments. `staker-unlock-bytes` runs after `OP_ENDIF` and must leave a truthy result on the stack (e.g. `<pubkey> OP_CHECKSIG`). `early-unlock-bytes` runs inside `OP_ELSE` and must also leave a boolean on the stack (consumed by the shared `OP_VERIFY` after `OP_ENDIF`) — e.g. `<pubkey> OP_CHECKSIG` or an M-of-N `OP_CHECKMULTISIG` template. The `OP_IF` branch's CLTV value is the output's own `unlock-burn-height`, which each L1 lockup commits and which must be at or above the bond's minimum L1 unlock height and below `BITCOIN_LOCKTIME_THRESHOLD` (`u500000000` — Bitcoin treats locktimes at or above that value as timestamps, not heights); both bounds share `ERR_INVALID_UNLOCK_HEIGHT u52`. During `register-for-bond`, `validate-l1-lockup` reconstructs this expected script-pubkey per-output for that height via `construct-lockup-output-script` and requires the SPV-supplied output's script-pubkey to match exactly. See also [BTC SPV proof](glossary.md#btc-spv-proof).
+The Bitcoin output the contract expects to see for each L1 lockup. The witness script has two spending paths: an `OP_IF` branch that only becomes spendable once the committed unlock height (CLTV) is reached, releasing the funds to the staker; and an `OP_ELSE` branch that lets the early-exit signer set release the funds sooner. The witness script is wrapped as a standard **P2WSH** output. The committed unlock height must fall within the bond's allowed window (at or above the bond's minimum L1 unlock height, and below the ceiling Bitcoin treats as a timestamp rather than a height). During `register-for-bond`, the contract reconstructs the expected output script for that height and requires the SPV-supplied output's script to match exactly. See also [BTC SPV proof](glossary.md#btc-spv-proof).
 
 ### Miner bids
 
@@ -208,10 +188,6 @@ Stacks block validation regime where **signers** attest blocks; signing weight t
 
 Institutional path: self-custodial BTC timelock plus STX lock, no pool intermediary.
 
-### old-signer-manager (argument)
-
-Trait-typed (`<signer-manager-trait>`) argument required by `stake-update`, `unstake`, `update-bond-registration`, and `announce-l1-early-exit` (named `old-signer-manager` in their signatures), and by `unstake-sbtc` (named `signer-manager`). The contract-of the argument must match the staker's currently-recorded `signer` on the relevant membership; a mismatch fails with `ERR_INVALID_OLD_SIGNER_MANAGER` (`u36`). PoX-5 settles per-staker rewards on the old leg via [`settle-staker-rewards`](glossary.md#settle-rewards) before mutating shares so accrued sBTC is captured against the previous signer — the bond-share-mutating functions (`update-bond-registration`, `announce-l1-early-exit`, `unstake-sbtc`) settle directly, and `stake-update` / `unstake` settle per removed cycle through `remove-staker-from-cycles` → `remove-staker-from-signer-for-cycle`.
-
 ### Paired BTC and paired STX
 
 The two legs of a protocol bond. **Paired BTC** earns Tranche 1 target yield when eligible. **Paired STX** meets ratio and signing needs but **earns no yield** while paired.
@@ -222,15 +198,11 @@ Program tool (with required **security review** before launch) that turns model 
 
 ### PoX, PoX-4, PoX-5, PoX-6
 
-**PoX** is Proof-of-Transfer. **PoX-4** is pre-upgrade stacking. **PoX-5** is Endowment-mediated bootstrap. **PoX-6** targets permissionless auction and fuller on-chain economics.
+**PoX** is Proof-of-Transfer, the Stacks consensus mechanism in which miners spend BTC to compete for block production rights and that BTC flows to stakers/stackers. **PoX-4** is pre-upgrade stacking. **PoX-5** is Endowment-mediated bootstrap Bitcoin Staking — it reallocates **who** is eligible for that BTC flow while preserving miner bidding. **PoX-6** targets permissionless auction and fuller on-chain economics.
 
 ### Prepare phase / prepare window
 
 Last **100 blocks** of each **signer cycle** in the time-interval table; also used in product copy as the deadline to change signer or reward settings before the next prepare phase.
-
-### Proof-of-Transfer (PoX)
-
-Stacks consensus class where miners spend BTC for block rights and BTC flows to stakers/stackers; Bitcoin Staking reallocates **who** is eligible while preserving miner bidding.
 
 ### Protocol bond
 
@@ -242,15 +214,15 @@ Bitcoin script pattern (**pay-to-witness-script-hash**) with **check-lock-time-v
 
 ### Ratio requirement (minimum STX vs BTC)
 
-Minimum STX that must be paired with a BTC commitment. In `pox-5.clar` the pricing inputs are **per-bond parameters supplied by the bond-admin in `setup-bond`** — `stx-value-ratio` (an STX:BTC price representation) and `min-ustx-ratio` — and `register-for-bond` enforces the floor via [`min-ustx-for-sats-amount`](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3089) (`ERR_INSUFFICIENT_STX u8`). The white paper frames the floor as a fraction of BTC value (initial **5%** example) derived from miner-bid-implied pricing; on-chain the values are set administratively.
+Minimum STX that must be paired with a BTC commitment. The pricing inputs are per-bond parameters the admin supplies when setting up a bond, and [`register-for-bond`](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3089) rejects a registration that falls short of the floor. The white paper frames the floor as a fraction of BTC value (initial **5%** example) derived from miner-bid-implied pricing; on-chain the values are set administratively.
 
 ### Re-lock phase
 
-Final stretch of a bonding period where **L1 has expired** but **STX can remain locked**, giving time to construct the **next** L1 timelock. In `pox-5.clar`, `get-bond-l1-unlock-height` subtracts `(reward-cycle-length / 2)` from the bond's L2 end height — on mainnet that is **1,050 blocks** (`2100 / 2`). This is the **minimum** L1 unlock height: each L1 lockup output commits its own `unlock-burn-height`, which `validate-l1-lockup` accepts only at or above this minimum and below `BITCOIN_LOCKTIME_THRESHOLD` (`u500000000`, the point at which Bitcoin reads a locktime as a timestamp rather than a height) — both checks share `ERR_INVALID_UNLOCK_HEIGHT u52` — so a staker may lock for longer, up to that cap. The "\~1,400 blocks (\~10 days)" product framing does not match the contract math; treat the contract value as authoritative.
+Final stretch of a bonding period where **L1 has expired** but **STX can remain locked**, giving time to construct the **next** L1 timelock. On mainnet the L1 timelock's minimum unlock height sits about **1,050 blocks** (half a reward cycle) before the bond's L2 end height. Each L1 lockup output commits its own unlock height, which the contract accepts only at or above that minimum, so a staker may lock for longer if they choose. Bitcoin treats high locktime values as timestamps rather than heights, so the committed height must also stay below Bitcoin's locktime threshold. The "\~1,400 blocks (\~10 days)" product framing does not match the contract math; treat the contract value as authoritative.
 
-### Reserve fund (Tranche 3)
+### Reserve fund (Tranche 2)
 
-Third waterfall stop: absorbs part of **cycle excess** and backstops Tranche 1 in stress; may hold **BTC and USD sleeves** in the paper’s design. In PoX-5, the contract accrues into `reserve-balance` automatically each cycle (the `RESERVE_RATIO` cut of distribution); draws from the reserve are consensus-gated — the only draw path, `transfer-from-reserve`, is never called from within the contract and can only be invoked by the node as part of consensus (via the SIP process).
+Second waterfall stop: absorbs part of **cycle excess** and backstops Tranche 1 in stress; may hold **BTC and USD sleeves** in the paper's design. In PoX-5, the contract accrues into `reserve-balance` automatically each cycle (the `RESERVE_RATIO` cut of distribution); draws from the reserve are consensus-gated — the only draw path, `transfer-from-reserve`, is never called from within the contract and can only be invoked by the node as part of consensus (via the SIP process).
 
 ### Reward address
 
@@ -262,7 +234,7 @@ Choice between default **sBTC (auto-bridge)** and explicit **L1 BTC opt-out** in
 
 ### Reward eligibility weight
 
-One of three “weights” in the paper; Bitcoin Staking **only** changes how **BTC yield eligibility** works—**signing** and **governance** weights remain STX-only.
+One of three "weights" in the paper; Bitcoin Staking **only** changes how **BTC yield eligibility** works—**signing** and **governance** weights remain STX-only.
 
 ### sBTC
 
@@ -286,7 +258,7 @@ Signer authority in Nakamoto consensus proportional to **STX** locked toward tha
 
 ### Signer cycle
 
-**2,100 Bitcoin blocks (\~14 days)** PoX time unit: signer set updates, **prepare phase** tail, and cadence anchor used beside the longer **bonding period**.
+Another name for a [reward cycle](glossary.md#cycle-boundary): one reward phase plus its trailing [prepare phase](glossary.md#prepare-phase-prepare-window). PoX-5 docs use "signer cycle" when the emphasis is on signer set updates rather than reward accounting.
 
 ### Stacks principal
 
@@ -295,18 +267,6 @@ Stacks address identifier tying **wallet**, **whitelist row**, and **L1 script m
 ### Stacks signer
 
 Validator participant in **Nakamoto consensus**; stackers delegate **STX** to a signer (or run their own). Authority scales with **signing weight**, not BTC locked.
-
-### settle-rewards
-
-Private function ([pox-5.clar:2530](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2530)) called before any state change that touches a signer's bond/cycle shares. It calls [`get-earned`](glossary.md#get-earned) to compute the signer's currently-earned sBTC for a `{ reward-cycle, bond-index }` slot, writes that into `signer-unclaimed-rewards-for-cycle`, and snapshots the latest `rewards-per-token-for-cycle` into `signer-rewards-per-token-settled-for-cycle`. The per-staker counterpart `settle-staker-rewards` ([pox-5.clar:2581](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2581)) settles the staker layer one level down — same shape, against `staker-unclaimed-rewards-for-cycle` and `staker-rewards-per-token-settled-for-cycle`.
-
-### signer-manager trait
-
-Required trait implemented by signer-manager contracts that participants point at via the `signer-manager` argument. One method:
-
-* `validate-stake!` with signature `(staker, first-index, num-indexes, amount-ustx, amount-sats, is-bond, signer-calldata) -> (response bool uint)` — called by PoX-5 before joining (or extending) a staker's position under that signer. `first-index` is a reward cycle for STX-only flows and a bond index for bond flows; `num-indexes` is the number of cycles (STX-only) or `u1` (bond); `amount-sats` is `u0` for STX-only and the BTC commitment for bond legs.
-
-`validate-stake!` is invoked only through the contract's `signer-manager-validate-stake` wrapper, which raises `signer-manager-call-active` for the duration of the call. Any attempt to re-enter PoX-5 from inside the callback fails with `ERR_REENTRANT_CALL` (`u49`). The contract settles per-staker rewards itself via [`settle-staker-rewards`](glossary.md#settle-rewards) on every flow that mutates a staker's membership, so signer managers do not need to track staker accounting themselves.
 
 ### SIP (Stacks Improvement Proposal)
 
@@ -320,29 +280,21 @@ Legacy user verb **stacking** (PoX-4 marketing) vs proposed **staking** language
 
 Per-period pairing requirement **fixed for PoX-5** simplicity (vs algorithmic ratio later); published **\~7 days before D0**.
 
-### STX-only staking (Tranche 2 path)
+### STX-only staking (Tranche 3 path)
 
-**No** BTC commitment: locks STX on \~signer-cycle cadence, earns **residual** after Tranche 1; **50K STX** minimum solo in product notes; **T2 residual** pro-rata.
+**No** BTC commitment: locks STX on \~signer-cycle cadence, earns **residual** after Tranche 1 and reserve split; **50K STX** minimum solo in product notes; **T3 residual** pro-rata.
 
 ### T1, T2, T3 (waterfall tranches)
 
-**T1** pays paired BTC obligations first; **T2** pays **STX-only** residual from cycle excess; **T3** is the reserve fund.
+**T1** pays paired BTC obligations first; **T2** is reserve; **T3** pays **STX-only** residual from cycle excess after reserve contribution.
 
 ### Target yield
 
 Pre-clearing anchor for sizing and messaging; active terms also have **clearing yield** from auction mechanics in decentralized design.
 
-### unstake-sbtc
-
-L2-side public function ([pox-5.clar:1261](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1261)) used by **sBTC-locked** bond participants to withdraw some or all of their locked sBTC. Reverts on L1-locked memberships with `ERR_CANNOT_UNSTAKE_SBTC` (`u38`) — those use [`announce-l1-early-exit`](glossary.md#announce-l1-early-exit) instead. Also rejected during the prepare phase (`ERR_STAKE_IN_PREPARE_PHASE u47`). The flow: validate signer matches via [`old-signer-manager`](glossary.md#old-signer-manager-argument), then walk each affected cycle via `unstake-sats-from-bond-cycles`. For each cycle the helper resolves the staker's signer from `staker-signer-cycle-memberships` (since an earlier `update-bond-registration` may have left different signers across the current cycle vs. future cycles), runs [`settle-rewards`](glossary.md#settle-rewards) and `settle-staker-rewards` for that cycle, debits the per-cycle share totals by the withdrawal amount, and writes the staker's new per-cycle share count. Finally the function updates the membership's `amount-sats`, decrements `protocol-bonds-total-staked` and `total-sbtc-staked`, and transfers the sBTC out. Not gated by the [re-lock window](glossary.md#re-lock-phase) — outside the prepare-phase window, sBTC-locked participants can call it any time during the bond, including after the bond is over to recover the locked amount.
-
-### update-bond-registration
-
-Public function ([pox-5.clar:850](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L850)) that lets a bond participant rotate their `signer-manager` mid-bond. Takes the new `signer-manager`, the [`old-signer-manager`](glossary.md#old-signer-manager-argument), and optional `signer-calldata`. Rejects rotation to the same signer with `ERR_UPDATE_BOND_SAME_SIGNER` (`u44`) and rejects calls during the prepare phase with `ERR_STAKE_IN_PREPARE_PHASE` (`u47`). Calls the new manager's `validate-stake!` to authorise the join (under the reentrancy guard), runs `settle-rewards` and `settle-staker-rewards` on both the old and new signers, then migrates the participant's bond-period shares from the old signer to the new signer for each remaining reward cycle of the bond.
-
 ### Uniform-price clearing
 
-Auction pricing rule where **every accepted bid pays the same clearing yield** (the marginal accepted bid), not each bidder’s own bid—standard in the white paper’s sealed-bid design.
+Auction pricing rule where **every accepted bid pays the same clearing yield** (the marginal accepted bid), not each bidder's own bid—standard in the white paper's sealed-bid design.
 
 ### UTXO matching
 
@@ -350,7 +302,7 @@ Stacks nodes/indexers observe Bitcoin **timelocked UTXOs** and match them to **L
 
 ### Waterfall (yield distribution)
 
-Priority ordering of **miner revenue** across **Tranche 1**, **STX-only** residual, and the **reserve**; stabilizes BTC-side APY at the expense of more variable STX-only returns.
+Priority ordering of **miner revenue** across **Tranche 1**, **reserve**, and **STX-only** residual; stabilizes BTC-side APY at the expense of more variable STX-only returns.
 
 ### Weekly rewards
 

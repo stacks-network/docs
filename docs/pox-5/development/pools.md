@@ -94,9 +94,9 @@ After the pool registers, the operator wants a single read-only snapshot of how 
 
 Three on-chain reads compose the picture:
 
-* `get-signer-unclaimed-rewards-for-cycle` — running pending sBTC for `{ reward-cycle, bond-index, signer }` (with `bond-index: (some N)` for a bond cycle) ([pox-5.clar:3217](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3217)).
-* `get-signer-rewards-per-token-settled-for-cycle` — last-settled `rewards-per-token` snapshot for the same key ([pox-5.clar:3203](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3203)).
-* `get-earned` — convenience wrapper that returns `pending + (shares × (rpt-current − rpt-settled)) / PRECISION` as the total still-claimable ([pox-5.clar:2341](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2341)).
+* `get-signer-unclaimed-rewards-for-cycle` — running pending sBTC for `{ reward-cycle, bond-index, signer }` (with `bond-index: (some N)` for a bond cycle) ([pox-5.clar:3217](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3217)).
+* `get-signer-rewards-per-token-settled-for-cycle` — last-settled `rewards-per-token` snapshot for the same key ([pox-5.clar:3203](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3203)).
+* `get-earned` — convenience wrapper that returns `pending + (shares × (rpt-current − rpt-settled)) / PRECISION` as the total still-claimable ([pox-5.clar:2341](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2341)).
 
 ```ts
 import {
@@ -138,8 +138,8 @@ const dashboard = {
 
 #### Pool-operator escape hatches
 
-* **`update-bond-registration`** ([pox-5.clar:850](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L850)) — bond participants can rotate to a new signer-manager mid-bond. Pool operators offering bond-side service should make sure their UI exposes this. Reverts with `ERR_UPDATE_BOND_SAME_SIGNER (u44)` if the new signer equals the current.
-* **`unstake-sbtc`** ([pox-5.clar:1261](https://github.com/stacks-network/stacks-core/blob/pox-wf-integration/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1261)) — sBTC-locked bond participants can withdraw their locked sBTC at any time outside the prepare phase (full or partial); calls landing during the prepare phase revert with `ERR_STAKE_IN_PREPARE_PHASE (u47)`. There is no bond-deadline restriction here, unlike L1-locked participants whose BTC depends on the CLTV. The position keeps its accounting; only the sBTC balance shrinks.
+* **`update-bond-registration`** ([pox-5.clar:850](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L850)) — bond participants can rotate to a new signer-manager mid-bond. Pool operators offering bond-side service should make sure their UI exposes this. Reverts with `ERR_UPDATE_BOND_SAME_SIGNER (u44)` if the new signer equals the current. Rejected during the prepare phase (`ERR_STAKE_IN_PREPARE_PHASE u47`).
+* **`unstake-sbtc`** ([pox-5.clar:1261](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1261)) — sBTC-locked bond participants can withdraw their locked sBTC at any time outside the prepare phase (full or partial); calls landing during the prepare phase revert with `ERR_STAKE_IN_PREPARE_PHASE (u47)`. There is no bond-deadline restriction here, unlike L1-locked participants whose BTC depends on the CLTV. The position keeps its accounting; only the sBTC balance shrinks.
 
 For drill-down into a specific member's contribution to the pool's bond stake:
 
