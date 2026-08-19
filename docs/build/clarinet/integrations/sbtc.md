@@ -148,11 +148,11 @@ clarinet deployments apply --testnet
 
 Clarinet handles sBTC contract address mapping across networks:
 
-| Network       | sBTC Contract Address                                  |
-| ------------- | ------------------------------------------------------ |
-| Simnet/Devnet | `SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token` |
-| Testnet       | `ST1F7QA2MDF17S807EPA36TSS8AMEFY4KA9TVGWXT.sbtc-token` |
-| Mainnet       | Contract address remains unchanged                     |
+| Network         | sBTC Contract Address                                  |
+| --------------- | ------------------------------------------------------ |
+| Simnet/Devnet   | `SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-token` |
+| DevnetM/Testnet | `SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-token` |
+| Mainnet         | Contract address remains unchanged                     |
 
 Your contract code always references the simnet address. Clarinet automatically remaps during deployment.
 
