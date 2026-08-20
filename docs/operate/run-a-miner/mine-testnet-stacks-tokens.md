@@ -8,9 +8,9 @@ The following is an abridged version of the [walkthrough here](https://github.co
 
 If you're interested in mining on the Stacks testnet, you can find instructions on how to do that here:
 
-### Running a Bitcoin Testnet Full Node
+### Running a Bitcoin Node for the Stacks Testnet
 
-To participate as a miner on testnet, you must have access to a testnet bitcoin node with a wallet (and the wallet's private key). One way to accomplish this is to run bitcoin locally.
+The Stacks testnet does not run on the public Bitcoin testnet - it uses a Bitcoin **regtest** network operated by Hiro (`bitcoin.regtest.hiro.so`). To participate as a miner, you must have access to a bitcoin node on that network with a wallet (and the wallet's private key). One way to accomplish this is to run bitcoin locally, peered with the Hiro regtest node.
 
 * [Ensure your computer meets the minimum hardware requirements before continuing.](https://bitcoin.org/en/bitcoin-core/features/requirements#system-requirements)
 
@@ -31,7 +31,7 @@ Next, update the bitcoin configuration:
 
 ```toml
 server=1
-testnet=1
+regtest=1
 disablewallet=0
 datadir=/bitcoin
 rpcuser=btcuser
@@ -44,10 +44,11 @@ rpcworkqueue=256
 rpctimeout=100
 txindex=1
 
-[test]
-bind=0.0.0.0:18333
-rpcbind=0.0.0.0:18332
-rpcport=18332
+[regtest]
+bind=0.0.0.0:18444
+rpcbind=0.0.0.0:18443
+rpcport=18443
+addnode=bitcoin.regtest.hiro.so:18444
 ```
 
 #### Start Bitcoin
@@ -59,26 +60,26 @@ bitcoind -conf=$HOME/bitcoin.conf
 ```
 
 {% hint style="info" %}
-Note: It will take a few hours for the node to synchronize with Bitcoin Testnet.
+Note: The testnet regtest chain is much smaller than the public Bitcoin testnet, so the node should synchronize within minutes.
 {% endhint %}
 
-While it's syncing, you can track the progress with `bitcoin-cli` or the logfile (will be located where the chainstate is stored, i.e. `/bitcoin/testnet3/debug.log`):
+While it's syncing, you can track the progress with `bitcoin-cli` or the logfile (will be located where the chainstate is stored, i.e. `/bitcoin/regtest/debug.log`):
 
 ```bash
 $ bitcoin-cli \
  -rpcconnect=127.0.0.1 \
- -rpcport=18332 \
+ -rpcport=18443 \
  -rpcuser=btcuser \
  -rpcpassword=btcpass \
 getblockchaininfo | jq .blocks
-2583513
+7746
 ```
 
 ***
 
 ### Running a Stacks Blockchain miner
 
-First, download the latest tagged [stacks blockchain binary](https://github.com/stacks-network/stacks-blockchain/releases/latest), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/testnet/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/testnet/prerequisites.md#install-required-packages)).
+First, download the [`stacks-core` 4.0.2 binary](https://github.com/stacks-network/stacks-core/releases/tag/4.0.2), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/testnet/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/testnet/prerequisites.md#install-required-packages)).
 
 {% hint style="info" %}
 Tip: It is recommended to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`.
@@ -124,7 +125,7 @@ Next, a bitcoin wallet is created:
 ```bash
 bitcoin-cli \
   -rpcconnect=127.0.0.1 \
-  -rpcport=18332 \
+  -rpcport=18443 \
   -rpcuser=btcuser \
   -rpcpassword=btcpass \
   -named createwallet \
@@ -146,7 +147,7 @@ First, convert the wif into its public descriptor:
 ```bash
 bitcoin-cli \
   -rpcconnect=127.0.0.1 \
-  -rpcport=18332 \
+  -rpcport=18443 \
   -rpcuser=btcuser \
   -rpcpassword=btcpass \
   getdescriptorinfo "combo(<wif from JSON above>)"
@@ -157,7 +158,7 @@ Then import the `descriptor` value returned above into the `miner` wallet - past
 ```bash
 bitcoin-cli \
   -rpcconnect=127.0.0.1 \
-  -rpcport=18332 \
+  -rpcport=18443 \
   -rpcuser=btcuser \
   -rpcpassword=btcpass \
   -rpcwallet=miner \
@@ -180,24 +181,29 @@ After the import has completed successfully, you can check that the address is i
 ```bash
 bitcoin-cli \
   -rpcconnect=127.0.0.1 \
-  -rpcport=18332 \
+  -rpcport=18443 \
   -rpcuser=btcuser \
   -rpcpassword=btcpass \
   -rpcwallet=miner \
   getaddressinfo <btcAddress from JSON above>
 ```
 
-Once imported, we need to get some testnet BTC to that address. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` testnet BTC to that address.
+Once imported, we need to get some testnet BTC to that address. The public Bitcoin testnet faucets won't work here - the Stacks testnet runs on its own regtest network, so use the Hiro testnet BTC faucet with the `btcAddress` from the keychain step:
+
+```bash
+curl -X POST "https://api.testnet.hiro.so/extended/v1/faucets/btc?address=<btcAddress from JSON above>"
+```
 
 #### Update the Stacks Blockchain Configuration File
 
-Now, we need to configure our node to use this Bitcoin keychain. Copy the [sample testnet miner config](https://raw.githubusercontent.com/stacks-network/stacks-blockchain/master/testnet/stacks-node/conf/testnet-miner-conf.toml) to your local machine in a memorable location like `$HOME/testnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. Copy the [sample testnet miner config](https://raw.githubusercontent.com/stacks-network/stacks-core/master/sample/conf/testnet-miner-conf.toml) to your local machine in a memorable location like `$HOME/testnet-miner-conf.toml`.
 
 Next, update the stacks configuration:
 
 * Optional, but recommended: Use a persistent directory to store the Stacks chainstate, i.e. `working_dir = "/stacks-blockchain"`
 * From the `make_keychain` step, modify the `seed` value with `privatekey`
 * Required: set `wallet_name` to the bitcoin wallet you created above (`miner`)
+* Required: set `username` and `password` to match the `rpcuser` and `rpcpassword` from your bitcoin configuration
 * Store the following configuration somewhere on your filesystem (ex: `$HOME/testnet-miner-conf.toml`)
 
 ```toml
@@ -205,22 +211,46 @@ Next, update the stacks configuration:
 working_dir = "/stacks-blockchain"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
+bootstrap_node = "0348af7ce1b224476e8f042727af3f84dcf49a69bb3c9dd2a1afaa783acfffb729@seed.testnet.hiro.so:20444"
+prometheus_bind = "0.0.0.0:9153"
 seed = "<privateKey from JSON above>"
 miner = true
-bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
 mine_microblocks = false
-wait_time_for_microblocks = 10000
+stacker = true
+
+pox_5_sbtc_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-token"
+pox_5_sbtc_registry_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-registry"
+pox_5_bond_admin = "ST1V2ASRWGR81W7GBN1Z4W2JQKXJWCADPVZG30X45"
 
 [burnchain]
-# Required for miners: must name an existing bitcoin wallet (created above)
-wallet_name = "miner"
-chain = "bitcoin"
-mode = "xenon"
+mode = "krypton"
 peer_host = "127.0.0.1"
 username = "<bitcoin config rpcuser>"
 password = "<bitcoin config rpcpassword>"
-rpc_port = 18332
-peer_port = 18333
+rpc_port = 18443
+peer_port = 18444
+# Required for miners: must name an existing bitcoin wallet (created above)
+wallet_name = "miner"
+pox_prepare_length = 100
+pox_reward_length = 900
+# Maximum amount (in sats) of "burn commitment" to broadcast for the next block's leader election
+burn_fee_cap = 20000
+# Amount (in sats) per byte - Used to calculate the transaction fees
+satoshis_per_byte = 25
+# Amount of sats to add when RBF'ing bitcoin tx  (default: 5)
+rbf_fee_increment = 5
+# Maximum percentage to RBF bitcoin tx (default: 150% of satsv/B)
+max_rbf = 150
+
+[connection_options]
+# Must match your signer's auth_password
+auth_token = "<YOUR_AUTH_TOKEN>"
+
+# Signer event subscription.
+# The endpoint must match your signer's endpoint config.
+[[events_observer]]
+endpoint = "127.0.0.1:30000"
+events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 [[ustx_balance]]
 address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
@@ -237,7 +267,99 @@ amount = 10000000000000000
 [[ustx_balance]]
 address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
 amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST31XHNM0GZ2K978FPP4QA3STNQ73Z8C9G9MJEPK2"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST1B38CGQRPXEMRH7B66VXTS22DQTNMSW4YJJ7QK1"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "STDMN71Z0H9EF8CRKAWTGBB5YS0BNV26HZ79QFFP"
+amount = 1000000000000000
+
+[[ustx_balance]]
+address = "ST1E0PSCH72JMQH9QCH293ZTEEH7BPA40Y3F39XQ"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3QBTK0Q438YVNX8EG6Z85HN0WKQPXYT25H5SPPK"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST10BX04F9PC6N1WBXKW3H7CG0NS0A3PK650T3P3R"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3AF1BBQAFSFCM8K4ZBR1FBXP3P8J1CKGSGDHWR5"
+amount = 100000000000000
+
+[[ustx_balance]]
+address = "STHY13V44422NAN6D3NSJPY9CDR3ED1M6HH9WZ6Y"
+amount = 10000000000000
+
+[[burnchain.epochs]]
+epoch_name = "1.0"
+start_height = 0
+
+[[burnchain.epochs]]
+epoch_name = "2.0"
+start_height = 0
+
+[[burnchain.epochs]]
+epoch_name = "2.05"
+start_height = 1
+
+[[burnchain.epochs]]
+epoch_name = "2.1"
+start_height = 2
+
+[[burnchain.epochs]]
+epoch_name = "2.2"
+start_height = 3
+
+[[burnchain.epochs]]
+epoch_name = "2.3"
+start_height = 4
+
+[[burnchain.epochs]]
+epoch_name = "2.4"
+start_height = 5
+
+[[burnchain.epochs]]
+epoch_name = "2.5"
+start_height = 6
+
+[[burnchain.epochs]]
+epoch_name = "3.0"
+start_height = 1802
+
+[[burnchain.epochs]]
+epoch_name = "3.1"
+start_height = 1803
+
+[[burnchain.epochs]]
+epoch_name = "3.2"
+start_height = 1804
+
+[[burnchain.epochs]]
+epoch_name = "3.3"
+start_height = 1805
+
+[[burnchain.epochs]]
+epoch_name = "3.4"
+start_height = 1806
+
+[[burnchain.epochs]]
+epoch_name = "4.0"
+start_height = 2702
 ```
+
+{% hint style="info" %}
+The `[connection_options]` and `[[events_observer]]` sections connect the node to a Stacks signer: `auth_token` must match the signer's `auth_password`, and the events observer `endpoint` must match the signer's `endpoint`. See the [signer quickstart](../run-a-signer/signer-quickstart.md) for setting one up.
+{% endhint %}
 
 #### Start the Stacks Blockchain
 
@@ -275,7 +397,11 @@ Generate a keychain:
 docker run -i node:20-alpine npx @stacks/cli make_keychain 2>/dev/null | jq -r
 ```
 
-Now, we need to get some tBTC. Grab the `btcAddress` field, and paste it into [this Bitcoin testnet faucet](https://tbtc.bitaps.com/). You'll be sent `0.01` tBTC to that address.
+Now, we need to get some tBTC. Grab the `btcAddress` field and request funds from the Hiro testnet BTC faucet:
+
+```bash
+curl -X POST "https://api.testnet.hiro.so/extended/v1/faucets/btc?address=<btcAddress from JSON above>"
+```
 
 #### Update Stacks Blockchain Docker Configuration File
 
@@ -298,7 +424,7 @@ docker run -d \
   -v "/stacks-blockchain:/stacks-blockchain" \
   -p 20443:20443 \
   -p 20444:20444 \
-  blockstack/stacks-core:latest \
+  blockstack/stacks-core:4.0.2 \
 /bin/stacks-node start --config /src/stacks-node/testnet-miner-conf.toml
 ```
 
