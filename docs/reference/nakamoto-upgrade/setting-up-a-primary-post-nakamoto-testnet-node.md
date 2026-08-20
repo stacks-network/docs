@@ -2,7 +2,7 @@
 
 ### Setup A Stacks Primary Testnet Node
 
-Once your signer is upgraded to version 3.1.0.0.5.0 (https://github.com/stacks-network/stacks-core/releases/tag/signer-3.1.0.0.5.0) you’ll need to run a primary testnet node alongside it.
+Once your signer is upgraded to the latest version (https://github.com/stacks-network/stacks-core/releases) you’ll need to run a primary testnet node alongside it.
 
 You have two options here. The first is to run the Bash script below and it will handle everything for you, including creating the configuration file, downloading and extracting a chain state archive, and getting the node up and running.
 
@@ -20,7 +20,7 @@ STACKS_RPC_PORT="40443"
 STACKS_P2P_PORT="40444"
 
 IMG="blockstack/stacks-core"
-VER="3.1.0.0.5"
+VER="4.0.2"
 STX_NODE_CONFIG="${STACKS_DIR}/Config.toml"
 
 mkdir -p ${STACKS_DIR}/data
@@ -32,14 +32,19 @@ cat <<EOF> ${STX_NODE_CONFIG}
 working_dir = "/stacks-blockchain/data"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
+bootstrap_node = "0348af7ce1b224476e8f042727af3f84dcf49a69bb3c9dd2a1afaa783acfffb729@seed.testnet.hiro.so:20444"
 prometheus_bind = "0.0.0.0:9153"
+
 stacker = true
 
+pox_5_sbtc_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-token"
+pox_5_sbtc_registry_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-registry"
+pox_5_bond_admin = "ST1V2ASRWGR81W7GBN1Z4W2JQKXJWCADPVZG30X45"
+
 [burnchain]
-chain = "bitcoin"
 mode = "krypton"
 peer_host = "bitcoin.regtest.hiro.so"
+rpc_port = 18443
 peer_port = 18444
 pox_prepare_length = 100
 pox_reward_length = 900
@@ -51,7 +56,7 @@ pox_reward_length = 900
 auth_token = "12345"
 
 [[events_observer]]
-endpoint = "0.0.0.0.0:30000"
+endpoint = "0.0.0.0:30000"
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 [[ustx_balance]]
@@ -70,8 +75,37 @@ amount = 10000000000000000
 address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
 amount = 10000000000000000
 
-[fee_estimation]
-fee_estimator = "fuzzed_weighted_median_fee_rate"
+[[ustx_balance]]
+address = "ST31XHNM0GZ2K978FPP4QA3STNQ73Z8C9G9MJEPK2"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST1B38CGQRPXEMRH7B66VXTS22DQTNMSW4YJJ7QK1"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "STDMN71Z0H9EF8CRKAWTGBB5YS0BNV26HZ79QFFP"
+amount = 1000000000000000
+
+[[ustx_balance]]
+address = "ST1E0PSCH72JMQH9QCH293ZTEEH7BPA40Y3F39XQ"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3QBTK0Q438YVNX8EG6Z85HN0WKQPXYT25H5SPPK"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST10BX04F9PC6N1WBXKW3H7CG0NS0A3PK650T3P3R"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3AF1BBQAFSFCM8K4ZBR1FBXP3P8J1CKGSGDHWR5"
+amount = 100000000000000
+
+[[ustx_balance]]
+address = "STHY13V44422NAN6D3NSJPY9CDR3ED1M6HH9WZ6Y"
+amount = 10000000000000
 
 [[burnchain.epochs]]
 epoch_name = "1.0"
@@ -107,23 +141,27 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 1_900
+start_height = 1802
 
 [[burnchain.epochs]]
 epoch_name = "3.1"
-start_height = 2000
+start_height = 1803
 
 [[burnchain.epochs]]
 epoch_name = "3.2"
-start_height = 71525
+start_height = 1804
 
 [[burnchain.epochs]]
 epoch_name = "3.3"
-start_height = 109280
+start_height = 1805
 
 [[burnchain.epochs]]
 epoch_name = "3.4"
-start_height = 159350
+start_height = 1806
+
+[[burnchain.epochs]]
+epoch_name = "4.0"
+start_height = 2702
 EOF
 
 docker run -d  \\
@@ -150,19 +188,25 @@ Create a file called `node-config.toml`. Below is a sample of the configuration 
 working_dir = "/stacks-blockchain/data"
 rpc_bind = "0.0.0.0:20443"
 p2p_bind = "0.0.0.0:20444"
-bootstrap_node = "029266faff4c8e0ca4f934f34996a96af481df94a89b0c9bd515f3536a95682ddc@seed.testnet.hiro.so:30444"
+bootstrap_node = "0348af7ce1b224476e8f042727af3f84dcf49a69bb3c9dd2a1afaa783acfffb729@seed.testnet.hiro.so:20444"
 prometheus_bind = "0.0.0.0:9153"
 
+stacker = true
+
+pox_5_sbtc_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-token"
+pox_5_sbtc_registry_contract = "SN3VMHXEN64ZZF71JQ5VESXDWTR301XTTXGF4J8F1.sbtc-registry"
+pox_5_bond_admin = "ST1V2ASRWGR81W7GBN1Z4W2JQKXJWCADPVZG30X45"
+
 [burnchain]
-chain = "bitcoin"
 mode = "krypton"
 peer_host = "bitcoin.regtest.hiro.so"
+rpc_port = 18443
 peer_port = 18444
 pox_prepare_length = 100
 pox_reward_length = 900
 
 [[events_observer]]
-endpoint = "0.0.0.0.0:30000"
+endpoint = "0.0.0.0:30000"
 events_keys = ["stackerdb", "block_proposal", "burn_blocks"]
 
 # Set your auth token, which the signer uses
@@ -187,8 +231,37 @@ amount = 10000000000000000
 address = "ST2TFVBMRPS5SSNP98DQKQ5JNB2B6NZM91C4K3P7B"
 amount = 10000000000000000
 
-[fee_estimation]
-fee_estimator = "fuzzed_weighted_median_fee_rate"
+[[ustx_balance]]
+address = "ST31XHNM0GZ2K978FPP4QA3STNQ73Z8C9G9MJEPK2"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "ST1B38CGQRPXEMRH7B66VXTS22DQTNMSW4YJJ7QK1"
+amount = 10000000000000000
+
+[[ustx_balance]]
+address = "STDMN71Z0H9EF8CRKAWTGBB5YS0BNV26HZ79QFFP"
+amount = 1000000000000000
+
+[[ustx_balance]]
+address = "ST1E0PSCH72JMQH9QCH293ZTEEH7BPA40Y3F39XQ"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3QBTK0Q438YVNX8EG6Z85HN0WKQPXYT25H5SPPK"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST10BX04F9PC6N1WBXKW3H7CG0NS0A3PK650T3P3R"
+amount = 10000000000000
+
+[[ustx_balance]]
+address = "ST3AF1BBQAFSFCM8K4ZBR1FBXP3P8J1CKGSGDHWR5"
+amount = 100000000000000
+
+[[ustx_balance]]
+address = "STHY13V44422NAN6D3NSJPY9CDR3ED1M6HH9WZ6Y"
+amount = 10000000000000
 
 [[burnchain.epochs]]
 epoch_name = "1.0"
@@ -224,15 +297,27 @@ start_height = 6
 
 [[burnchain.epochs]]
 epoch_name = "3.0"
-start_height = 1_900
+start_height = 1802
 
 [[burnchain.epochs]]
 epoch_name = "3.1"
-start_height = 2_000
+start_height = 1803
 
 [[burnchain.epochs]]
 epoch_name = "3.2"
-start_height = 71_525
+start_height = 1804
+
+[[burnchain.epochs]]
+epoch_name = "3.3"
+start_height = 1805
+
+[[burnchain.epochs]]
+epoch_name = "3.4"
+start_height = 1806
+
+[[burnchain.epochs]]
+epoch_name = "4.0"
+start_height = 2702
 ```
 
 Important aspects to change:
@@ -272,7 +357,7 @@ Example docker run (run from the same directory as your `node-config.toml` or ch
 ```bash
 IMG="blockstack/stacks-core"
 
-VER="3.1.0.0.5"
+VER="4.0.2"
 
 STX_NODE_CONFIG="./node-config.toml"
 
@@ -291,7 +376,7 @@ stacks-node start \\
 Or using a custom Dockerfile:
 
 ```docker
-FROM blockstack/stacks-core:3.1.0.0.5
+FROM blockstack/stacks-core:4.0.2
 COPY node-config.toml /config.toml
 EXPOSE 20444
 EXPOSE 20443
