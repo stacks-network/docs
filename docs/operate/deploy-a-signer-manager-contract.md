@@ -78,18 +78,37 @@ The reference manager uses it to let a staker elect a native BTC payout. It dese
 (map-set pox-addrs staker pox-addr)
 ```
 
-At claim time `claim-staker-rewards` reads that entry back. With a record it calls `sbtc-withdrawal::initiate-withdrawal-request`, and without one it transfers sBTC directly.
+At claim time `claim-staker-rewards` reads that entry back. With a record it calls `sbtc-withdrawal::initiate-withdrawal-request`, and without one it transfers sBTC directly. `max-fee` is the fee ceiling it passes to that withdrawal, not a fee the manager takes.
+
+Clients read the same entry through `get-pox-addr`, which answers `none` for a staker who has not elected an address:
+
+```clarity
+(define-read-only (get-pox-addr (staker principal))
+  (map-get? pox-addrs staker)
+)
+```
+
+It returns `(optional { pox-addr: { version: (buff 1), hashbytes: (buff 32) }, max-fee: uint })`. This is how an app shows a staker where their rewards will land, and how it tells whether a manager keeps an election at all.
+
+**What your manager has to accept**
+
+A client builds this calldata once and sends it to whichever manager the staker picked. A manager stricter than the buffer it receives fails the staking transaction outright, so whatever you go on to do with the value, accept all of it:
+
+* Both `none` and `(some buffer)` arrive, depending on which reward asset the staker chose. Requiring either one breaks the stakers who chose the other.
+* Deserialize `hashbytes` as `(buff 32)`. A 20-byte value fits that type and a 32-byte value does not fit `(buff 20)`, and `from-consensus-buff?` answers a type mismatch with `none`, which surfaces as `ERR_INVALID_CALLDATA`.
+* Accept the two-field `{ pox-addr, max-fee }` shape even if you add fields of your own, the way `fastpool-max500-signer-manager` accepts it alongside its own three-field tuple.
+* Accept the full PoX address version range rather than the versions you have seen. Clients paying out to a Bitcoin lock send `0x04` with 20 bytes and `0x05` with 32; `check-pox-addr` already covers all of them.
 
 **What the deployed managers do with it**
 
 The convention is per contract, so calldata built for one manager is not portable to another. Read the contract you are staking to.
 
-| Contract                         | Shape it deserializes                                                               | Stored in        | Changeable without a staking transaction |
-| -------------------------------- | ----------------------------------------------------------------------------------- | ---------------- | ---------------------------------------- |
-| `fastpool-1-signer-manager`      | `{ pox-addr, max-fee }`                                                             | `pox-addrs`      | No                                       |
-| `xverse-signer-manager-1`        | `{ pox-addr, max-fee }`                                                             | `pox-addrs`      | No                                       |
-| `fastpool-max500-signer-manager` | `{ pox-addr, max-fee, min-claim }`, and the two-field shape above is still accepted | `payout-configs` | Yes, via `set-payout-config`             |
-| `native-pool-signer-manager`     | None. The buffer is ignored entirely                                                | Nothing          | Not applicable                           |
+| Contract                         | Shape it deserializes                                                               | Stored in        | Read back with      | Changeable without a staking transaction |
+| -------------------------------- | ----------------------------------------------------------------------------------- | ---------------- | ------------------- | ---------------------------------------- |
+| `fastpool-1-signer-manager`      | `{ pox-addr, max-fee }`                                                             | `pox-addrs`      | `get-pox-addr`      | No                                       |
+| `xverse-signer-manager-1`        | `{ pox-addr, max-fee }`                                                             | `pox-addrs`      | `get-pox-addr`      | No                                       |
+| `fastpool-max500-signer-manager` | `{ pox-addr, max-fee, min-claim }`, and the two-field shape above is still accepted | `payout-configs` | `get-payout-config` | Yes, via `set-payout-config`             |
+| `native-pool-signer-manager`     | None. The buffer is ignored entirely                                                | Nothing          | Nothing             | Not applicable                           |
 
 Three consequences follow from that table.
 
