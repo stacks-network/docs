@@ -17,7 +17,7 @@ A [**protocol bond**](glossary.md#protocol-bond) is a six-month, [dual-asset com
 | commitment | P2WSH + CLTV timelock                   | contract call                                                                                      |
 | custody    | own keys                                | locked in contract                                                                                 |
 | duration   | until D172                              | 12 cycles (≈6 months)                                                                              |
-| yield      | T1 paired yield                         | none while paired                                                                                  |
+| yield      | protocol bond tranche yield             | none while paired                                                                                  |
 | early exit | 1-of-N early-exit signer set (BTC side) | early-exit announcement by the staker (L2 side); sBTC-locked participants can withdraw at any time |
 
 The [static STX:BTC ratio](glossary.md#static-stx-btc-ratio) is fixed per period by the [Endowment](glossary.md#endowment-stacks-endowment) (initially 5%) and published roughly 7 days before D0, alongside the period's capacity and [target APY](glossary.md#apy-target). Check the [ratio requirement](glossary.md#ratio-requirement-minimum-stx-vs-btc) before you submit either leg. The contract rejects an STX lock that is below the period's minimum ratio for the committed BTC.
@@ -114,12 +114,12 @@ Almost every developer surface is one of these three shapes. They differ in who 
 
 ```mermaid
 flowchart TD
-    U["Your user"] --> A["Native BTC protocol bond<br/>BTC timelock under own keys + STX lock<br/>Tranche 1 — target APY"]
-    U --> B["sBTC pool bond<br/>sBTC custodied by contract + STX lock<br/>Tranche 1 — target APY"]
-    U --> C["STX-only staking<br/>STX lock, no BTC leg<br/>Tranche 3 — residual, uncapped"]
+    U["Your user"] --> A["Native BTC protocol bond<br/>BTC timelock under own keys + STX lock<br/>Protocol bond tranche — target APY"]
+    U --> B["sBTC pool bond<br/>sBTC custodied by contract + STX lock<br/>Protocol bond tranche — target APY"]
+    U --> C["STX-only staking<br/>STX lock, no BTC leg<br/>STX-only staking tranche — residual, uncapped"]
 ```
 
-The first two are paired ([Tranche 1](glossary.md#t1-t2-t3-waterfall-tranches), target APY on the BTC leg). The third earns Tranche 3 residual after T1 obligations and [reserve](glossary.md#reserve-fund-tranche-2) contribution — uncapped, unpaired, lower-friction. Pools and native bonds aren't mutually exclusive for an end-user; an integrator might support multiple from the same UI.
+The first two are paired (the [protocol bond tranche](glossary.md#waterfall-tranches), target APY on the BTC leg). The third earns [STX-only staking tranche](glossary.md#stx-only-staking-tranche-2-path) residual after bond obligations, ahead of the [reserve fund tranche](glossary.md#reserve-fund-tranche-3) contribution — uncapped, unpaired, lower-friction. Pools and native bonds aren't mutually exclusive for an end-user; an integrator might support multiple from the same UI.
 
 ## Prerequisites before any flow
 

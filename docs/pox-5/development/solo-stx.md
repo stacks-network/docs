@@ -4,7 +4,7 @@ description: STX-only staking — lock, update, and unstake without a paired BTC
 
 # Solo STX
 
-The [STX-only path](../glossary.md#stx-only-staking-tranche-3-path) mirrors the classic PoX surface: a single user locks STX through their own signer-manager, optionally adjusts the position over time, and unstakes when finished. No BTC, no pairing, no per-transaction signer signature.
+The [STX-only path](../glossary.md#stx-only-staking-tranche-2-path) mirrors the classic PoX surface: a single user locks STX through their own signer-manager, optionally adjusts the position over time, and unstakes when finished. No BTC, no pairing, no per-transaction signer signature.
 
 Unlike PoX-4, there is no solo-vs-pooling distinction. Every staker — STX-only or bond participant — delegates to a **signer-manager** contract; a solo staker is simply a signer-manager with a single member (often the staker's own signer-manager). The contract lazily adds a signer to the reward set once its delegated stake crosses the 50,000-STX (`SIGNER_SET_MIN_USTX`) minimum, so "going solo" just means running your own signer-manager and meeting that threshold yourself.
 

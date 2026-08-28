@@ -99,7 +99,7 @@ Stacks/PoX timing milestone used for signer set transitions, payouts, and UI cop
 
 ### Cycle excess
 
-Miner revenue remaining after **Tranche 1** obligations in a cycle; split per policy between **reserve** (Tranche 2) and **STX-only** participants (Tranche 3).
+Miner revenue remaining after **Tranche 1** obligations in a cycle; split per policy between the **STX-only staking tranche** and the **reserve fund tranche**.
 
 ### Custodial aggregation
 
@@ -220,9 +220,9 @@ Minimum STX that must be paired with a BTC commitment. The pricing inputs are pe
 
 Final stretch of a bonding period where **L1 has expired** but **STX can remain locked**, giving time to construct the **next** L1 timelock. On mainnet the L1 timelock's minimum unlock height sits about **1,050 blocks** (half a reward cycle) before the bond's L2 end height. Each L1 lockup output commits its own unlock height, which the contract accepts only at or above that minimum, so a staker may lock for longer if they choose. Bitcoin treats high locktime values as timestamps rather than heights, so the committed height must also stay below Bitcoin's locktime threshold. The "\~1,400 blocks (\~10 days)" product framing does not match the contract math; treat the contract value as authoritative.
 
-### Reserve fund (Tranche 2)
+### Reserve fund (Tranche 3)
 
-Second waterfall stop: absorbs part of **cycle excess** and backstops Tranche 1 in stress; may hold **BTC and USD sleeves** in the paper's design. In PoX-5, the contract accrues into `reserve-balance` automatically each cycle (the `RESERVE_RATIO` cut of distribution); draws from the reserve are consensus-gated — the only draw path, `transfer-from-reserve`, is never called from within the contract and can only be invoked by the node as part of consensus (via the SIP process).
+Third waterfall stop: absorbs part of **cycle excess** and backstops Tranche 1 in stress; may hold **BTC and USD sleeves** in the paper's design. In PoX-5, the contract accrues into `reserve-balance` automatically each cycle (the `RESERVE_RATIO` cut of distribution); draws from the reserve are consensus-gated — the only draw path, `transfer-from-reserve`, is never called from within the contract and can only be invoked by the node as part of consensus (via the SIP process).
 
 ### Reward address
 
@@ -280,13 +280,13 @@ Legacy user verb **stacking** (PoX-4 marketing) vs proposed **staking** language
 
 Per-period pairing requirement **fixed for PoX-5** simplicity (vs algorithmic ratio later); published **\~7 days before D0**.
 
-### STX-only staking (Tranche 3 path)
+### STX-only staking (Tranche 2 path)
 
-**No** BTC commitment: locks STX on \~signer-cycle cadence, earns **residual** after Tranche 1 and reserve split; **50K STX** minimum solo in product notes; **T3 residual** pro-rata.
+**No** BTC commitment: locks STX on \~signer-cycle cadence, earns **residual** after the protocol bond tranche; **50K STX** minimum solo in product notes; residual paid pro rata.
 
-### T1, T2, T3 (waterfall tranches)
+### Waterfall tranches
 
-**T1** pays paired BTC obligations first; **T2** is reserve; **T3** pays **STX-only** residual from cycle excess after reserve contribution.
+Three stops, in priority order. The **protocol bond tranche** (Tranche 1) pays paired BTC obligations first. The **STX-only staking tranche** (Tranche 2) pays STX-only residual from cycle excess. The **reserve fund tranche** (Tranche 3) takes the remainder. Outside this page, write the tranche's name rather than its number.
 
 ### Target yield
 
@@ -302,7 +302,7 @@ Stacks nodes/indexers observe Bitcoin **timelocked UTXOs** and match them to **L
 
 ### Waterfall (yield distribution)
 
-Priority ordering of **miner revenue** across **Tranche 1**, **reserve**, and **STX-only** residual; stabilizes BTC-side APY at the expense of more variable STX-only returns.
+Priority ordering of **miner revenue** across the **protocol bond tranche**, the **STX-only staking tranche**, and the **reserve fund tranche**; stabilizes BTC-side APY at the expense of more variable STX-only returns.
 
 ### Weekly rewards
 
