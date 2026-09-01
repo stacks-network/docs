@@ -28,7 +28,7 @@ description: >-
 
 ### Intro
 
-Staking rewards Stacks (STX) token holders with Bitcoin-denominated payouts for locking their tokens and backing the signers that validate blocks. Signers are covered in the [Signing section](signing.md). This page is a conceptual overview of staking under PoX-5.
+Staking rewards Stacks (STX) token holders with Bitcoin-denominated payouts for locking their tokens and backing the signers that validate blocks. Signers are covered in the Signing section. This page is a conceptual overview of staking under PoX-5.
 
 `pox-5.clar` is the staking contract. It activated with the Epoch 4.0 hard fork at Bitcoin block 960,230 and replaced `pox-4`. Every staking function lives at the deployed contract:
 
@@ -151,7 +151,7 @@ PoX-5 has two participation paths, and a Stacks principal can hold one position 
 
 **STX-only staking** locks STX alone. You choose 1 to 96 cycles, you can unstake at any time outside the prepare phase with the unlock at the next cycle start, and there is no capacity limit. Rewards come from the miner BTC left after protocol bond obligations, split 85% to STX-only stakers pro rata and 15% to the protocol reserve.
 
-**Bitcoin-paired protocol bonds** pair a BTC commitment with an STX lock for a bond term of 12 cycles (roughly six months). The BTC side is either a timelocked UTXO on Bitcoin L1 that stays under your own keys, or sBTC, which pox-5 holds for the term. Bonds target a fixed yield rate on the BTC side; the paired STX earns no yield. Capacity is allocated per bonding period, so registering requires an allowance for that period, and `register-for-bond` is the entry point.
+**Bitcoin-paired protocol bonds** pair a BTC commitment with an STX lock for a bond term of 12 cycles (roughly six months). The BTC side is either a timelocked UTXO on Bitcoin L1 that stays under your own keys, or sBTC, which pox-5 holds for the term. Bonds have a Target Protocol Yield Rate (aka Target APY) on the BTC side; the paired STX earns no yield. Capacity is allocated per bonding period, so registering requires an allowance for that period, and `register-for-bond` is the entry point.
 
 In the bootstrap phase that allowance is allocated by the Stacks Endowment to whitelisted partners, with roughly a tenth of bond capacity kept open through selected pooling partners, so most participants reach a bond through a pool rather than by calling `register-for-bond` themselves. Liquid staking products work differently again: you deposit into the product, the product stakes, and you hold a token representing your share, so pox-5 never records you as a staker at all.
 
@@ -173,7 +173,7 @@ Staking and signing are distinct actions, and both are necessary. The staked STX
 
 You do not run a signer to stake. The manager you stake to is bound to one, and your stake adds to its weight. Running your own signer means deploying a signer-manager, binding your signer key to it, and operating the signer software: see [Deploy a Signer Manager Contract](https://docs.stacks.co/operate/deploy-a-signer-manager-contract) and [Run a Signer](https://docs.stacks.co/operate/run-a-signer).
 
-Signing itself is covered in [Signing: Verifying Block Validity](signing.md).
+Signing itself is covered in Signing: Verifying Block Validity.
 
 ***
 
