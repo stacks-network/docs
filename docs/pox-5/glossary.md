@@ -284,10 +284,6 @@ Per-period pairing requirement **fixed for PoX-5** simplicity (vs algorithmic ra
 
 **No** BTC commitment: locks STX on \~signer-cycle cadence, earns **residual** after the protocol bond tranche; **50K STX** minimum solo in product notes; residual paid pro rata.
 
-### Waterfall tranches
-
-Three stops, in priority order. The **protocol bond tranche** (Tranche 1) pays paired BTC obligations first. The **STX-only staking tranche** (Tranche 2) pays STX-only residual from cycle excess. The **reserve fund tranche** (Tranche 3) takes the remainder. Outside this page, write the tranche's name rather than its number.
-
 ### Target yield
 
 Pre-clearing anchor for sizing and messaging; active terms also have **clearing yield** from auction mechanics in decentralized design.
@@ -303,6 +299,10 @@ Stacks nodes/indexers observe Bitcoin **timelocked UTXOs** and match them to **L
 ### Waterfall (yield distribution)
 
 Priority ordering of **miner revenue** across the **protocol bond tranche**, the **STX-only staking tranche**, and the **reserve fund tranche**; stabilizes BTC-side APY at the expense of more variable STX-only returns.
+
+### Waterfall tranches
+
+Three stops, in priority order. The **protocol bond tranche** (Tranche 1) pays paired BTC obligations first. The **STX-only staking tranche** (Tranche 2) pays STX-only residual from cycle excess. The **reserve fund tranche** (Tranche 3) takes the remainder. Outside this page, write the tranche's name rather than its number to avoid confusion.
 
 ### Weekly rewards
 
