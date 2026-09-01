@@ -84,6 +84,28 @@ Choosing a manager means reading its fee, fee ceiling, admin set, and grant stat
 
 ***
 
+### Two Ways to Participate
+
+PoX-5 has two participation paths, and a Stacks principal can hold one position in one path at a time.
+
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FNbgQIA47Wit0M6HBoFGx%2Fstaking-participation-paths_v2.png?alt=media&#x26;token=32fa7f39-ca41-4d8e-bb00-32b8c433d031" alt="Bitcoin Staking protocol bond beside STX-only staking, mutually exclusive per Stacks principal: the bond pairs BTC or sBTC with an STX lock for a committed twelve-cycle term earning a target APY on allowlisted capacity, while STX-only locks STX alone for one to ninety-six cycles with uncapped but variable residual yield"><figcaption><p>The choice, side by side</p></figcaption></figure></div>
+
+**STX-only staking** locks STX alone. You choose 1 to 96 cycles, you can unstake at any time outside the prepare phase with the unlock at the next cycle start, and there is no capacity limit. Rewards come from the miner BTC left after protocol bond obligations, split 85% to STX-only stakers pro rata and 15% to the protocol reserve.
+
+**Bitcoin-paired protocol bonds** pair a BTC commitment with an STX lock for a bond term of 12 cycles (roughly six months). The BTC side is either a timelocked UTXO on Bitcoin L1 that stays under your own keys, or sBTC, which pox-5 holds for the term. Bonds have a Target Protocol Yield Rate (aka Target APY) on the BTC side; the paired STX earns no yield. Capacity is allocated per bonding period, so registering requires an allowance for that period, and `register-for-bond` is the entry point.
+
+In the bootstrap phase that allowance is allocated by the Stacks Endowment to whitelisted partners, with roughly a tenth of bond capacity kept open through selected pooling partners, so most participants reach a bond through a pool rather than by calling `register-for-bond` themselves. Liquid staking products work differently again: you deposit into the product, the product stakes, and you hold a token representing your share, so pox-5 never records you as a staker at all.
+
+<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FG660xt3cld5Hh0RkGykm%2Fstaking-bond-timeline_v2.png?alt=media&#x26;token=f0cb4501-14e4-44c6-a8a4-4340f01e953e" alt="Six staggered bond periods running at once, and one bond&#x27;s two legs — BTC timelocked on L1, STX locked on Stacks — with Day 0, Day 175 and Day 182 marked"><figcaption><p>Six bonds running at once, and the shape of one</p></figcaption></figure></div>
+
+Bonding periods are staggered: a new one opens every two reward cycles (about a month), each runs twelve cycles, and six are active at any moment, so a bond that ends is immediately followed by one that starts. The BTC timelock expires 1,050 Bitcoin blocks (about a week) before the bond ends, and that window is when you can re-lock BTC for the next bond. On a roll-over the STX lock extends without unlocking; otherwise the STX unlocks when the bond ends. Exiting early (`unstake-sbtc`, or the L1 early-exit path) forfeits the remaining yield, never principal, and the paired STX stays locked to term.
+
+Both paths route through a signer-manager, and both keep the STX in your account. Registering a bond while STX-only staking, or the reverse, is rejected by the contract.
+
+The bond mechanics in depth are in [SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md) and the [Bitcoin Staking whitepaper](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-5.pdf).
+
+***
+
 ### Staking Flow
 
 <div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FlMhn2FbjJMLcbh5boEKo%2Fstaking-flow_v2png.png?alt=media&#x26;token=2c76f993-8c1c-4f25-a961-aae5936aee68" alt="Two mutually exclusive ways to stake, side by side: a Bitcoin protocol bond in five steps, with its native BTC and sBTC variants shown at the lock and exit steps, and STX-only staking in five steps"><figcaption><p>Two ways in, step by step</p></figcaption></figure></div>
@@ -140,28 +162,6 @@ Staking happens in reward cycles of 2,100 Bitcoin blocks (roughly two weeks). Th
 {% hint style="info" %}
 The two-week target comes from Bitcoin's 10-minute target block time, so a cycle stretches when Bitcoin blocks run slow.
 {% endhint %}
-
-***
-
-### Two Ways to Participate
-
-PoX-5 has two participation paths, and a Stacks principal can hold one position in one path at a time.
-
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FE8dFBwzzAgg3X2CtEBn4%2Fstaking-participation-paths.png?alt=media&#x26;token=469a09a9-c442-42cc-9907-2cb7f763294d" alt="STX-only staking beside a Bitcoin-paired protocol bond, mutually exclusive per Stacks principal"><figcaption><p>The two paths, side by side</p></figcaption></figure></div>
-
-**STX-only staking** locks STX alone. You choose 1 to 96 cycles, you can unstake at any time outside the prepare phase with the unlock at the next cycle start, and there is no capacity limit. Rewards come from the miner BTC left after protocol bond obligations, split 85% to STX-only stakers pro rata and 15% to the protocol reserve.
-
-**Bitcoin-paired protocol bonds** pair a BTC commitment with an STX lock for a bond term of 12 cycles (roughly six months). The BTC side is either a timelocked UTXO on Bitcoin L1 that stays under your own keys, or sBTC, which pox-5 holds for the term. Bonds have a Target Protocol Yield Rate (aka Target APY) on the BTC side; the paired STX earns no yield. Capacity is allocated per bonding period, so registering requires an allowance for that period, and `register-for-bond` is the entry point.
-
-In the bootstrap phase that allowance is allocated by the Stacks Endowment to whitelisted partners, with roughly a tenth of bond capacity kept open through selected pooling partners, so most participants reach a bond through a pool rather than by calling `register-for-bond` themselves. Liquid staking products work differently again: you deposit into the product, the product stakes, and you hold a token representing your share, so pox-5 never records you as a staker at all.
-
-<div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FG660xt3cld5Hh0RkGykm%2Fstaking-bond-timeline_v2.png?alt=media&#x26;token=f0cb4501-14e4-44c6-a8a4-4340f01e953e" alt="Six staggered bond periods running at once, and one bond&#x27;s two legs — BTC timelocked on L1, STX locked on Stacks — with Day 0, Day 175 and Day 182 marked"><figcaption><p>Six bonds running at once, and the shape of one</p></figcaption></figure></div>
-
-Bonding periods are staggered: a new one opens every two reward cycles (about a month), each runs twelve cycles, and six are active at any moment, so a bond that ends is immediately followed by one that starts. The BTC timelock expires 1,050 Bitcoin blocks (about a week) before the bond ends, and that window is when you can re-lock BTC for the next bond. On a roll-over the STX lock extends without unlocking; otherwise the STX unlocks when the bond ends. Exiting early (`unstake-sbtc`, or the L1 early-exit path) forfeits the remaining yield, never principal, and the paired STX stays locked to term.
-
-Both paths route through a signer-manager, and both keep the STX in your account. Registering a bond while STX-only staking, or the reverse, is rejected by the contract.
-
-The bond mechanics in depth are in [SIP-045](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md) and the [Bitcoin Staking whitepaper](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-5.pdf).
 
 ***
 

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 880" font-family="Instrument Sans, Helvetica, Arial, sans-serif">
+  <rect width="1536" height="880" fill="#0A0A0A"/>
+
+  <!-- Title bar -->
+  <rect x="20" y="20" width="1496" height="84" rx="26" fill="#F65B27"/>
+  <path fill="#111111" stroke="#111111" stroke-width="1.5" stroke-linejoin="round" d="M52.000,62.000 C52.000,45.431 65.431,32.000 82.000,32.000 C98.569,32.000 112.000,45.431 112.000,62.000 C112.000,78.569 98.569,92.000 82.000,92.000 C65.431,92.000 52.000,78.569 52.000,62.000 Z"/>
+  <g fill="#FFFFFF"><path fill-rule="evenodd" transform="translate(-3.68,-115.07) scale(0.714)" d="M127.15,241.02c-.15-.26-.13-.59.04-.86l7.33-10.88c.2-.31.22-.68.04-.99-.18-.33-.51-.51-.86-.51h-2.85c-.31,0-.61.15-.81.44l-8.56,12.75c-.22.33-.57.51-.97.51h-1.08c-.4,0-.75-.2-.97-.51l-8.52-12.77c-.18-.29-.5-.44-.81-.44h-2.85c-.35,0-.7.2-.86.53-.18.33-.13.7.04.99l7.33,10.9c.18.24.2.57.04.84-.15.29-.42.44-.72.44h-11.22c-.55,0-.97.44-.97.97v2.37c0,.55.44.97.97.97h38.18c.55,0,.97-.44.97-.97v-2.37c0-.51-.37-.9-.86-.97h-11.33c-.31,0-.59-.15-.72-.44ZM118.5,255.02l-8.56,12.75c-.18.29-.5.44-.81.44h-2.85c-.35,0-.68-.2-.86-.51-.18-.31-.15-.7.04-.99l7.31-10.88c.18-.26.2-.57.04-.86-.15-.26-.42-.44-.72-.44h-11.18c-.53,0-.97-.42-.97-.97v-2.37c0-.53.42-.97.97-.97h38.18c.53,0,.97.42.97.97v2.37c0,.53-.42.97-.97.97h-11.2c-.33,0-.59.15-.72.44-.15.29-.13.59.04.84l7.33,10.9c.18.29.22.66.04.99-.18.33-.5.53-.86.53h-2.85c-.33,0-.61-.15-.79-.42l-8.56-12.75c-.22-.33-.57-.51-.97-.51h-1.08c-.4,0-.75.2-.97.51l-.02-.04Z"/></g>
+  <text x="132" y="75" font-size="36" font-weight="500" fill="#FFFFFF">Two Ways to Participate</text>
+
+  <!-- ===== Left card: Bitcoin Staking ===== -->
+  <rect x="20" y="148" width="632" height="600" rx="24" fill="#161618" stroke="#F65B27" stroke-width="2"/>
+
+  <!-- Bitcoin logo (canonical mark) -->
+  <g transform="translate(78,206) scale(2.625)">
+    <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+    <path fill="#FFFFFF" fill-rule="nonzero" d="M23.189 14.02c.314-2.096-1.283-3.223-3.465-3.975l.708-2.84-1.728-.43-.69 2.765c-.454-.114-.92-.22-1.385-.326l.695-2.783L15.596 6l-.708 2.839c-.376-.086-.746-.17-1.104-.26l.002-.009-2.384-.595-.46 1.846s1.283.294 1.256.312c.7.175.826.638.805 1.006l-.806 3.235c.048.012.11.03.18.057l-.183-.045-1.13 4.532c-.086.212-.303.531-.793.41.018.025-1.256-.313-1.256-.313l-.858 1.978 2.25.561c.418.105.828.215 1.231.318l-.715 2.872 1.727.43.708-2.84c.472.127.93.245 1.378.357l-.706 2.828 1.728.43.715-2.866c2.948.558 5.164.333 6.097-2.333.752-2.146-.037-3.385-1.588-4.192 1.13-.26 1.98-1.003 2.207-2.538zm-3.95 5.538c-.533 2.147-4.148.986-5.32.695l.95-3.805c1.172.293 4.929.872 4.37 3.11zm.535-5.569c-.487 1.953-3.495.96-4.47.717l.86-3.45c.975.243 4.118.696 3.61 2.733z"/>
+  </g>
+
+  <text x="188" y="240" font-size="32" font-weight="500" fill="#FFFFFF">Bitcoin Staking:</text>
+  <text x="188" y="278" font-size="32" font-weight="500" fill="#FFFFFF">Protocol Bond</text>
+
+  <g stroke="#F65B27" stroke-width="3" fill="none">
+    <circle cx="83" cy="381" r="5"/>
+    <circle cx="83" cy="505" r="5"/>
+    <circle cx="83" cy="593" r="5"/>
+    <circle cx="83" cy="681" r="5"/>
+  </g>
+  <text font-size="27" fill="#C7C7CC">
+    <tspan x="111" y="390">BTC on Bitcoin L1 under your</tspan>
+    <tspan x="111" y="426">own keys, or sBTC, paired</tspan>
+    <tspan x="111" y="462">with an STX lock</tspan>
+    <tspan x="111" y="514">Earns a target APY, paid first</tspan>
+    <tspan x="111" y="550">out of miner revenue</tspan>
+    <tspan x="111" y="602">12 reward cycles, roughly six</tspan>
+    <tspan x="111" y="638">months, committed</tspan>
+    <tspan x="111" y="690">Allowlisted capacity, set per</tspan>
+    <tspan x="111" y="726">bond period</tspan>
+  </text>
+
+  <!-- ===== Right card: STX-Only Staking ===== -->
+  <rect x="884" y="148" width="632" height="600" rx="24" fill="#161618" stroke="#6E6E73" stroke-width="2"/>
+
+  <!-- Stacks logo on orange circle -->
+  <circle cx="984" cy="248" r="42" fill="#F65B27"/>
+  <g fill="#FFFFFF"><path fill-rule="evenodd" transform="translate(864,0)" d="M127.15,241.02c-.15-.26-.13-.59.04-.86l7.33-10.88c.2-.31.22-.68.04-.99-.18-.33-.51-.51-.86-.51h-2.85c-.31,0-.61.15-.81.44l-8.56,12.75c-.22.33-.57.51-.97.51h-1.08c-.4,0-.75-.2-.97-.51l-8.52-12.77c-.18-.29-.5-.44-.81-.44h-2.85c-.35,0-.7.2-.86.53-.18.33-.13.7.04.99l7.33,10.9c.18.24.2.57.04.84-.15.29-.42.44-.72.44h-11.22c-.55,0-.97.44-.97.97v2.37c0,.55.44.97.97.97h38.18c.55,0,.97-.44.97-.97v-2.37c0-.51-.37-.9-.86-.97h-11.33c-.31,0-.59-.15-.72-.44ZM118.5,255.02l-8.56,12.75c-.18.29-.5.44-.81.44h-2.85c-.35,0-.68-.2-.86-.51-.18-.31-.15-.7.04-.99l7.31-10.88c.18-.26.2-.57.04-.86-.15-.26-.42-.44-.72-.44h-11.18c-.53,0-.97-.42-.97-.97v-2.37c0-.53.42-.97.97-.97h38.18c.53,0,.97.42.97.97v2.37c0,.53-.42.97-.97.97h-11.2c-.33,0-.59.15-.72.44-.15.29-.13.59.04.84l7.33,10.9c.18.29.22.66.04.99-.18.33-.5.53-.86.53h-2.85c-.33,0-.61-.15-.79-.42l-8.56-12.75c-.22-.33-.57-.51-.97-.51h-1.08c-.4,0-.75.2-.97.51l-.02-.04Z"/></g>
+
+  <text x="1052" y="240" font-size="32" font-weight="500" fill="#FFFFFF">STX-Only</text>
+  <text x="1052" y="278" font-size="32" font-weight="500" fill="#FFFFFF">Staking</text>
+
+  <g stroke="#8E8E93" stroke-width="3" fill="none">
+    <circle cx="947" cy="381" r="5"/>
+    <circle cx="947" cy="433" r="5"/>
+    <circle cx="947" cy="593" r="5"/>
+    <circle cx="947" cy="681" r="5"/>
+  </g>
+  <text font-size="27" fill="#C7C7CC">
+    <tspan x="975" y="390">Lock STX alone</tspan>
+    <tspan x="975" y="442">Earns the residual: whatever miner</tspan>
+    <tspan x="975" y="478">revenue remains after bond</tspan>
+    <tspan x="975" y="514">obligations. Uncapped, variable.</tspan>
+    <tspan x="975" y="602">1 to 96 reward cycles,</tspan>
+    <tspan x="975" y="638">exit whenever</tspan>
+    <tspan x="975" y="690">No capacity limit</tspan>
+  </text>
+
+  <!-- ===== Middle: mutual exclusivity ===== -->
+  <g>
+    <line x1="652" y1="448" x2="726" y2="448" stroke="#8E8E93" stroke-width="3" stroke-dasharray="5 7"/>
+    <line x1="810" y1="448" x2="884" y2="448" stroke="#8E8E93" stroke-width="3" stroke-dasharray="5 7"/>
+  </g>
+  <rect x="726" y="406" width="84" height="84" rx="12" transform="rotate(-45 768 448)" fill="#0A0A0A" stroke="#F65B27" stroke-width="2.5"/>
+  <text x="768" y="456" font-size="26" font-weight="700" fill="#F65B27" text-anchor="middle">1 of 2</text>
+
+  <g font-size="17" fill="#F65B27" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="1">
+    <text x="768" y="560">MUTUALLY</text>
+    <text x="768" y="588">EXCLUSIVE:</text>
+    <text x="768" y="616">ONE PRINCIPAL,</text>
+    <text x="768" y="644">ONE POSITION</text>
+  </g>
+
+  <!-- Footer -->
+  <rect x="20" y="780" width="1496" height="72" rx="20" fill="#3A3A3C" opacity="0.6"/>
+  <text x="768" y="825" font-size="26" fill="#F2F2F4" text-anchor="middle">Both paths route through a signer-manager, and the STX stays in your account</text>
+</svg>
