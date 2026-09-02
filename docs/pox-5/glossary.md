@@ -45,7 +45,7 @@ A whole number that identifies one bonding period's entry in the contract. Bond 
 
 ### Bonding period
 
-About **six months** of Bitcoin blocks (**25,200** in the time-intervals table), running from **D0** through **D182**, with six such periods staggered and overlapping at steady state.
+About **six months** of Bitcoin blocks (**25,200** in the time-intervals table), running from **Day 0** through **Day 182**, with six such periods staggered and overlapping at steady state.
 
 ### Bootstrap phase (PoX-5)
 
@@ -79,7 +79,7 @@ Share of Tranche 1 capacity reserved for retail-facing **whitelisted pool operat
 
 ### Confirmation phase (L1 lock-up)
 
-Window in which participants must finish **L1 BTC timelocks** after allocation and before **D0**; table rows tie this to PoX-5 rolling issuance.
+Window in which participants must finish **L1 BTC timelocks** after allocation and before **Day 0**; table rows tie this to PoX-5 rolling issuance.
 
 ### Cooldown (removed)
 
@@ -105,13 +105,13 @@ Miner revenue remaining after **Tranche 1** obligations in a cycle; split per po
 
 Custody providers aggregating many clients' positions; bounded in reward design notes by **actually locked STX** and auction economics.
 
-### D0, D172, and D182 (bond timeline)
+### Day 0, Day 175, and Day 182 (bond timeline)
 
-"D" numbers count days since the start of a bonding period. **D0** is day zero: the cutoff when paired BTC (L1) and STX (L2) must be locked to be eligible. **D172** is around day 172: the day the **L1 timelock expires**. **D182** is around day 182: the day the bond ends on L2.
+"Day" numbers count days since the start of a bonding period. **Day 0** is day zero: the cutoff when paired BTC (L1) and STX (L2) must be locked to be eligible. **Day 175** is around day 175: the day the **L1 timelock expires**. **Day 182** is around day 182: the day the bond ends on L2.
 
-* **D0** — the bond's start and lock cutoff. Paired BTC and STX must both be locked by this point.
-* **D172** — the L1 timelock expires. STX remains locked on L2.
-* **D182** — the bond ends on L2. STX unlock follows protocol rules.
+* **Day 0** — the bond's start and lock cutoff. Paired BTC and STX must both be locked by this point.
+* **Day 175** — the L1 timelock expires. STX remains locked on L2.
+* **Day 182** — the bond ends on L2. STX unlock follows protocol rules.
 
 ### Drawdown priority (paired BTC)
 
@@ -150,7 +150,7 @@ Roughly monthly window (**4,200** blocks in LS table) when a new bonding period 
 
 ### Forfeiture (early exit)
 
-Explicit product penalty: user gives up **remaining Tranche 1 BTC yield** after exit; paired STX remains locked at **zero yield** until **D172** / period rules complete.
+Explicit product penalty: user gives up **remaining Tranche 1 BTC yield** after exit; paired STX remains locked at **zero yield** until **Day 175** / period rules complete.
 
 ### Governance weight
 
@@ -158,7 +158,7 @@ Voting weight on SIPs; **pure function of locked STX**—BTC does not govern.
 
 ### Hard fork (activation)
 
-Consensus upgrade that activates PoX-5, releases PoX-4 locks, and sequences **first bond D0**; may include minimum committed STX thresholds in governance drafts.
+Consensus upgrade that activates PoX-5, releases PoX-4 locks, and sequences **first bond Day 0**; may include minimum committed STX thresholds in governance drafts.
 
 ### Indexer / API
 
@@ -278,7 +278,7 @@ Legacy user verb **stacking** (PoX-4 marketing) vs proposed **staking** language
 
 ### Static STX:BTC ratio
 
-Per-period pairing requirement **fixed for PoX-5** simplicity (vs algorithmic ratio later); published **\~7 days before D0**.
+Per-period pairing requirement **fixed for PoX-5** simplicity (vs algorithmic ratio later); published **\~7 days before Day 0**.
 
 ### STX-only staking (Tranche 2 path)
 

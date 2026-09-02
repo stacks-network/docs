@@ -12,7 +12,7 @@ Signer-key grants and revocations are on the [Advanced › Signers](advanced/sig
 
 ### Submit bond parameters to the Endowment
 
-The Stacks [Endowment](../glossary.md#endowment-stacks-endowment) configures each bond. The Endowment owns the `setup-bond` call and the on-chain allowlist. As an integrator, you do not send this transaction. You submit your parameters to the Endowment. The Endowment publishes them on-chain about seven days before D0.
+The Stacks [Endowment](../glossary.md#endowment-stacks-endowment) configures each bond. The Endowment owns the `setup-bond` call and the on-chain allowlist. As an integrator, you do not send this transaction. You submit your parameters to the Endowment. The Endowment publishes them on-chain about seven days before Day 0.
 
 Send the Endowment these items for each bond your users join:
 

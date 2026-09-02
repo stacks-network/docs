@@ -12,39 +12,39 @@ This page is the primer for everything under Development. Read it once and you s
 
 A [**protocol bond**](glossary.md#protocol-bond) is a six-month, [dual-asset commitment](glossary.md#dual-asset-commitment): a BTC timelock on Bitcoin paired with an STX lock on Stacks. The two legs are cryptographically linked — the Bitcoin script ([P2WSH + CLTV](glossary.md#p2wsh-cltv-l1-timelock-script)) commits to a hash of the participant's [Stacks principal](glossary.md#stacks-principal), and the Stacks contract refuses to register a bond it can't match to a confirmed L1 UTXO via [UTXO matching](glossary.md#utxo-matching). The BTC leg is the yield-bearing asset; the STX leg gates participation and [signing weight](glossary.md#signing-weight) but earns nothing while paired.
 
-|            | BTC leg (Bitcoin L1)                    | STX leg (Stacks L2)                                                                                |
-| ---------- | --------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| commitment | P2WSH + CLTV timelock                   | contract call                                                                                      |
-| custody    | own keys                                | locked in contract                                                                                 |
-| duration   | until D172                              | 12 cycles (≈6 months)                                                                              |
-| yield      | protocol bond tranche yield             | none while paired                                                                                  |
-| early exit | 1-of-N early-exit signer set (BTC side) | early-exit announcement by the staker (L2 side); sBTC-locked participants can withdraw at any time |
+|            | BTC leg (Bitcoin L1)                      | STX leg (Stacks L2)                                                                                                       |
+| ---------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| commitment | P2WSH + CLTV timelock                     | contract call                                                                                                             |
+| custody    | own keys                                  | locked in contract                                                                                                        |
+| duration   | until Day 175                             | 12 cycles (≈6 months)                                                                                                     |
+| yield      | protocol bond tranche yield               | none while paired                                                                                                         |
+| early exit | single-key early-exit cosigner (BTC side) | early-exit announcement by the staker (L2 side); sBTC-locked participants can withdraw any time outside the prepare phase |
 
-The [static STX:BTC ratio](glossary.md#static-stx-btc-ratio) is fixed per period by the [Endowment](glossary.md#endowment-stacks-endowment) (initially 5%) and published roughly 7 days before D0, alongside the period's capacity and [target APY](glossary.md#apy-target). Check the [ratio requirement](glossary.md#ratio-requirement-minimum-stx-vs-btc) before you submit either leg. The contract rejects an STX lock that is below the period's minimum ratio for the committed BTC.
+The [static STX:BTC ratio](glossary.md#static-stxbtc-ratio) is fixed per period by the [Endowment](glossary.md#endowment-stacks-endowment) (initially 5%) and published roughly 7 days before Day 0, alongside the period's capacity and [target APY](glossary.md#apy-target). Check the [ratio requirement](glossary.md#ratio-requirement-minimum-stx-vs-btc) before you submit either leg. The contract rejects an STX lock that is below the period's minimum ratio for the committed BTC.
 
 ## One bond's lifetime
 
-Every bond runs the same shape. The [**D0 / D172 / D182**](glossary.md#d0-d172-and-d182-bond-timeline) milestones anchor it: **D0** is the cutoff when both legs must be locked, **D172** is when the L1 timelock expires (≈ 7.3 days before period end on mainnet), **D182** ends the bond on L2 and STX unlocks on the next [cycle boundary](glossary.md#cycle-boundary).
+Every bond runs the same shape. The [**Day 0 / Day 175 / Day 182**](glossary.md#day-0-day-175-and-day-182-bond-timeline) milestones anchor it: **Day 0** is the cutoff when both legs must be locked, **Day 175** is when the L1 timelock expires (≈ 7.3 days before period end on mainnet), **Day 182** ends the bond on L2 and STX unlocks on the next [cycle boundary](glossary.md#cycle-boundary).
 
 ```mermaid
 flowchart LR
-    D0["D0<br/>Both legs locked<br/>registration cutoff"] --> ACT["Active phase<br/>weekly rewards, sBTC by default"]
-    ACT --> D172["D172<br/>L1 timelock expires<br/>bondEnd − 1,050 blocks"]
-    D172 --> RL["Re-lock window<br/>≈ 7.3 days"]
-    RL --> D182["D182<br/>Bond ends on L2<br/>STX unlocks next cycle boundary"]
+    DAY0["Day 0<br/>Both legs locked<br/>registration cutoff"] --> ACT["Active phase<br/>weekly rewards, sBTC by default"]
+    ACT --> DAY175["Day 175<br/>L1 timelock expires<br/>bondEnd − 1,050 blocks"]
+    DAY175 --> RL["Re-lock window<br/>≈ 7.3 days"]
+    RL --> DAY182["Day 182<br/>Bond ends on L2<br/>STX unlocks next cycle boundary"]
 ```
 
-Rewards distribute [weekly](glossary.md#weekly-rewards) throughout the active phase, defaulting to [sBTC](glossary.md#sbtc) via [auto-bridge](glossary.md#auto-bridge-sbtc). The contract keeps reward accounting in two layers, per signer and per staker — the [Rewards](development/rewards.md) page covers how to read and claim them. The [re-lock phase](glossary.md#re-lock-phase) (1,050 burn blocks before bond end on mainnet, ≈ 7.3 days) gives your user time to construct the next L1 timelock without losing continuity. sBTC-locked participants are not gated by the re-lock window and can withdraw at any time. A non-overlapping STX-only stake or an ending bond can also roll directly into a new bond registration or stake without an intervening withdraw — the rollover window opens at the prior bond's L1 unlock.
+Rewards distribute [weekly](glossary.md#weekly-rewards) throughout the active phase, defaulting to [sBTC](glossary.md#sbtc) via [auto-bridge](glossary.md#auto-bridge-sbtc). The contract keeps reward accounting in two layers, per signer and per staker — the [Rewards](development/rewards.md) page covers how to read and claim them. The [re-lock phase](glossary.md#re-lock-phase) (1,050 burn blocks before bond end on mainnet, ≈ 7.3 days) gives your user time to construct the next L1 timelock without losing continuity. sBTC-locked participants are not gated by the re-lock window and can withdraw at any time outside the prepare phase. A non-overlapping STX-only stake or an ending bond can also roll directly into a new bond registration or stake without an intervening withdraw — the rollover window opens at the prior bond's L1 unlock.
 
 ## Enrollment phases
 
-The D0/D172/D182 view above is the participant's mental model. Code uses the contract's phase vocabulary instead. A bond moves through four phases, anchored to fixed burn heights derived from its bond index:
+The Day 0/Day 175/Day 182 view above is the participant's mental model. Code uses the contract's phase vocabulary instead. A bond moves through four phases, anchored to fixed burn heights derived from its bond index:
 
 ```mermaid
 flowchart LR
     O["open<br/>start − 2 cycles → start"] --> L["locked<br/>start → start + 12 cycles − ½"]
     L --> U["unlocked<br/>last ½ reward cycle"]
-    U --> C["closed<br/>after the term"]
+    U --> C["finished<br/>after the term"]
     P["prepare phase<br/>trailing blocks of every cycle<br/>share-mutating calls revert"] -.-> O
     P -.-> L
     P -.-> U
@@ -55,7 +55,7 @@ flowchart LR
 | **open**     | `start − 2 cycles` → `start`      | Registration window. The bond setup transaction publishes the bond **and** opens registration in one step — there is no separate "announced" phase. |
 | **locked**   | `start` → `start + 12 cycles − ½` | Bond term running, collateral locked. New registrations revert.                                                                                     |
 | **unlocked** | last ½ reward cycle of the term   | L1 BTC may unlock (CLTV expiry). The rollover window into the next overlapping bond opens here.                                                     |
-| **closed**   | after the term                    | Claim rewards, unlock remaining positions.                                                                                                          |
+| **finished** | after the term                    | Claim rewards, unlock remaining positions.                                                                                                          |
 
 **`open` does not mean that registration always succeeds.** Two independent clocks overlap. Bond phases are slow and fixed per bond. The PoX reward cycle is fast and global: the last blocks of every cycle are the [prepare phase](glossary.md#prepare-phase-prepare-window), and during the prepare phase the contract rejects [`register-for-bond`](development/paired-btc.md) and the other calls that change stake. An `open` window contains approximately two of these short freezes. To know if registration is possible now, check three conditions: the bond is set up, the bond phase is `open`, and the chain is not in the prepare phase.
 
@@ -98,7 +98,7 @@ PoX-5 enforces a single staking position per Stacks principal at any time, and t
 
 ## Per-period parameters
 
-Roughly seven days before each D0, the Endowment publishes the parameters that define the next bond:
+Roughly seven days before each Day 0, the Endowment publishes the parameters that define the next bond:
 
 * [**Capacity**](glossary.md#available-capacity-and-capacity-allocation-pox-5) — total BTC that can be committed across all participants for that period.
 * [**Allocations**](glossary.md#allocation-bond-capacity) — how that capacity splits across whitelisted partners and the [\~10% community tranche](glossary.md#community-tranche-10) (whitelisted pools).
