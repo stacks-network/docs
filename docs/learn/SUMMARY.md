@@ -75,3 +75,6 @@
     * [USDCx Bridge App](bridging/usdcx/bridge-app/README.md)
       * [Migrating aeUSDC](bridging/usdcx/bridge-app/migrating-aeusdc.md)
     * [FAQ](bridging/usdcx/faq.md)
+* [Bitcoin Staking](bitcoin-staking/README.md)
+  * [Bitcoin Staking Glossary](bitcoin-staking/glossary.md)
+  * [Protocol Bond and Rewards Mechanics](bitcoin-staking/rewards-and-tranches.md)
