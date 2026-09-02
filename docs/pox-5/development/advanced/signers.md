@@ -46,7 +46,7 @@ A custom signer-manager may define its own calldata schema — these helpers mir
 
 ### SIP-018 grant message
 
-The on-chain `get-signer-grant-message-hash` ([pox-5.clar:2865](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2865)) hashes a deliberately slim tuple under a domain pinned to `pox-5`:
+The on-chain `get-signer-grant-message-hash` ([pox-5.clar:2865](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2865)) hashes a deliberately slim tuple under a domain pinned to `pox-5`:
 
 ```
 message: { topic: "grant-authorization",
@@ -115,7 +115,7 @@ await broadcastTransaction({
 });
 ```
 
-After this lands, the signer-manager contract is expected to call `pox-5::register-signer` internally to bind itself. **`register-signer` (**[**pox-5.clar:946**](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L946)**) requires `contract-caller == signer-manager`** — it can only be invoked by the signer-manager contract itself, never forwarded through an intermediary contract or sent by an EOA on the signer-manager's behalf. Calling it from any other principal aborts with `ERR_UNAUTHORIZED_SIGNER_REGISTRATION (u26)`.
+After this lands, the signer-manager contract is expected to call `pox-5::register-signer` internally to bind itself. **`register-signer` (**[**pox-5.clar:946**](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L946)**) requires `contract-caller == signer-manager`** — it can only be invoked by the signer-manager contract itself, never forwarded through an intermediary contract or sent by an EOA on the signer-manager's behalf. Calling it from any other principal aborts with `ERR_UNAUTHORIZED_SIGNER_REGISTRATION (u26)`.
 
 #### Verify a grant before submitting
 
@@ -165,7 +165,7 @@ const used = await fetchSignerKeyGrantUsed({
 
 Counterpart to the grant above. Removes the on-chain binding between a signer key and a signer-manager. Must be sent directly by the Stacks principal derived from the signer key — `contract-caller` is the authorization, so the call cannot be forwarded through an intermediary contract and no SIP-018 message is needed.
 
-`revoke-signer-grant` ([pox-5.clar:2824](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2824)) takes **both** `signer-manager` and `signer-key` (in that order on-chain), so the SDK's `buildRevokeSignerGrant` mirrors that and requires both fields:
+`revoke-signer-grant` ([pox-5.clar:2824](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2824)) takes **both** `signer-manager` and `signer-key` (in that order on-chain), so the SDK's `buildRevokeSignerGrant` mirrors that and requires both fields:
 
 ```ts
 import { buildRevokeSignerGrant, fetchEligibleRevokeSignerGrant } from '@stacks/bitcoin-staking';

@@ -6,7 +6,7 @@ description: Line-by-line function inventory for the PoX-5 Clarity contract.
 
 This page inventories the integrator-relevant functions in `stackslib/src/chainstate/stacks/boot/pox-5.clar`, the canonical [PoX-5](glossary.md#pox-pox-4-pox-5-pox-6) Clarity boot contract. Line ranges are inclusive and cover each function from its `define-*` form through its closing parenthesis.
 
-Contract version: `a7e3e76019d911aef9bd6f8dbde0da81517a3b45`
+Contract version: `4.0.1`
 
 ## Public Functions
 
@@ -41,43 +41,43 @@ The Endowment configures each bond period with `setup-bond` and operates the rem
 
 ### Relevant Public Function Locations
 
-| Function                                               |                                                                                                                                                                           Lines |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| `stake`                                                |   [pox-5.clar:976:1086](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L976-L1086) |
-| `stake-update`                                         | [pox-5.clar:1092:1173](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1092-L1173) |
-| `unstake`                                              | [pox-5.clar:1424:1470](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1424-L1470) |
-| `register-for-bond`                                    |     [pox-5.clar:642:842](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L642-L842) |
-| `update-bond-registration`                             |     [pox-5.clar:850:943](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L850-L943) |
-| `announce-l1-early-exit`                               | [pox-5.clar:1196:1257](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196-L1257) |
-| `unstake-sbtc`                                         | [pox-5.clar:1261:1342](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1261-L1342) |
-| `calculate-rewards`                                    | [pox-5.clar:2158:2240](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2158-L2240) |
-| `claim-rewards`                                        | [pox-5.clar:2387:2438](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2387-L2438) |
-| `claim-staker-rewards-for-signer` **(signer-manager)** | [pox-5.clar:2444:2470](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2444-L2470) |
-| `register-signer`                                      |     [pox-5.clar:946:973](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L946-L973) |
-| `grant-signer-key`                                     | [pox-5.clar:2743:2811](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2743-L2811) |
-| `revoke-signer-grant`                                  | [pox-5.clar:2824:2860](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2824-L2860) |
+| Function                                               |                                                                                                                                        Lines |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------: |
+| `stake`                                                |   [pox-5.clar:976:1086](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L976-L1086) |
+| `stake-update`                                         | [pox-5.clar:1092:1173](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1092-L1173) |
+| `unstake`                                              | [pox-5.clar:1424:1470](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1424-L1470) |
+| `register-for-bond`                                    |     [pox-5.clar:642:842](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L642-L842) |
+| `update-bond-registration`                             |     [pox-5.clar:850:943](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L850-L943) |
+| `announce-l1-early-exit`                               | [pox-5.clar:1196:1257](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196-L1257) |
+| `unstake-sbtc`                                         | [pox-5.clar:1261:1342](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1261-L1342) |
+| `calculate-rewards`                                    | [pox-5.clar:2158:2240](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2158-L2240) |
+| `claim-rewards`                                        | [pox-5.clar:2387:2438](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2387-L2438) |
+| `claim-staker-rewards-for-signer` **(signer-manager)** | [pox-5.clar:2444:2470](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2444-L2470) |
+| `register-signer`                                      |     [pox-5.clar:946:973](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L946-L973) |
+| `grant-signer-key`                                     | [pox-5.clar:2743:2811](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2743-L2811) |
+| `revoke-signer-grant`                                  | [pox-5.clar:2824:2860](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2824-L2860) |
 
 ## Read-only Public Functions
 
 ### Rewards
 
-| Function                           |                                                                                                                                                                           Lines |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| `get-rewards`                      | [pox-5.clar:2135:2145](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2135-L2145) |
-| `get-new-rewards`                  | [pox-5.clar:2149:2156](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2149-L2156) |
-| `get-earned`                       | [pox-5.clar:2341:2354](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2341-L2354) |
-| `get-earned-staker-rewards`        | [pox-5.clar:2358:2373](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2358-L2373) |
-| `compute-earned-rewards`           | [pox-5.clar:2378:2385](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2378-L2385) |
-| `assert-all-active-bonds-included` | [pox-5.clar:2616:2637](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2616-L2637) |
+| Function                           |                                                                                                                                        Lines |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------: |
+| `get-rewards`                      | [pox-5.clar:2135:2145](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2135-L2145) |
+| `get-new-rewards`                  | [pox-5.clar:2149:2156](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2149-L2156) |
+| `get-earned`                       | [pox-5.clar:2341:2354](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2341-L2354) |
+| `get-earned-staker-rewards`        | [pox-5.clar:2358:2373](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2358-L2373) |
+| `compute-earned-rewards`           | [pox-5.clar:2378:2385](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2378-L2385) |
+| `assert-all-active-bonds-included` | [pox-5.clar:2616:2637](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2616-L2637) |
 
 `get-earned` returns a signer's accrued sBTC; `get-earned-staker-rewards` is its per-staker counterpart. See [Rewards](development/rewards.md).
 
 ### Signer Key Grants
 
-| Function                        |                                                                                                                                                                           Lines |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| `get-signer-grant-message-hash` | [pox-5.clar:2865:2877](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2865-L2877) |
-| `verify-signer-key-grant`       | [pox-5.clar:2879:2890](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2879-L2890) |
+| Function                        |                                                                                                                                        Lines |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------: |
+| `get-signer-grant-message-hash` | [pox-5.clar:2865:2877](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2865-L2877) |
+| `verify-signer-key-grant`       | [pox-5.clar:2879:2890](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2879-L2890) |
 
 ### Bitcoin SPV / Lockup Helpers
 

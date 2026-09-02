@@ -46,7 +46,7 @@ const position = {
 };
 ```
 
-`fetchStakerInfo` returns `{ staked: false }` if the address has no STX-only lock, or `{ staked: true, details: { amountUstx, firstRewardCycle, numCycles, signer } }` — `details` is the decoded `staker-info` tuple. The `details.signer` field ([pox-5.clar:224](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L224)) is the principal a client passes as `oldSignerManager` to `stake-update` / `unstake`.
+`fetchStakerInfo` returns `{ staked: false }` if the address has no STX-only lock, or `{ staked: true, details: { amountUstx, firstRewardCycle, numCycles, signer } }` — `details` is the decoded `staker-info` tuple. The `details.signer` field ([pox-5.clar:224](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L224)) is the principal a client passes as `oldSignerManager` to `stake-update` / `unstake`.
 
 `fetchBondMembership` returns the decoded `protocol-bond-memberships` tuple — `{ bondIndex, amountUstx, signer, isL1Lock, amountSats }`. `amountSats` is the BTC shares currently attributed to the membership — an L1 lockup total when `isL1Lock` is true, an sBTC contribution when false — and is the authoritative source for per-cycle bond share accounting. `fetchProtocolBondMemberships` reads the raw `protocol-bond-memberships` map entry and does **not** filter out expired memberships, unlike `fetchBondMembership` (which goes through `get-bond-membership`) — the latter returns `undefined` once the bond's unlock cycle is reached.
 
@@ -200,7 +200,7 @@ The [re-lock window](../glossary.md#re-lock-phase) at the end of every bond is w
 
 ### Earned rewards and protocol totals
 
-The reward model splits "what is this signer owed?" into two raw on-chain reads, plus the `get-earned` aggregator that combines them ([pox-5.clar:2341](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2341), [pox-5.clar:3217](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3217), [pox-5.clar:3203](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3203)):
+The reward model splits "what is this signer owed?" into two raw on-chain reads, plus the `get-earned` aggregator that combines them ([pox-5.clar:2341](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2341), [pox-5.clar:3217](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3217), [pox-5.clar:3203](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3203)):
 
 * `get-earned(signer, reward-cycle, bond-index) -> uint` — pending + accrued, in sBTC sats. The single number a UI should display.
 * `get-signer-unclaimed-rewards-for-cycle` — running pending sBTC for `{ reward-cycle, bond-index, signer }` since the last settlement (`bond-index: (some N)` for a bond cycle, `none` for STX-only).
@@ -227,7 +227,7 @@ const [earned, unclaimed, rptSettled] = await Promise.all([
 
 #### Staker-level rewards
 
-For a signer manager paying individual stakers out of its slice, the staker-level layer mirrors the signer-level reads one level down ([pox-5.clar:2358](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2358), [pox-5.clar:3247](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3247), [pox-5.clar:3231](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3231), [pox-5.clar:3263](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3263)):
+For a signer manager paying individual stakers out of its slice, the staker-level layer mirrors the signer-level reads one level down ([pox-5.clar:2358](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2358), [pox-5.clar:3247](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3247), [pox-5.clar:3231](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3231), [pox-5.clar:3263](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3263)):
 
 * `get-earned-staker-rewards(signer, reward-cycle, bond-index, staker) -> uint` — pending + accrued for a single staker under one signer.
 * `get-staker-unclaimed-rewards-for-cycle` — running pending sBTC for `{ reward-cycle, bond-index, signer, staker }`.

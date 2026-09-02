@@ -115,7 +115,7 @@ Custody providers aggregating many clients' positions; bounded in reward design 
 
 ### Drawdown priority (paired BTC)
 
-White-paper design term for how a shortfall would be distributed among paired positions if the reserve were exhausted (ordering by STX price at lock time). `pox-5.clar` defines no per-position shortfall ordering: reward accounting is flat per-token (`rewards-per-token-for-cycle`), and the reserve accrues a fixed `RESERVE_RATIO` cut ([pox-5.clar:107](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L107)) into `reserve-balance`.
+White-paper design term for how a shortfall would be distributed among paired positions if the reserve were exhausted (ordering by STX price at lock time). `pox-5.clar` defines no per-position shortfall ordering: reward accounting is flat per-token (`rewards-per-token-for-cycle`), and the reserve accrues a fixed `RESERVE_RATIO` cut ([pox-5.clar:107](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L107)) into `reserve-balance`.
 
 ### Dual-asset commitment
 
@@ -137,8 +137,8 @@ Optional path to spend BTC from the timelock before expiry using a **pre-authori
 
 The early-exit machinery has **two distinct sides** that the contract treats separately:
 
-* **BTC side:** `early-unlock-bytes` is the early-exit subscript stored on each bond ([pox-5.clar:126](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L126)) and folded into the `OP_ELSE` branch of the L1 lockup script ([pox-5.clar:3711](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)). It must leave a valid boolean result on the stack for the shared `OP_VERIFY` after `OP_ENDIF`. In practice this is always a single cosigner public key with `OP_CHECKSIG` — one key managed by a redundant, KMS-backed early-exit signing service, not an on-chain multisig script. The cosigner signature alone is not sufficient: `staker-unlock-bytes` runs unconditionally after `OP_ENDIF`, so an early-exit spend also requires the staker's own signature plus the staker's 32-byte commitment preimage.
-* **L2 side:** the early-exit announcement ([pox-5.clar:1196](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196-L1257)) is gated on the staker themselves: `contract-caller`, `tx-sender`, and the `staker` argument must all match. No separate admin or signer principal is stored on the bond. After the staker's BTC is spent off-cycle through the `OP_ELSE` branch, the staker announces the exit on L2 so the contract zeros their shares; their locked STX stays locked through the normal bond period.
+* **BTC side:** `early-unlock-bytes` is the early-exit subscript stored on each bond ([pox-5.clar:126](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L126)) and folded into the `OP_ELSE` branch of the L1 lockup script ([pox-5.clar:3711](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)). It must leave a valid boolean result on the stack for the shared `OP_VERIFY` after `OP_ENDIF`. In practice this is always a single cosigner public key with `OP_CHECKSIG` — one key managed by a redundant, KMS-backed early-exit signing service, not an on-chain multisig script. The cosigner signature alone is not sufficient: `staker-unlock-bytes` runs unconditionally after `OP_ENDIF`, so an early-exit spend also requires the staker's own signature plus the staker's 32-byte commitment preimage.
+* **L2 side:** the early-exit announcement ([pox-5.clar:1196](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196-L1257)) is gated on the staker themselves: `contract-caller`, `tx-sender`, and the `staker` argument must all match. No separate admin or signer principal is stored on the bond. After the staker's BTC is spent off-cycle through the `OP_ELSE` branch, the staker announces the exit on L2 so the contract zeros their shares; their locked STX stays locked through the normal bond period.
 
 ### Endowment (Stacks Endowment)
 
@@ -214,7 +214,7 @@ Bitcoin script pattern (**pay-to-witness-script-hash**) with **check-lock-time-v
 
 ### Ratio requirement (minimum STX vs BTC)
 
-Minimum STX that must be paired with a BTC commitment. The pricing inputs are per-bond parameters the admin supplies when setting up a bond, and [`register-for-bond`](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3089) rejects a registration that falls short of the floor. The white paper frames the floor as a fraction of BTC value (initial **5%** example) derived from miner-bid-implied pricing; on-chain the values are set administratively.
+Minimum STX that must be paired with a BTC commitment. The pricing inputs are per-bond parameters the admin supplies when setting up a bond, and [`min-ustx-for-sats-amount`](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3089) rejects a registration that falls short of the floor. The white paper frames the floor as a fraction of BTC value (initial **5%** example) derived from miner-bid-implied pricing; on-chain the values are set administratively.
 
 ### Re-lock phase
 

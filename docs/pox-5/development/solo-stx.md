@@ -59,7 +59,7 @@ A single `stake-update` call handles three independent dimensions: extending the
 
 Updates require **no cooldown** and can be made at any point outside the prepare phase. The contract rewrites your membership from the **next cycle** onward — it removes you from each future cycle and re-adds you with the new amount/term/signer — so changes take effect next cycle regardless of when your previous unlock would have been.
 
-The contract's on-chain signature ([pox-5.clar:1092](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1092)) requires both the new `signer-manager` and the staker's currently-recorded `old-signer-manager`. The `old-signer-manager` must match the `signer` field on `staker-info` ([pox-5.clar:224](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L224)); if it doesn't, the call reverts with `ERR_INVALID_OLD_SIGNER_MANAGER (u36)`. Read the current signer back with `fetchStakerInfo` before composing the call.
+The contract's on-chain signature ([pox-5.clar:1092](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1092)) requires both the new `signer-manager` and the staker's currently-recorded `old-signer-manager`. The `old-signer-manager` must match the `signer` field on `staker-info` ([pox-5.clar:224](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L224)); if it doesn't, the call reverts with `ERR_INVALID_OLD_SIGNER_MANAGER (u36)`. Read the current signer back with `fetchStakerInfo` before composing the call.
 
 ```ts
 import { buildStakeUpdate, fetchEligibleStakeUpdate, fetchStakerInfo } from '@stacks/bitcoin-staking';
@@ -106,7 +106,7 @@ The `signer` field on `staker-info` is populated by `stake` and rewritten by eve
 
 `unstake` can be called **at any time**, even with many cycles remaining — there is no cooldown. It sets the position to unlock at the **end of the current cycle** (it removes the staker from every remaining cycle after the current one, and lazily drops the signer from the reward set if it falls below the 50k threshold). The contract reverts during the [prepare phase](../glossary.md#prepare-phase-prepare-window) (`ERR_UNSTAKE_IN_PREPARE_PHASE u28`) — that guard exists because the upcoming cycle's reward set is already computed — so check the phase first.
 
-`unstake` ([pox-5.clar:1424](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1424)) takes the staker's currently-recorded signer-manager as `old-signer-manager`. The same `ERR_INVALID_OLD_SIGNER_MANAGER (u36)` revert applies if it doesn't match `staker-info.signer`.
+`unstake` ([pox-5.clar:1424](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1424)) takes the staker's currently-recorded signer-manager as `old-signer-manager`. The same `ERR_INVALID_OLD_SIGNER_MANAGER (u36)` revert applies if it doesn't match `staker-info.signer`.
 
 ```ts
 import {

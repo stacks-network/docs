@@ -9,7 +9,7 @@ An early exit has two parts:
 
 The announcement comes first: the co-signer only signs after it finds the staker's announce transaction on Stacks. The position also stops earning once the announcement lands. Co-signing is only needed **before** the timelock height; after the CLTV height the staker reclaims alone through the normal path. This page covers signing and co-signing only. How the co-signer key is provisioned is internal to the service.
 
-The TypeScript snippets below are illustrative. The flow needs no SDK: it is a standard HTTP call plus standard Bitcoin transaction signing, in any language. The canonical lock-script construction is the contract's [`construct-lockup-script`](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711); `buildLockScript` in `@stacks/bitcoin-staking` is its TypeScript equivalent.
+The TypeScript snippets below are illustrative. The flow needs no SDK: it is a standard HTTP call plus standard Bitcoin transaction signing, in any language. The canonical lock-script construction is the contract's [`construct-lockup-script`](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711); `buildLockScript` in `@stacks/bitcoin-staking` is its TypeScript equivalent.
 
 ## What both parties sign
 
