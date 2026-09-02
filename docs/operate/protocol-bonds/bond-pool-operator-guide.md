@@ -100,6 +100,10 @@ Rather than withdrawing and re-registering, call `register-for-bond` again for a
 
 This is allowed only once the old bond's L1 unlock height is reached, which is half a reward cycle before its L2 end. Earlier gives `ERR_ROLLOVER_TOO_EARLY u48`. Overlapping terms give `ERR_ALREADY_REGISTERED u9`.
 
+That window is 1,050 Bitcoin blocks wide, but only 950 of them are usable. The last 100 blocks of every cycle are the prepare phase, where `register-for-bond` is rejected with `ERR_STAKE_IN_PREPARE_PHASE u47`, so the roll has to land before the prepare phase that precedes the bond's end.
+
+<div data-with-frame="true"><figure><img src="https://4065274862-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4cpTb2lbw0LAOuMHrvhA%2Fuploads%2FrJdcjN2HFTvByme81Aau%2Fstaking-rollover-window.png?alt=media&#x26;token=ec8978a6-ad51-4514-80ef-63d5c645b141" alt="The rollover window at the end of a bond. Gate one, non-overlap, passes for bond n+6 or an STX-only stake from the next cycle. Gate two, the rollover window, fails before Day 175 and passes from Day 175. Both gates are open together for 950 Bitcoin blocks, from Day 175 until the prepare phase before Day 182, after 24,150 of the bond&#x27;s 25,200 blocks. Once open the window does not close."><figcaption><p>Two gates, one window. It opens 1,050 blocks before the bond ends, and 950 of those blocks are usable.</p></figcaption></figure></div>
+
 ## Related reading
 
 * [Bitcoin Staking Glossary](https://docs.stacks.co/learn/bitcoin-staking/glossary)
