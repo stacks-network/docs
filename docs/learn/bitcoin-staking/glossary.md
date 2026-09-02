@@ -55,7 +55,7 @@ The second stop. STX-only stakers take 85% of the cycle excess, pro rata by shar
 
 The third stop. Takes the remaining 15% of the cycle excess.
 
-> **House convention.** This glossary is the one page in the set that carries the tranche numbers: Tranche 1 is protocol bonds, Tranche 2 is STX-only stakers, Tranche 3 is the reserve fund. Everywhere else in the documentation the tranches are named, never numbered — the protocol bond tranche, the STX-only staking tranche, the reserve fund tranche — and when two or more are named together the order is always protocol bonds, then STX-only, then reserve fund.
+> **House convention.** This glossary is the one page in the set that carries the tranche numbers: Tranche 1 is protocol bonds, Tranche 2 is STX-only stakers, Tranche 3 is the reserve fund. Everywhere else in the documentation the tranches are named, never numbered: the protocol bond tranche, the STX-only staking tranche, the reserve fund tranche. When two or more are named together the order is always protocol bonds, then STX-only, then reserve fund.
 
 ## Cycle excess
 
@@ -109,7 +109,7 @@ The early-unlock subscript is set per bond by the bond admin at `setup-bond`. Th
 
 ### What is actually deployed
 
-In practice it is always a single cosigner public key with `OP_CHECKSIG` — one key managed by a redundant, KMS-backed early-exit signing service, not an on-chain multisig. That is an operational choice, not a protocol constraint. Either statement alone misleads: told only "M-of-N", you design for a multisig that will not exist; told only "always one key", you believe the contract enforces something it does not.
+In practice it is always a single cosigner public key with `OP_CHECKSIG`, one key managed by a redundant, KMS-backed early-exit signing service, not an on-chain multisig. That is an operational choice, not a protocol constraint. Either statement alone misleads: told only "M-of-N", you design for a multisig that will not exist; told only "always one key", you believe the contract enforces something it does not.
 
 ### The Stacks-side call
 
