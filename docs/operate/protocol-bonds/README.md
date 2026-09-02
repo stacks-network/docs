@@ -10,6 +10,6 @@ A protocol bond pairs a Bitcoin commitment with an STX lock for a 12-cycle term.
 
 This section is being built out. One guide is available now:
 
-* [Bond pool operator guide](bond-pool-operator-guide.md) — running a whitelisted community sBTC pool.
+* [Bond pool operator guide](bond-pool-operator-guide.md): running a whitelisted community sBTC pool.
 
 For the conceptual overview, see [Bitcoin Staking](https://docs.stacks.co/learn/bitcoin-staking).
