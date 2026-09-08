@@ -4,7 +4,7 @@ The Peg Wallet UTXO is a fundamental element of the sBTC system, serving as the 
 
 {% hint style="info" %}
 This UTXO resides in a secure multi-signature taproot address controlled by the sBTC Signers:\
-[bc1pgg0us9y5skfpatq0nhxt7khhk8qxv0zgle36r6yxnql6dvyaafqsahn043](https://mempool.space/address/bc1pgg0us9y5skfpatq0nhxt7khhk8qxv0zgle36r6yxnql6dvyaafqsahn043)
+[bc1pss7kvauf5utmxp3pznz7guc63zujmpwnt9q4znzu4dzhd69yumgs58cjgl](https://mempool.space/address/bc1pss7kvauf5utmxp3pznz7guc63zujmpwnt9q4znzu4dzhd69yumgs58cjgl)
 {% endhint %}
 
 ## Overview
