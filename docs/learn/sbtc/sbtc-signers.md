@@ -78,3 +78,18 @@ Security is paramount: multi-signature approval, audits, and monitoring are core
 | **Trust Model**            | Part of Stacks consensus           | Threshold signer set managing BTC                  |
 | **Failure Impact**         | Chain instability / fork risk      | Risk to BTC peg integrity                          |
 | **Assets Involved**        | STX                                | BTC                                                |
+
+## Who are the sBTC Signers
+
+**sBTC Signer Set**
+
+<table data-header-hidden><thead><tr><th width="211"></th><th></th></tr></thead><tbody><tr><td><strong>Organization</strong></td><td><strong>Qualifications</strong></td></tr><tr><td><strong>Asymmetric Research</strong></td><td>Top validator on various networks (Solana, Aptos), providing critical feedback to Stacks ecosystem.</td></tr><tr><td><strong>Bitcoin L2 Labs</strong></td><td>Development company for sBTC protocol, deep involvement in Stacks and Bitcoin ecosystems.</td></tr><tr><td><strong>Blockdaemon</strong></td><td>Largest node operator, 50+ blockchains supported, active as a signer in Stacks.</td></tr><tr><td><strong>Degen Lab</strong></td><td>Continuous involvement with the Stacks ecosystem, successfully built a decentralized stacking pool, and contributor to several open-source projects</td></tr><tr><td><strong>Fast Pool</strong></td><td>Oldest Stacking pool, deep knowledge of Bitcoin and Stacks nodes since 2021.</td></tr><tr><td><strong>SenseiNode</strong></td><td>Top Latin American node operator, 9,500+ validators, focused on decentralizing infrastructure.</td></tr><tr><td><strong>Stacking DAO</strong></td><td>Leading DeFi app and liquid staking protocol, managing 56 million STX, sBTC signer infrastructure.</td></tr><tr><td><strong>Xverse</strong></td><td>Long-term Stacks supporter, largest Stacking pool by TVL, integrated into Xverse wallet.</td></tr><tr><td><strong>Ankr</strong></td><td>RPC infrastructure across 70+ blockchains, handling 8B+ daily requests, with non-custodial staking already serving 18,000+ users</td></tr><tr><td><strong>The Tie</strong></td><td>Institutional crypto data platform serving ~500 funds, asset managers, and banks + staking infrastructure across 40+ networks.</td></tr><tr><td><strong>Hashkey</strong></td><td><a href="https://www.hashkey.com/en-US">HashKey</a> brings regulated digital asset expertise and an established institutional footprint in Asia to the signer set.</td></tr></tbody></table>
+
+#### Signer Rotations
+
+A decentralized signer set is a living network, and rotation is part of its design. Signers commit infrastructure, key shares, and operational overhead to the set, and on a semi-regular basis, some step back while others step in. The protocol is designed for exactly this: the 70% consensus threshold holds throughout the transition, every handoff is verified onchain, and no BTC ever moves with fewer approvals than before. Each cycle is also how the set gets stronger, bringing in signers whose infrastructure and regulatory posture match where [Bitcoin-native finance](https://www.stacks.co/bitcoin-native-finance) is heading.
+
+**Previous rotations:**
+
+* [February 3rd, 2026](https://github.com/stacks-sbtc/sbtc/discussions/624?sort=new#discussioncomment-15687048)
+* [September 4th, 2026](https://www.stacks.co/blog/meet-the-new-sbtc-signers-ankr-the-tie-and-hashkey-join-the-set)
