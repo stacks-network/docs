@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
+* [Epoch 4.0 Consensus Changes](epoch-4-0-consensus-changes.md)
 
 ## API
 
@@ -34,11 +35,11 @@
           spec: stacks-blockchain-api-dereferenced
     ```
   * ```yaml
-    type: builtin:openapi
     props:
       models: false
       downloadLink: false
       grouping: by-tag
+    type: builtin:openapi
     dependencies:
       spec:
         ref:
