@@ -78,7 +78,7 @@ The reference manager uses it to let a staker elect a native BTC payout. It dese
 (map-set pox-addrs staker pox-addr)
 ```
 
-At claim time `claim-staker-rewards` reads that entry back. With a record it calls `sbtc-withdrawal::initiate-withdrawal-request`, and without one it transfers sBTC directly. `max-fee` is the fee ceiling it passes to that withdrawal, not a fee the manager takes.
+At claim time `claim-staker-rewards` reads that entry back. With a record it calls `sbtc-withdrawal::initiate-withdrawal-request`, and without one it transfers sBTC directly. `max-fee` is the fee ceiling it passes to the sbtc withdrawal smart contract.
 
 Clients read the same entry through `get-pox-addr`, which answers `none` for a staker who has not elected an address:
 
