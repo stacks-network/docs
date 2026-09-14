@@ -80,7 +80,7 @@ The reference manager uses it to let a staker elect a native BTC payout. It dese
 
 At claim time `claim-staker-rewards` reads that entry back. With a record it calls `sbtc-withdrawal::initiate-withdrawal-request`, and without one it transfers sBTC directly. `max-fee` is the fee ceiling it passes to the sbtc withdrawal smart contract.
 
-Clients read the same entry through `get-pox-addr`, which answers `none` for a staker who has not elected to enter an address:
+On the reference manager, clients read the same entry through `get-pox-addr`, which answers `none` for a staker who has not elected to enter an address:
 
 ```clarity
 (define-read-only (get-pox-addr (staker principal))
@@ -90,9 +90,9 @@ Clients read the same entry through `get-pox-addr`, which answers `none` for a s
 
 It returns `(optional { pox-addr: { version: (buff 1), hashbytes: (buff 32) }, max-fee: uint })`. This is how an app shows a staker where their rewards will land, and how it tells whether a manager keeps an election at all.
 
-**What your manager has to accept**
+**What your manager should accept**
 
-A client builds this calldata once and sends it to whichever manager the staker picked. A manager stricter than the buffer it receives fails the staking transaction outright, so whatever you go on to do with the value, accept all of it:
+Nothing in pox-5 forces your manager to accept any particular calldata, so you can write one as strict as you like. But a client builds this calldata once and sends it to whichever manager the staker picked, and a manager stricter than the buffer it receives fails that staking transaction outright. So unless you mean to turn stakers away, accept all of it:
 
 * Both `none` and `(some buffer)` arrive, depending on which reward asset the staker chose. Requiring either one breaks the stakers who chose the other.
 * Deserialize `hashbytes` as `(buff 32)`. A 20-byte value fits that type and a 32-byte value does not fit `(buff 20)`, and `from-consensus-buff?` answers a type mismatch with `none`, which surfaces as `ERR_INVALID_CALLDATA`.
