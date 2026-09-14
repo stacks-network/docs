@@ -239,7 +239,7 @@ The total sats across all outputs becomes the BTC-side commitment recorded for t
 
 ### Enroll with sBTC (no L1 lock)
 
-Same call, but `lockup: { kind: 'sbtc', sbtcSats }`. No timelock script, no Bitcoin transaction, no SPV proofs — the contract custodies sBTC directly via `roll-sbtc` ([pox-5.clar:1943](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1943)), which transfers the net delta from the staker to the contract. The whole flow is a single Stacks transaction once the allowlist check passes.
+Same call, but `lockup: { kind: 'sbtc', sbtcSats }`. No timelock script, no Bitcoin transaction, no SPV proofs — the contract custodies sBTC directly via `roll-sbtc` ([pox-5.clar:1943](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1943)), which transfers the net delta from the staker to the contract. The whole flow is a single Stacks transaction once the allowlist check passes.
 
 Because `roll-sbtc` pulls the sBTC **from the caller**, the transaction must carry a `postConditions` entry covering that transfer — the default post-condition deny mode aborts it otherwise.
 
@@ -325,7 +325,7 @@ const tx = await buildUnstakeSbtc({
 
 ### The expected P2WSH lockup script
 
-The deterministic script the contract recomputes for SPV verification is, per `construct-lockup-script` ([pox-5.clar:3711:3731](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)):
+The deterministic script the contract recomputes for SPV verification is, per `construct-lockup-script` ([pox-5.clar:3711:3731](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)):
 
 ```
 OP_IF
@@ -345,7 +345,7 @@ The output's scriptPubKey is the P2WSH wrapper: `0x0020 || sha256(<script>)`. `c
 `staker-unlock-bytes` and `early-unlock-bytes` are concatenated **raw** — the contract does not wrap them with `push-script-bytes`. The caller supplies self-contained, pre-pushed Bitcoin script fragments. The `OP_ELSE` branch additionally requires the spender to reveal a 32-byte preimage of `H` (a sha256-double-hash of the staker's consensus buff), binding the early-exit spend to the staker. Each fragment's stack contract is:
 
 * **`staker-unlock-bytes`** runs unconditionally after `OP_ENDIF` and must validate the staker's signature **leaving a truthy result on the stack** — e.g. the default `<pubkey> OP_CHECKSIG` tail produced by `buildUnlockScript`.
-* **`early-unlock-bytes`** runs inside the `OP_ELSE` branch and must also leave a boolean on the stack (consumed by the shared `OP_VERIFY` after `OP_ENDIF`). Use `<pubkey> OP_CHECKSIG` (not `OP_CHECKSIGVERIFY`) or an M-of-N `OP_CHECKMULTISIG` template — the subscript must leave a bool, not consume it. The bytes themselves come from `protocol-bonds.early-unlock-bytes` for the bond — read them via `fetchBond(...)` and pass them through.
+* **`early-unlock-bytes`** runs inside the `OP_ELSE` branch and must also leave a boolean on the stack (consumed by the shared `OP_VERIFY` after `OP_ENDIF`). Use `<pubkey> OP_CHECKSIG` (not `OP_CHECKSIGVERIFY`) or an M-of-N `OP_CHECKMULTISIG` template — the subscript must leave a bool, not consume it. The bytes themselves come from `protocol-bonds.early-unlock-bytes` for the bond — read them via `fetchBond(...)` and pass them through. In practice every deployed bond uses a single cosigner public key with `OP_CHECKSIG`; the M-of-N form is permitted but unused, so build against the single-key shape and read the bond's `early-unlock-bytes` rather than assuming either.
 
 The two branches let the same locking output be spent either:
 

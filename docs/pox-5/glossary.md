@@ -45,7 +45,7 @@ A whole number that identifies one bonding period's entry in the contract. Bond 
 
 ### Bonding period
 
-About **six months** of Bitcoin blocks (**25,200** in the time-intervals table), running from **D0** through **D182**, with six such periods staggered and overlapping at steady state.
+About **six months** of Bitcoin blocks (**25,200** in the time-intervals table), running from **Day 0** through **Day 182**, with six such periods staggered and overlapping at steady state.
 
 ### Bootstrap phase (PoX-5)
 
@@ -79,7 +79,7 @@ Share of Tranche 1 capacity reserved for retail-facing **whitelisted pool operat
 
 ### Confirmation phase (L1 lock-up)
 
-Window in which participants must finish **L1 BTC timelocks** after allocation and before **D0**; table rows tie this to PoX-5 rolling issuance.
+Window in which participants must finish **L1 BTC timelocks** after allocation and before **Day 0**; table rows tie this to PoX-5 rolling issuance.
 
 ### Cooldown (removed)
 
@@ -99,23 +99,23 @@ Stacks/PoX timing milestone used for signer set transitions, payouts, and UI cop
 
 ### Cycle excess
 
-Miner revenue remaining after **Tranche 1** obligations in a cycle; split per policy between **reserve** (Tranche 2) and **STX-only** participants (Tranche 3).
+Miner revenue remaining after **Tranche 1** obligations in a cycle; split per policy between the **STX-only staking tranche** and the **reserve fund tranche**.
 
 ### Custodial aggregation
 
 Custody providers aggregating many clients' positions; bounded in reward design notes by **actually locked STX** and auction economics.
 
-### D0, D172, and D182 (bond timeline)
+### Day 0, Day 175, and Day 182 (bond timeline)
 
-"D" numbers count days since the start of a bonding period. **D0** is day zero: the cutoff when paired BTC (L1) and STX (L2) must be locked to be eligible. **D172** is around day 172: the day the **L1 timelock expires**. **D182** is around day 182: the day the bond ends on L2.
+"Day" numbers count days since the start of a bonding period. **Day 0** is day zero: the cutoff when paired BTC (L1) and STX (L2) must be locked to be eligible. **Day 175** is around day 175: the day the **L1 timelock expires**. **Day 182** is around day 182: the day the bond ends on L2.
 
-* **D0** — the bond's start and lock cutoff. Paired BTC and STX must both be locked by this point.
-* **D172** — the L1 timelock expires. STX remains locked on L2.
-* **D182** — the bond ends on L2. STX unlock follows protocol rules.
+* **Day 0** — the bond's start and lock cutoff. Paired BTC and STX must both be locked by this point.
+* **Day 175** — the L1 timelock expires. STX remains locked on L2.
+* **Day 182** — the bond ends on L2. STX unlock follows protocol rules.
 
 ### Drawdown priority (paired BTC)
 
-White-paper design term for how a shortfall would be distributed among paired positions if the reserve were exhausted (ordering by STX price at lock time). `pox-5.clar` defines no per-position shortfall ordering: reward accounting is flat per-token (`rewards-per-token-for-cycle`), and the reserve accrues a fixed `RESERVE_RATIO` cut ([pox-5.clar:107](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L107)) into `reserve-balance`.
+White-paper design term for how a shortfall would be distributed among paired positions if the reserve were exhausted (ordering by STX price at lock time). `pox-5.clar` defines no per-position shortfall ordering: reward accounting is flat per-token (`rewards-per-token-for-cycle`), and the reserve accrues a fixed `RESERVE_RATIO` cut ([pox-5.clar:107](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L107)) into `reserve-balance`.
 
 ### Dual-asset commitment
 
@@ -137,8 +137,8 @@ Optional path to spend BTC from the timelock before expiry using a **pre-authori
 
 The early-exit machinery has **two distinct sides** that the contract treats separately:
 
-* **BTC side:** `early-unlock-bytes` is the early-exit subscript stored on each bond ([pox-5.clar:126](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L126)) and folded into the `OP_ELSE` branch of the L1 lockup script ([pox-5.clar:3711](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)). It must leave a valid boolean result on the stack for the shared `OP_VERIFY` after `OP_ENDIF`. In practice this is always a single cosigner public key with `OP_CHECKSIG` — one key managed by a redundant, KMS-backed early-exit signing service, not an on-chain multisig script. The cosigner signature alone is not sufficient: `staker-unlock-bytes` runs unconditionally after `OP_ENDIF`, so an early-exit spend also requires the staker's own signature plus the staker's 32-byte commitment preimage.
-* **L2 side:** the early-exit announcement ([pox-5.clar:1196](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196-L1257)) is gated on the staker themselves: `contract-caller`, `tx-sender`, and the `staker` argument must all match. No separate admin or signer principal is stored on the bond. After the staker's BTC is spent off-cycle through the `OP_ELSE` branch, the staker announces the exit on L2 so the contract zeros their shares; their locked STX stays locked through the normal bond period.
+* **BTC side:** `early-unlock-bytes` is the early-exit subscript stored on each bond ([pox-5.clar:126](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L126)) and folded into the `OP_ELSE` branch of the L1 lockup script ([pox-5.clar:3711](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3711-L3731)). It must leave a valid boolean result on the stack for the shared `OP_VERIFY` after `OP_ENDIF`. In practice this is always a single cosigner public key with `OP_CHECKSIG` — one key managed by a redundant, KMS-backed early-exit signing service, not an on-chain multisig script. The contract itself permits either that or an M-of-N `CHECKMULTISIG` template, since it stores `early-unlock-bytes` as an opaque buffer and never inspects its shape; no deployed bond uses the multisig form. The cosigner signature alone is not sufficient: `staker-unlock-bytes` runs unconditionally after `OP_ENDIF`, so an early-exit spend also requires the staker's own signature plus the staker's 32-byte commitment preimage.
+* **L2 side:** the early-exit announcement ([pox-5.clar:1196](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1196-L1257)) is gated on the staker themselves: `contract-caller`, `tx-sender`, and the `staker` argument must all match. No separate admin or signer principal is stored on the bond. After the staker's BTC is spent off-cycle through the `OP_ELSE` branch, the staker announces the exit on L2 so the contract zeros their shares; their locked STX stays locked through the normal bond period.
 
 ### Endowment (Stacks Endowment)
 
@@ -150,7 +150,7 @@ Roughly monthly window (**4,200** blocks in LS table) when a new bonding period 
 
 ### Forfeiture (early exit)
 
-Explicit product penalty: user gives up **remaining Tranche 1 BTC yield** after exit; paired STX remains locked at **zero yield** until **D172** / period rules complete.
+Explicit product penalty: user gives up **remaining Tranche 1 BTC yield** after exit; paired STX remains locked at **zero yield** until **Day 175** / period rules complete.
 
 ### Governance weight
 
@@ -158,7 +158,7 @@ Voting weight on SIPs; **pure function of locked STX**—BTC does not govern.
 
 ### Hard fork (activation)
 
-Consensus upgrade that activates PoX-5, releases PoX-4 locks, and sequences **first bond D0**; may include minimum committed STX thresholds in governance drafts.
+Consensus upgrade that activates PoX-5, releases PoX-4 locks, and sequences **first bond Day 0**; may include minimum committed STX thresholds in governance drafts.
 
 ### Indexer / API
 
@@ -214,15 +214,15 @@ Bitcoin script pattern (**pay-to-witness-script-hash**) with **check-lock-time-v
 
 ### Ratio requirement (minimum STX vs BTC)
 
-Minimum STX that must be paired with a BTC commitment. The pricing inputs are per-bond parameters the admin supplies when setting up a bond, and [`register-for-bond`](https://github.com/stacks-network/stacks-core/blob/a7e3e76019d911aef9bd6f8dbde0da81517a3b45/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3089) rejects a registration that falls short of the floor. The white paper frames the floor as a fraction of BTC value (initial **5%** example) derived from miner-bid-implied pricing; on-chain the values are set administratively.
+Minimum STX that must be paired with a BTC commitment. The pricing inputs are per-bond parameters the admin supplies when setting up a bond, and [`min-ustx-for-sats-amount`](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3089) rejects a registration that falls short of the floor. The white paper frames the floor as a fraction of BTC value (initial **5%** example) derived from miner-bid-implied pricing; on-chain the values are set administratively.
 
 ### Re-lock phase
 
 Final stretch of a bonding period where **L1 has expired** but **STX can remain locked**, giving time to construct the **next** L1 timelock. On mainnet the L1 timelock's minimum unlock height sits about **1,050 blocks** (half a reward cycle) before the bond's L2 end height. Each L1 lockup output commits its own unlock height, which the contract accepts only at or above that minimum, so a staker may lock for longer if they choose. Bitcoin treats high locktime values as timestamps rather than heights, so the committed height must also stay below Bitcoin's locktime threshold. The "\~1,400 blocks (\~10 days)" product framing does not match the contract math; treat the contract value as authoritative.
 
-### Reserve fund (Tranche 2)
+### Reserve fund (Tranche 3)
 
-Second waterfall stop: absorbs part of **cycle excess** and backstops Tranche 1 in stress; may hold **BTC and USD sleeves** in the paper's design. In PoX-5, the contract accrues into `reserve-balance` automatically each cycle (the `RESERVE_RATIO` cut of distribution); draws from the reserve are consensus-gated — the only draw path, `transfer-from-reserve`, is never called from within the contract and can only be invoked by the node as part of consensus (via the SIP process).
+Third waterfall stop: absorbs part of **cycle excess** and backstops Tranche 1 in stress; may hold **BTC and USD sleeves** in the paper's design. In PoX-5, the contract accrues into `reserve-balance` automatically each cycle (the `RESERVE_RATIO` cut of distribution); draws from the reserve are consensus-gated — the only draw path, `transfer-from-reserve`, is never called from within the contract and can only be invoked by the node as part of consensus (via the SIP process).
 
 ### Reward address
 
@@ -278,15 +278,11 @@ Legacy user verb **stacking** (PoX-4 marketing) vs proposed **staking** language
 
 ### Static STX:BTC ratio
 
-Per-period pairing requirement **fixed for PoX-5** simplicity (vs algorithmic ratio later); published **\~7 days before D0**.
+Per-period pairing requirement **fixed for PoX-5** simplicity (vs algorithmic ratio later); published **\~7 days before Day 0**.
 
-### STX-only staking (Tranche 3 path)
+### STX-only staking (Tranche 2 path)
 
-**No** BTC commitment: locks STX on \~signer-cycle cadence, earns **residual** after Tranche 1 and reserve split; **50K STX** minimum solo in product notes; **T3 residual** pro-rata.
-
-### T1, T2, T3 (waterfall tranches)
-
-**T1** pays paired BTC obligations first; **T2** is reserve; **T3** pays **STX-only** residual from cycle excess after reserve contribution.
+**No** BTC commitment: locks STX on \~signer-cycle cadence, earns **residual** after the protocol bond tranche; **50K STX** minimum solo in product notes; residual paid pro rata.
 
 ### Target yield
 
@@ -302,7 +298,11 @@ Stacks nodes/indexers observe Bitcoin **timelocked UTXOs** and match them to **L
 
 ### Waterfall (yield distribution)
 
-Priority ordering of **miner revenue** across **Tranche 1**, **reserve**, and **STX-only** residual; stabilizes BTC-side APY at the expense of more variable STX-only returns.
+Priority ordering of **miner revenue** across the **protocol bond tranche**, the **STX-only staking tranche**, and the **reserve fund tranche**; stabilizes BTC-side APY at the expense of more variable STX-only returns.
+
+### Waterfall tranches
+
+Three stops, in priority order. The **protocol bond tranche** (Tranche 1) pays paired BTC obligations first. The **STX-only staking tranche** (Tranche 2) pays STX-only residual from cycle excess. The **reserve fund tranche** (Tranche 3) takes the remainder. Outside this page, write the tranche's name rather than its number to avoid confusion.
 
 ### Weekly rewards
 

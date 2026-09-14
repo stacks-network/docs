@@ -29,7 +29,7 @@ Missing this window is not permanent. You can stake at any time outside a prepar
 
 PoX-5 enforces **one staking position per Stacks principal**. There are two kinds of position, and they are mutually exclusive:
 
-1. **STX-only staking** — no BTC commitment, no capacity limit, no auction. This is the direct continuation of PoX-4 stacking. Your reward share comes from Tranche 2 of the new yield waterfall.
+1. **STX-only staking** — no BTC commitment, no capacity limit, no auction. This is the direct continuation of PoX-4 stacking. Your reward share comes from the STX-only staking tranche of the new yield waterfall.
 2. **Protocol Bond** — new and opt-in. Pairs a self-custodial BTC L1 timelock with an STX lock for a 12-cycle (\~6-month) term (`BOND_LENGTH_CYCLES = u12`).
 
 You cannot hold a bond and an STX-only position at once, and you cannot hold two concurrent bonds. The exclusivity is keyed on your STX principal.
@@ -111,7 +111,7 @@ The coinbase block reward is **restored to 1,000 STX per Bitcoin block** at acti
 
 STX-only staking remains fully available. A BTC commitment is never required for that path.
 
-What does change is how STX-only rewards are calculated. Miner BTC commitments now fund a three-tranche waterfall: bond participants (Tranche 1) are paid their predetermined target yield rate first, and STX-only stakers are paid from what remains — the cycle excess — split 85% to stakers and 15% to the reserve fund (Tranche 2).
+What does change is how STX-only rewards are calculated. Miner BTC commitments now fund a three-tranche waterfall: the protocol bond tranche is paid its predetermined target yield rate first, and the STX-only staking tranche is paid from what remains — the cycle excess — split 85% to stakers and 15% to the reserve fund tranche.
 
 In practice this means **STX-only returns are more variable than under PoX-4**, because bond obligations are served before the STX-only pool. When miner revenue is high relative to bond commitments, STX-only stakers benefit from the excess; when it is tight, their share compresses first.
 
