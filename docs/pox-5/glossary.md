@@ -306,7 +306,7 @@ Three stops, in priority order. The **protocol bond tranche** (Tranche 1) pays p
 
 ### Weekly rewards
 
-PoX-5 distribution cadence: rewards described as **weekly pulls** honoring the pause flag and routing sBTC/L1 per election.
+PoX-5 distribution cadence. Rewards are credited once per [distribution cycle](glossary.md#distribution-cycle), every **1,050 Bitcoin blocks** or roughly a week, which is **twice per reward cycle**. The interval gates crediting only; credited rewards can be claimed at any time. How often a staker receives them is set by their pool or signer-manager, not by the protocol. Pulls honor the pause flag and route sBTC or L1 BTC per election.
 
 ### Whitelist and whitelist row
 
