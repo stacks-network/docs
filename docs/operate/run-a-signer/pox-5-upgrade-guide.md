@@ -114,12 +114,14 @@ Under the reference manager, rewards accrue as sBTC. If a staker supplied a `pox
 
 Reward distribution has two steps:
 
-1. `claim-rewards` moves the signer's cycle rewards into the signer-manager.
+1. `claim-rewards` moves the signer's distribution-cycle rewards into the signer-manager.
 2. `claim-staker-rewards` distributes each staker's share after fees.
 
 Both calls are permissionless, but the pool operator should own automation, monitoring, reconciliation, and failed-withdrawal handling. The public Signer Sidekick web workflow does not yet include claim or distribution pages; agree on the operating procedure before accepting partner or user stake.
 
 PoX-5 removes the recurring PoX-4 aggregation commitment. Participation still depends on completing registration and staking before the applicable cycle deadline.
+
+`calculate-rewards` runs at each distribution-cycle boundary, every 1,050 Bitcoin blocks or roughly a week, which is twice per reward cycle. Schedule claim automation against that clock, not the reward cycle, or you run at half the available rate. Settling less often is a legitimate trade of frequency against fees, and production schedules range from weekly to monthly.
 
 ### Security and known limitations
 

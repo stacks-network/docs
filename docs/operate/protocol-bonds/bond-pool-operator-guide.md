@@ -53,6 +53,8 @@ Read-only calls compose an operator dashboard, all keyed on your contract princi
 
 For a single member's position rather than the pool's, use `get-earned-staker-rewards`, which takes a staker principal as well. Reward claims run through `claim-rewards`, called by your contract, and `claim-staker-rewards-for-signer` marks an individual member settled.
 
+`calculate-rewards` runs at each distribution-cycle boundary, every 1,050 Bitcoin blocks or roughly a week, which is twice per reward cycle. Schedule claim automation against that clock, not the reward cycle, or you run at half the available rate. Settling less often is a legitimate trade of frequency against fees, and production schedules range from weekly to monthly.
+
 ### SDK equivalents
 
 The three signer-side reads are wrapped in `@stacks/bitcoin-staking` 7.6.0:

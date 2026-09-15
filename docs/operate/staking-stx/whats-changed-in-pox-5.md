@@ -68,6 +68,8 @@ The payout address is not a field in the PoX-5 contract the way a reward address
 
 One consequence worth knowing: any signer fee is taken at the sBTC level, **before** the conversion to L1 BTC. Choosing native BTC payouts does not avoid the fee.
 
+Rewards are credited once per distribution cycle, every 1,050 Bitcoin blocks or roughly a week, which is twice per reward cycle. That is the protocol's maximum rate, not a promise about when BTC reaches you: your pool decides that. StackingDAO's native pool has no automatic payout, so you claim yourself; FastPool pays out weekly; PlanBetter plans payouts about every two cycles, roughly monthly. Where a signer-manager contract (pool) offers self-service you can always claim credited rewards yourself.
+
 ### Where to stake
 
 STX-only staking is available through [Leather](https://app.leather.io/staking).

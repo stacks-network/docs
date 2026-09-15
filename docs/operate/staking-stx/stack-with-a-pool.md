@@ -61,6 +61,8 @@ Both [app.leather.io/staking](https://app.leather.io/staking) and pool operators
 
 Claiming is non-custodial and anyone can call it. Rewards move from `pox-5` to the signer-manager, then the manager's `claim-staker-rewards` moves them on to you. Your manager will normally do both, and since PoX-5 (Stacks 4.x) you can also do them yourself.
 
+Rewards are credited once per distribution cycle, every 1,050 Bitcoin blocks or roughly a week, which is twice per reward cycle. That is the protocol's maximum rate, not a promise about when BTC reaches you: your pool decides that. StackingDAO's native pool has no automatic payout, so you claim yourself; FastPool pays out weekly; PlanBetter plans payouts about every two cycles, roughly monthly. Where a signer-manager contract (pool) offers self-service you can always claim credited rewards yourself.
+
 ### Change or end your position
 
 `stake-update` re-runs the manager's validation. A second call overwrites whatever the first stored, which is also how a stored payout address is rotated. You can change:
