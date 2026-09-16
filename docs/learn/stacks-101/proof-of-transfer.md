@@ -22,6 +22,8 @@ PoX gives the network two properties that work together.
 
 **Programmatic.** Miner BTC commitments on Bitcoin are the input to leader selection, which determines who builds the next Stacks block. Blocks are then cryptographically linked and anchored to Bitcoin, inheriting its settlement assurances. PoX is not only an exchange of value: it is the consensus engine that orders and finalises blocks while keeping a verifiable link to Bitcoin L1.
 
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/pox-mechanism.png" alt="Proof of Transfer as a loop between two currencies. Miners spend already-mined BTC to compete for the right to produce a tenure of Stacks blocks, and earn the STX coinbase plus transaction fees in return. The programmatic side runs every Bitcoin block: leader election by a sortition weighted by committed BTC, the winner produces the tenure, and signers validate and append the blocks once 70 percent of signer weight accepts them. The economic side shows every block-commit paying a single output into one reward pool, which auto-bridges to sBTC and pays out in a fixed order: active protocol bonds at their target rate first, then STX-only stakers pro rata from the residual, then the reserve fund. The contract holds no participant addresses and no BTC is burned."><figcaption><p>Two currencies moving in opposite directions. BTC flows from miners to participants; STX flows from the protocol to miners.</p></figcaption></figure></div>
+
 ### Who takes part
 
 Four roles, each documented in full elsewhere.
@@ -32,6 +34,8 @@ Four roles, each documented in full elsewhere.
 | Stacks signers   | Validate and append blocks. A block is accepted once signers holding at least 70% of the weight approve it               | [Signing](../block-production/signing.md) |
 | Bitcoin stakers  | Lock BTC on Bitcoin L1 under their own keys, paired with STX, and earn BTC-denominated yield                             | [Bitcoin Staking](../bitcoin-staking/)    |
 | STX-only stakers | Stake STX to a signer and earn a share of what is left after bond obligations are met                                    | [Staking](../block-production/staking.md) |
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/pox-participants.png" alt="The four roles side by side. Miners spend BTC, produce a tenure of Stacks blocks, and earn the STX coinbase plus fees. Stacks signers validate and append blocks, and 70 percent of weight accepts a block, where weight is staked STX. Bitcoin stakers lock BTC and STX, either native BTC on L1 under their own keys or sBTC, solo or pooled, and earn BTC yield paid first. STX-only stakers stake STX to a signer while it stays in their own account, and earn the residual. Staked STX is what gives a signer its weight, subject to a 50,000 STX minimum counted in aggregate per signer."><figcaption><p>Staked STX is what gives signers their weight. Miner BTC is what pays the yield.</p></figcaption></figure></div>
 
 ### How the mechanism works
 
@@ -56,6 +60,8 @@ Signers replicate and sequence blocks proposed by the miner. Each signer's vote 
 {% endstepper %}
 
 Cycle structure is the same in every version of PoX: a reward cycle is 2,100 Bitcoin blocks, made up of a reward phase of 2,000 blocks followed by a prepare phase of 100. The anchor block is the first Stacks block confirmed in the prepare phase, and the next cycle's signer set is determined from the chain state at that block.
+
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/pox-reward-cycle.png" alt="A reward cycle drawn as a horizontal bar of 2,100 Bitcoin blocks, numbered 0 to 2,099. The first 2,000 blocks are the reward phase and the last 100 are the prepare phase, followed immediately by the next cycle. Two markers sit on the bar: distributions are calculated every 1,050 blocks, twice per reward cycle, and the anchor block is the first Stacks block confirmed in the prepare phase, from which the next cycle&#x27;s signer set is determined."><figcaption><p>The cycle repeats without pause: the block after the prepare phase is block 0 of the next cycle.</p></figcaption></figure></div>
 
 ### Versions of Proof of Transfer
 
