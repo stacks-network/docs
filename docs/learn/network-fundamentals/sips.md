@@ -18,37 +18,40 @@ Anyone in the Stacks community can submit a SIP.
 Stacks Improvement Proposals Community Calls: Add the [weekly community SIP call](https://www.addevent.com/event/wS15955379) to your calendar.
 {% endhint %}
 
-### Ratified SIPSs
+### Ratified SIPs
 
-* [x] [SIP 000: Improvement Proposal Process](https://github.com/stacksgov/sips/blob/main/sips/sip-000/sip-000-stacks-improvement-proposal-process.md)
-* [x] [SIP 001: Burn Election](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md)
-* [x] [SIP 002: Clarity, a language for predictable smart contracts](https://github.com/stacksgov/sips/blob/main/sips/sip-002/sip-002-smart-contract-language.md)
-* [x] [SIP 003: Peer Network](https://github.com/stacksgov/sips/blob/main/sips/sip-003/sip-003-peer-network.md)
-* [x] [SIP 004: Cryptographic Commitment to Materialized Views](https://github.com/stacksgov/sips/blob/main/sips/sip-004/sip-004-materialized-view.md)
-* [x] [SIP 005: Blocks, Transactions, and Accounts](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md)
-* [x] [SIP 006: Clarity Execution Cost Assessment](https://github.com/stacksgov/sips/blob/main/sips/sip-006/sip-006-runtime-cost-assessment.md)
-* [x] [SIP 007: Stacking Consensus](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md)
-* [x] [SIP 008: Clarity Parsing and Analysis Cost Assessment](https://github.com/stacksgov/sips/blob/main/sips/sip-008/sip-008-analysis-cost-assessment.md)
-* [x] [SIP 009: Standard Trait Definition for Non-Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md)
-* [x] [SIP 010: Standard Trait Definition for Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md)
-* [x] [SIP 012: Burn Height Selection for a Network Upgrade to Introduce New Cost-Limits](https://github.com/stacksgov/sips/blob/main/sips/sip-012/sip-012-cost-limits-network-upgrade.md)
-* [x] [SIP 013: Standard Trait Definition for Semi-Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-013/sip-013-semi-fungible-token-standard.md)
+* [x] [SIP-000: Stacks Improvement Proposal Process](https://github.com/stacksgov/sips/blob/main/sips/sip-000/sip-000-stacks-improvement-proposal-process.md)
+* [x] [SIP-001: Burn Election](https://github.com/stacksgov/sips/blob/main/sips/sip-001/sip-001-burn-election.md)
+* [x] [SIP-002: The Clarity Smart Contract Language](https://github.com/stacksgov/sips/blob/main/sips/sip-002/sip-002-smart-contract-language.md)
+* [x] [SIP-003: Stacks P2P Network](https://github.com/stacksgov/sips/blob/main/sips/sip-003/sip-003-peer-network.md)
+* [x] [SIP-004: Cryptographic Commitment to Materialized Views](https://github.com/stacksgov/sips/blob/main/sips/sip-004/sip-004-materialized-view.md)
+* [x] [SIP-005: Blocks, Transactions, and Accounts](https://github.com/stacksgov/sips/blob/main/sips/sip-005/sip-005-blocks-and-transactions.md)
+* [x] [SIP-006: Clarity Execution Cost Assessment](https://github.com/stacksgov/sips/blob/main/sips/sip-006/sip-006-runtime-cost-assessment.md)
+* [x] [SIP-007: Stacking Consensus](https://github.com/stacksgov/sips/blob/main/sips/sip-007/sip-007-stacking-consensus.md)
+* [x] [SIP-008: Clarity Parsing and Analysis Cost Assessment](https://github.com/stacksgov/sips/blob/main/sips/sip-008/sip-008-analysis-cost-assessment.md)
+* [x] [SIP-009: Standard Trait Definition for Non-Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-009/sip-009-nft-standard.md)
+* [x] [SIP-010: Standard Trait Definition for Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip-010-fungible-token-standard.md)
+* [x] [SIP-012: Burn Height Selection for a Network Upgrade to Introduce New Cost-Limits](https://github.com/stacksgov/sips/blob/main/sips/sip-012/sip-012-cost-limits-network-upgrade.md)
+* [x] [SIP-013: Standard Trait Definition for Semi-Fungible Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-013/sip-013-semi-fungible-token-standard.md)
 * [x] [SIP-015: Stacks Upgrade of Proof-of-Transfer and Clarity](https://github.com/stacksgov/sips/blob/main/sips/sip-015/sip-015-network-upgrade.md)
-* [x] [SIP-016: Metadata for Tokens](https://github.com/stacksgov/sips/blob/main/sips/sip-016/sip-016-token-metadata.md)
+* [x] [SIP-016: Schema Definition for Metadata for Digital Assets](https://github.com/stacksgov/sips/blob/main/sips/sip-016/sip-016-token-metadata.md)
 * [x] [SIP-018: Signed Structured Data](https://github.com/stacksgov/sips/blob/main/sips/sip-018/sip-018-signed-structured-data.md)
 * [x] [SIP-019: Notifications for Token Metadata Updates](https://github.com/stacksgov/sips/blob/main/sips/sip-019/sip-019-token-metadata-update-notifications.md)
 * [x] [SIP-020: Bitwise Operations in Clarity](https://github.com/stacksgov/sips/blob/main/sips/sip-020/sip-020-bitwise-ops.md)
+* [x] [SIP-021: Nakamoto: Fast and Reliable Blocks through PoX-assisted Block Propagation](https://github.com/stacksgov/sips/blob/main/sips/sip-021/sip-021-nakamoto.md)
 * [x] [SIP-022: Emergency Fix to PoX Stacking Increases](https://github.com/stacksgov/sips/blob/main/sips/sip-022/sip-022-emergency-pox-fix.md)
 * [x] [SIP-023: Emergency Fix to Trait Invocation Behavior](https://github.com/stacksgov/sips/blob/main/sips/sip-023/sip-023-emergency-fix-traits.md)
-* [x] [SIP-024:](https://github.com/stacksgov/sips/blob/main/sips/sip-024/sip-024-least-supertype-fix.md) Emergency Fix to Data Validation and Serialization Behavior
-* [x] [SIP-025](https://github.com/stacksgov/sips/blob/main/sips/sip-025/sip-025-iterating-towards-weighted-schnorr-threshold-signatures.md): Iterating Towards WSTS
-* [x] [SIP-027](https://github.com/stacksgov/sips/blob/main/sips/sip-027/sip-027-non-sequential-multisig-transactions.md): Non-sequential Multisig Transactions
-* [x] [SIP-028](https://github.com/stacksgov/sips/blob/main/sips/sip-028/sip-028-sbtc_peg.md): Signer Criteria for sBTC, A Decentralized and Programmable Asset Backed 1:1 with BTC
-* [x] [SIP-029](https://github.com/stacksgov/sips/blob/main/sips/sip-029/sip-029-halving-alignment.md): Bootstrapping sBTC Liquidity and Nakamoto Signer Incentives
-* [x] [SIP-031](https://github.com/stacksgov/sips/blob/main/sips/sip-031/sip-031.md): Five-Year Stacks Growth Emissions
-* [x] [SIP-033](https://github.com/stacksgov/sips/blob/main/sips/sip-033/sip-033-clarity4.md): Clarity Smart Contract Language, version 4
-* [x] [SIP-034](https://github.com/stacksgov/sips/blob/main/sips/sip-034/sip-034.md): Dimension-Specific Tenure Extend Variants
-* [x] [SIP-035](https://github.com/stacksgov/sips/blob/main/sips/sip-035/sip-secp256r1-verify.md): Clarification of Clarity's `secp256r1-verify` Behavior
+* [x] [SIP-024: Emergency Fix to Data Validation and Serialization Behavior](https://github.com/stacksgov/sips/blob/main/sips/sip-024/sip-024-least-supertype-fix.md)
+* [x] [SIP-025: Iterating towards Weighted Schnorr Threshold Signatures](https://github.com/stacksgov/sips/blob/main/sips/sip-025/sip-025-iterating-towards-weighted-schnorr-threshold-signatures.md)
+* [x] [SIP-027: Non-sequential Multisig Transactions](https://github.com/stacksgov/sips/blob/main/sips/sip-027/sip-027-non-sequential-multisig-transactions.md)
+* [x] [SIP-028: Signer Criteria for sBTC, A Decentralized and Programmable Asset Backed 1:1 with BTC](https://github.com/stacksgov/sips/blob/main/sips/sip-028/sip-028-sbtc_peg.md)
+* [x] [SIP-029: Preserving Economic Incentives During Stacks Network Upgrades](https://github.com/stacksgov/sips/blob/main/sips/sip-029/sip-029-halving-alignment.md)
+* [x] [SIP-031: Five-Year Stacks Growth Emissions](https://github.com/stacksgov/sips/blob/main/sips/sip-031/sip-031.md)
+* [x] [SIP-033: Clarity Smart Contract Language, version 4](https://github.com/stacksgov/sips/blob/main/sips/sip-033/sip-033-clarity4.md)
+* [x] [SIP-034: Dimension-Specific Tenure Extend Variants](https://github.com/stacksgov/sips/blob/main/sips/sip-034/sip-034.md)
+* [x] [SIP-035: Clarification of Clarity's `secp256r1-verify` Behavior](https://github.com/stacksgov/sips/blob/main/sips/sip-035/sip-secp256r1-verify.md)
+* [x] [SIP-044: Clarity 6, staking and PoX post-conditions, and removal of the cost-voting contract](https://github.com/stacksgov/sips/blob/main/sips/sip-044/sip-044-clarity6.md)
+* [x] [SIP-045: PoX-5: Bitcoin Staking and Emission Schedule Alignment](https://github.com/stacksgov/sips/blob/main/sips/sip-045/sip-045-pox-5-bitcoin-staking.md)
 
 ### How to Get Involved
 
