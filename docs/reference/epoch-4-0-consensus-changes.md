@@ -15,7 +15,7 @@ This page covers the consensus and language changes. For what the fork did to st
 | SIP-045, PoX-5: Bitcoin Staking and Emission Schedule Alignment                              | PoX-5 replacing PoX-4, the yield waterfall, the emission change, removal of the miner BTC burn |
 | SIP-044, Clarity 6, staking and PoX post-conditions, and removal of the cost-voting contract | Clarity 6, the new post-condition types, the block header version scheme, cost-voting          |
 
-SIP-044 describes itself as a rider on SIP-045. Both are ratified and both votes concluded before activation. SIP-045's vote closed at Bitcoin block 958,925 with 181,488,504 STX voting across 87 unique wallets; SIP-044 reports 161,443,320 STX across 77 voters. Each passed with all but 2 STX in favor. The two totals are reported separately in each SIP and are not the same number.
+SIP-044 describes itself as a rider on SIP-045. Both are ratified and both votes concluded before activation. SIP-045's vote closed at Bitcoin block 958,925 with 181,488,504 STX voting across 87 unique wallets; SIP-044 reports 161,443,320 STX across 77 voters. Each passed with all but 2 STX in favor. Each SIP reports its own total, and they are not the same number.
 
 ## Miner BTC no longer reaches a burn address
 
@@ -44,7 +44,7 @@ The Nakamoto block header carries a single-byte version field. The high bit, `0x
 | 0       | Nakamoto epochs before Epoch 4.0 |
 | 1       | Epoch 4.0 and later              |
 
-A block is invalid if `version & 0x7f` does not equal the version expected for its epoch. Version 1 headers serialize and hash a list of problematic-transaction markers, which is the mechanism that identifies and handles such transactions in consensus.
+A block is invalid if `version & 0x7f` does not equal the version expected for its epoch. Version 1 headers serialize and hash a list of problematic-transaction markers.
 
 Read the version with the mask. A pre-4.0 shadow block has a version byte of `0x80`, which is version 0 with the flag set, and comparing the raw byte to `0` will reject it.
 
@@ -63,11 +63,11 @@ The `with-stacking` allowance used by `restrict-assets?` and `as-contract?` is r
 | `with-staking` | `stake`, `register-for-bond`, `stake-update`                                    |
 | `with-pox`     | `unstake`, `unstake-sbtc`, `update-bond-registration`, `announce-l1-early-exit` |
 
-Two post-condition types are new. `Staking` constrains how much STX a principal may lock, and reuses the fungible condition codes. `PoX` constrains whether a principal may perform a position-altering PoX operation, and has its own three condition codes. See [Post-conditions](https://docs.stacks.co/post-conditions/overview) for how to write them.
+Two post-condition types are new. `Staking` constrains how much STX a principal may lock, and reuses the fungible condition codes. `PoX` constrains whether a principal may perform a position-altering PoX operation, and has its own condition codes. See [Post-conditions](https://docs.stacks.co/post-conditions/overview) for how to write them.
 
 ## For integrators: the PoX-4 unlock has no transaction and no event
 
-STX locked under PoX-4 became spendable at the activation height. There is no unlock transaction, no unlock event, and no receipt to watch for. The node carries a v4 unlock height and materialises the unlock the first time an account is touched, the same way the v2 and v3 unlocks worked.
+STX locked under PoX-4 became spendable at the activation height. There is no unlock transaction and no unlock event to watch for. The node carries a v4 unlock height and materialises the unlock the first time an account is touched, the same way the v2 and v3 unlocks worked.
 
 Anything that detects unlocks by watching for an event will see nothing. Read the account's locked balance instead.
 
