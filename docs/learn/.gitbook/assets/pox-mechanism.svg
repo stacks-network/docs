@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1150" font-family="Instrument Sans, Helvetica, Arial, sans-serif">
+  <rect width="1536" height="1150" fill="#0A0A0A"/>
+
+  <!-- Title pill -->
+  <rect x="20" y="20" width="1496" height="84" rx="26" fill="#F65B27"/>
+  <path fill="#111111" stroke="#111111" stroke-width="1.5" stroke-linejoin="round" d="M52.000,62.000 C52.000,45.431 65.431,32.000 82.000,32.000 C98.569,32.000 112.000,45.431 112.000,62.000 C112.000,78.569 98.569,92.000 82.000,92.000 C65.431,92.000 52.000,78.569 52.000,62.000 Z"/>
+  <g fill="#FFFFFF"><path fill-rule="evenodd" transform="translate(-3.68,-115.07) scale(0.714)" d="M127.15,241.02c-.15-.26-.13-.59.04-.86l7.33-10.88c.2-.31.22-.68.04-.99-.18-.33-.51-.51-.86-.51h-2.85c-.31,0-.61.15-.81.44l-8.56,12.75c-.22.33-.57.51-.97.51h-1.08c-.4,0-.75-.2-.97-.51l-8.52-12.77c-.18-.29-.5-.44-.81-.44h-2.85c-.35,0-.7.2-.86.53-.18.33-.13.7.04.99l7.33,10.9c.18.24.2.57.04.84-.15.29-.42.44-.72.44h-11.22c-.55,0-.97.44-.97.97v2.37c0,.55.44.97.97.97h38.18c.55,0,.97-.44.97-.97v-2.37c0-.51-.37-.9-.86-.97h-11.33c-.31,0-.59-.15-.72-.44ZM118.5,255.02l-8.56,12.75c-.18.29-.5.44-.81.44h-2.85c-.35,0-.68-.2-.86-.51-.18-.31-.15-.7.04-.99l7.31-10.88c.18-.26.2-.57.04-.86-.15-.26-.42-.44-.72-.44h-11.18c-.53,0-.97-.42-.97-.97v-2.37c0-.53.42-.97.97-.97h38.18c.53,0,.97.42.97.97v2.37c0,.53-.42.97-.97.97h-11.2c-.33,0-.59.15-.72.44-.15.29-.13.59.04.84l7.33,10.9c.18.29.22.66.04.99-.18.33-.5.53-.86.53h-2.85c-.33,0-.61-.15-.79-.42l-8.56-12.75c-.22-.33-.57-.51-.97-.51h-1.08c-.4,0-.75.2-.97.51l-.02-.04Z"/></g>
+  <text x="132" y="75" font-size="36" font-weight="500" fill="#FFFFFF">Proof of Transfer</text>
+
+  <!-- ===== Miners panel ===== -->
+  <rect x="24" y="150" width="340" height="740" rx="24" fill="#161618" stroke="#2C2C2E" stroke-width="1.5"/>
+  <!-- isometric cube avatar -->
+  <g>
+    <path d="M194,266 L234,286 L194,306 L154,286 Z" fill="#F9A03F"/>
+    <path d="M154,286 L194,306 L194,350 L154,330 Z" fill="#F65B27"/>
+    <path d="M234,286 L194,306 L194,350 L234,330 Z" fill="#B23E17"/>
+  </g>
+  <text x="194" y="404" font-size="26" font-weight="600" fill="#FFFFFF" text-anchor="middle">Miners</text>
+  <text font-size="20" fill="#C7C7CC" text-anchor="middle">
+    <tspan x="194" y="448">Spend already-mined BTC</tspan>
+    <tspan x="194" y="478">to compete for the right</tspan>
+    <tspan x="194" y="508">to produce a tenure of</tspan>
+    <tspan x="194" y="538">Stacks blocks.</tspan>
+  </text>
+  <text font-size="17" fill="#8E8E93" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="1">
+    <tspan x="194" y="600">NO NEW ENERGY BURNED:</tspan>
+    <tspan x="194" y="626">POX REUSES WORK BITCOIN</tspan>
+    <tspan x="194" y="652">MINERS ALREADY DID</tspan>
+  </text>
+
+  <!-- ===== Center panel: Programmatic ===== -->
+  <rect x="396" y="150" width="530" height="740" rx="24" fill="#161618" stroke="#2C2C2E" stroke-width="1.5"/>
+  <text x="436" y="202" font-size="18" fill="#8E8E93" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2">PROGRAMMATIC COMPONENT OF POX</text>
+
+  <rect x="436" y="232" width="450" height="118" rx="16" fill="#3A3A3C" opacity="0.6"/>
+  <text x="661" y="280" font-size="21" font-weight="600" fill="#FFFFFF" text-anchor="middle">Leader election on Bitcoin</text>
+  <text x="661" y="312" font-size="19" fill="#C7C7CC" text-anchor="middle">A sortition weighted by committed BTC</text>
+  <text x="661" y="338" font-size="19" fill="#C7C7CC" text-anchor="middle">picks one winner per Bitcoin block.</text>
+
+  <line x1="661" y1="350" x2="661" y2="386" stroke="#8E8E93" stroke-width="3" stroke-dasharray="5 7" stroke-linecap="round"/>
+  <path d="M651 378 L661 388 L671 378" stroke="#8E8E93" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <rect x="436" y="396" width="450" height="118" rx="16" fill="#3A3A3C" opacity="0.6"/>
+  <text x="661" y="444" font-size="21" font-weight="600" fill="#FFFFFF" text-anchor="middle">Winner produces the tenure</text>
+  <text x="661" y="476" font-size="19" fill="#C7C7CC" text-anchor="middle">Many Stacks blocks</text>
+  <text x="661" y="502" font-size="19" fill="#C7C7CC" text-anchor="middle">for that one Bitcoin block.</text>
+
+  <line x1="661" y1="514" x2="661" y2="550" stroke="#8E8E93" stroke-width="3" stroke-dasharray="5 7" stroke-linecap="round"/>
+  <path d="M651 542 L661 552 L671 542" stroke="#8E8E93" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <rect x="436" y="560" width="450" height="118" rx="16" fill="#3A3A3C" opacity="0.6"/>
+  <text x="661" y="608" font-size="21" font-weight="600" fill="#FFFFFF" text-anchor="middle">Signers validate and append</text>
+  <text x="661" y="640" font-size="19" fill="#C7C7CC" text-anchor="middle">Accepted at 70% of signer weight,</text>
+  <text x="661" y="666" font-size="19" fill="#C7C7CC" text-anchor="middle">anchored to Bitcoin.</text>
+
+  <!-- loop back -->
+  <path d="M910 619 H 940 V 291 H 890" stroke="#6E6E73" stroke-width="2.5" stroke-dasharray="5 7" fill="none" stroke-linecap="round"/>
+  <path d="M900 281 L890 291 L900 301" stroke="#6E6E73" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <text x="700" y="726" font-size="17" fill="#8E8E93" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="1" text-anchor="middle">REPEATS EVERY BITCOIN BLOCK</text>
+
+  <!-- ===== Right panel: Economic ===== -->
+  <rect x="958" y="150" width="554" height="740" rx="24" fill="#161618" stroke="#2C2C2E" stroke-width="1.5"/>
+  <text x="998" y="202" font-size="18" fill="#8E8E93" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2">ECONOMIC COMPONENT OF POX</text>
+
+  <rect x="998" y="232" width="474" height="130" rx="16" fill="#F65B27"/>
+  <text x="1235" y="282" font-size="22" font-weight="600" fill="#FFFFFF" text-anchor="middle">One reward pool</text>
+  <text x="1235" y="314" font-size="19" fill="#FFD9C7" text-anchor="middle">Each block-commit pays a single output.</text>
+  <text x="1235" y="340" font-size="19" fill="#FFD9C7" text-anchor="middle">The pool auto-bridges to sBTC.</text>
+
+  <line x1="1235" y1="362" x2="1235" y2="400" stroke="#F65B27" stroke-width="3" stroke-dasharray="5 7" stroke-linecap="round"/>
+  <path d="M1225 392 L1235 402 L1245 392" stroke="#F65B27" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="1250" y="388" font-size="17" fill="#F65B27" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="1">PAID IN ORDER</text>
+
+  <rect x="998" y="410" width="474" height="88" rx="14" fill="#3A3A3C" opacity="0.6"/>
+  <circle cx="1036" cy="454" r="18" fill="#F65B27"/>
+  <text x="1036" y="461" font-size="20" font-weight="600" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text x="1072" y="446" font-size="21" font-weight="600" fill="#FFFFFF">Active protocol bonds</text>
+  <text x="1072" y="476" font-size="18" fill="#C7C7CC">Bitcoin stakers, at their target rate</text>
+
+  <rect x="998" y="514" width="474" height="88" rx="14" fill="#3A3A3C" opacity="0.6"/>
+  <circle cx="1036" cy="558" r="18" fill="#F9A03F"/>
+  <text x="1036" y="565" font-size="20" font-weight="600" fill="#111111" text-anchor="middle">2</text>
+  <text x="1072" y="550" font-size="21" font-weight="600" fill="#FFFFFF">STX-only stakers</text>
+  <text x="1072" y="580" font-size="18" fill="#C7C7CC">The residual, pro rata</text>
+
+  <rect x="998" y="618" width="474" height="88" rx="14" fill="#3A3A3C" opacity="0.6"/>
+  <circle cx="1036" cy="662" r="18" fill="#6E6E73"/>
+  <text x="1036" y="669" font-size="20" font-weight="600" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text x="1072" y="654" font-size="21" font-weight="600" fill="#FFFFFF">Reserve fund</text>
+  <text x="1072" y="684" font-size="18" fill="#C7C7CC">The remainder, held by the protocol</text>
+
+  <text font-size="17" fill="#8E8E93" text-anchor="middle" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="1">
+    <tspan x="1235" y="786">THE CONTRACT HOLDS NO PARTICIPANT ADDRESSES</tspan>
+  </text>
+
+  <!-- ===== Currency loop arrows ===== -->
+  <!-- BTC: miners -> pool (top lane) -->
+  <path d="M194 236 V 136 H 1235 V 222" stroke="#F65B27" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M1225 212 L1235 222 L1245 212" stroke="#F65B27" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <rect x="490" y="106" width="448" height="26" fill="#0A0A0A"/>
+  <text x="714" y="126" font-size="19" fill="#F65B27" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2" text-anchor="middle">BTC: MINERS COMMIT IT TO COMPETE</text>
+
+  <!-- participants lock -> chain (bottom lane, right to center) -->
+  <path d="M1235 890 V 972 H 700 V 902" stroke="#8E8E93" stroke-width="3" stroke-dasharray="5 7" fill="none" stroke-linecap="round"/>
+  <path d="M690 912 L700 902 L710 912" stroke="#8E8E93" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <text x="968" y="962" font-size="18" fill="#8E8E93" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="1" text-anchor="middle">PARTICIPANTS LOCK STX OR BTC</text>
+
+  <!-- STX: chain -> miners (bottom lane, center to left) -->
+  <path d="M560 890 V 1030 H 194 V 902" stroke="#F9A03F" stroke-width="4" stroke-dasharray="8 8" fill="none" stroke-linecap="round"/>
+  <path d="M184 912 L194 902 L204 912" stroke="#F9A03F" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <text x="377" y="1020" font-size="19" fill="#F9A03F" font-family="JetBrains Mono, Menlo, monospace" letter-spacing="2" text-anchor="middle">STX: COINBASE + FEES</text>
+
+  <!-- Footer -->
+  <rect x="24" y="1054" width="1488" height="72" rx="20" fill="#3A3A3C" opacity="0.6"/>
+  <text x="768" y="1086" font-size="23" font-weight="600" fill="#FFFFFF" text-anchor="middle">Two currencies, opposite directions: BTC flows from miners to participants, STX from the protocol to miners.</text>
+  <text x="768" y="1114" font-size="19" fill="#C7C7CC" text-anchor="middle">No BTC is burned. Security is paid for in already-mined Bitcoin.</text>
+</svg>
