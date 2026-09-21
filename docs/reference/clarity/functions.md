@@ -986,6 +986,13 @@ Public functions _must_ return a ResponseType (using either `ok` or `err`). Any 
 a public function is aborted if the function returns an `err` type. Public functions may be invoked by other
 contracts via `contract-call?`.
 
+Function names may not collide with a native function or keyword. Beginning in Epoch 4.1, one exception applies:
+a public function may take a reserved name (e.g. `slice?`) to implement a method of a trait listed in `impl-trait`,
+provided the name was still free in the trait's Clarity version. Inside the contract the native function or keyword
+keeps its meaning, so the implementation is reached through `contract-call?` and trait dispatch; a keyword-named one
+can also be applied directly or passed to `map`/`fold`/`filter`, since no native function has that name. A function
+under a reserved name that matches no such trait method fails with `NameAlreadyUsed`.
+
 **example:**
 
 ```clarity
@@ -1016,6 +1023,8 @@ may not perform any datamap modifications, or call any functions which
 perform such modifications. This is enforced both during type checks and during
 the execution of the function. Public read-only functions may
 be invoked by other contracts via `contract-call?`.
+
+The reserved-name exception described under `define-public` applies to read-only functions as well.
 
 **example:**
 
@@ -1053,6 +1062,10 @@ and a trait value can be bound to a variable in a `let` or `match` expression. I
 and trait value with matching type allowed in Clarity 1, Clarity 2 also supports implicit casting from a
 compatible trait, meaning that a value of type `trait-a` may be passed to a parameter with type `trait-b` if `trait-a`
 includes all of the requirements of `trait-b` (and optionally additional functions).
+
+Beginning in Epoch 4.1, a trait method may not take a name reserved in the contract's Clarity version;
+`define-trait` rejects it with `NameAlreadyUsed`. Traits from versions where the name was still free stay
+implementable: see `define-public`.
 
 Like other kinds of definition statements, `define-trait` may only be used at the top level of a smart contract
 definition (i.e., you cannot put a define statement in the middle of a function body).
@@ -2692,7 +2705,7 @@ and returns a new sequence with the data at the index position replaced with the
 The given element's type must match the type of the sequence, and must correspond to a single
 index of the input sequence. The return type on success is the same type as the input sequence.
 
-If the provided index is out of bounds, this functions returns `none`.
+If the provided index is out of bounds, this function returns `none`.
 
 **example:**
 
@@ -2760,7 +2773,7 @@ The `secp256k1-decompress?` function decompresses the provided (compressed) publ
 **example:**
 
 ```clarity
-(secp256k1-decompress? 0x0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352) 
+(secp256k1-decompress? 0x0250863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b2352)
     ;; Returns (ok 0x0450863ad64a87ae8a2fe83c1af1a8403cb53f53e486d8511dad8a04887e5b23522cd470243453a299fa9e77237716103abc11a1df38855ed6f2ee187e9c582ba6)
 ```
 
