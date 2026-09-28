@@ -35,3 +35,4 @@
   * [Key and Address Rotation](staking-stx/key-and-address-rotation.md)
 * [Protocol Bonds](protocol-bonds/README.md)
   * [Bond Pool (BTC + STX) Operator Guide](protocol-bonds/bond-pool-operator-guide.md)
+  * [Ending or Changing a Bond Position](protocol-bonds/ending-or-changing-a-bond-position.md)
