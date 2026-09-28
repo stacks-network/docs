@@ -1,6 +1,6 @@
 # Build Transactions
 
-Learn how to build transactions programmatically for complete control over network interactions.
+Learn how to build transactions programmatically and control each field yourself.
 
 ## Objectives
 
@@ -10,7 +10,9 @@ Learn how to build transactions programmatically for complete control over netwo
 
 ## Transaction types
 
-Stacks supports five primary transaction types, each serving a specific purpose. Three of the five primary transaction types will be commonly used amongst developers.
+Stacks has five transaction types: token transfer, contract deploy, contract call, coinbase, and tenure change. Apps build the first three. Miners produce coinbase and tenure-change transactions. See [Technical Specifications](https://docs.stacks.co/learn/network-fundamentals/technical-specifications#transactions) for the full list.
+
+Unsigned, sponsored, and multi-signature describe how a transaction is authorized, and apply to any of the three. They are covered further down this page.
 
 ```ts
 // STX Transfer - Send native tokens
@@ -26,9 +28,8 @@ const contractCall = await makeContractCall(options);
 interface TransactionOptions {
   senderKey: string;        // Private key for signing
   network: string;          // 'mainnet' or 'testnet'
-  fee?: bigint;            // Manual fee in microSTX
-  nonce?: bigint;          // Manual nonce
-  anchorMode?: AnchorMode; // Block anchoring strategy
+  fee?: bigint;             // Manual fee in microSTX
+  nonce?: bigint;           // Manual nonce
 }
 ```
 
@@ -111,12 +112,13 @@ const transaction = await makeContractDeploy({
   codeBody: contractCode,
   senderKey: 'your-private-key-hex',
   network: 'testnet',
-  clarityVersion: ClarityVersion.Clarity4,
-  senderKey: 'your-private-key-hex',
+  clarityVersion: ClarityVersion.Clarity6,
 });
 
 const result = await broadcastTransaction({ transaction });
 ```
+
+Set `clarityVersion` explicitly. If the option is left out, `makeContractDeploy` fills in `ClarityVersion.Clarity4` and the contract deploys as Clarity 4.
 {% endstep %}
 
 {% step %}
@@ -194,7 +196,7 @@ const result = await broadcastTransaction({ transaction: sponsoredTx });
 
 ## Multi-signature transactions
 
-Require multiple signatures for enhanced security.
+Require more than one signature before a transaction is valid.
 
 ```ts
 // Create multi-sig transaction (2-of-3)
@@ -246,7 +248,7 @@ const functionArgs = [
   Cl.some(Cl.uint(42)),
   Cl.none(),
   Cl.ok(Cl.uint(200)),
-  Cl.err(Cl.uint(404))
+  Cl.error(Cl.uint(404))
 ];
 ```
 
@@ -274,28 +276,41 @@ const transaction = await makeContractCall({
 });
 ```
 
-Beyond STX, fungible token, and NFT conditions, post-conditions can also guard staking and PoX actions (`.ustxToLock()`, `.willNotPerformPox()` — SIP-045, epoch 4.0+) and use `PostConditionMode.Originator` to protect only the sender's assets (SIP-040). See the [post-conditions guide](../post-conditions/implementation.md) for details.
+Beyond STX, fungible token, and NFT conditions, post-conditions can also guard staking and PoX actions (`.ustxToLock()` and `.willNotPerformPox()`, from SIP-045, Epoch 4.0 and later) and use `PostConditionMode.Originator` to protect only the sender's assets (SIP-040). See the [post-conditions guide](../post-conditions/implementation.md) for details.
+
+PoX-5 entrypoints are better reached through [`@stacks/bitcoin-staking`](https://www.npmjs.com/package/@stacks/bitcoin-staking) than through hand-written contract calls. `buildRegisterForBond` and its siblings construct the arguments and post-conditions for you, and `fetchEligibleRegisterForBond` re-runs the contract's own guard checks read-only before you broadcast.
 
 ## Fee estimation
 
-Get accurate fee estimates before broadcasting.
+Estimate a fee before broadcasting.
+
+Omit `fee` and the builder estimates it with `fetchFeeEstimate` before signing. To set the fee yourself, estimate it on an unsigned transaction, then sign: changing the fee after signing invalidates the signature.
 
 ```ts
-import { estimateFee } from '@stacks/transactions';
+import {
+  makeUnsignedSTXTokenTransfer,
+  fetchFeeEstimate,
+  TransactionSigner,
+  privateKeyToPublic,
+  broadcastTransaction,
+} from '@stacks/transactions';
 
-// Build transaction first
-const tx = await makeSTXTokenTransfer({
+// Build the transaction unsigned
+const tx = await makeUnsignedSTXTokenTransfer({
   recipient: 'ST2CY5V39NHDPWSXMW9QDT3HC3GD6Q6XX4CFRK9AG',
   amount: 1000000n,
-  senderKey: privateKey,
+  publicKey: privateKeyToPublic(privateKey),
   network: 'testnet',
-  fee: 1n, // Minimal fee for estimation
+  fee: 0n, // Placeholder, replaced below
 });
 
-// Estimate appropriate fee
-const feeRate = await estimateFee(tx);
-tx.setFee(feeRate);
+// Estimate and set the fee
+const fee = await fetchFeeEstimate({ transaction: tx });
+tx.setFee(fee);
 
-// Now broadcast with accurate fee
-const result = await broadcastTransaction({ transaction: tx });
+// Sign, then broadcast
+const signer = new TransactionSigner(tx);
+signer.signOrigin(privateKey);
+
+const result = await broadcastTransaction({ transaction: signer.transaction });
 ```
