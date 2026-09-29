@@ -73,6 +73,8 @@ If you are L1-locked, you announce the exit on Stacks by calling `announce-l1-ea
 
 Neither releases your STX before the term ends. You can also move to a different signer-manager mid-term, or roll straight into a new bond or an STX-only stake once the old bond's Bitcoin leg unlocks.
 
+Each route, what it costs, and the checks the contract runs are on [Ending or Changing a Bond Position](https://docs.stacks.co/operate/protocol-bonds/ending-or-changing-a-bond-position).
+
 ## If you were stacking under PoX-4
 
 PoX-5 replaced PoX-4 outright at Epoch 4.0, which activated at Bitcoin block 960,230. All PoX-4 locks released, though a cycle already in progress at the fork still paid out.
@@ -89,4 +91,5 @@ The deployed contract is the reference: [`SP000000000000000000002Q6VF78.pox-5`](
 
 * [Bitcoin Staking Glossary](glossary.md)
 * [Protocol Bond and Rewards Mechanics](rewards-and-tranches.md)
+* [Ending or Changing a Bond Position](https://docs.stacks.co/operate/protocol-bonds/ending-or-changing-a-bond-position)
 * [Stacking](https://docs.stacks.co/learn/block-production/staking)
