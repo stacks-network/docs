@@ -15,3 +15,11 @@ redirects:
   example-contracts/bns: clarity/example-contracts/bns.md
   example-contracts/multi-send: clarity/example-contracts/multi-send.md
   example-contracts/stacking: clarity/example-contracts/stacking.md
+
+  # Stacks Blockchain API pages removed when the section moved to Hiro's spec (node RPC tags)
+  api/stacks-blockchain-api/mining: api/stacks-node-rpc/README.md
+  api/stacks-blockchain-api/signers: api/stacks-node-rpc/README.md
+  api/stacks-blockchain-api/atlas: api/stacks-node-rpc/README.md
+  api/stacks-blockchain-api/stacker-db: api/stacks-node-rpc/README.md
+  api/stacks-blockchain-api/fees: api/stacks-node-rpc/README.md
+  api/stacks-blockchain-api/bitcoin-staking: api/stacks-blockchain-api/README.md

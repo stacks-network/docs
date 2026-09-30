@@ -32,19 +32,7 @@
       spec:
         ref:
           kind: openapi
-          spec: stacks-blockchain-api-dereferenced
-    ```
-  * ```yaml
-    props:
-      models: false
-      downloadLink: false
-      grouping: by-tag
-    type: builtin:openapi
-    dependencies:
-      spec:
-        ref:
-          kind: openapi
-          spec: bitcoin-staking
+          spec: stacks-blockchain-api
     ```
 * [Stacks Mesh API](api/stacks-mesh-api/README.md)
   * ```yaml
