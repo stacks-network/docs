@@ -1,6 +1,6 @@
 # Staking STX
 
-Staking is locking STX, or STX paired with BTC or sBTC, to support the network's consensus and earn Bitcoin-denominated rewards. If you aren't familiar with how it works, read the [Stacking](https://docs.stacks.co/learn/block-production/stacking) and [Stackers and Signing](https://docs.stacks.co/learn/block-production/signing) concept guides first.
+Staking is locking STX, or STX paired with BTC or sBTC, to support the network's consensus and earn Bitcoin-denominated rewards. If you aren't familiar with how it works, read the [Staking](https://docs.stacks.co/learn/block-production/staking) and [Signing](https://docs.stacks.co/learn/block-production/signing) concept guides first.
 
 Staking uses the `pox-5` contract, deployed at `SP000000000000000000002Q6VF78.pox-5`. You can [read its source on the Explorer](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-5?chain=mainnet\&tab=sourceCode). PoX-5 activated with the Epoch 4.0 hard fork and replaces `pox-4`.
 
