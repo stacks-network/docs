@@ -15,18 +15,18 @@ This guide provides minimal, production-tested configurations for two popular re
 
 A Stacks node deployment typically exposes the following services:
 
-| Service     | Default Port | Protocol | Proxy?          |
-| ----------- | ------------ | -------- | --------------- |
-| Stacks RPC  | 20443        | HTTP     | Yes             |
-| Stacks P2P  | 20444        | TCP      | No              |
-| Stacks API  | 3999         | HTTP     | Yes, if running |
-| Bitcoin RPC | 8332         | HTTP     | Yes, if exposed |
-| Bitcoin P2P | 8333         | TCP      | No              |
+| Service     | Default Port | Protocol | Proxy?                 |
+| ----------- | ------------ | -------- | ---------------------- |
+| Stacks RPC  | 20443        | HTTP     | Yes                    |
+| Stacks P2P  | 20444        | TCP      | No, rate-limit instead |
+| Stacks API  | 3999         | HTTP     | Yes, if running        |
+| Bitcoin RPC | 8332         | HTTP     | Yes, if exposed        |
+| Bitcoin P2P | 8333         | TCP      | No                     |
 
 {% hint style="info" %}
-The **P2P ports** (20444, 8333) use custom binary protocols for peer-to-peer communication, not HTTP. You can leave them open directly to the network. The proxy configurations below focus on the **RPC/API ports** which serve HTTP traffic and are the primary target for abuse.
+The **P2P ports** (20444, 8333) use custom binary protocols for peer-to-peer communication, not HTTP, so they are left open directly to the network rather than proxied. The proxy configurations below focus on the **RPC/API ports** which serve HTTP traffic and are the primary target for abuse.
 
-**Optional:** P2P ports can also benefit from rate-limiting. While unlikely, a denial-of-service attack could flood the P2P port so the node only communicates with malicious peers. Adding connection-rate limits on P2P ports won't hurt and provides an extra layer of protection.
+**The Stacks P2P port still needs rate limiting.** A denial-of-service attack could flood inbound connection slots so the node's neighbor set fills with malicious or junk peers, starving honest ones. Because this port cannot be proxied, apply the limits at the firewall instead — see [Rate-limit the Stacks P2P port](#rate-limit-the-stacks-p2p-port).
 {% endhint %}
 
 ## Configure the Stacks node
@@ -77,6 +77,128 @@ The format is `host_ip:host_port:container_port`. The node inside the container 
 {% hint style="info" %}
 Inter-container communication (e.g. the API receiving events from the blockchain node) uses Docker's internal network and service names, not published host ports. These port mapping changes do not affect container-to-container traffic.
 {% endhint %}
+
+## Rate-limit the Stacks P2P port
+
+The P2P port (`20444`) is not proxied, so its rate limiting is applied at the firewall. This step is independent of which proxy you chose above — do it either way.
+
+The node does impose its own inbound limits (`soft_max_clients_per_host`, default 4, and `max_sockets`, default 800), but those only take effect **after** a connection has been accepted and registered. A firewall rule rejects the flood earlier and far more cheaply.
+
+{% hint style="warning" %}
+**Do not put Nginx `stream` or HAProxy `mode tcp` in front of port 20444.** The Stacks node does not read the PROXY protocol header, so a TCP proxy makes every peer appear to originate from `127.0.0.1`. Per-host limits collapse into a single bucket and the peer database records the proxy's address instead of real peers. Firewall-level limiting preserves the true source IPs.
+{% endhint %}
+
+### nftables (recommended)
+
+The rules below cap both the number of **concurrent** P2P connections per source IP and the rate of **new** connections per source IP. The concurrent cap is deliberately set above the node's `soft_max_clients_per_host` so the node's own pruning still does the fine-grained work.
+
+{% code title="/etc/nftables.d/stacks-p2p.nft" %}
+
+```
+table inet stacks_p2p {
+    chain input {
+        type filter hook input priority filter; policy accept;
+
+        # Optional: exempt known bootstrap or partner peers
+        # tcp dport 20444 ip saddr { 203.0.113.10, 198.51.100.7 } accept
+
+        # Cap concurrent P2P connections per source IP
+        tcp dport 20444 ct state new \
+            meter p2p_conns { ip saddr ct count over 8 } \
+            counter drop
+
+        # Cap new P2P connections per source IP (10/min, burst of 5)
+        tcp dport 20444 ct state new \
+            meter p2p_rate { ip saddr limit rate over 10/minute burst 5 packets } \
+            counter drop
+    }
+}
+```
+
+{% endcode %}
+
+{% code title="Load the rules" %}
+
+```bash
+sudo nft -f /etc/nftables.d/stacks-p2p.nft
+```
+
+{% endcode %}
+
+{% hint style="info" %}
+This adds a separate table with `policy accept`, so it drops only what the two rules match and leaves any existing firewall untouched. To make it persistent across reboots, include the file from your `/etc/nftables.conf` or your distribution's equivalent.
+{% endhint %}
+
+### iptables
+
+If your host uses `iptables` rather than `nftables`, the equivalent rules use the `connlimit` and `hashlimit` modules:
+
+{% code title="iptables equivalent" %}
+
+```bash
+# Cap concurrent P2P connections per source IP
+sudo iptables -A INPUT -p tcp --dport 20444 --syn \
+    -m connlimit --connlimit-above 8 --connlimit-mask 32 -j DROP
+
+# Cap new P2P connections per source IP (10/min, burst of 5)
+sudo iptables -A INPUT -p tcp --dport 20444 --syn \
+    -m hashlimit --hashlimit-name stacks_p2p \
+    --hashlimit-mode srcip --hashlimit-above 10/minute --hashlimit-burst 5 \
+    -j DROP
+```
+
+{% endcode %}
+
+### Docker (stacks-blockchain-docker)
+
+Traffic to a **published** container port is forwarded, not delivered locally, so it never traverses the `INPUT` chain — the rules above will not match it. Place them in Docker's `DOCKER-USER` chain instead:
+
+{% code title="Docker equivalent" %}
+
+```bash
+sudo iptables -I DOCKER-USER -p tcp --dport 20444 --syn \
+    -m connlimit --connlimit-above 8 --connlimit-mask 32 -j DROP
+
+sudo iptables -I DOCKER-USER -p tcp --dport 20444 --syn \
+    -m hashlimit --hashlimit-name stacks_p2p \
+    --hashlimit-mode srcip --hashlimit-above 10/minute --hashlimit-burst 5 \
+    -j DROP
+```
+
+{% endcode %}
+
+### Tuning the node's own limits
+
+The firewall rules complement the node's inbound connection settings, which you can tune in your configuration file:
+
+{% code title="Stacks.toml" %}
+
+```toml
+[connection_options]
+soft_max_clients_per_host = 4    # Inbound P2P connections per IP before pruning
+max_sockets = 800                # Total client sockets the node will register
+```
+
+{% endcode %}
+
+### Verify
+
+{% code title="Check P2P connections and rule counters" %}
+
+```bash
+# Count established inbound P2P connections
+ss -tn state established '( sport = :20444 )' | wc -l
+
+# nftables: counters show how many packets the rules dropped
+sudo nft list table inet stacks_p2p
+
+# iptables: same, per rule
+sudo iptables -L INPUT -v -n --line-numbers | grep 20444
+```
+
+{% endcode %}
+
+The thresholds above are conservative starting points. Watch the counters after deploying: if legitimate peers are being dropped, raise the limits; if the counters stay at zero under load, they can be tightened.
 
 ## Nginx
 
@@ -275,7 +397,11 @@ curl -s localhost:20443/v2/info | jq
 
 ## Firewall considerations
 
-Additionally, a host-level firewall adds defense in depth: only the proxy's listening ports and the P2P ports should be reachable from the public internet, while the node's RPC stays accessible only via the proxy (localhost). How you configure this depends on your environment — cloud providers, bare-metal hosts, and container setups all handle firewalling differently.
+Additionally, a host-level firewall adds defense in depth: only the proxy's listening ports and the P2P ports should be reachable from the public internet, while the node's RPC stays accessible only via the proxy (localhost). The P2P ports should be reachable **and** rate-limited, as described in [Rate-limit the Stacks P2P port](#rate-limit-the-stacks-p2p-port). How you configure this depends on your environment — cloud providers, bare-metal hosts, and container setups all handle firewalling differently.
+
+{% hint style="warning" %}
+Cloud security groups (AWS, GCP, Azure) express which ports are reachable, but cannot express per-source connection-rate limits. Even on a cloud host, the P2P rate limiting must be done at the host level with `nftables` or `iptables`.
+{% endhint %}
 
 {% hint style="info" %}
 Refer to your provider's or operating system's firewall documentation for specifics:
