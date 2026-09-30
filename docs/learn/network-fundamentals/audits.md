@@ -6,15 +6,13 @@
 
 For any project, layers of security are crucial. Audits represent one layer, while core developers and contributors collaborate to provide many more. Notable security programs, designs, and partners beyond audits include:
 
-* Embedded security researchers [via Asymmetric Research](https://stacks.org/asymmetric-joins-stacks-ecosystem)
-* Attackathon programs in partnership with Immunefi
+* Embedded security researchers [via Asymmetric Research](https://stacks.org/asymmetric-joins-stacks-ecosystem) in coordination with Stacks Labs
 * sBTC’s decentralized [network of validators/signers](https://www.stacks.co/sbtc) (removing the need to entrust a single entity and mitigating counterparty risk)
 * Stacks’ underlying design that offers 100% Bitcoin finality, securing sBTC at the consensus level of a $2.5 billion network.
 * Support at the app layer via [Hypernative](https://hackernoon.com/hypernative-bolsters-bitcoin-l2-security-as-stacks-ecosystem-gets-real-time-protection)
-* Bitcoin L2 Labs' [whitehat security program](https://bitcoinl2-labs.github.io/2024/06/04/orange-hats.html)
-* Stacks Foundation's partnership with Staking Defense League
-* Stacks Founation's ongoing [Immunefi bug bounty program](https://immunefi.com/bug-bounty/stacks/information/)
-* Dedicated Stacks Foundation Residents focused exclusively on fuzz and penetration testing (created [Rendezvous](https://stx-labs.github.io/rendezvous/))
+* Ongoing [Immunefi bug bounty program](https://immunefi.com/bug-bounty/stacks/information/) (and timely Attackathon programs)
+
+
 
 {% hint style="warning" %}
 _All 'high' or 'critical' issues listed in audits have either been mitigated or otherwise made obsolete, even if the report states otherwise._
