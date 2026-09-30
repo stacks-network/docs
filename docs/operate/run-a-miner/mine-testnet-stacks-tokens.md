@@ -114,7 +114,7 @@ After this runs, you should see some JSON printed to the screen that looks like 
 Do not lose this information - we'll need to use the `privateKey`, `btcAddress` and `wif` fields in later steps.
 {% endhint %}
 
-The above `wif` (`cPdTdMgww2njhnekUZmHmFNKsWAjVdCR4cfvD2Y4UQhFzMmwoW33`) will then need to be imported into the bitcoin testnet network.
+The above `wif` (`rohCie2ein2chaed9kaiyoo6zo1aeQu1yae4phooShov2oosh4ox`) will then need to be imported into the bitcoin testnet network.
 
 Next, a bitcoin wallet is created:
 
