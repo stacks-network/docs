@@ -79,7 +79,7 @@ getblockchaininfo | jq .blocks
 
 ### Running a Stacks Blockchain miner
 
-First, download the [`stacks-core` 4.0.2 binary](https://github.com/stacks-network/stacks-core/releases/tag/4.0.2), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/testnet/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/testnet/prerequisites.md#install-required-packages)).
+First, download the [`stacks-core` 4.0.4 binary](https://github.com/stacks-network/stacks-core/releases/tag/4.0.4), or [build from source](https://github.com/stacksfoundation/miner-docs/blob/testnet/stacks-blockchain.md#build-and-install-stacks-blockchain-from-source) (_there may be some extra requirements to building,_ [_defined here_](https://github.com/stacksfoundation/miner-docs/blob/testnet/prerequisites.md#install-required-packages)).
 
 {% hint style="info" %}
 Tip: It is recommended to use a persistent location for the chainstate, in the steps below we're using `/stacks-blockchain`.
@@ -196,7 +196,7 @@ curl -X POST "https://api.testnet.hiro.so/extended/v1/faucets/btc?address=<btcAd
 
 #### Update the Stacks Blockchain Configuration File
 
-Now, we need to configure our node to use this Bitcoin keychain. Copy the [sample testnet miner config](https://raw.githubusercontent.com/stacks-network/stacks-core/master/sample/conf/testnet-miner-conf.toml) to your local machine in a memorable location like `$HOME/testnet-miner-conf.toml`.
+Now, we need to configure our node to use this Bitcoin keychain. Copy the [sample testnet miner config](https://raw.githubusercontent.com/stacks-network/stacks-core/4.0.4/sample/conf/testnet-miner-conf.toml) to your local machine in a memorable location like `$HOME/testnet-miner-conf.toml`.
 
 Next, update the stacks configuration:
 
@@ -424,7 +424,7 @@ docker run -d \
   -v "/stacks-blockchain:/stacks-blockchain" \
   -p 20443:20443 \
   -p 20444:20444 \
-  blockstack/stacks-core:4.0.2 \
+  blockstack/stacks-core:4.0.4@sha256:a35bf7468139469c3da248f37396d59eed51f9c4df86a9b28df73814d13d38fa \
 /bin/stacks-node start --config /src/stacks-node/testnet-miner-conf.toml
 ```
 
