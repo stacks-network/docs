@@ -78,4 +78,3 @@
 * [Bitcoin Staking](bitcoin-staking/README.md)
   * [Bitcoin Staking Glossary](bitcoin-staking/glossary.md)
   * [Protocol Bond and Rewards Mechanics](bitcoin-staking/rewards-and-tranches.md)
-  * [Bond Risks](bitcoin-staking/bond-risks.md)
