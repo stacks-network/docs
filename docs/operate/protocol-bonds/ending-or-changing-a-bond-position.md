@@ -42,7 +42,7 @@ Co-signing is only needed before the timelock height. After the CLTV height you 
 What it costs: the undistributed yield for the rest of the term is forfeited, and the paired STX stays locked until the bond ends.
 
 {% hint style="danger" %}
-**Keep your unlock bytes.** The `staker-unlock-bytes` chosen at registration are not stored on-chain. Without them the lock address cannot be rebuilt and the locked BTC cannot be reclaimed by either path, timelock or early exit. Persist them when you register.
+**Keep your lock script.** The contract does not store your `staker-unlock-bytes` or the lock script built from them, so save the lock script when you register. If you lose it, rebuild it from your `register-for-bond` transaction, which carries the unlock bytes and the unlock height as arguments. With the default unlock bytes, you can also rebuild them from the public key of the Bitcoin key you registered with. Without the lock script, the locked BTC cannot be spent by either path, timelock or early exit.
 {% endhint %}
 
 ### How the lockup script allows it
@@ -87,6 +87,8 @@ The staker is taken from `tx-sender`, not passed as an argument. A pool contract
 A partial withdrawal leaves the membership in place with a reduced `amount-sats`. Withdrawing everything leaves a zero-sats membership, the same end state as an L1 early exit.
 
 `unstake-sbtc` keeps working after the bond ends. It reads the membership map directly, while `announce-l1-early-exit` and `update-bond-registration` go through `get-bond-membership`, which returns nothing once the term has passed. After your bond ends you can still retrieve sBTC with `unstake-sbtc`, but the other two reject you with `ERR_NOT_BOND_PARTICIPANT (u34)`.
+
+The code is under [Building an sBTC withdrawal](ending-or-changing-a-bond-position.md#building-an-sbtc-withdrawal).
 
 ## Re-pointing to a different signer-manager
 
@@ -259,3 +261,39 @@ const { txHex, txid } = finalizeReclaim({ path: 'early-exit', tx, stxAddress: st
 ```
 
 After the CLTV height, reclaim through the timelock branch instead: `buildReclaim({ path: 'locktime', ... })`, sign with your key only, and `finalizeReclaim({ path: 'locktime', tx })`.
+
+## Building an sBTC withdrawal
+
+`unstake-sbtc` sends sBTC from the pox-5 contract to you, so the post-condition names the contract as the sender. The amount is the one you pass, so the bound is exact.
+
+```ts
+import { buildUnstakeSbtc, fetchEligibleUnstakeSbtc, fetchPoxInfo } from '@stacks/bitcoin-staking';
+import { Pc } from '@stacks/transactions';
+
+const network = 'mainnet';
+const poxInfo = await fetchPoxInfo({ network });
+
+// Preflight: the contract's own gates, checked read-only
+const eligible = await fetchEligibleUnstakeSbtc({
+  staker,
+  signerManager, // the signer-manager currently bound to the staker
+  amountToWithdrawSats,
+  network,
+});
+if (!eligible.ok) throw new Error(`unstake-sbtc would fail: ${eligible.reasons.join(', ')}`);
+
+// Unsigned transaction. The staker signs and broadcasts it.
+const tx = await buildUnstakeSbtc({
+  signerManager,
+  amountToWithdrawSats,
+  publicKey, // the staker's Stacks public key
+  fee,
+  nonce,
+  network,
+  postConditions: [
+    Pc.principal(poxInfo.contractId)
+      .willSendEq(amountToWithdrawSats)
+      .ft(poxInfo.sbtcContract, 'sbtc-token'),
+  ],
+});
+```
