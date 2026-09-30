@@ -118,6 +118,18 @@ What each route does with your assets:
 
 Because your STX is still locked by the ending position, both functions check your locked plus unlocked balance rather than unlocked alone. A bond and an STX-only stake can never both be live, which is why moving between them happens at a boundary rather than mid-term.
 
+### Renewing a native BTC bond
+
+Renewing means registering for the next bond before yours ends, so you move straight from one into the next. The first bond that does not overlap yours starts when yours ends, six bond indexes later.
+
+1. **Get allowlisted for the new bond.** Each bond has its own allowlist, and being on the current one does not carry over. See [Getting Allowlisted for a Bond](getting-allowlisted-for-a-bond.md).
+2. **Lock BTC for the new bond.** Either fund its lock address from other BTC ahead of time, or wait until your current output's unlock height and spend that output straight into the new lock address. The second needs no other BTC. See [Verifying and Reclaiming Your Locked Bitcoin](verifying-and-reclaiming-your-locked-bitcoin.md).
+3. **Register once the new lock confirms**, after your bond's L1 unlock height and before the prepare phase that precedes its end. You can change the STX amount. It must meet the new bond's minimum, and your STX that is still locked counts toward your balance.
+
+On testnet the window is half a testnet reward cycle, 525 blocks, of which 475 are usable.
+
+If you do not register in time, your bond ends normally: your STX unlocks at the end of the term and your BTC stays spendable by you through the timelock branch. You can still join a later bond as a new registration.
+
 ## Prepare-phase timing
 
 `register-for-bond`, `update-bond-registration`, `stake`, `stake-update`, `announce-l1-early-exit`, and `unstake-sbtc` share one guard and one error, `ERR_STAKE_IN_PREPARE_PHASE (u47)`. `unstake` has its own check and code, `ERR_UNSTAKE_IN_PREPARE_PHASE (u28)`.

@@ -10,6 +10,7 @@ A protocol bond pairs a Bitcoin commitment with an STX lock for a 12-cycle term.
 
 * [Getting Allowlisted for a Bond](getting-allowlisted-for-a-bond.md): how capacity is allocated, what to send the Stacks Endowment, and how to check your entry.
 * [Opening a Bond Position](opening-a-bond-position.md): the allowlist, the two Bitcoin legs, the registration deadline, and what the contract checks.
+* [Verifying and Reclaiming Your Locked Bitcoin](verifying-and-reclaiming-your-locked-bitcoin.md): checking the lock address before funding, what you need to spend it later, and reclaiming after the timelock.
 * [Ending or Changing a Bond Position](ending-or-changing-a-bond-position.md): exiting early, withdrawing sBTC, changing signer-manager, and rolling into a new position.
 * [Bond pool operator guide](bond-pool-operator-guide.md): running a whitelisted community sBTC pool.
 

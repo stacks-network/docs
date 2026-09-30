@@ -55,7 +55,7 @@ Read your cap for the bond. A missing entry means you are not allowlisted.
 The address is deterministic: it comes from your Stacks address, the bond's unlock height, your `staker-unlock-bytes`, and the bond's `early-unlock-bytes`. Anyone can rederive it to check the lock.
 
 {% hint style="danger" %}
-**Keep your unlock bytes.** The `staker-unlock-bytes` are not stored on-chain. Without them the lock address cannot be rebuilt and the BTC cannot be reclaimed by either path.
+**Keep your lock script.** The contract does not store your `staker-unlock-bytes` or the lock script built from them, so save the lock script when you register. If you lose it, rebuild it from your `register-for-bond` transaction. See [Verifying and Reclaiming Your Locked Bitcoin](verifying-and-reclaiming-your-locked-bitcoin.md).
 {% endhint %}
 {% endstep %}
 
