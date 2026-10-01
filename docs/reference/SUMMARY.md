@@ -25,27 +25,16 @@
   * [Requesting Proofs](api/stacks-blockchain-api/requesting-proofs.md)
   * ```yaml
     props:
-      models: true
-      downloadLink: false
-    type: builtin:openapi
-    dependencies:
-      spec:
-        ref:
-          kind: openapi
-          spec: stacks-blockchain-api-dereferenced
-    ```
-  * ```yaml
-    props:
       models: false
       downloadLink: false
-      grouping: by-tag
     type: builtin:openapi
     dependencies:
       spec:
         ref:
           kind: openapi
-          spec: bitcoin-staking
+          spec: stacks-blockchain-api
     ```
+  * [Bitcoin Staking](api/stacks-blockchain-api/bitcoin-staking.md)
 * [Stacks Mesh API](api/stacks-mesh-api/README.md)
   * ```yaml
     props:
