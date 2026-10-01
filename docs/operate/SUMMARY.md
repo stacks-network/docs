@@ -33,6 +33,7 @@
   * [Operate a Pool](staking-stx/operate-a-pool.md)
   * [Generate a Signer Signature](staking-stx/generate-signer-signature.md)
   * [Key and Address Rotation](staking-stx/key-and-address-rotation.md)
+  * [STX-only Staking Troubleshooting](staking-stx/stx-only-staking-troubleshooting.md)
 * [Protocol Bonds](protocol-bonds/README.md)
   * [Getting Allowlisted for a Bond](protocol-bonds/getting-allowlisted-for-a-bond.md)
   * [Bond Pool (BTC + STX) Operator Guide](protocol-bonds/bond-pool-operator-guide.md)

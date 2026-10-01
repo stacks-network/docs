@@ -42,7 +42,7 @@ For operators. This means deploying a contract and running infrastructure: a Bit
 {% endstepper %}
 
 {% hint style="info" %}
-The minimum for a signer-manager to enter the signer set is a **fixed 50,000 STX** (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it. An individual stake may be smaller. This replaces PoX-4's cycle-varying `min_threshold_ustx`.
+The minimum for a signer-manager to be eligible for STX-only staking rewards is a **fixed 50,000 STX** (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it. An individual stake may be smaller. This replaces PoX-4's cycle-varying `min_threshold_ustx`.
 {% endhint %}
 
 ### Definitions and roles
@@ -65,6 +65,7 @@ Updated for PoX-5:
 * [Stake to an Existing Signer-Manager](stack-with-a-pool.md)
 * [Generate a Signer Signature](generate-signer-signature.md)
 * [Operate a Pool](operate-a-pool.md)
+* [STX-only Staking Troubleshooting](stx-only-staking-troubleshooting.md)
 
 {% hint style="warning" %}
 The guides below were written for PoX-4. Where a page has been rewritten for PoX-5, its old name is shown first and the link goes to the page that replaced it. Anything still carrying its original name is being updated, so treat its contract calls and arguments as out of date. Per-transaction signer signatures and the `delegate-stx` / `stack-aggregation-commit` flow no longer exist.
