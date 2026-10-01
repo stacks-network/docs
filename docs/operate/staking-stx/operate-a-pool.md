@@ -27,12 +27,12 @@ There is no acceptance step. A staker calls `stake` naming your signer-manager's
 
 Because members stake directly, you cannot enforce a minimum stake on-chain unless you build it into `validate-stake!`. If your concern is that very small positions cost more to pay out than they yield, the lever sits on the claiming side: auto-claim only above an amount you choose.
 
-#### Knowing whether you are in the signer set
+#### Knowing whether you get a yield distribution
 
 Check it with read-only calls, no dashboard required:
 
 * `fetchAmountDelegatedForSigner` returns the total uSTX staked to your manager for a cycle, bonds and STX-only combined. Compare it against `SIGNER_SET_MIN_USTX` (50,000 STX).
-* `fetchSignerSetContainsForCycle({ signer, rewardCycle, network })` returns whether you are in the set for that cycle.
+* `fetchSignerSetContainsForCycle({ signer, rewardCycle, network })` returns whether you get a yield distribution for that cycle.
 
 ### How rewards reach your members
 
@@ -127,7 +127,7 @@ Changing to a different signer-manager contract later is not a migration. Member
 If you operated a pool before Epoch 4.0, these recurring transactions have gone:
 
 * **`delegate-stack-stx`.** There is no per-staker acceptance transaction. Stakers stake to your contract directly.
-* **`stack-aggregation-commit`.** Your signer-manager joins a cycle's signer set _lazily_, the first time its aggregate stake crosses the fixed 50,000 STX `SIGNER_SET_MIN_USTX` minimum, as a side effect of some staker's own `stake` or `stake-update` call.
+* **`stack-aggregation-commit`.** Your signer-manager starts getting a yield distribution _lazily_, the first time its aggregate stake crosses the fixed 50,000 STX `SIGNER_SET_MIN_USTX` minimum, as a side effect of some staker's own `stake` or `stake-update` call.
 * **Per-cycle signer signatures.** The signer key binds to your manager once, via `grant-signer-key` and `register-signer`.
 * **`stack-aggregation-increase`.** A staker who wants to add STX calls `stake-update` themselves.
 

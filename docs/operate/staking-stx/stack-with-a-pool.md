@@ -43,7 +43,7 @@ If you took whichever manager your app offered, you can skip this. Everything be
 * **Admin set.** Who can change the fee and withdraw accrued fees. Some managers block an admin from removing themselves, so the contract can never be left with no admin. Others have no such guard.
 * **An active signer-key grant.** A manager without one cannot accept new stake, and your transaction fails with `ERR_SIGNER_KEY_GRANT_NOT_FOUND (u17)`.
 
-A manager needs 50,000 STX (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it before it enters the signer set. That threshold is fixed and applies to the manager rather than to you, so your own stake can be any size as long as the signer-manager doesn't restrict it.
+A manager needs 50,000 STX (`SIGNER_SET_MIN_USTX`) in aggregate across everyone staking to it before it gets a yield distribution. That threshold is fixed and applies to the manager rather than to you, so your own stake can be any size as long as the signer-manager doesn't restrict it.
 
 {% hint style="info" %}
 **Immutable code, mutable terms.** A deployed contract's Clarity source can never change, but its parameters can. An admin can change the fee at any time, up to whatever ceiling that contract fixed at deployment. Read the current fee and the admin set rather than assuming the economics are settled.

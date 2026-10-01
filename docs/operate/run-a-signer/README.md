@@ -90,7 +90,7 @@ Bind your signer key to a signer-manager contract. Until that happens the signer
 
 ## Registering, once it runs
 
-A running signer is not yet part of the signer set. Your signer key has to be bound to a signer-manager contract, and stakers have to route at least 50,000 STX through that manager in aggregate before it enters a cycle's signer set.
+A running signer is not yet part of the signer set. Your signer key has to be bound to a signer-manager contract, and stakers have to route at least 50,000 STX through that manager in aggregate before it gets a yield distribution.
 
 Under PoX-5 that binding is a standing on-chain grant rather than PoX-4's per-transaction signature: you sign a SIP-018 message with your signer key, the signer-manager submits it through `grant-signer-key`, and then calls `register-signer`.
 
