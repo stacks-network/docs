@@ -10,7 +10,7 @@ The deployed contract is [`SP000000000000000000002Q6VF78.pox-5`](https://explore
 
 ## Contract summary
 
-`pox-5` runs Bitcoin Staking. It does four jobs:
+`pox-5` runs Bitcoin Staking:
 
 * **STX-only staking.** A staker locks STX to a signer-manager contract for 1 to 96 reward cycles.
 * **Protocol bonds.** A 12-cycle position pairing locked STX with either a Bitcoin L1 timelock, proven to the contract with a Merkle proof, or sBTC held by the contract.
