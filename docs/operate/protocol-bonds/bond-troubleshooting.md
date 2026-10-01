@@ -24,7 +24,7 @@ The bond has not been set up yet. `setup-bond` runs once per bond, within the tw
 
 ### ERR\_STAKE\_IN\_PREPARE\_PHASE (u47)
 
-`register-for-bond` is rejected during the prepare phase, the last 100 Bitcoin blocks of every reward cycle. The prepare phase immediately before the bond starts is where most late registrations fail: in practice, registration closes when that prepare phase begins. Earlier prepare phases inside the registration window also block it; send once the next cycle has started.
+`register-for-bond` is rejected during the prepare phase, the last 100 Bitcoin blocks of every reward cycle. Registration closes when the prepare phase immediately before the bond starts begins. Earlier prepare phases inside the registration window also block it; send once the next cycle has started.
 
 ### ERR\_BOND\_ALREADY\_STARTED (u43)
 
@@ -82,10 +82,7 @@ The signer-manager's own `validate-stake!` runs during registration and can reje
 The unlock height committed in a lock output is not acceptable:
 
 * It is below the bond's minimum unlock height (`get-bond-l1-unlock-height`), or
-* it is 500,000,000 or higher, which Bitcoin would read as a Unix timestamp rather than a block height, or
-* it is 2³⁹ or higher, beyond what the lock script can encode.
-
-`buildLockScript` and `fetchConstructLockupOutputScript` reject the last case before you fund the address.
+* it is 500,000,000 or higher, which Bitcoin would read as a Unix timestamp rather than a block height.
 
 ### ERR\_INVALID\_LOCKUP\_SCRIPT (u42)
 
@@ -99,13 +96,17 @@ The amount in your proof does not equal the value of the output on Bitcoin.
 
 The same output (transaction ID and output index) appears twice in your registration. A registration takes at most 10 lock outputs, each listed once.
 
+### ERR\_READ\_TX\_OUT\_OF\_BOUNDS (u39)
+
+The block header in your proof is shorter than 80 bytes, so the contract cannot parse it. Despite the constant's name, this is about the header, not the transaction. Pass the full 80-byte header of the block that contains the transaction, for example from Esplora's `/block/{hash}/header`.
+
 ### ERR\_INVALID\_BTC\_HEADER (u40) or ERR\_INVALID\_MERKLE\_PROOF (u41)
 
 The proof does not match Bitcoin: u40 means the block header does not match the canonical header at that height, u41 means the transaction is not in that block according to the merkle path. Rebuild the proof with `buildLockProof` (Esplora-shaped indexer responses) or `buildLockProofFromBlock` (`bitcoind`-shaped), which handle witness stripping and byte order. To isolate the failing part, `fetchVerifyBlockHeader`, `fetchParseBlockHeader`, `fetchReversedTxid` and `fetchBurnBlockHeaderHash` run the contract's own helpers read-only.
 
 ### (err u1), (err u2) or (err u3) while reading the transaction
 
-These come from Clarity's `get-bitcoin-tx-output?`, not from pox-5, even though pox-5 uses the same numbers for unrelated errors: u1 means the transaction bytes did not decode, u2 means the output index is out of range, and u3 means the output's script is over 1,024 bytes. The usual cause is passing the segwit serialization instead of the legacy one; `buildLockProof` strips the witness for you.
+These come from Clarity's `get-bitcoin-tx-output?`, not from pox-5, even though pox-5 uses the same numbers for unrelated errors: u1 means the transaction bytes did not decode, u2 means the output index is out of range, and u3 means the output's script is over 1,024 bytes.
 
 ## Related
 
