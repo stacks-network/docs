@@ -1,7 +1,7 @@
 # Stacks Blockchain API
 
 {% hint style="info" %}
-For the complete OpenAPI spec, navigate [here](https://raw.githubusercontent.com/stx-labs/stacks-blockchain-api/master/openapi.yaml).
+For the complete OpenAPI spec, navigate [here](https://raw.githubusercontent.com/stx-labs/stacks-blockchain-api/main/openapi.yaml).
 {% endhint %}
 
 The Stacks Blockchain API is a REST API developed and hosted by [Hiro](https://www.hiro.so/) that extends the Stacks Node RPC API with additional indexed endpoints. While every Stacks node exposes a minimal set of RPC endpoints (account balances, contract calls, transaction broadcasting), the Blockchain API continuously ingests and indexes on-chain activity into a PostgreSQL database, making it possible to query transaction history, token transfers, smart contract events, and paginated lists of blocks — data that is not directly available from a Stacks node alone.
