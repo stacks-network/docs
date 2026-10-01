@@ -28,7 +28,7 @@ Successful / informational / error categories — general guidance:
 
 Two different conditions decide what your signer does in a reward cycle:
 
-* **Eligible for rewards:** at least 50,000 STX is delegated to your signer for the cycle. The signer is on PoX-5's per-cycle signer list and its stakers earn rewards.
+* **Eligible for rewards:** at least 50,000 STX is delegated to your signer for the cycle. The signer is on PoX-5's per-cycle signer list and its stakers earn rewards. Bond rewards don't depend on this threshold.
 * **In the signing set:** when the node builds the cycle's signer set from that list, your signer gets a weight of at least 1. Only signers in the signing set sign blocks.
 
 A signer can be eligible for rewards without being in the signing set. See [How much stake gets a signer into the signing set](how-to-read-signer-logs.md#how-much-stake-gets-a-signer-into-the-signing-set).
@@ -80,7 +80,7 @@ The current cycle's instance keeps signing; the next cycle's instance takes over
 
 ### Signer not registered for a cycle
 
-If your signer is not in a cycle's signing set, it logs this once when it checks the cycle (at the start of the cycle, or after a restart):
+If your signer is not in a cycle's signing set, it logs this once when it checks the cycle (during the prepare phase before that cycle starts, or after a restart):
 
 ```
 WARN [1790369680.021308] [stacks-signer/src/runloop.rs:280] [signer_runloop:30000] Signer SP11T9Q1TTZVCNF60A3R2C75NZVV3CTGV10DZJXGT was not found in stacker db. Must not be registered for this reward cycle 144.
@@ -107,7 +107,7 @@ Action:
 
 50,000 STX makes a signer eligible for rewards. Getting into the signing set depends on how much STX is staked in total. For each cycle, the node computes:
 
-1. `pox_ustx_threshold = ceil(total STX locked / reward slots)`. There are 4,000 reward slots on mainnet and 2,000 on testnet.
+1. `pox_ustx_threshold = ceil(total STX delegated to signers that are eligible for rewards / reward slots)`. There are 4,000 reward slots on mainnet and 1,600 on the public testnet (900-block cycles with a 100-block prepare phase).
 2. Each signer's weight is `floor(stake / pox_ustx_threshold)`.
 3. Slots left over after step 2 go one each to the signers with the largest remainders.
 4. Signers that end with weight 0 are left out of the signing set.
@@ -115,7 +115,7 @@ Action:
 Stake at or above `pox_ustx_threshold` guarantees a place in the signing set. Below it, a signer gets in only if it wins a leftover slot, which depends on every other signer's stake.
 
 {% hint style="info" %}
-**Mainnet, cycle 144:** about 448.3 million STX was locked, so `pox_ustx_threshold` was 112,082,393,974 uSTX, about **112,083 STX**. A signer needed at least that much delegated to be sure of a place in the signing set. The threshold rises as total stake rises (it was about 98,112 STX in cycle 141), so leave a margin and check it each cycle.
+**Mainnet, cycle 144:** about 448.3 million STX was delegated to eligible signers, so `pox_ustx_threshold` was 112,082,393,974 uSTX, about **112,083 STX**. A signer needed at least that much delegated to be sure of a place in the signing set. The threshold rises as total stake rises (it was about 98,112 STX in cycle 141), so leave a margin and check it each cycle.
 {% endhint %}
 
 To read the threshold and the signing set for a cycle, query your node's RPC endpoint:
@@ -132,7 +132,7 @@ Source: `stackslib/src/chainstate/nakamoto/signer_set.rs` in [stacks-core 4.0.4]
 
 ### Peer not connecting
 
-If you see a message about a peer not connecting, for example:
+If you see a message about a peer not connecting, for example (from an earlier stacks-node release):
 
 ```
 INFO [1711988555.021567] [stackslib/src/net/neighbors/walk.rs:1015] [p2p-(0.0.0.0:20444,0.0.0.0:20443)] local.80000000://(bind=0.0.0.0:20444)(pub=Some(10.0.19.16:20444)): Failed to connect to facade0b+80000000://172.16.60.18:20444: PeerNotConnected
