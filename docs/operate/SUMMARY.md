@@ -40,3 +40,5 @@
   * [Opening a Bond Position](protocol-bonds/opening-a-bond-position.md)
   * [Verifying and Reclaiming Your Locked Bitcoin](protocol-bonds/verifying-and-reclaiming-your-locked-bitcoin.md)
   * [Ending or Changing a Bond Position](protocol-bonds/ending-or-changing-a-bond-position.md)
+  * [Bond Troubleshooting](protocol-bonds/bond-troubleshooting.md)
+  * [Bond FAQ](protocol-bonds/bond-faq.md)

@@ -12,6 +12,8 @@ A protocol bond pairs a Bitcoin commitment with an STX lock for a 12-cycle term.
 * [Opening a Bond Position](opening-a-bond-position.md): the allowlist, the two Bitcoin legs, the registration deadline, and what the contract checks.
 * [Verifying and Reclaiming Your Locked Bitcoin](verifying-and-reclaiming-your-locked-bitcoin.md): checking the lock address before funding, what you need to spend it later, and reclaiming after the timelock.
 * [Ending or Changing a Bond Position](ending-or-changing-a-bond-position.md): exiting early, withdrawing sBTC, changing signer-manager, and rolling into a new position.
+* [Bond Troubleshooting](bond-troubleshooting.md): why a registration fails, and what to do about it.
+* [Bond FAQ](bond-faq.md): short answers, with links to the guides above.
 * [Bond pool operator guide](bond-pool-operator-guide.md): running a whitelisted community sBTC pool.
 
 For the conceptual overview, see [Bitcoin Staking](https://docs.stacks.co/learn/bitcoin-staking).
