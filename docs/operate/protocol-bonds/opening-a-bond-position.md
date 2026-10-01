@@ -86,7 +86,7 @@ Call `register-for-bond` with the sBTC amount instead of lockup proofs. The cont
 
 `register-for-bond` checks, in order:
 
-* On the native BTC leg, each lockup output: a readable transaction `(u39)`, unlock height in range `(u52)`, script `(u42)`, amount `(u45)`, no duplicate outpoint `(u46)`, header `(u40)`, and Merkle proof `(u41)`.
+* On the native BTC leg, the bond exists `(u7)`, then each lockup output in turn: a complete 80-byte header `(u39)`, a transaction that decodes and has the output you named `(u1, u2 or u3)`, unlock height in range `(u52)`, script `(u42)`, amount `(u45)`, no duplicate outpoint `(u46)`, a header matching the Bitcoin block at that height `(u40)`, and Merkle proof `(u41)`. The `u1` to `u3` codes come from Clarity's `get-bitcoin-tx-output?`, not from pox-5.
 * The bond exists `(u7)` and you are on its allowlist `(u11)`.
 * Not in the prepare phase `(u47)`.
 * Your STX amount meets the bond's minimum for your sats `(u8)`.
