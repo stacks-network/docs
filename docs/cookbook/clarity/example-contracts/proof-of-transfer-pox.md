@@ -17,7 +17,7 @@ The deployed contract is [`SP000000000000000000002Q6VF78.pox-5`](https://explore
 * **Signer registration.** A signer-manager contract registers itself with a signer key whose holder has granted it that key.
 * **Rewards.** The contract calculates sBTC rewards once per distribution and pays them to signer-managers, which settle with their stakers.
 
-There is no `delegate-stx` and no `pox-addr` argument. Where a staker's rewards go is set by their signer-manager, passed as `signer-calldata`.
+Where a staker's rewards go is set by their signer-manager, passed as `signer-calldata`.
 
 ## Public functions
 
@@ -66,7 +66,7 @@ There is no `delegate-stx` and no `pox-addr` argument. Where a staker's rewards 
 
 ## Coming from PoX-4
 
-How PoX-4 calls map to PoX-5, for apps and contracts written against `.pox-4`.
+This table maps each PoX-4 call to its PoX-5 equivalent, for apps and contracts written against `.pox-4`.
 
 | PoX-4                                                                                        | PoX-5                                                                    |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -81,7 +81,7 @@ How PoX-4 calls map to PoX-5, for apps and contracts written against `.pox-4`.
 
 **No contract-caller allowance.** PoX-4 let a contract stack for a user only after the user called `allow-contract-caller` ([pox-4.clar L587-L588](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-4.clar#L587-L588)). PoX-5 has no such check. `stake`, `stake-update`, `unstake`, `register-for-bond`, `update-bond-registration` and `unstake-sbtc` act on `tx-sender`, so any contract a user calls can change that user's position. Guard those calls with [staking and PoX post-conditions](https://docs.stacks.co/post-conditions/implementation#staking-post-conditions-sip-045).
 
-Two cases are stricter:
+These functions do restrict the caller:
 
 * `announce-l1-early-exit` must be called by the staker directly ([L1219-L1222](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1219-L1222)).
 * `claim-rewards` and `claim-staker-rewards-for-signer` act on `contract-caller`, so a signer-manager can claim only for itself ([L2392](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2392), [L2449](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2449)).
