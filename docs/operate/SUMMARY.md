@@ -37,6 +37,7 @@
 * [Protocol Bonds](protocol-bonds/README.md)
   * [Getting Allowlisted for a Bond](protocol-bonds/getting-allowlisted-for-a-bond.md)
   * [Bond Pool (BTC + STX) Operator Guide](protocol-bonds/bond-pool-operator-guide.md)
+  * [sBTC Pool FAQ](protocol-bonds/sbtc-pool-faq.md)
   * [Opening a Bond Position](protocol-bonds/opening-a-bond-position.md)
   * [Verifying and Reclaiming Your Locked Bitcoin](protocol-bonds/verifying-and-reclaiming-your-locked-bitcoin.md)
   * [Ending or Changing a Bond Position](protocol-bonds/ending-or-changing-a-bond-position.md)
