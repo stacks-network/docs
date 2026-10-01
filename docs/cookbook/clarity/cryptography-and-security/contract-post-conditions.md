@@ -33,4 +33,4 @@ The `as-contract?` function resolves the expression caller to the principal of t
 ### Key Concepts
 
 * **Contract caller context -** Switches the current context's `tx-sender` and `contract-caller` values to the contract's principal and executes the body expressions within that context, then checks the asset outflows from the contract against the granted allowances, in declaration order.
-* **Clarity post-conditions** - Accepts a set of allowances, defined using `with-stx`, `with-ft`, `with-nft`, and `with-stacking`, which selectively grant outflow allowances from the contract's assets.
+* **Clarity post-conditions** - Accepts a set of allowances that limit what the body can do with the contract's assets. `with-stx`, `with-ft` and `with-nft` grant asset outflows. `with-staking` caps how much STX can be locked through the active PoX contract, and `with-pox` permits position-altering PoX calls (`unstake`, `unstake-sbtc`, `update-bond-registration`, `announce-l1-early-exit`). Contracts written in Clarity 4 or 5 use `with-stacking` instead of `with-staking`.
