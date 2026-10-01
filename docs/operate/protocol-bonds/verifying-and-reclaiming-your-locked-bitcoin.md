@@ -6,11 +6,11 @@ description: >-
 
 # Verifying and Reclaiming Your Locked Bitcoin
 
-On a native BTC bond your Bitcoin stays in an output you control, guarded by a timelock. This page covers the two moments that matter for your funds: checking the lock address before you send anything to it, and spending the output back to yourself once the timelock passes. For leaving before the timelock, see [Ending or Changing a Bond Position](ending-or-changing-a-bond-position.md).
+On a native BTC bond your Bitcoin stays in an output you control, guarded by a timelock. This page covers checking the lock address before you send anything to it, and spending the output back to yourself once the timelock passes. For leaving before the timelock, see [Ending or Changing a Bond Position](ending-or-changing-a-bond-position.md).
 
 ## Before you fund: check the lock address
 
-The lock address is deterministic. It is built from four inputs:
+The lock address is deterministic. It is built from:
 
 * your Stacks address,
 * the output's unlock height, at or above the bond's minimum,
@@ -25,7 +25,7 @@ Check the address against the contract before funding. The contract's `construct
 
 ## What you need to spend it later
 
-Spending the output needs the lock script, the output itself, and your Bitcoin key. Save the lock script when you register, and keep the lock transaction ID: it identifies the output to spend. If you lose the lock script, you can rebuild it from its four inputs:
+Spending the output needs the lock script, the output itself, and your Bitcoin key. Save the lock script when you register, and keep the lock transaction ID: it identifies the output to spend. If you lose the lock script, you can rebuild it from the same inputs:
 
 | Input                 | Where to find it again                                                                                                       |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
