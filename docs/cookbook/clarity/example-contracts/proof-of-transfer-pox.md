@@ -63,3 +63,25 @@ There is no `delegate-stx` and no `pox-addr` argument. Where a staker's rewards 
 * [Bitcoin Staking](https://docs.stacks.co/learn/bitcoin-staking) for the concepts.
 * [Stake to an Existing Signer-Manager](https://docs.stacks.co/operate/staking-stx/stack-with-a-pool) and [Ending or Changing a Bond Position](https://docs.stacks.co/operate/protocol-bonds/ending-or-changing-a-bond-position) for the flows.
 * [Deploy a Signer Manager Contract](https://docs.stacks.co/operate/deploy-a-signer-manager-contract) for the other side of the `signer-manager` trait.
+
+## Coming from PoX-4
+
+How PoX-4 calls map to PoX-5, for apps and contracts written against `.pox-4`.
+
+| PoX-4                                                                                        | PoX-5                                                                    |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `stack-stx`                                                                                  | `stake`, to a signer-manager. Solo staking means staking to one you run. |
+| `delegate-stx`, `delegate-stack-stx`                                                         | `stake`, to the pool's signer-manager. There is no delegation step.      |
+| `stack-extend`, `stack-increase`, `delegate-stack-extend`, `delegate-stack-increase`         | `stake-update`, in one call.                                             |
+| `revoke-delegate-stx`                                                                        | `unstake`, the closest equivalent.                                       |
+| `stack-aggregation-commit`, `stack-aggregation-commit-indexed`, `stack-aggregation-increase` | None. The signer-manager calls `register-signer` once.                   |
+| `set-signer-key-authorization`                                                               | `grant-signer-key`, the closest equivalent.                              |
+| `allow-contract-caller`, `disallow-contract-caller`                                          | None. See below.                                                         |
+| `get-stacker-info`                                                                           | `get-staker-info`, or `get-bond-membership` for a bond.                  |
+
+**No contract-caller allowance.** PoX-4 let a contract stack for a user only after the user called `allow-contract-caller` ([pox-4.clar L587-L588](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-4.clar#L587-L588)). PoX-5 has no such check. `stake`, `stake-update`, `unstake`, `register-for-bond`, `update-bond-registration` and `unstake-sbtc` act on `tx-sender`, so any contract a user calls can change that user's position. Guard those calls with [staking and PoX post-conditions](https://docs.stacks.co/post-conditions/implementation#staking-post-conditions-sip-045).
+
+Two cases are stricter:
+
+* `announce-l1-early-exit` must be called by the staker directly ([L1219-L1222](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1219-L1222)).
+* `claim-rewards` and `claim-staker-rewards-for-signer` act on `contract-caller`, so a signer-manager can claim only for itself ([L2392](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2392), [L2449](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-5.clar#L2449)).
