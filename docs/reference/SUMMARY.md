@@ -25,7 +25,7 @@
   * [Requesting Proofs](api/stacks-blockchain-api/requesting-proofs.md)
   * ```yaml
     props:
-      models: true
+      models: false
       downloadLink: false
     type: builtin:openapi
     dependencies:
@@ -34,6 +34,7 @@
           kind: openapi
           spec: stacks-blockchain-api
     ```
+  * [Bitcoin Staking](api/stacks-blockchain-api/bitcoin-staking.md)
 * [Stacks Mesh API](api/stacks-mesh-api/README.md)
   * ```yaml
     props:

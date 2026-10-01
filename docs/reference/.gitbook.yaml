@@ -22,4 +22,4 @@ redirects:
   api/stacks-blockchain-api/atlas: api/stacks-node-rpc/README.md
   api/stacks-blockchain-api/stacker-db: api/stacks-node-rpc/README.md
   api/stacks-blockchain-api/fees: api/stacks-node-rpc/README.md
-  api/stacks-blockchain-api/bitcoin-staking: api/stacks-blockchain-api/README.md
+  api/stacks-blockchain-api/models: api/stacks-blockchain-api/README.md
