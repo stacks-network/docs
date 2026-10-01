@@ -6,7 +6,7 @@ description: >-
 
 # Getting Allowlisted for a Bond
 
-Every protocol bond registration needs an allowlist entry for that bond, on either Bitcoin leg. During PoX-5 there is no on-chain auction. The Stacks Endowment sets each bond's capacity, target yield, STX:BTC ratio and allocation off-chain, and allocates the capacity to whitelisted partners before the bond starts. About 10% of paired-bond capacity is reserved for open access, first come first served, through selected pool partners. Allocation moves on-chain in a later protocol version, PoX-6.
+Every protocol bond registration needs an allowlist entry for that bond, on either Bitcoin leg. During PoX-5 there is no on-chain auction. The Stacks Endowment sets each bond's capacity, target yield, STX:BTC ratio and allocation off-chain, and allocates the capacity to whitelisted partners before the bond starts. About 10% of paired-bond capacity is reserved for open access, first come first served, through selected pool partners.
 
 If you do not have an allocation of your own, the open-access route is a [bond pool](bond-pool-operator-guide.md).
 

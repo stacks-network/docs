@@ -6,7 +6,7 @@ description: >-
 
 # Stake to an Existing Signer-Manager
 
-Staking STX-only under PoX-5 (Stacks 4.x) means locking your STX and naming a signer-manager contract to act for you. You choose how many cycles it runs, from 1 to 96. You can unstake at any time and your STX unlocks at the start of the next cycle, so you are never locked for more than one cycle.
+Staking STX-only under PoX-5 (Stacks 4.x) means locking your STX and naming a signer-manager contract to act for you. You choose how many cycles it runs, from 1 to 96. You can unstake during the reward phase of any cycle, which excludes its last 100 Bitcoin blocks (the prepare phase), and your STX unlocks at the start of the next cycle.
 
 You keep custody throughout: the STX locks in your own account and the manager never holds it.
 
@@ -59,9 +59,9 @@ Both [app.leather.io/staking](https://app.leather.io/staking) and pool operators
 **Re-staking without resupplying your Bitcoin address reverts you to sBTC.** In the reference manager, `signer-calldata` of `none` on a later call deletes the stored entry rather than preserving it, and you get no error.
 {% endhint %}
 
-Claiming is non-custodial and anyone can call it. Rewards move from `pox-5` to the signer-manager, then the manager's `claim-staker-rewards` moves them on to you. Your manager will normally do both, and since PoX-5 (Stacks 4.x) you can also do them yourself.
+Claiming is non-custodial and anyone can call it. Rewards move from `pox-5` to the signer-manager, then the manager's `claim-staker-rewards` moves them on to you. Whether your manager does both for you depends on the manager, and since PoX-5 (Stacks 4.x) you can also do them yourself.
 
-Rewards are credited once per distribution cycle, every 1,050 Bitcoin blocks or roughly a week, which is twice per reward cycle. That is the protocol's maximum rate, not a promise about when BTC reaches you: your pool decides that. StackingDAO's native pool has no automatic payout, so you claim yourself; FastPool pays out weekly; PlanBetter plans payouts about every two cycles, roughly monthly. Where a signer-manager contract (pool) offers self-service you can always claim credited rewards yourself.
+Rewards are credited once per distribution cycle, every 1,050 Bitcoin blocks or roughly a week, which is twice per reward cycle. That is the protocol's maximum rate. When BTC reaches you is up to your pool. StackingDAO's native pool has no automatic payout, so you claim yourself; FastPool pays out weekly; PlanBetter plans payouts about every two cycles, roughly monthly. Where a signer-manager contract (pool) offers self-service you can always claim credited rewards yourself.
 
 ### Change or end your position
 
@@ -70,7 +70,7 @@ Rewards are credited once per distribution cycle, every 1,050 Bitcoin blocks or 
 * **The signer-manager**, which is how you switch pools. It takes effect from the start of the next cycle, with no cooldown.
 * **The amount**, to increase your stake.
 * **The duration**, to extend how many cycles it runs.
-* **The Bitcoin payout address and max fee.** When a manager starts paying to a new address depends on its own policy, typically from the next payout. Check the operator's site.
+* **The Bitcoin payout address and max fee.** When a manager starts paying to a new address depends on its own policy. Check the operator's site.
 
 `unstake` ends the position. Like staking, it is blocked during the prepare phase, failing with `ERR_UNSTAKE_IN_PREPARE_PHASE (u28)`. Unlocks happen at the start of the next cycle.
 
@@ -83,5 +83,3 @@ This used to be called joining a pool, and the word still works. PoX-5 has no se
 `delegate-stx` and `revoke-delegate-stx` are gone. PoX-5 has no delegation map, so there is no permission grant to inspect or revoke. You stake to a manager directly and you end it with `unstake`.
 
 `stack-aggregation-commit` is gone. No operator commits per cycle on your behalf.
-
-Solo and pooled stacking were separate mechanisms under PoX-4. They are not separate now.

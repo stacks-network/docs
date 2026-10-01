@@ -28,7 +28,7 @@ No. Commit the full amount when you register. Nothing in pox-5 adds BTC to an ex
 
 Rewards are paid in sBTC: miner BTC is auto-bridged to sBTC for distribution. If you supplied a Bitcoin payout address and your signer-manager supports it, as the reference signer-manager and compatible ones do, your share is withdrawn to native BTC on L1 when it is claimed.
 
-The payout address is not a `register-for-bond` parameter. It travels in `signer-calldata` to your signer-manager. See [How you are paid](../staking-stx/stack-with-a-pool.md#how-you-are-paid).
+The payout address travels in `signer-calldata` to your signer-manager. See [How you are paid](../staking-stx/stack-with-a-pool.md#how-you-are-paid).
 
 ## When can I register, and when does registration close?
 
@@ -36,7 +36,7 @@ Registration opens once the bond is set up, which happens within the two reward 
 
 ## Can I exit my bond early?
 
-Yes, at any time outside the prepare phase.
+Yes, during the reward phase of any cycle, which excludes its last 100 Bitcoin blocks (the prepare phase).
 
 * **Native BTC bond.** Call `announce-l1-early-exit` from your own Stacks address; no contract or other party can call it for you. You stop earning from that point, then spend your BTC back through the early-exit branch with a co-signature from the early-exit signer. Your STX stays locked until the bond's original end.
 * **sBTC bond.** Withdraw with `unstake-sbtc`.

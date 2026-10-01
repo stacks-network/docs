@@ -43,7 +43,7 @@ The `old-signer-manager` you passed is not the signer-manager your position is r
 
 A position can run for 1 to 96 reward cycles (`MAX_NUM_CYCLES`). For `stake-update` the limit applies to the term remaining after the extension, counted from the next cycle, not to the extension alone.
 
-You don't need a short term to keep the option of leaving: `unstake` ends a position at any time except during the prepare phase.
+`unstake` ends a position during the reward phase of any cycle, whatever term you chose.
 
 ## I want to stake less
 

@@ -6,7 +6,7 @@ description: >-
 
 # Ending or Changing a Bond Position
 
-A protocol bond is a 12-cycle commitment. Which routes are open to you depends on one thing: whether the bond's Bitcoin leg is a native L1 timelock or locked sBTC. The contract enforces that split strictly, and calling the wrong function returns an error that does not say "wrong path".
+A protocol bond is a 12-cycle commitment. Which routes are open to you depends on whether the bond's Bitcoin leg is a native L1 timelock or locked sBTC. The contract enforces that split strictly, and calling the wrong function returns an error that does not say "wrong path".
 
 For STX-only staking, see [Stake to an Existing Signer-Manager](../staking-stx/stack-with-a-pool.md).
 
@@ -37,7 +37,7 @@ An early exit is a Stacks transaction followed by a Bitcoin transaction:
 
 Announce first. The contract enforces no order between the two, but the co-signer signs only after it finds your announce transaction on Stacks. The position stops earning as soon as the announcement lands, not when the BTC moves.
 
-Co-signing is only needed before the timelock height. After the CLTV height you reclaim alone through the timelock branch, with no co-signer and no service involved.
+Co-signing is only needed before the timelock height. After the CLTV height you reclaim alone through the timelock branch.
 
 What it costs: the undistributed yield for the rest of the term is forfeited, and the paired STX stays locked until the bond ends.
 
@@ -57,7 +57,7 @@ The bond admin sets the early-unlock subscript per bond at `setup-bond`. The con
 
 * Not in the prepare phase, or `ERR_STAKE_IN_PREPARE_PHASE (u47)`.
 * No re-entrancy through the signer-manager trait call, or `ERR_REENTRANT_CALL (u49)`.
-* `contract-caller` equals `tx-sender` and equals the `staker` argument, or `ERR_UNAUTHORIZED (u1)`. You must send it yourself. No contract can announce on your behalf, so a pool or a smart-contract wallet cannot do it for you.
+* `contract-caller` equals `tx-sender` and equals the `staker` argument, or `ERR_UNAUTHORIZED (u1)`, so a pool or a smart-contract wallet cannot announce for you.
 * The membership is an L1 lock, or `ERR_CANNOT_ANNOUNCE_L1_EARLY_UNLOCK (u35)`. An sBTC bond gets this error; use `unstake-sbtc` instead.
 * The signer-manager you pass matches your current signer, or `ERR_INVALID_OLD_SIGNER_MANAGER (u36)`.
 * You have not already announced for this bond, or `ERR_L1_EARLY_EXIT_ALREADY_ANNOUNCED (u50)`.
@@ -86,7 +86,7 @@ The staker is taken from `tx-sender`, not passed as an argument. A pool contract
 
 A partial withdrawal leaves the membership in place with a reduced `amount-sats`. Withdrawing everything leaves a zero-sats membership, the same end state as an L1 early exit.
 
-`unstake-sbtc` keeps working after the bond ends. It reads the membership map directly, while `announce-l1-early-exit` and `update-bond-registration` go through `get-bond-membership`, which returns nothing once the term has passed. After your bond ends you can still retrieve sBTC with `unstake-sbtc`, but the other two reject you with `ERR_NOT_BOND_PARTICIPANT (u34)`.
+`unstake-sbtc` keeps working after the bond ends. It reads the membership map directly, while `announce-l1-early-exit` and `update-bond-registration` go through `get-bond-membership`, which returns nothing once the term has passed, so after the bond ends those two reject you with `ERR_NOT_BOND_PARTICIPANT (u34)`.
 
 The code is under [Building an sBTC withdrawal](ending-or-changing-a-bond-position.md#building-an-sbtc-withdrawal).
 
@@ -96,7 +96,7 @@ The code is under [Building an sBTC withdrawal](ending-or-changing-a-bond-positi
 
 It reverts with `ERR_UPDATE_BOND_SAME_SIGNER (u44)` if the new signer-manager is the one you already have, and is rejected in the prepare phase. The new signer-manager must already be registered with a live signer key grant, or `ERR_SIGNER_KEY_GRANT_NOT_FOUND (u17)`.
 
-Your locked amounts and your term do not change. This changes who manages the position, not what is locked.
+Your locked amounts and your term do not change.
 
 ## Rolling into a new position
 
@@ -105,7 +105,7 @@ When your bond is ending you can go straight into a new bond, or out of bonding 
 * **Non-overlap.** The new position's first reward cycle must be at or after the old bond's last. `register-for-bond` rejects an overlap with `ERR_ALREADY_REGISTERED (u9)`, and `stake` with `ERR_ALREADY_STAKED (u19)`.
 * **The rollover window.** The current Bitcoin height must have reached the old bond's L1 unlock height, half a reward cycle before the bond's L2 end: 1,050 blocks on mainnet, at Day 175. Earlier returns `ERR_ROLLOVER_TOO_EARLY (u48)`. This stops the STX and sBTC legs being released ahead of the BTC leg.
 
-Both first pass in the bond's final half reward cycle, and the window does not close afterward. **You can roll at any time from the last half-cycle of your bond onward, and not one block before.**
+Both first pass in the bond's final half reward cycle, and the window does not close afterward.
 
 Only 950 of those 1,050 blocks are usable. The last 100 blocks of every cycle are the prepare phase, where `register-for-bond` and `stake` are rejected with `ERR_STAKE_IN_PREPARE_PHASE (u47)`. Land the roll before the prepare phase that precedes the bond's end.
 
