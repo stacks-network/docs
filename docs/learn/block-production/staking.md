@@ -20,7 +20,7 @@ description: >-
 * Staking locks STX to help secure the network and earn Bitcoin-denominated rewards.
 * It is part of Proof of Transfer (PoX): miners commit BTC, and that BTC pays stakers.
 * You stake by naming a signer-manager contract. The STX locks in your own account and never moves.
-* There is no per-staker minimum. A signer-manager needs 50,000 STX in aggregate to enter the signer set.
+* There is no per-staker minimum. A signer-manager with at least 50,000 STX staked to it in aggregate gets a yield distribution.
 * You can unstake an STX-only position at any time, and the STX unlocks at the start of the next cycle. Bond-paired STX is committed for the bond term.
 * Rewards arrive as sBTC by default. A native BTC payout can be elected through your signer-manager.
 
@@ -74,7 +74,7 @@ Who does what:
 * **The signer-manager contract** is bound to a signer key once, through a one-time [SIP-018](https://github.com/stacksgov/sips/blob/main/sips/sip-018/sip-018-signed-structured-data.md) grant, and receives your settled rewards for onward distribution. It may take a fee, which is contract-level logic rather than a protocol feature.
 * **The pox-5 contract** registers your position for every cycle you chose in the single staking transaction, and settles rewards per staker to the manager.
 
-A signer-manager enters the signer set once at least 50,000 STX (`SIGNER_SET_MIN_USTX`) is staked to it in aggregate. The threshold is fixed, and it applies to the manager rather than to you: your own stake can be any size.
+A signer-manager with at least 50,000 STX (`SIGNER_SET_MIN_USTX`) staked to it in aggregate gets a yield distribution. The threshold is fixed, and it applies to the manager rather than to you: your own stake can be any size.
 
 Running your own signer-manager and staking to someone else's are the same mechanism. A "solo" staker is someone running their own manager, which is operationally identical to offering a pool, because anyone can stake to that contract.
 
@@ -154,7 +154,7 @@ Staking happens in reward cycles of 2,100 Bitcoin blocks (roughly two weeks). Th
 
 <div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2Ffz7B1xYNMnl5u5ICddZi%2Fstaking-cycles.png?alt=media&#x26;token=7aea0cf7-4dee-42af-a195-acf5c9aade65" alt="A reward cycle of 2,100 Bitcoin blocks ending in a 100-block prepare phase, with reward distributions every 1,050 blocks and unlocks at the cycle boundary"><figcaption><p>One reward cycle, block by block</p></figcaption></figure></div>
 
-* The prepare phase fixes the signer set for the upcoming cycle: every signer-manager with at least 50,000 STX staked to it in aggregate.
+* The prepare phase fixes the signer set for the upcoming cycle. Every signer-manager with at least 50,000 STX staked to it in aggregate gets a yield distribution.
 * During the reward phase, miners commit BTC to mine Stacks blocks, and that BTC funds staker rewards.
 * Rewards are credited once per distribution interval of 1,050 Bitcoin blocks (roughly one week), two intervals per reward cycle. The interval gates crediting only: your signer-manager can claim credited rewards at any time.
 * Unlocks happen at a cycle boundary: at the start of the cycle after your chosen duration ends, or after you unstake.

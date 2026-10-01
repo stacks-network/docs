@@ -43,4 +43,4 @@ As you read through the Staking section, you may find stakers and signers mentio
 * Stakers are not signers\
   → signing is done by the key granted to the signer-manager contract they stake to, and running that signer is the manager operator's job
 * Every signer is backed by **staked STX**\
-  → to be in the signer set, a signer-manager must have at least 50,000 STX staked to it in aggregate, and its weight grows with the stake it represents
+  → a signer-manager with at least 50,000 STX staked to it in aggregate gets a yield distribution, and its weight grows with the stake it represents

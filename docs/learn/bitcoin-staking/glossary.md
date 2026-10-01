@@ -97,7 +97,7 @@ A contract that every staker delegates to, bond or STX-only. It owns approval lo
 
 ## Signer set minimum
 
-`SIGNER_SET_MIN_USTX u50000000000` is 50,000 STX. It is an aggregate threshold on total uSTX delegated to a signer, counting both bond STX and STX-only STX, with no per-staker minimum. A signer crossing it is added to that cycle's signer set; falling below removes them.
+`SIGNER_SET_MIN_USTX u50000000000` is 50,000 STX. It is an aggregate threshold on total uSTX delegated to a signer, counting both bond STX and STX-only STX, with no per-staker minimum. A signer at or above it gets a yield distribution for that cycle; falling below stops it.
 
 ## Early exit
 

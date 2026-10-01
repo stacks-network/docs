@@ -18,7 +18,7 @@ description: >-
 #### The Big Picture
 
 * Signers validate and sign proposed Stacks blocks before they can join the chain.
-* The signer set is fixed each reward cycle: every signer-manager with at least 50,000 STX staked to it.
+* The signer set is fixed each reward cycle. Every signer-manager with at least 50,000 STX staked to it gets a yield distribution.
 * A signer's voting weight is proportional to the STX staked through it.
 * Accepting a block requires signatures carrying at least 70% of total signer weight.
 * Signing prevents forks and anchors Stacks history to Bitcoin.
@@ -44,7 +44,7 @@ This behavior prevents forks. If a miner builds a block atop a stale tip, signer
 
 Under PoX-5, a signer is a signer-manager contract bound to one signer key. The binding happens once: the signer-key holder signs a [SIP-018](https://github.com/stacksgov/sips/blob/main/sips/sip-018/sip-018-signed-structured-data.md) grant naming the manager, and the manager submits it through `grant-signer-key` and registers with `register-signer`. The key holder can revoke the grant at any time with `revoke-signer-grant`, which stops the manager accepting new stake while existing positions wind down.
 
-During each prepare phase, the last 100 Bitcoin blocks of a reward cycle, the signer set for the upcoming cycle is fixed: every registered signer-manager with at least 50,000 STX (`SIGNER_SET_MIN_USTX`) staked to it in aggregate. A signer's voting weight for that cycle is proportional to the total STX staked through it, counting the STX in STX-only stakes and the STX side of protocol bonds together. The BTC side of a bond carries no signing weight: signing weight, like governance weight, is a function of locked STX alone.
+During each prepare phase, the last 100 Bitcoin blocks of a reward cycle, the signer set for the upcoming cycle is fixed. Every registered signer-manager with at least 50,000 STX (`SIGNER_SET_MIN_USTX`) staked to it in aggregate gets a yield distribution. A signer's voting weight for that cycle is proportional to the total STX staked through it, counting the STX in STX-only stakes and the STX side of protocol bonds together. The BTC side of a bond carries no signing weight: signing weight, like governance weight, is a function of locked STX alone.
 
 The signer software detects from chain state whether its manager is in the upcoming cycle's signer set. Staking transactions are sent manually; everything the signer does with that information is automatic.
 
@@ -53,7 +53,7 @@ The signer software detects from chain state whether its manager is in the upcom
 <div data-with-frame="true"><figure><img src="https://2842511454-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FH74xqoobupBWwBsVMJhK%2Fuploads%2FS1L4pYrXDd1Ju74JhJkr%2Fstaking-and-signing.png?alt=media&#x26;token=3395cd31-c1fa-4f1a-97e0-f762285052c7" alt="Manual staking transactions feeding the reward phase, and the signer software acting automatically once its manager is in the signer set"><figcaption><p>Manual on the staker's side, automatic on the signer's</p></figcaption></figure></div>
 
 * Stakers are not signers. Signing is done by the key granted to the signer-manager they stake to, and running that signer is the manager operator's job.
-* Every signer is backed by staked STX. To be in the signer set, a manager must represent at least the 50,000 STX aggregate threshold, and its weight grows with the stake it represents.
+* Every signer is backed by staked STX. A manager with at least the 50,000 STX aggregate threshold gets a yield distribution, and its weight grows with the stake it represents.
 
 ***
 
