@@ -257,6 +257,9 @@
     * [PostConditionType](stacks.js/stacks-transactions/types/PostConditionType.md)
     * [PostCondition](stacks.js/stacks-transactions/types/PostCondition.md)
     * [NoEstimateAvailableError](stacks.js/stacks-transactions/types/NoEstimateAvailableError.md)
+* [@stacks/bitcoin-staking](stacks.js/stacks-bitcoin-staking/README.md)
+  * [Fetch](stacks.js/stacks-bitcoin-staking/fetch/README.md)
+    * [fetchPoxInfo](stacks.js/stacks-bitcoin-staking/fetch/fetchpoxinfo.md)
 * [sbtc](stacks.js/sbtc.md)
 * [c32check](stacks.js/c32check.md)
 
