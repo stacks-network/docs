@@ -34,7 +34,6 @@
           kind: openapi
           spec: stacks-blockchain-api
     ```
-  * [Bitcoin Staking](api/stacks-blockchain-api/bitcoin-staking.md)
 * [Stacks Mesh API](api/stacks-mesh-api/README.md)
   * ```yaml
     props:
