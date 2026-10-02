@@ -17,7 +17,7 @@ As of October 2026:
 | [Stacking DAO stBTC](https://docs.stackingdao.com/stackingdao/the-stacking-dao-app/stbtc-liquid-btc-staking-with-btc-rewards) | sBTC, or BTC that first moves through the sBTC peg-in | stBTC, a liquid token whose value grows against sBTC | Supplied by Stacking DAO from its own STX reserve | `SP4SZE494VC2YC5JYG7AYFQ44F5Q4PYV7DVMDPBG.stbtc-staker-bond-1-v2`  |
 | [Esbee DAO](https://www.esbee-dao.org/)                                                                                       | sBTC and the STX the bond requires                    | A share of the pool, recorded by the pool contract   | Your own STX, held by the pool's treasury         | `SPFCGF789WX1B737VQYAQ6BG3QYVMJGPDKRKYK00.esbee-dao-bond-staker-1` |
 
-The two differ in more than the STX leg. Stacking DAO's contracts are audited, and stBTC can be used in other Stacks DeFi applications while it earns. Esbee DAO puts the operator's powers behind a vote of the pool's members, and its site states that its contracts are unaudited.
+Stacking DAO lists a [Clarity Alliance audit](https://github.com/Clarity-Alliance/audits/blob/846c46175049e0738997a26c501c55f90c8dae6b/Clarity%20Alliance%20-%20Stacking%20DAO%20PoX-5.pdf) of its PoX-5 and stBTC contracts, and stBTC can be used in other Stacks DeFi applications while it earns. Esbee DAO puts the operator's powers behind a vote of the pool's members, and its site states that its contracts are unaudited.
 
 ## Who is the staker in pox-5?
 
@@ -69,4 +69,4 @@ const membership = await fetchBondMembership({ address: poolContract, network })
 const earned = await fetchEarned({ signerManager, rewardCycle, bondIndex, network });
 ```
 
-The Stacks Blockchain API serves the same positions without the SDK: see [Bitcoin Staking endpoints](https://docs.stacks.co/reference/api/stacks-blockchain-api/bitcoin-staking).
+The Stacks Blockchain API serves the same positions without the SDK: see [Bitcoin Staking endpoints](https://docs.stacks.co/reference/api/stacks-blockchain-api/staking).
