@@ -42,22 +42,7 @@ function fetchPoxInfo(opts?: NetworkClientParam): Promise<PoxInfo>;
 
 `Promise<PoxInfo>`
 
-The node's `/v2/pox` response, renamed to camelCase, with micro-STX totals converted to `bigint`.
-
-| Field                         | Type                                                                                           | From `/v2/pox`                   | Meaning                                                                                      |
-| ----------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------- |
-| `contractId`                  | `string`                                                                                       | `contract_id`                    | Active PoX contract, `SP000000000000000000002Q6VF78.pox-5` on mainnet                        |
-| `currentBurnchainBlockHeight` | `number`                                                                                       | `current_burnchain_block_height` | Bitcoin block height the node has reached                                                    |
-| `firstBurnchainBlockHeight`   | `number`                                                                                       | `first_burnchain_block_height`   | Bitcoin block height at which PoX began                                                      |
-| `rewardCycleId`               | `number`                                                                                       | `reward_cycle_id`                | Reward cycle in progress                                                                     |
-| `rewardCycleLength`           | `number`                                                                                       | `reward_cycle_length`            | Cycle length in Bitcoin blocks, 2,100 on mainnet                                             |
-| `prepareCycleLength`          | `number`                                                                                       | `prepare_cycle_length`           | Prepare phase length in Bitcoin blocks, 100 on mainnet                                       |
-| `rewardSlots`                 | `number`                                                                                       | `reward_slots`                   | Reward slots per cycle                                                                       |
-| `currentCycle`                | `{ id: number; stakedUstx: bigint; isPoxActive: boolean }`                                     | `current_cycle`                  | Current cycle ID, micro-STX staked, and whether PoX is active                                |
-| `nextCycle`                   | `{ id: number; stakedUstx: bigint }`                                                           | `next_cycle`                     | Next cycle ID and micro-STX staked for it so far                                             |
-| `contractVersions`            | `{ contractId: string; activationBurnchainBlockHeight: number; firstRewardCycleId: number }[]` | `contract_versions`              | One entry per PoX contract version, `pox` through `pox-5`. Empty if the node omits the field |
-| `sbtcContract`                | `string`                                                                                       | `pox_5_sbtc_contract`            | sBTC token contract pox-5 pays through                                                       |
-| `sbtcRegistryContract`        | `string`                                                                                       | `pox_5_sbtc_registry_contract`   | sBTC registry the node reads the reward recipient from                                       |
+Resolves to a [PoxInfo](../types/poxinfo.md): the node's `/v2/pox` response, renamed to camelCase, with micro-STX totals converted to `bigint`.
 
 ***
 
