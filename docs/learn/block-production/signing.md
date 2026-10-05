@@ -42,7 +42,7 @@ This behavior prevents forks. If a miner builds a block atop a stale tip, signer
 
 ### How Signers Are Selected
 
-Under PoX-5, a signer is a signer-manager contract bound to one signer key. The binding happens once: the signer-key holder signs a [SIP-018](https://github.com/stacksgov/sips/blob/main/sips/sip-018/sip-018-signed-structured-data.md) grant naming the manager, and the manager submits it through `grant-signer-key` and registers with `register-signer`. The key holder can revoke the grant at any time with `revoke-signer-grant`, which stops the manager accepting new stake while existing positions wind down.
+Under PoX-5, a signer is a signer-manager contract bound to one signer key. The binding happens once: the signer-key holder signs a [SIP-018](https://github.com/stacksgov/sips/blob/main/sips/sip-018/sip-018-signed-structured-data.md) grant naming the manager, and the manager submits it through `grant-signer-key` and registers with `register-signer`. The key holder can revoke the grant with `revoke-signer-grant`, which stops the manager accepting new stake while existing positions wind down.
 
 During each prepare phase, the last 100 Bitcoin blocks of a reward cycle, the signer set for the upcoming cycle is fixed. Every registered signer-manager with at least 50,000 STX (`SIGNER_SET_MIN_USTX`) staked to it in aggregate gets a yield distribution. A signer's voting weight for that cycle is proportional to the total STX staked through it, counting the STX in STX-only stakes and the STX side of protocol bonds together. The BTC side of a bond carries no signing weight: signing weight, like governance weight, is a function of locked STX alone.
 

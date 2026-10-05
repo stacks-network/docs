@@ -41,7 +41,7 @@ You do not set a reward address. There is no `pox-addr` argument on `register-fo
 
 Registration is rejected during the prepare phase, which is the last 100 Bitcoin blocks of every cycle. Do not plan to start a position at a cycle boundary.
 
-Step-by-step guides with screenshots exist for the end-to-end flows institutional partners are expected to follow; [reach out for support](mailto:support@stackslabs.com?subject=Help%20wanted%20with%20bitcoin%20staking%20end-to-end%20steps%20to%20take) and we will point you at the right one. Liquid-staking options are expected to follow later and may be provided by third parties. StackingDAO, for example, has indicated it will offer stBTC, a liquid-staked sBTC token. Nothing of that kind is available today.
+Step-by-step guides with screenshots exist for the end-to-end flows institutional partners are expected to follow; [reach out for support](mailto:support@stackslabs.com?subject=Help%20wanted%20with%20bitcoin%20staking%20end-to-end%20steps%20to%20take) and we will point you at the right one. Liquid staking is offered by third parties. Stacking DAO's stBTC is live: a liquid token for sBTC held in a protocol bond, with Stacking DAO supplying the STX side ([Stacking DAO announcement](https://www.stackingdao.com/post/150-btc-of-initial-capacity-how-stbtc-brings-bitcoin-staking-yield-onchain)). The pools you can join today are listed in the [sBTC Pool FAQ](https://docs.stacks.co/operate/protocol-bonds/sbtc-pool-faq).
 
 ## The bond timeline
 
@@ -63,7 +63,7 @@ One caveat worth carrying knowingly: 25,200 blocks is 175 days at 144 blocks per
 
 Bonds are paid first from each cycle's miner-revenue-derived pool. The protocol bond tranche takes its target yield in full, and what remains is split between the STX-only staking tranche and the reserve fund tranche. The full breakdown of the waterfall, the tranches, the coverage ratio, and the reserve is on [Protocol Bond and Rewards Mechanics](rewards-and-tranches.md).
 
-By default rewards pay out in sBTC via an auto-bridge. A native BTC-L1 payout is an opt-out configured at the signer-manager layer through `signer-calldata`, not a `register-for-bond` parameter.
+By default rewards pay out in sBTC via an auto-bridge. A Bitcoin L1 payout is available if you stake to a signer-manager that supports it and store a Bitcoin address with it, through `signer-calldata`. That argument is part of `register-for-bond`, `stake`, `stake-update` and `update-bond-registration`.
 
 ## Ending or changing a position
 
