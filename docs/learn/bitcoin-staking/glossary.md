@@ -55,8 +55,6 @@ The second stop. STX-only stakers take 85% of the cycle excess, pro rata by shar
 
 The third stop. Takes the remaining 15% of the cycle excess.
 
-> **House convention.** This glossary is the one page in the set that carries the tranche numbers: Tranche 1 is protocol bonds, Tranche 2 is STX-only stakers, Tranche 3 is the reserve fund. Everywhere else in the documentation the tranches are named, never numbered: the protocol bond tranche, the STX-only staking tranche, the reserve fund tranche. When two or more are named together the order is always protocol bonds, then STX-only, then reserve fund.
-
 ## Cycle excess
 
 Miner revenue beyond Tranche 1 obligations for that cycle. It is what Tranche 2 and Tranche 3 split, 85% to STX-only stakers and 15% to the reserve.
@@ -65,7 +63,7 @@ Miner revenue beyond Tranche 1 obligations for that cycle. It is what Tranche 2 
 
 The priority ordering of rewards across the three tranches: bonds first, then the excess split between STX-only stakers and the reserve. Bonds are paid in descending `stx-value-ratio` order, and a shortfall falls entirely on the last bonds in that order rather than being spread proportionally. The effect is a more stable BTC-side yield and a more variable STX-only return.
 
-Outside this glossary the three stops are referred to by name, in the order protocol bonds, STX-only, reserve fund. Full treatment in [Rewards and tranches](rewards-and-tranches.md).
+Full treatment in [Rewards and tranches](rewards-and-tranches.md).
 
 ## Coverage ratio
 
@@ -127,7 +125,9 @@ sBTC-locked participants use `unstake-sbtc` instead, which has no early-exit gat
 
 ## sBTC auto-bridge
 
-The default reward path: miner BTC routes into the reward pool and is auto-bridged to sBTC for distribution. A staker may opt out to an L1 BTC payout by supplying `signer-calldata` at the signer-manager layer. It is not a `register-for-bond` parameter. `signer-calldata` is an opaque `(optional (buff 500))` that pox-5 passes through to the signer-manager without interpreting it.
+The default reward path. Miner BTC routes into the reward pool and is auto-bridged to sBTC, and pox-5 pays each signer-manager its rewards in sBTC. The signer-manager then pays its stakers: in sBTC by default, or as BTC on L1 through an sBTC withdrawal if the staker uses a signer-manager that supports this and stored a Bitcoin address with it.
+
+The staker stores that address in `signer-calldata`, an opaque `(optional (buff 500))` argument of `stake`, `stake-update`, `register-for-bond` and `update-bond-registration`. pox-5 passes it to the signer-manager's `validate-stake!` without interpreting it, so the payout options are whatever that signer-manager implements. The [Fastpool Max 500 signer-manager](https://explorer.hiro.so/txid/SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager?chain=mainnet), for example, also lets a staker set or clear the address directly with `set-payout-config` and `clear-payout-config`, and makes the withdrawal in its `payout` function through `.sbtc-withdrawal`.
 
 ## Rollover window
 
@@ -150,4 +150,4 @@ Every contract-level claim on this page is checked against the pinned release an
 * [`pox-5.clar` at tag 4.0.1](https://github.com/stacks-network/stacks-core/blob/4.0.1/stackslib/src/chainstate/stacks/boot/pox-5.clar)
 * [`SP000000000000000000002Q6VF78.pox-5` on mainnet](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-5?chain=mainnet\&tab=sourceCode)
 
-The coverage-ratio target and band, and the auto-bridge as the default reward path, do not appear in the contract in any form. Both come from `glossary.mdx` and the white paper.
+The coverage-ratio target and bands come from [SIP-045 §3.1.5](https://github.com/stacksgov/sips/blob/642af6804dacc80455c3d49ef66b62bc4fb209aa/sips/sip-045/sip-045-pox-5-bitcoin-staking.md#315-coverage-ratio-requirements) and its [white paper](https://github.com/stacksgov/sips/blob/642af6804dacc80455c3d49ef66b62bc4fb209aa/sips/sip-045/sip-045-5.pdf); no contract computes them. The L1 payout option is signer-manager logic, not pox-5 logic: the Fastpool Max 500 example is the deployed contract `SPMPMA1V6P430M8C91QS1G9XJ95S59JS1TZFZ4Q4.fastpool-max500-signer-manager`.
