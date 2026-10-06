@@ -73,7 +73,7 @@ Stacks address of the staker.
 
 * **Type**: `string`
 
-Contract principal of the signer-manager the staker is delegated to.
+Contract principal of the signer-manager the staker stakes to.
 
 #### opts.rewardCycle (required)
 

@@ -1,6 +1,6 @@
 # fetchSignerCycleMembership
 
-Reads which signer-manager a staker is assigned to in one reward cycle, and the micro-STX counted for that assignment. Wraps the pox-5 read-only `get-signer-cycle-membership`, which reads the `staker-signer-cycle-memberships` map.
+Reads which signer-manager a staker stakes to in one reward cycle, and the micro-STX staked to it. Covers STX-only stakers and protocol bond stakers alike. Wraps the pox-5 read-only `get-signer-cycle-membership`, which reads the `staker-signer-cycle-memberships` map.
 
 ***
 
@@ -19,6 +19,8 @@ async function signerFor(staker: string) {
 #### Notes
 
 * pox-5 writes an entry for every cycle of a position, for STX-only staking and for protocol bonds: `stake`, `stake-update`, `register-for-bond` and `update-bond-registration` all add it ([add-staker-to-signer-for-cycle](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1739-L1745), called at [L803](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L803-L805), [L907](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L907), [L1056](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1056) and [L1146](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1146)).
+* For a protocol bond staker, `amountUstx` is the STX locked with the bond ([register-for-bond](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L751-L755)). For an STX-only staker, it is the STX staked.
+* The comment above the map in pox-5.clar ([L228](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L228)) reads "Only used for stx-only staking". The comment is out of date: the map holds protocol bond stakers too, and pox-5 reads it to find a bond staker's signer-manager when it reduces bond shares ([L1364-L1367](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L1364-L1367)).
 * Pass `signer` as `signerManager` to the staker reward reads such as [fetchEarnedStakerRewards](fetchearnedstakerrewards.md).
 * Resolves to `undefined` when the staker has no entry for the cycle ([get-signer-cycle-membership](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3134-L3142)).
 * A non-2xx response throws an `Error` whose message starts with `Error calling read-only function.` and includes the status code and URL. If the node reports that the call failed, the `Error` message is the node's `cause`.
@@ -45,10 +47,10 @@ function fetchSignerCycleMembership(
 
 Resolves to the membership, or `undefined` when there is none.
 
-| Field        | Type     | Meaning                                                             |
-| ------------ | -------- | ------------------------------------------------------------------- |
-| `amountUstx` | `bigint` | micro-STX the staker delegated to the signer-manager for this cycle |
-| `signer`     | `string` | Contract principal of the signer-manager                            |
+| Field        | Type     | Meaning                                                          |
+| ------------ | -------- | ---------------------------------------------------------------- |
+| `amountUstx` | `bigint` | micro-STX the staker staked to the signer-manager for this cycle |
+| `signer`     | `string` | Contract principal of the signer-manager                         |
 
 ***
 
@@ -58,7 +60,7 @@ Resolves to the membership, or `undefined` when there is none.
 
 * **Type**: `string`
 
-Stacks address of the staker.
+Stacks address of the staker, STX-only or protocol bond.
 
 #### opts.rewardCycle (required)
 

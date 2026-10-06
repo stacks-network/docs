@@ -18,7 +18,7 @@ if (info.staked) {
   info.details.amountUstx; // locked micro-STX, as a bigint
   info.details.firstRewardCycle;
   info.details.numCycles;
-  info.details.signer; // signer-manager contract the stake is delegated to
+  info.details.signer; // signer-manager contract the STX is staked to
 }
 ```
 

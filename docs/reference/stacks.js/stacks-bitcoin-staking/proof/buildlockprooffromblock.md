@@ -1,6 +1,6 @@
 # buildLockProofFromBlock
 
-Builds the [BondL1LockupOutput](../types/bondl1lockupoutput.md) for a lockup funding transaction from the block's ordered txid list, for callers without an Esplora `/merkle-proof` endpoint, such as those reading bitcoind directly. Computes the merkle branch, then delegates to [buildLockProof](buildlockproof.md). Pure computation: no network call.
+Builds the [BondL1LockupOutput](../types/bondl1lockupoutput.md) for a lockup funding transaction from the block's ordered txid list, for callers without an Esplora `/merkle-proof` endpoint, such as those reading bitcoind directly. Computes the merkle branch, then calls [buildLockProof](buildlockproof.md). Pure computation: no network call.
 
 ***
 
