@@ -35,7 +35,7 @@ Stacks ranks #5 among all crypto ecosystems for new developers in 2025! \[source
 
 Stacks is a fast, low-cost, builder-friendly layer 2 network on Bitcoin. It’s built on Bitcoin, inheriting Bitcoin’s battle-tested security. By jumping into our docs, you’re joining the Stacks builder community that’s bringing a global onchain economy to Bitcoin.
 
-If you're here on this page, hopefully you've already gotten a good sense of _what_ Stacks' purpose is, if not, head to the [Learn](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/) section. Or if you're still on the edge of _why_ you should build with Stacks, head to [Why Build with Stacks](get-started/readme/why-build-with-stacks.md).
+If you're here on this page, hopefully you've already gotten a good sense of _what_ Stacks' purpose is, if not, head to the [Learn](https://docs.stacks.co/learn) section. Or if you're still on the edge of _why_ you should build with Stacks, head to [Why Build with Stacks](get-started/readme/why-build-with-stacks.md).
 
 ***
 
@@ -46,7 +46,7 @@ The Stacks documentation is organized into a set of top-level sections, each ali
 {% tabs %}
 {% tab title="Learn" %}
 **How does the Stacks network&#x20;**_**actually**_**&#x20;work?**\
-The [Learn](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/) section focuses on building a strong academic foundation. It explains how Stacks functions as a Bitcoin layer 2, providing clarity and context around the network’s design and mechanics.
+The [Learn](https://docs.stacks.co/learn) section focuses on building a strong academic foundation. It explains how Stacks functions as a Bitcoin layer 2, providing clarity and context around the network’s design and mechanics.
 
 Topics include Proof of Transfer (PoX), Bitcoin finality, block production, the transaction lifecycle, and more. If you want a deep understanding of how Stacks anchors to Bitcoin and why it works the way it does, this is the best place to start.
 {% endtab %}
@@ -74,7 +74,7 @@ If you’re an experienced Stacks developer looking to quickly reference a speci
 
 {% tab title="Tutorials" %}
 **Looking for a more guided, lesson-oriented experience?**\
-The [Tutorials](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/skGYu79qDNfITOqDNU3s/) section is designed for complete beginner developers who want structured, long-form lessons rather than quick answers.
+The [Tutorials](https://docs.stacks.co/tutorials) section is designed for complete beginner developers who want structured, long-form lessons rather than quick answers.
 
 These tutorials provide step-by-step walkthroughs alongside in-depth explanations of the underlying concepts. The goal isn’t just to help you complete a task, but to help you understand _why_ things work the way they do as you build.
 
@@ -83,7 +83,7 @@ If you’re a complete beginner and prefer a classroom-style, concept-driven lea
 
 {% tab title="Cookbook" %}
 **Looking for a specific code snippet?**\
-The [Cookbook](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/uholC0CdufHxYs050O3V/) section is for developers beyond the exploratory phase who require a specific, concrete code solution quickly for an existing application.This section provides focused, reusable Clarity and Stacks.js code snippets that solve common problems or demonstrate specific patterns—designed to be referenced, copied, and adapted rather than read end-to-end.
+The [Cookbook](https://docs.stacks.co/cookbook) section is for developers beyond the exploratory phase who require a specific, concrete code solution quickly for an existing application.This section provides focused, reusable Clarity and Stacks.js code snippets that solve common problems or demonstrate specific patterns—designed to be referenced, copied, and adapted rather than read end-to-end.
 
 There is also a subsection of example Clarity contracts where you'll find **starter contracts** that demonstrate common patterns and best practices in Clarity, as well as **notable production contracts** currently used by popular Stacks applications.
 {% endtab %}
