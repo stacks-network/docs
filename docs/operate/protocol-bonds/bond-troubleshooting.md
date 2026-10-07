@@ -44,8 +44,6 @@ The BTC you are registering, summed across your lock outputs, is more than your 
 
 ### ERR\_INSUFFICIENT\_STX (u8)
 
-Two checks share this code:
-
 * **The STX amount is below the bond's minimum** for the BTC you are committing. The minimum comes from the bond's own ratio parameters. Compute it with `minUstxForSatsAmount`, or the contract's read-only `min-ustx-for-sats-amount`.
 * **Your STX balance is below the amount.** Locked and unlocked STX both count, so STX still locked by an ending bond counts toward a roll-over.
 

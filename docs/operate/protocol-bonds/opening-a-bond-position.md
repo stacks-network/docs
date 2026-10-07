@@ -31,7 +31,7 @@ A registration uses one leg or the other, never both, and the leg is fixed for t
 ## Timing
 
 * **Register before the bond starts.** After the start height the contract rejects the call with `ERR_BOND_ALREADY_STARTED (u43)`. There is no grace period.
-* **Not in the prepare phase.** The last 100 Bitcoin blocks before every cycle boundary, including the one before the bond starts, reject registration with `ERR_STAKE_IN_PREPARE_PHASE (u47)`. In practice the last block you can register in is 101 blocks before the bond's start height.
+* **Not in the prepare phase.** The last 100 Bitcoin blocks before every cycle boundary, including the one before the bond starts, reject registration with `ERR_STAKE_IN_PREPARE_PHASE (u47)`. The last block you can register in is 101 blocks before the bond's start height.
 * **Native BTC confirms first.** Registration proves a confirmed Bitcoin output, so fund the lock address early enough to confirm and still register in time.
 
 {% hint style="danger" %}

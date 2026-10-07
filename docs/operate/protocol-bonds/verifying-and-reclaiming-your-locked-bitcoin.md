@@ -38,7 +38,7 @@ The contract keeps none of these in its own state, which is why the registration
 
 ## Reclaim after the timelock
 
-Once Bitcoin passes the output's unlock height, you spend it alone through the timelock branch. There is no co-signer, no Stacks transaction and no deadline: the output stays spendable by you from then on.
+Once Bitcoin passes the output's unlock height, you spend it through the timelock branch with a Bitcoin transaction signed by your key alone. The output stays spendable by you from then on.
 
 Your STX leg unlocks separately, at the end of the bond term on Stacks. See the [bond timeline](https://docs.stacks.co/learn/bitcoin-staking#the-bond-timeline).
 
