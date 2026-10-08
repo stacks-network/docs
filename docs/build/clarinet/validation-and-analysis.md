@@ -2,9 +2,9 @@
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/path-to-production.png" alt=""><figcaption></figcaption></figure></div>
 
-Clarinet provides tools for validating, analyzing, linting, and debugging your smart contracts. From static type checking to real-time cost analysis, you can ensure your contracts are correct and efficient before deployment.
+Clarinet provides tools for validating, analyzing, linting, and debugging your smart contracts. From static type checking to real-time cost analysis, you can check your contracts for errors and costs before deployment.
 
-Contract validation spans static analysis, runtime debugging, and cost optimization. Each discipline helps you gain confidence in contract behavior.
+Contract validation spans static analysis, runtime debugging, and cost optimization.
 
 ## Understanding contract validation
 
@@ -32,7 +32,7 @@ Successful output resembles:
 ✔ 3 contracts checked
 ```
 
-When validation fails, Clarinet provides detailed diagnostics:
+When validation fails, Clarinet prints diagnostics:
 
 ```
 ✖ 1 error detected
@@ -105,7 +105,7 @@ Clarinet validates multiple aspects of your contracts:
 
 <summary><code>clarinet check --output=&#x3C;format></code></summary>
 
-Add `--output=<format>` option to `clarinet check` to print diagnostics as JSON or other formats. This will make it easier for LLMs and other software to utilize the output of `clarinet check` . Current supported formats are `standard` , `json` , `jsonpretty` .
+Add the `--output=<format>` option to `clarinet check` to print diagnostics as JSON or other formats. LLMs and other tools can parse this output. Currently supported formats are `standard`, `json`, and `jsonpretty`.
 
 {% code title="" expandable="true" %}
 ```
@@ -151,7 +151,7 @@ Add `--output=<format>` option to `clarinet check` to print diagnostics as JSON 
 
 ### Linter analysis
 
-Clarinet includes a built-in linter as part of `clarinet check` to help identify common mistakes, inefficiencies, and unused code in Clarity contracts. Linters play an important role in improving code quality by surfacing issues early in development and encouraging clearer, more maintainable contracts.
+Clarinet includes a built-in linter as part of `clarinet check` that flags common mistakes, inefficiencies, and unused code in Clarity contracts.
 
 Clarinet v3.24.1 has 23 lints in four groups: `unused` (dead code), `perf` (inefficient code), `safety` (code that might not do what you intended) and `style` (naming conventions). Each lint can be configured on its own or through its group.
 
@@ -181,15 +181,11 @@ Clarinet v3.24.1 has 23 lints in four groups: `unused` (dead code), `perf` (inef
 | `case_token`             | Enforces `kebab-case` on fungible and non-fungible token names.                                                                                                                                      | `style`    |
 | `case_trait`             | Enforces `kebab-case` on trait names.                                                                                                                                                                | `style`    |
 
-#### Bypassing the Linter
+#### Bypassing the linter
 
-In some cases, code may appear unused but may be used in a way the linter can't see. Examples include private functions used only in tests, or bindings whose evaluation has side effects.
+Code can look unused when it is used in a way the linter can't see. Examples include private functions used only in tests, or bindings whose evaluation has side effects.
 
-Clarinet follows a convention similar to Rust: identifiers with a trailing `_` might generate other kinds of warnings for them but the linter will allow them to be unused.
-
-{% hint style="info" %}
-Note: _prefixing_ identifiers with `_` is not currently supported, only _suffixing_ is.
-{% endhint %}
+Clarinet follows a convention similar to Rust: the linter allows identifiers with a trailing `_` (a leading `_` does not work) to be unused, but other lints still apply to them.
 
 Individual lints can also be disabled for a specific line using Clarity's annotation syntax:
 
@@ -222,11 +218,11 @@ unused = "error" # Enforces removal of unused code
 
 ## Runtime analysis
 
-The Clarinet console offers runtime tools that help you inspect behavior during execution.
+The Clarinet console has commands for inspecting behavior during execution.
 
 ### Cost analysis with `::toggle_costs`
 
-Enable automatic cost display after every expression:
+Turn on automatic cost display after every expression:
 
 ```clarity
 ::toggle_costs
@@ -311,7 +307,7 @@ Review the trace for loops with high iteration counts, nested map/filter operati
 
 ## Debugging workflows
 
-Master interactive debugging to identify issues quickly:
+Run `::debug` to pause execution and show the current source location:
 
 ```clarity
 ::debug (contract-call? .counter count-up)

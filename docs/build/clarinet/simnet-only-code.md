@@ -10,9 +10,9 @@ Clarinet 3.17.0 introduced conditional code deployment, letting you write Clarit
 
 The preferred way to write unit tests for Clarity smart contracts is the Clarinet SDK and Vitest combo. The Clarinet SDK runs the Clarity VM in Node.js and simulates a fast blockchain environment, so Clarity developers can tap into the JS/TS ecosystem to test their contracts instead of reinventing a unit test framework for Clarity. For Stacks app builders, it also means using the same tools across their back-end, front-end, and on-chain logic.
 
-One caveat of this approach is that it makes it hard to update and mock the state of smart contracts for testing. The `;; #[env(simnet)]` annotation mitigates this caveat.
+This approach makes it hard to update and mock the state of smart contracts for testing. The `;; #[env(simnet)]` annotation mitigates this.
 
-With native support for Simnet-only code, Clarinet checks that the contract is valid both with and without the optional code.
+Clarinet checks that the contract is valid both with and without the Simnet-only code.
 
 ## Use cases
 
@@ -45,7 +45,7 @@ Add a helper function that can interact directly with your smart contract state,
 )
 ```
 
-It also opens the door to writing tests directly in your contract. Imagine a `test-add` function paired with a Vitest helper that finds and executes every private function starting with `test-`, asserting each result is `(ok true)`.
+It also lets you write tests directly in your contract. Imagine a `test-add` function paired with a Vitest helper that finds and executes every private function starting with `test-`, asserting each result is `(ok true)`.
 
 ```clarity
 (define-public (add (n uint))
@@ -75,7 +75,7 @@ This feature only works at the tooling level, in Clarinet. If you deploy a contr
 
 ## Related: Testnet vs Mainnet code
 
-Smart contracts sometimes need to behave differently on testnet and mainnet. Simnet-only code deployment only covers Simnet vs "real-nets" (Devnet/Testnet/Mainnet). We may expand conditional deployments to more environments and conditions in the future, but we want to keep it simple for now.
+Smart contracts sometimes need to behave differently on testnet and mainnet. Simnet-only code deployment only covers Simnet vs "real-nets" (Devnet/Testnet/Mainnet).
 
 If a smart contract needs different behavior on testnet and mainnet, look at how the PoX contracts handle it. `pox-5`, the contract deployed at `SP000000000000000000002Q6VF78.pox-5`, sets its cycle lengths with `is-in-mainnet`:
 

@@ -2,24 +2,24 @@
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/devnet-dashboard.png" alt=""><figcaption></figcaption></figure></div>
 
-Clarinet ships with a complete local blockchain environment so you can build, test, and debug smart contracts without deploying to a public network. This local blockchain environment is what is referred to as a devnet.
+Clarinet ships with a complete local blockchain environment so you can build, test, and debug smart contracts without deploying to a public network. This environment is called Devnet.
 
 <details>
 
-<summary>What is a devnet?</summary>
+<summary>What is Devnet?</summary>
 
-* A devnet refers to a local blockchain development environment in which your smart contracts and front end application can interact with simulated blockchain entities.
-* With a devnet, your smart contract application can interact with simulated blockchain entities (miners, nodes, and a stream of mined blocks), all within your local machine.
-* When devnets simulate a blockchain environment, the entities created (the other contracts, transactions, or nodes) resemble the conditions your application will inhabit once in production.
-* Devnets enable you to create different blockchain configurations.
+* Devnet is a local blockchain development environment in which your smart contracts and front-end application can interact with simulated blockchain entities.
+* With Devnet, your smart contract application can interact with simulated blockchain entities (miners, nodes, and a stream of mined blocks), all within your local machine.
+* The entities Devnet simulates (other contracts, transactions, or nodes) resemble the conditions your application will meet in production.
+* Devnet lets you create different blockchain configurations.
 * You can share a simnet environment with other devs and collaborate with them.
-* You can start a devnet at an arbitrary block height with a specified network upgrade at a later block, and with many simulated users, to see how your application responds.
+* You can start Devnet at an arbitrary block height with a specified network upgrade at a later block, and with many simulated users, to see how your application responds.
 
 </details>
 
 ## Starting your local blockchain
 
-Launch devnet with all required services:
+Launch Devnet with all required services:
 
 ```bash
 clarinet devnet start
@@ -34,7 +34,7 @@ Useful flags:
 | `--deployment-plan-path <path>`  | Apply a specific deployment plan                                                        |
 | `--use-on-disk-deployment-plan`  | Use an existing plan without recomputing                                                |
 | `--use-computed-deployment-plan` | Recompute and overwrite the plan                                                        |
-| `--package <path>`               | Load a packaged devnet configuration                                                    |
+| `--package <path>`               | Load a packaged Devnet configuration                                                    |
 | `--from-genesis`                 | Skip the embedded Epoch 4.0 snapshot and boot from genesis, walking through every epoch |
 | `--create-new-snapshot`          | Boot from genesis and save a new global snapshot after the first Epoch 4.0 Stacks block |
 
@@ -48,7 +48,7 @@ By default the dashboard displays service health, recent transactions, block pro
 
 ## Core services and features
 
-Devnet starts these services for you:
+Devnet starts these services:
 
 | Service          | Port  | Purpose                                  |
 | ---------------- | ----- | ---------------------------------------- |
@@ -74,7 +74,7 @@ Devnet includes pre-funded accounts:
 ;; +-------------------------------------------+-----------------+
 ```
 
-When devnet starts it automatically deploys your project contracts so you can interact immediately.
+When Devnet starts, it automatically deploys your project contracts so you can interact with them immediately.
 
 ```
 $ clarinet devnet start
@@ -88,7 +88,7 @@ All contracts deployed successfully
 
 ## Configuration and customization
 
-Devnet behavior is controlled by configuration files in your project.
+Configuration files in your project control Devnet behavior.
 
 ### Basic configuration
 
@@ -98,13 +98,13 @@ Devnet behavior is controlled by configuration files in your project.
 [network]
 name = "devnet"
 
+[devnet]
 # Service ports
 stacks_node_rpc_port = 20443
 stacks_api_port = 3999
 stacks_explorer_port = 8000
 bitcoin_node_rpc_port = 18443
 
-[network.devnet]
 bitcoin_controller_block_time = 30_000  # 30 seconds
 
 disable_bitcoin_explorer = false
@@ -117,6 +117,7 @@ disable_stacks_api = false
 Avoid local conflicts by customizing ports:
 
 ```toml
+[devnet]
 stacks_node_rpc_port = 30443
 stacks_api_port = 4999
 postgres_port = 6432
@@ -125,12 +126,13 @@ stacks_explorer_port = 4020
 
 ### Mining intervals
 
-Control block production speed:
+Control block production speed. Set the key once; the commented lines show other values:
 
 ```toml
-bitcoin_controller_block_time = 1_000     # Fast development (1 second)
-bitcoin_controller_block_time = 30_000    # Standard testing (30 seconds)
-bitcoin_controller_block_time = 120_000   # Realistic timing (2 minutes)
+[devnet]
+bitcoin_controller_block_time = 30_000      # 30 seconds, the generated default
+# bitcoin_controller_block_time = 1_000     # 1 second, fast development
+# bitcoin_controller_block_time = 120_000   # 2 minutes
 ```
 
 ### Custom accounts
@@ -198,7 +200,7 @@ For faster development cycles:
 
 {% code title="settings/Devnet.toml" %}
 ```toml
-[network.devnet]
+[devnet]
 bitcoin_controller_block_time = 1_000
 
 disable_bitcoin_explorer = true
@@ -266,7 +268,7 @@ stacks_signer_image_url = "ghcr.io/stacks-network/stacks-signer@sha256:af346187b
 
 For the Alpine builds of the same release, use the `4.0.4-alpine` tags (`ghcr.io/stacks-network/stacks-core:4.0.4-alpine` and `ghcr.io/stacks-network/stacks-signer:4.0.4-alpine`).
 
-Clarinet does not compare the image when it decides whether to restore its snapshot: the check covers the `epoch_*` heights, the signer keys and the stacking orders. A custom image therefore still starts from the snapshot embedded in the Clarinet release. Add `--from-genesis` to boot the custom image from genesis instead.
+Clarinet does not compare the image when it decides whether to restore its snapshot: the check covers the `epoch_*` heights, the signer keys, and the stacking orders. A custom image therefore still starts from the snapshot embedded in the Clarinet release. Add `--from-genesis` to boot the custom image from genesis instead.
 
 <details>
 
@@ -286,7 +288,7 @@ git checkout 4.0.4
 docker build -t stacks-node:local -f ./Dockerfile ./
 ```
 
-* Clarinet needs the image to be available in a registry. You can host a local one and push the image to it.
+* Clarinet needs the image in a registry. You can host a local one and push the image to it:
 
 ```
 docker run -d -e REGISTRY_HTTP_ADDR=0.0.0.0:5001 -p 5001:5001 --name registry registry:2
@@ -294,7 +296,7 @@ docker tag stacks-node:local localhost:5001/stacks-node:local
 docker push localhost:5001/stacks-node:local
 ```
 
-* Set the image to be used:
+* Set the image:
 
 ```
 # settings/Devnet.toml
@@ -318,7 +320,7 @@ clarinet devnet start
 
 ### Package deployment
 
-Create reusable devnet configurations:
+Create reusable Devnet configurations:
 
 ```bash
 $ clarinet devnet package --name demo-env
@@ -337,8 +339,6 @@ $ clarinet devnet start --package demo-env.json
 <details>
 
 <summary>Docker connection errors: "clarinet was unable to create network"</summary>
-
-Follow these steps to fix Docker connection issues:
 
 * Ensure Docker Desktop is running (macOS/Windows).
 * Start the Docker daemon (`sudo systemctl start docker`) on Linux.
@@ -375,6 +375,7 @@ taskkill /PID <PID> /F
 Or update ports in `settings/Devnet.toml`:
 
 ```toml
+[devnet]
 stacks_api_port = 4999
 stacks_explorer_port = 4020
 postgres_port = 6432
@@ -389,6 +390,7 @@ postgres_port = 6432
 Optimizations:
 
 ```toml
+[devnet]
 disable_bitcoin_explorer = true
 disable_stacks_explorer = true
 bitcoin_controller_block_time = 60_000
@@ -427,7 +429,7 @@ docker network ls | grep devnet
 docker network rm <network-name>
 ```
 
-Prevent the issue by stopping devnet with `Ctrl+C` and pruning orphaned networks:
+Prevent the issue by stopping Devnet with `Ctrl+C` and pruning orphaned networks:
 
 ```bash
 docker network prune
@@ -439,24 +441,21 @@ docker network prune
 
 <summary>Docker stream error during startup: "Fatal: unable to create image: Docker stream error"</summary>
 
-**Error**: "Fatal: unable to create image: Docker stream error"
-
 This error often occurs when Docker images are corrupted or when explorers fail to start properly.
 
-**Solution 1 - Disable explorers**:
+**Solution 1: Disable explorers**
 
 If you don't need the web explorers, disable them in `settings/Devnet.toml`:
 
 ```
+[devnet]
 disable_bitcoin_explorer = true
 disable_stacks_explorer = true
 ```
 
-**Solution 2 - Clean Docker environment**:
+**Solution 2: Clean Docker environment**
 
 Remove all containers and images, then restart:
-
-Terminal
 
 ```
 docker stop $(docker ps -a -q)
@@ -464,9 +463,7 @@ docker system prune -a
 docker volume prune
 ```
 
-**Solution 3 - Full cleanup and restart**:
-
-Terminal
+**Solution 3: Full cleanup and restart**
 
 ```
 docker stop $(docker ps -a -q)
@@ -474,8 +471,6 @@ docker network rm <project-name>.devnet
 docker system prune --all --volumes
 clarinet devnet start
 ```
-
-This ensures a clean Docker environment for devnet to start fresh.
 
 </details>
 

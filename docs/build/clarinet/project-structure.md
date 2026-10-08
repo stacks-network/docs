@@ -4,11 +4,11 @@ description: Understand the complete structure and configuration of a Clarinet p
 
 # Project Structure
 
-A Clarinet project follows a carefully designed structure that separates contracts, tests, and configuration. Understanding this structure helps you organize code effectively and configure tools for an efficient development workflow.
+A Clarinet project uses a structure that separates contracts, tests, and configuration. Understanding this structure helps you organize code and configure your development tools.
 
 ## Core project layout
 
-Every Clarinet project contains these essential directories and files:
+Every Clarinet project contains these directories and files:
 
 ```
 - my-project/
@@ -30,13 +30,11 @@ Every Clarinet project contains these essential directories and files:
   - vitest.config.js
 ```
 
-Each component serves a specific purpose in your development workflow. The sections below explain how they work together to create a complete development environment.
-
 ## The project manifest
 
 ### Clarinet.toml
 
-The **Clarinet.toml** file is the heart of your project. It defines project metadata and tracks all contracts:
+The **Clarinet.toml** file defines project metadata and tracks all contracts:
 
 ```toml
 [project]
@@ -56,7 +54,7 @@ epoch = "latest"
 
 `clarinet contract new` writes these two keys for you. Clarinet v3.24.1 accepts `clarity_version` values 1 through 6.
 
-The manifest handles several critical functions:
+The manifest handles:
 
 * **Contract registration**: Every contract must be listed here
 * **Stacks epoch and Clarity version**: Specifies Clarity version and epoch for each contract
@@ -117,16 +115,16 @@ The **package.json** defines your testing environment and dependencies:
 }
 ```
 
-| Package                       | Purpose                                                 |
-| ----------------------------- | ------------------------------------------------------- |
-| `@stacks/clarinet-sdk`        | WebAssembly-compiled Clarinet for Node.js               |
-| `@stacks/transactions`        | Clarity value manipulation in TypeScript                |
-| `vitest`                      | Modern testing framework with native TypeScript support |
-| `vitest-environment-clarinet` | Simnet bootstrapping for tests                          |
+| Package                       | Purpose                                          |
+| ----------------------------- | ------------------------------------------------ |
+| `@stacks/clarinet-sdk`        | WebAssembly-compiled Clarinet for Node.js        |
+| `@stacks/transactions`        | Clarity value manipulation in TypeScript         |
+| `vitest`                      | Testing framework with native TypeScript support |
+| `vitest-environment-clarinet` | Simnet bootstrapping for tests                   |
 
 ### Vitest configuration
 
-The **`vitest.config.ts`** (or `.js`) configures the testing framework. Make sure to import `defineConfig` from `vitest/config` (and not for `vite`). This configuration will work with Vitest v4 and higher.
+The **`vitest.config.ts`** (or `.js`) configures the testing framework. Import `defineConfig` from `vitest/config`, not from `vite`. This configuration works with Vitest v4 and later.
 
 {% code expandable="true" %}
 ```typescript
@@ -137,7 +135,7 @@ import {
 } from "@stacks/clarinet-sdk/vitest";
 
 /*
-  In this file, Vitest is configured so that it works seamlessly with Clarinet and the Simnet.
+  In this file, Vitest is configured so that it works with Clarinet and the Simnet.
   The `vitest-environment-clarinet` will initialise the clarinet-sdk
   and make the `simnet` object available globally in the test files.
   `vitestSetupFilePath` points to a file in the `@stacks/clarinet-sdk` package that does two things:
@@ -171,7 +169,7 @@ export default defineConfig({
 ```
 {% endcode %}
 
-This configuration enables:
+This configuration sets up:
 
 * **Clarinet environment**: Automatic `simnet` setup for each test
 * **Single fork mode**: Efficient test execution with proper isolation
@@ -190,7 +188,7 @@ import {
 } from "@stacks/clarinet-sdk/vitest";
 
 /*
-  In this file, Vitest is configured so that it works seamlessly with Clarinet and the Simnet.
+  In this file, Vitest is configured so that it works with Clarinet and the Simnet.
   The `vitest-environment-clarinet` will initialise the clarinet-sdk
   and make the `simnet` object available globally in the test files.
   `vitestSetupFilePath` points to a file in the `@hirosystems/clarinet-sdk` package that does two things:
@@ -259,7 +257,7 @@ The **tsconfig.json** provides TypeScript support:
 ```
 {% endcode %}
 
-Properly setting the `include` property ensures TypeScript picks up the helpers defined in the Clarinet SDK package along with your tests.
+Setting the `include` property as shown makes TypeScript pick up the helpers defined in the Clarinet SDK package along with your tests.
 
 ## Network configurations
 
@@ -297,7 +295,7 @@ Never commit mainnet private keys or mnemonics. Use environment variables for pr
 
 <summary>Imports failing in tests</summary>
 
-If you're encountering import errors in your tests, update your TypeScript configuration to use Vite's bundler resolution:
+If you get import errors in your tests, update your TypeScript configuration to use Vite's bundler resolution:
 
 ```json
 {
@@ -308,6 +306,6 @@ If you're encountering import errors in your tests, update your TypeScript confi
 }
 ```
 
-This configuration ensures TypeScript understands Vite's module resolution strategy and allows importing `.ts` files directly.
+With this configuration, TypeScript uses Vite's module resolution strategy and allows importing `.ts` files directly.
 
 </details>
