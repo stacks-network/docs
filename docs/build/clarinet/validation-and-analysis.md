@@ -1,8 +1,8 @@
 # Validation and Analysis
 
-<div data-with-frame="true"><figure><img src="../.gitbook/assets/validation-and-analysis.png" alt=""><figcaption></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../.gitbook/assets/path-to-production.png" alt=""><figcaption></figcaption></figure></div>
 
-Clarinet provides powerful tools for validating, analyzing, linting, and debugging your smart contracts. From static type checking to real-time cost analysis, you can ensure your contracts are correct and efficient before deployment.
+Clarinet provides tools for validating, analyzing, linting, and debugging your smart contracts. From static type checking to real-time cost analysis, you can ensure your contracts are correct and efficient before deployment.
 
 Contract validation spans static analysis, runtime debugging, and cost optimization. Each discipline helps you gain confidence in contract behavior.
 
@@ -20,7 +20,7 @@ Contract validation spans static analysis, runtime debugging, and cost optimizat
 
 ## Static analysis
 
-Run comprehensive validation with `clarinet check`:
+Run validation with `clarinet check`:
 
 ```bash
 clarinet check
@@ -153,13 +153,33 @@ Add `--output=<format>` option to `clarinet check` to print diagnostics as JSON 
 
 Clarinet includes a built-in linter as part of `clarinet check` to help identify common mistakes, inefficiencies, and unused code in Clarity contracts. Linters play an important role in improving code quality by surfacing issues early in development and encouraging clearer, more maintainable contracts.
 
-Clarinet currently provides a set of lints focused on dead code analysis and for style/correctness. These lints detect declarations and expressions that have no effect on contract execution and can be configured individually.
+Clarinet v3.24.1 has 23 lints in four groups: `unused` (dead code), `perf` (inefficient code), `safety` (code that might not do what you intended) and `style` (naming conventions). Each lint can be configured on its own or through its group.
 
-The following lints are available:
-
-<table data-header-hidden><thead><tr><th></th><th></th><th data-hidden></th></tr></thead><tbody><tr><td><strong>Identifier</strong></td><td><strong>Description</strong></td><td><strong>Lint Group</strong></td></tr><tr><td><code>unused_const</code></td><td>Detects unused <code>define-constant</code> declarations.</td><td><code>unused</code></td></tr><tr><td><code>unused_data_var</code></td><td>Detects <code>define-data-var</code> declarations that are never written.</td><td><code>unused</code></td></tr><tr><td><code>unused_map</code></td><td>Detects <code>define-map</code> declarations that are never accessed.</td><td><code>unused</code></td></tr><tr><td><code>unused_private_fn</code></td><td>Detects private functions that are never called.</td><td><code>unused</code></td></tr><tr><td><code>unused_token</code></td><td>Detects fungible and non-fungible tokens that are never minted.</td><td><code>unused</code></td></tr><tr><td><code>unused_trait</code></td><td>Detects traits imported with <code>use-trait</code> that are never used as parameter types.</td><td><code>unused</code></td></tr><tr><td><code>unused_binding</code></td><td>Detects unused function parameters and <code>let</code> bindings.</td><td><code>unused</code></td></tr><tr><td><code>error_const</code></td><td>Detects error constants that could use idiomatic patterns</td><td><code>style</code></td></tr><tr><td><code>case_const</code></td><td>Detects constants that don't follow naming conventions</td><td><code>style</code></td></tr><tr><td><code>unnecessary_public</code></td><td>Detects public functions that could be private</td><td><code>style</code></td></tr><tr><td><code>unnecessary_as_max_len</code></td><td>Detects unnecessary <code>as-max-len?</code> usage</td><td><code>style</code></td></tr><tr><td><code>case_binding</code></td><td>Enforces <code>kebab-case</code> on bindings (<code>let</code> bindings and function argrument names)</td><td></td></tr></tbody></table>
-
-In addition, the **`noop`** lint detects expressions that have no effect, such as: `(is-eq 1)`
+| Identifier               | Description                                                                                                                                                                                          | Lint group |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `unused_binding`         | Detects unused function parameters and `let` bindings.                                                                                                                                               | `unused`   |
+| `unused_const`           | Detects unused `define-constant` declarations.                                                                                                                                                       | `unused`   |
+| `unused_data_var`        | Detects `define-data-var` declarations that are never used, never read, or never written (a value that is never written can be a constant).                                                          | `unused`   |
+| `unused_map`             | Detects `define-map` declarations that are never accessed.                                                                                                                                           | `unused`   |
+| `unused_private_fn`      | Detects private functions that are never called.                                                                                                                                                     | `unused`   |
+| `unused_token`           | Detects fungible and non-fungible tokens that are never minted.                                                                                                                                      | `unused`   |
+| `unused_trait`           | Detects traits imported with `use-trait` that are never used as parameter types.                                                                                                                     | `unused`   |
+| `flatten_variadic`       | Suggests flattening nested calls to a variadic function, for example `(+ a (+ b c))` to `(+ a b c)`. From Clarity 6 this includes `concat`, which became variadic.                                   | `perf`     |
+| `unnecessary_as_max_len` | Detects unnecessary `as-max-len?` calls.                                                                                                                                                             | `perf`     |
+| `unnecessary_public`     | Detects public functions that could be read-only because they change no state.                                                                                                                       | `perf`     |
+| `unnecessary_tuple`      | Detects tuples with a single field.                                                                                                                                                                  | `perf`     |
+| `at_block`               | Warns about uses of `at-block`, which is proposed for removal.                                                                                                                                       | `safety`   |
+| `error_const`            | Checks that every `ERR_` constant is an `(err ...)` value and that no two `ERR_` constants share a value.                                                                                            | `safety`   |
+| `noop`                   | Detects expressions that have no effect, such as `(is-eq 1)`.                                                                                                                                        | `safety`   |
+| `panic`                  | Warns about `unwrap-panic` and `unwrap-err-panic`.                                                                                                                                                   | `safety`   |
+| `renamed_builtin`        | Detects calls to a builtin that a later Clarity version renamed. The one rename today is `with-stacking` to `with-staking` (Clarity 6); the old spelling keeps working in Clarity 4 and 5 contracts. | `safety`   |
+| `case_binding`           | Enforces `kebab-case` on `let` bindings and function argument names.                                                                                                                                 | `style`    |
+| `case_const`             | Enforces `SCREAMING_SNAKE_CASE` on constants.                                                                                                                                                        | `style`    |
+| `case_data_var`          | Enforces `kebab-case` on data variables.                                                                                                                                                             | `style`    |
+| `case_fn`                | Enforces `kebab-case` on function names.                                                                                                                                                             | `style`    |
+| `case_map`               | Enforces `kebab-case` on maps.                                                                                                                                                                       | `style`    |
+| `case_token`             | Enforces `kebab-case` on fungible and non-fungible token names.                                                                                                                                      | `style`    |
+| `case_trait`             | Enforces `kebab-case` on trait names.                                                                                                                                                                | `style`    |
 
 #### Bypassing the Linter
 
@@ -171,7 +191,7 @@ Clarinet follows a convention similar to Rust: identifiers with a trailing `_` m
 Note: _prefixing_ identifiers with `_` is not currently supported, only _suffixing_ is.
 {% endhint %}
 
-Individual lints can also be disabled for a specific line using Clarity’s annotation syntax:
+Individual lints can also be disabled for a specific line using Clarity's annotation syntax:
 
 ```clarity
 ;; #[allow(lint_name_1, lint_name_2, ...)]
@@ -179,7 +199,7 @@ Individual lints can also be disabled for a specific line using Clarity’s anno
 
 #### Configuration
 
-All non-style/non-cosmetic lints are enabled by default at the `warning` level and can be customized in `Clarinet.toml`.
+By default, lints in the `unused`, `perf` and `safety` groups report at the `warning` level and `style` lints at the `notice` level. Change the level per lint or per group in `Clarinet.toml`.
 
 **Individual lint configuration**
 
@@ -259,10 +279,10 @@ continue
 Common navigation commands:
 
 {% hint style="info" %}
-* `step` or `s` – step into subexpressions
-* `finish` or `f` – complete the current expression
-* `next` or `n` – step over subexpressions
-* `continue` or `c` – resume execution
+* `step` or `s`: step into subexpressions
+* `finish` or `f`: complete the current expression
+* `next` or `n`: step over subexpressions
+* `continue` or `c`: resume execution
 {% endhint %}
 
 ### Using `::get_costs` for targeted analysis

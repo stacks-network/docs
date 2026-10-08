@@ -45,14 +45,16 @@ description = "A counter smart contract"
 
 [contracts.traits]
 path = "contracts/traits.clar"
-clarity_version = 4
+clarity_version = 6
 epoch = "latest"
 
 [contracts.counter]
 path = "contracts/counter.clar"
-clarity_version = 4
+clarity_version = 6
 epoch = "latest"
 ```
+
+`clarinet contract new` writes these two keys for you. Clarinet v3.24.1 accepts `clarity_version` values 1 through 6.
 
 The manifest handles several critical functions:
 
@@ -62,19 +64,27 @@ The manifest handles several critical functions:
 
 ### Epoch configuration
 
-You can specify the epoch in two ways:
+Set the epoch per contract, either to a specific version or to the current mainnet epoch:
 
 ```toml
-# Use a specific epoch version
-epoch = 3.1
+# A specific epoch. Accepted: 2.0, 2.05, 2.1, 2.2, 2.3, 2.4, 2.5, 3.0, 3.1, 3.2, 3.3, 3.4, 4.0
+epoch = 4.0
 ```
 
 ```toml
-# Use the latest available epoch (default)
+# The epoch running on mainnet, as pinned by your Clarinet release (default for new contracts)
 epoch = "latest"
 ```
 
-Using `"latest"` ensures your contracts always use the newest Clarity features and optimizations available in your version of Clarinet.
+`"latest"` means the epoch active on mainnet, which Clarinet v3.24.1 pins to 4.0. It is not the newest epoch the Clarity VM knows about, so a contract marked `"latest"` deploys with the features mainnet has today.
+
+The two keys depend on each other:
+
+* `epoch` set, `clarity_version` omitted: Clarinet uses the default Clarity version for that epoch. Epoch 4.0 defaults to Clarity 6.
+* Both omitted: Clarinet falls back to epoch 2.05 and Clarity 1, which rejects most current syntax. Set both.
+* `clarity_version` newer than the epoch supports: `clarinet check` stops with `Clarity 6 can not be used with 3.4` (the message names your values).
+
+A contract that calls `pox-5` or implements its `signer-manager-trait` needs `epoch = 4.0` or `"latest"`, because `pox-5` does not exist in earlier epochs; any `clarity_version` up to 6 compiles in that epoch. Pick Clarity 6 when the contract uses what Clarity 6 added: the `with-staking` and `with-pox` allowances for `restrict-assets?` and `as-contract?`, `get-bitcoin-tx-output?`, `verify-merkle-proof`, `ed25519-verify`, `secp256k1-decompress?`, or variadic `concat`. In Clarity 4 and 5 contracts the allowance keeps its old spelling, `with-stacking`; the `renamed_builtin` lint in `clarinet check` flags it once the contract's `clarity_version` is 6.
 
 ## Testing infrastructure
 

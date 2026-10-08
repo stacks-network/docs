@@ -10,7 +10,7 @@ Clarinet ships with a complete local blockchain environment so you can build, te
 
 * A devnet refers to a local blockchain development environment in which your smart contracts and front end application can interact with simulated blockchain entities.
 * With a devnet, your smart contract application can interact with simulated blockchain entities (miners, nodes, and a stream of mined blocks), all within your local machine.
-* When devnets simulate a blockchain environment, the entities created—the other contracts, transactions, or nodes—resemble the conditions your application will inhabit once in production.
+* When devnets simulate a blockchain environment, the entities created (the other contracts, transactions, or nodes) resemble the conditions your application will inhabit once in production.
 * Devnets enable you to create different blockchain configurations.
 * You can share a simnet environment with other devs and collaborate with them.
 * You can start a devnet at an arbitrary block height with a specified network upgrade at a later block, and with many simulated users, to see how your application responds.
@@ -27,19 +27,21 @@ clarinet devnet start
 
 Useful flags:
 
-| Option                           | Description                                       |
-| -------------------------------- | ------------------------------------------------- |
-| `--manifest-path <path>`         | Use an alternate `Clarinet.toml`                  |
-| `--no-dashboard`                 | Stream logs instead of showing the interactive UI |
-| `--deployment-plan-path <path>`  | Apply a specific deployment plan                  |
-| `--use-on-disk-deployment-plan`  | Use an existing plan without recomputing          |
-| `--use-computed-deployment-plan` | Recompute and overwrite the plan                  |
-| `--package <path>`               | Load a packaged devnet configuration              |
+| Option                           | Description                                                                             |
+| -------------------------------- | --------------------------------------------------------------------------------------- |
+| `--manifest-path <path>`         | Use an alternate `Clarinet.toml`                                                        |
+| `--no-dashboard`                 | Stream logs instead of showing the interactive UI                                       |
+| `--deployment-plan-path <path>`  | Apply a specific deployment plan                                                        |
+| `--use-on-disk-deployment-plan`  | Use an existing plan without recomputing                                                |
+| `--use-computed-deployment-plan` | Recompute and overwrite the plan                                                        |
+| `--package <path>`               | Load a packaged devnet configuration                                                    |
+| `--from-genesis`                 | Skip the embedded Epoch 4.0 snapshot and boot from genesis, walking through every epoch |
+| `--create-new-snapshot`          | Boot from genesis and save a new global snapshot after the first Epoch 4.0 Stacks block |
 
 {% hint style="info" %}
 Prerequisites
 
-Devnet requires Docker. If you see “clarinet was unable to create network,” ensure Docker Desktop is running or the Docker daemon is started.
+Devnet requires Docker. If you see "clarinet was unable to create network," ensure Docker Desktop is running or the Docker daemon is started.
 {% endhint %}
 
 By default the dashboard displays service health, recent transactions, block production, contract deployments, and resource usage. Use `--no-dashboard` in CI or when you prefer streaming logs.
@@ -167,10 +169,10 @@ curl http://localhost:3999/v2/info
 
 Common endpoints:
 
-* `/v2/info` – network information
-* `/v2/accounts/{address}` – account details
-* `/v2/contracts/source/{address}/{name}` – contract source code
-* `/extended/v1/tx/{txid}` – transaction details
+* `/v2/info`: network information
+* `/v2/accounts/{address}`: account details
+* `/v2/contracts/source/{address}/{name}`: contract source code
+* `/extended/v1/tx/{txid}`: transaction details
 
 ### Direct RPC
 
@@ -184,9 +186,9 @@ curl -X POST http://localhost:20443/v2/transactions \
 
 Useful RPC endpoints:
 
-* `/v2/transactions` – broadcast transactions
-* `/v2/contracts/call-read` – read-only contract calls
-* `/v2/fees/transfer` – fee estimates for STX transfers
+* `/v2/transactions`: broadcast transactions
+* `/v2/contracts/call-read`: read-only contract calls
+* `/v2/fees/transfer`: fee estimates for STX transfers
 
 ## Advanced configuration
 
@@ -207,32 +209,48 @@ disable_stacks_api = false
 
 ### Epoch configuration
 
-Test different Stacks versions:
+Devnet activates each Stacks epoch at a Bitcoin block height set under `[devnet]` in `settings/Devnet.toml`. These are the Clarinet v3.24.1 defaults; a key you leave out takes the default.
 
 ```toml
-[epochs]
-epoch_2_0 = 0     # Stacks 2.0 from genesis
-epoch_2_05 = 0    # Stacks 2.05 from genesis  
-epoch_2_1 = 0     # Stacks 2.1 from genesis
-epoch_2_2 = 0     # Pox-2 from genesis
-epoch_2_3 = 0     # Pox-3 from genesis
-epoch_2_4 = 0     # Pox-4 from genesis
-epoch_3_0 = 101   # Nakamoto activation at block 101
+[devnet]
+epoch_2_0 = 100
+epoch_2_05 = 100
+epoch_2_1 = 101
+epoch_2_2 = 102
+epoch_2_3 = 103
+epoch_2_4 = 104
+epoch_2_5 = 108
+epoch_3_0 = 142   # Nakamoto
+epoch_3_1 = 144
+epoch_3_2 = 146
+epoch_3_3 = 148
+epoch_3_4 = 150
+epoch_4_0 = 162   # PoX-5 and Clarity 6
 ```
+
+Devnet's PoX cycle is 20 Bitcoin blocks long with a 5-block prepare phase, starting at block 100. `epoch_3_0` has to fall inside a reward phase; Clarinet refuses to start otherwise and names the offending height in the error.
+
+By default `clarinet devnet start` restores an embedded snapshot taken after the first Epoch 4.0 Stacks block, so the chain is in Epoch 4.0 with `pox-5` deployed as soon as the dashboard shows the network ready. Changing any `epoch_*` height makes the snapshot unusable; Clarinet prints which fields differ from the snapshot and boots from genesis instead, which takes longer because every epoch transition is mined live. `--from-genesis` forces that path without editing the file.
+
+To test against PoX-5 on Devnet, keep the defaults. To test a contract's behavior across an epoch boundary, raise `epoch_4_0` so the contract deploys before it, then watch the transition in the `--no-dashboard` logs.
+
+{% hint style="info" %}
+Devnet accounts carry an `sbtc_balance` next to `balance` in `settings/Devnet.toml` (1,000,000,000 sats for the generated wallets). Devnet funds each account's `sbtc_balance` on both snapshot and genesis boots, so sBTC-backed bond tests have a balance to draw on.
+{% endhint %}
 
 ### Custom node/signer images
 
-Clarinet runs Devnet with specific tags for each Docker image. For example, Clarinet v3.10.0 uses the following images:
+Clarinet runs Devnet with a pinned tag for each Docker image. Clarinet v3.24.1 uses:
 
-* stacks node: `blockstack/stacks-core:3.3.0.0.6-alpine`
-* stacks signer: `blockstack/stacks-signer:3.3.0.0.6.0-alpine`
+* stacks node: `ghcr.io/stacks-network/stacks-core:4.0.1-alpine`
+* stacks signer: `ghcr.io/stacks-network/stacks-signer:4.0.1-alpine`
 
-We recommend Devnet users let Clarinet handle it and use the default version. This ensures that your Clarinet version can handle and properly configure the images it uses.
+Keep the defaults unless you are testing a node build. The Clarinet release pins the image that matches its epoch defaults; an older node image cannot reach `epoch_4_0`.
 
-In some cases, you may need to use other images. Clarinet lets you do this by configuring it in `settings/Devnet.toml`. For example, if you don't want to run the `alpine` images:
+To run other images, set `stacks_node_image_url` and `stacks_signer_image_url` under `[devnet]` in `settings/Devnet.toml`. This example runs the stacks-core 4.0.4 release in its Debian build, pinned by digest so the image cannot change under the same tag:
 
 ```toml
-# setting/Devnet.toml
+# settings/Devnet.toml
 [network]
 name = "devnet"
 deployment_fee_rate = 10
@@ -240,20 +258,26 @@ deployment_fee_rate = 10
 # ...
 
 [devnet]
-stacks_node_image_url = "blockstack/stacks-core:3.3.0.0.6"
-stacks_signer_image_url = "blockstack/stacks-signer:3.3.0.0.6.0"
+# stacks-core 4.0.4 (Debian)
+stacks_node_image_url = "ghcr.io/stacks-network/stacks-core@sha256:a35bf7468139469c3da248f37396d59eed51f9c4df86a9b28df73814d13d38fa"
+# stacks-signer 4.0.4 (Debian)
+stacks_signer_image_url = "ghcr.io/stacks-network/stacks-signer@sha256:af346187bc779d75daef47baaa12a0ece7fda78b5357f338d2db5536dd176608"
 ```
+
+For the Alpine builds of the same release, use the `4.0.4-alpine` tags (`ghcr.io/stacks-network/stacks-core:4.0.4-alpine` and `ghcr.io/stacks-network/stacks-signer:4.0.4-alpine`).
+
+Clarinet does not compare the image when it decides whether to restore its snapshot: the check covers the `epoch_*` heights, the signer keys and the stacking orders. A custom image therefore still starts from the snapshot embedded in the Clarinet release. Add `--from-genesis` to boot the custom image from genesis instead.
 
 <details>
 
 <summary>Build an image locally and use it</summary>
 
-* Clone the stacks-core repository (or a fork) and checkout the desired branch.
+* Clone the stacks-core repository (or a fork) and check out the release tag or branch you want to test.
 
 ```
 git clone git@github.com:stacks-network/stacks-core.git
 cd stacks-core
-git checkout develop
+git checkout 4.0.4
 ```
 
 * Build the Docker image `stacks-node:local`:
@@ -273,7 +297,7 @@ docker push localhost:5001/stacks-node:local
 * Set the image to be used:
 
 ```
-# setting/Devnet.toml
+# settings/Devnet.toml
 [network]
 name = "devnet"
 deployment_fee_rate = 10
@@ -287,7 +311,7 @@ stacks_node_image_url = "localhost:5001/stacks-node:local"
 * Then start Devnet:
 
 ```
-clarinet devnet sta
+clarinet devnet start
 ```
 
 </details>
@@ -312,11 +336,14 @@ $ clarinet devnet start --package demo-env.json
 
 <details>
 
-<summary>Docker connection errors — “clarinet was unable to create network”</summary>
+<summary>Docker connection errors: "clarinet was unable to create network"</summary>
 
 Follow these steps to fix Docker connection issues:
 
-Ensure Docker Desktop is running (macOS/Windows).Start the Docker daemon (sudo systemctl start docker) on Linux.Confirm permissions with docker ps.Reset Docker to factory defaults if problems persist.
+* Ensure Docker Desktop is running (macOS/Windows).
+* Start the Docker daemon (`sudo systemctl start docker`) on Linux.
+* Confirm permissions with `docker ps`.
+* Reset Docker to factory defaults if problems persist.
 
 Verify Docker status:
 
@@ -329,7 +356,7 @@ docker ps
 
 <details>
 
-<summary>Port already in use — “bind: address already in use”</summary>
+<summary>Port already in use: "bind: address already in use"</summary>
 
 Find and stop the conflicting process (macOS/Linux):
 
@@ -385,7 +412,7 @@ rm -rf tmp/devnet
 
 <details>
 
-<summary>Network already exists — “network with name `.devnet` already exists”</summary>
+<summary>Network already exists: "network with name `.devnet` already exists"</summary>
 
 Remove the orphaned network:
 
@@ -410,7 +437,7 @@ docker network prune
 
 <details>
 
-<summary>Docker stream error during startup — “Fatal: unable to create image: Docker stream error”</summary>
+<summary>Docker stream error during startup: "Fatal: unable to create image: Docker stream error"</summary>
 
 **Error**: "Fatal: unable to create image: Docker stream error"
 
@@ -484,6 +511,14 @@ Deploy manually if needed:
 clarinet deployments generate --devnet
 clarinet deployments apply --devnet
 ```
+
+</details>
+
+<details>
+
+<summary>Epoch settings have no effect</summary>
+
+Older versions of this page showed the epoch keys in a top-level `[epochs]` table. Clarinet reads them only under `[devnet]`. Move the keys there and start Devnet again.
 
 </details>
 

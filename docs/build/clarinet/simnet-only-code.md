@@ -2,7 +2,7 @@
 description: Documentation and use cases for conditional code deployment with Clarinet
 ---
 
-# Simnet-only code deployment
+# Simnet-only code
 
 Clarinet 3.17.0 introduced conditional code deployment, letting you write Clarity expressions that Clarinet only deploys in Simnet and never on-chain.
 
@@ -77,12 +77,20 @@ This feature only works at the tooling level, in Clarinet. If you deploy a contr
 
 Smart contracts sometimes need to behave differently on testnet and mainnet. Simnet-only code deployment only covers Simnet vs "real-nets" (Devnet/Testnet/Mainnet). We may expand conditional deployments to more environments and conditions in the future, but we want to keep it simple for now.
 
-If a smart contract needs different behavior on testnet vs mainnet, take a look at how the PoX contracts handle it (for example [pox-4](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-4?chain=mainnet&tab=sourceCode)) using `is-in-mainnet`:
+If a smart contract needs different behavior on testnet and mainnet, look at how the PoX contracts handle it. `pox-5`, the contract deployed at `SP000000000000000000002Q6VF78.pox-5`, sets its cycle lengths with `is-in-mainnet`:
 
 ```clarity
-;; Default length of the PoX registration window, in burnchain blocks.
-(define-constant PREPARE_CYCLE_LENGTH (if is-in-mainnet u100 u50))
-
-;; Default length of the PoX reward cycle, in burnchain blocks.
-(define-constant REWARD_CYCLE_LENGTH (if is-in-mainnet u2100 u1050))
+;; Data vars that store a copy of the burnchain configuration.
+;; Implemented as data-vars, so that different configurations can be
+;; used in e.g. test harnesses.
+(define-data-var pox-prepare-cycle-length uint (if is-in-mainnet
+    u100
+    u50
+))
+(define-data-var pox-reward-cycle-length uint (if is-in-mainnet
+    u2100
+    u1050
+))
 ```
+
+`is-in-mainnet` is evaluated when the contract is deployed, so the same source gives mainnet a 2,100-block reward cycle with a 100-block prepare phase and testnet a 1,050-block cycle with a 50-block prepare phase. pox-5 uses the same keyword to pick the address version when it reconstructs a signer principal. Read the [deployed contract](https://explorer.hiro.so/txid/SP000000000000000000002Q6VF78.pox-5?chain=mainnet\&tab=sourceCode) or the [source at release 4.0.4](https://github.com/stacks-network/stacks-core/blob/4.0.4/stackslib/src/chainstate/stacks/boot/pox-5.clar#L356-L366).
