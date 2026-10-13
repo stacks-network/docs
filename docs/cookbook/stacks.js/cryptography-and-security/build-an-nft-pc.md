@@ -23,7 +23,7 @@ const maybePC = Pc.principal("ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM")
 
 ### Description
 
-Create post-conditions for NFT transfers to ensure specific tokens are or aren't transferred
+Builds post-conditions that require a specific NFT to be sent, forbid it from being sent, or allow it to be sent without requiring it.
 
 ### Use Cases
 
@@ -36,4 +36,5 @@ Create post-conditions for NFT transfers to ensure specific tokens are or aren't
 * **Asset identifier** - Contract address + asset name with `::` separator
 * **Token ID** - The specific NFT ID as a Clarity value (using `Cl.uint()`)
 * NFT post-conditions use the `.nft()` method
-* `.willMaybeSendAsset()` - The NFT may or may not be sent, and the condition always passes. It still counts as covering that NFT instance under `Deny` or `Originator` mode, so an optional transfer can be authorised without falling back to `Allow`. Added by [SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md), available in `@stacks/transactions` 7.4.0 and later.
+* `.willMaybeSendAsset()` - The NFT may or may not be sent, and the condition always passes. It still counts as covering that NFT instance under `Deny` or `Originator` mode, so an optional transfer can be authorized without falling back to `Allow`. Added by [SIP-040](https://github.com/stacksgov/sips/blob/main/sips/sip-040/sip-040-post-conds.md), available in `@stacks/transactions` 7.4.0 and later.
+* Staking and PoX post-conditions - Locking STX in `SP000000000000000000002Q6VF78.pox-5` and the four gated PoX actions have their own post-condition types, built with `.ustxToLock()` and `.willPerformPox()` from `@stacks/transactions` 7.5.0. [Build a STX pc](build-a-stx-pc.md) shows both.

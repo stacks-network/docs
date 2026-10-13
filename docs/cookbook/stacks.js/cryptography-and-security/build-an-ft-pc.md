@@ -20,7 +20,7 @@ const txOptions = {
 
 ### Description
 
-Create post-conditions for fungible token transfers to ensure exact amounts are transferred as expected
+Builds a post-condition that requires the sender to transfer at least 500 units of a fungible token, in the token's smallest unit, and attaches it to a transaction in `Deny` mode.
 
 ### Use Cases
 
@@ -30,5 +30,6 @@ Create post-conditions for fungible token transfers to ensure exact amounts are 
 
 ### Key Concepts
 
-* `.ft()` - Takes two parameters: contract address with asset name and token name as defined in the contract
-* The `Pc` builder for fungible tokens provides a fluent interface for creating post-conditions
+* `.willSendGte()` - Ensure at least this amount is sent (also supports `willSendEq`, `willSendGt`, `willSendLt`, `willSendLte`)
+* `.ft()` - Takes the token contract's identifier (`address.contract-name`) and the token name as defined in that contract
+* Staking and PoX post-conditions - Locking STX in `SP000000000000000000002Q6VF78.pox-5` and the four gated PoX actions have their own post-condition types, built with `.ustxToLock()` and `.willPerformPox()` from `@stacks/transactions` 7.5.0. [Build a STX pc](build-a-stx-pc.md) shows both.
