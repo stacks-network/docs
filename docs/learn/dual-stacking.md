@@ -16,7 +16,7 @@ noIndex: true
 
 ## What Dual Stacking was
 
-Dual Stacking was a pilot reward program for sBTC holders. Participants enrolled their sBTC and received rewards in sBTC every reward cycle. The rewards came from an incentive budget: at launch, Stacks entities contributed the stacking rewards they earned through Proof of Transfer. The program ran as smart contracts and left PoX consensus and native stacking rewards unchanged.
+Dual Stacking was a reward program for sBTC holders. Participants enrolled their sBTC and received rewards in sBTC every reward cycle. The rewards came from an incentive budget: at launch, Stacks entities contributed the stacking rewards they earned through Proof of Transfer. The program ran as smart contracts and left PoX consensus and native stacking rewards unchanged.
 
 Participants enrolled through the web app at app.stacks.co, with Leather, Xverse, Fordefi or Asigna. The minimum enrollment was 10,000 sats of sBTC. STX already stacked through any pool counted toward a participant's boost, and the app detected it.
 
