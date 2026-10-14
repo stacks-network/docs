@@ -8,7 +8,7 @@ In Stacks, the terms 'address' and 'principal' are used interchangeably.
 
 ## Introduction
 
-Stacks wallets are software or hardware tools for storing cryptocurrencies, NFTs, and other digital assets. They are also used for establishing on-chain identity in decentralized applications (dApps). These wallets cryptographically store and manage each user’s identity and funds through a single blockchain address, which leverage public-key cryptography.
+Stacks wallets are software or hardware tools for storing cryptocurrencies, NFTs, and other digital assets. They are also used for establishing on-chain identity in decentralized applications (dApps). These wallets cryptographically store and manage each user’s identity and funds through a single blockchain address, based on public-key cryptography.
 
 ### Purpose of a Stacks wallet
 
@@ -48,11 +48,11 @@ Addresses are created by generating the **RIPEMD-160** hash of the **SHA256** of
 
 Stacks accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances. Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
 
-All Stacks wallets also support Bitcoin addresses, enabling seamless participation across both the Stacks and Bitcoin ecosystems.
+All Stacks wallets also derive Bitcoin addresses, so one seed phrase serves both chains.
 
 #### Address formats <a href="#address-formats" id="address-formats"></a>
 
-Stacks addresses use different prefixes to indicate the network they belong to, making it easy to distinguish between mainnet and testnet addresses.
+Stacks addresses use different prefixes to indicate the network they belong to: `SP` and `SM` on mainnet, `ST` and `SN` on testnet.
 
 ```typescript
 // Mainnet address starts with 'SP'
@@ -172,6 +172,10 @@ For more usage examples, check out the Stacks CLI repo [here](https://github.com
 
 There are many popular Bitcoin wallets that support Bitcoin layers and metaprotocols. Leather and Xverse are popular options for getting started with Stacks.
 
+{% hint style="info" %}
+**Wallets for Bitcoin Staking.** What you need depends on the path. STX-only staking and sBTC bonds use your Stacks account only. A native-BTC bond also needs a Bitcoin wallet that can pay to a P2WSH output, because the L1 lock is a P2WSH timelock script that commits to your Stacks principal; after the timelock you spend that output with your own Bitcoin key. Start at [Bitcoin Staking](../bitcoin-staking/), then [Opening a Bond Position](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/protocol-bonds/opening-a-bond-position) and [Verifying and Reclaiming Your Locked Bitcoin](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/protocol-bonds/verifying-and-reclaiming-your-locked-bitcoin).
+{% endhint %}
+
 {% embed url="https://youtu.be/RvTuex1jbGY?si=KGEGESS3sr38G_Tj" %}
 {% endstep %}
 
@@ -223,7 +227,7 @@ Here's a breakdown of dealing with principals in 3 different use cases.
 
 ### The Stacks and Bitcoin address connection
 
-What makes Stacks beautifully connected to its L1 settlement layer, Bitcoin, is their many shared aspects. One being how both utilize a similar address generation scheme based on the P2PKH format, which allows for both a Bitcoin & Stacks address to share the same public key hash. If you base58check decode a legacy bitcoin address, you can reveal the public key hash, which can then be used to generate its respective c32check encoded Stacks address.
+Stacks and its L1 settlement layer, Bitcoin, use a similar address generation scheme based on the P2PKH format, so a Bitcoin address and a Stacks address can share the same public key hash. If you base58check decode a legacy bitcoin address, you can reveal the public key hash, which can then be used to generate its respective c32check encoded Stacks address.
 
 Programmatically, you could also use a method called `b58ToC32`, from the `c32check` javascript library, which can abstract the conversion for you.
 

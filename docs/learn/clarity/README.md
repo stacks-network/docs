@@ -14,6 +14,10 @@ Clarity is a **decidable** smart contract language that optimizes for predictabi
 
 The design decisions behind Clarity were based heavily on taking lessons learned in common Solidity exploits and creating a language that has been purpose-built for safety and security in mind.
 
+{% hint style="info" %}
+The current language version is Clarity 6, which activated with Epoch 4.0 at Bitcoin block 960,230 ([SIP-044](https://github.com/stacksgov/sips/blob/main/sips/sip-044/sip-044-clarity6.md)). A contract deploy that does not set a version gets Clarity 6. A deploy transaction can still pin an earlier version, and tools can set their own default: `@stacks/transactions` 7.6.0 deploys as Clarity 4 unless you pass `clarityVersion`. The [function reference](https://docs.stacks.co/reference/clarity/functions) marks every builtin with the version that introduced it.
+{% endhint %}
+
 ### What makes Clarity different
 
 The following section is an excerpt from the [Clarity book](https://book.clarity-lang.org/ch00-00-introduction.html):
@@ -57,3 +61,9 @@ Clarity adopts a composition over inheritance. It means that Clarity smart contr
 #### Access to the base chain: Bitcoin
 
 Clarity smart contracts can read the state of the Bitcoin base chain. It means you can use Bitcoin transactions as a trigger in your smart contracts! Clarity also features a number of built-in functions to verify secp256k1 signatures and recover keys.
+
+### What Clarity 6 adds
+
+Post conditions guard a transaction from the outside. Since Clarity 4, a contract can also guard its own calls from the inside with `restrict-assets?` and `as-contract?`, which list the assets a block of code may move. In Clarity 6 the staking allowances for these are [`with-staking`](https://docs.stacks.co/reference/clarity/functions#with-staking), the Clarity 6 name for `with-stacking`, which caps the total micro-STX (uSTX) a call into `pox-5` may lock, and the new [`with-pox`](https://docs.stacks.co/reference/clarity/functions#with-pox), which permits the calls that change a staking position without locking more, such as `unstake`.
+
+Two builtins now do the Bitcoin transaction checks that contracts used to delegate to a library contract: [`get-bitcoin-tx-output?`](https://docs.stacks.co/reference/clarity/functions#get-bitcoin-tx-output) parses a raw Bitcoin transaction and returns one output's script and amount together with the txid, and [`verify-merkle-proof`](https://docs.stacks.co/reference/clarity/functions#verify-merkle-proof) checks that a txid is in a block's Merkle tree. Clarity 6 also adds [`ed25519-verify`](https://docs.stacks.co/reference/clarity/functions#ed25519-verify) and [`secp256k1-decompress?`](https://docs.stacks.co/reference/clarity/functions#secp256k1-decompress), and `concat` accepts more than two arguments.
