@@ -48,7 +48,7 @@ Addresses are created by generating the **RIPEMD-160** hash of the **SHA256** of
 
 Stacks accounts are entities that own assets, like Stacks (STX) tokens. An account has an address, private key, nonce, and one or more asset balances. Assets cannot leave an account without an action from the account owner. All changes to assets (and the balances of the account) require a corresponding transaction.
 
-All Stacks wallets also derive Bitcoin addresses, so one seed phrase serves both chains.
+All Stacks wallets also support deriving Bitcoin addresses, so one seed phrase can serve both chains.
 
 #### Address formats <a href="#address-formats" id="address-formats"></a>
 
