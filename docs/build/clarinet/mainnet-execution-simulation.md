@@ -30,8 +30,8 @@ Add the following configuration to your `Clarinet.toml` file:
 # Enable mainnet execution simulation
 enabled = true
 
-# Specify the Stacks block height to fork from
-initial_height = 522000
+# Stacks block height to fork from. 9,000,000 is in Epoch 4.0 (Bitcoin block 967,219).
+initial_height = 9000000
 
 # API URL (optional, defaults to https://api.hiro.so)
 api_url = 'https://api.hiro.so'
@@ -50,7 +50,7 @@ When testing contracts that check or require mainnet addresses, set `use_mainnet
 ```toml
 [repl.remote_data]
 enabled = true
-initial_height = 522000
+initial_height = 9000000
 use_mainnet_wallets = true  # !mark
 ```
 
@@ -70,7 +70,7 @@ export HIRO_API_KEY="<your-api-key>"
 
 ## Write tests with mainnet data
 
-Once MXS is enabled, your tests automatically operate against the mainnet state snapshot. Here's an example testing against the mainnet `pox-4` contract:
+Once MXS is enabled, your tests operate against the mainnet state at `initial_height`. This example reads the current reward cycle from the mainnet `pox-5` contract:
 
 ```ts
 import { describe, it, expect } from "vitest";
@@ -79,25 +79,39 @@ import { Cl } from "@stacks/transactions";
 const accounts = simnet.getAccounts();
 const deployer = accounts.get("deployer")!;
 
-describe("pox-4 mainnet interaction", () => {
-  it("reads current reward cycle from mainnet", () => {
-    // Call the mainnet pox-4 contract
+describe("pox-5 mainnet interaction", () => {
+  it("reads the current reward cycle from mainnet", () => {
+    // Call the mainnet pox-5 contract
     const call = simnet.callReadOnlyFn(
-      "SP000000000000000000002Q6VF78.pox-4", // Mainnet contract
+      "SP000000000000000000002Q6VF78.pox-5", // Mainnet contract
       "current-pox-reward-cycle",
       [],
       deployer
     );
 
-    // Assert the result (adjust based on your initial_height)
-    expect(call.result).toBeUint(109);
+    // Stacks block 9,000,000 sits at Bitcoin block 967,219.
+    // (967219 - 666050) / 2100 = 143. Recompute when you change initial_height.
+    expect(call.result).toBeUint(143);
 
-    console.log("Current POX reward cycle:", Cl.prettyPrint(call.result));
+    console.log("Current PoX reward cycle:", Cl.prettyPrint(call.result));
   });
 });
 ```
 
-The test uses `simnet.callReadOnlyFn` just like in standard unit tests, but because MXS is enabled, it targets the actual `pox-4` contract state at the specified block height.
+The test uses `simnet.callReadOnlyFn` as in a standard unit test. Because MXS is enabled, it reads the `pox-5` state at the forked block: `burn-block-height` inside the simnet starts at that block's Bitcoin height, and `current-pox-reward-cycle` divides the distance from `first-burnchain-block-height` (666,050) by the 2,100-block cycle length.
+
+`pox-5` exists from Stacks block 8,665,568, the first block of Epoch 4.0 (Bitcoin block 960,230). Below that height the call fails with `Contract 'SP000000000000000000002Q6VF78.pox-5' does not exist`. `pox-4` stays readable after the fork, and its public functions fail from Epoch 4.0 onward, so a test that forks before 8,665,568 can read PoX-4 history but cannot exercise staking.
+
+Read-only functions that are useful as a first MXS target, all on `SP000000000000000000002Q6VF78.pox-5`:
+
+| Function                                 | Returns                                                                          |
+| ---------------------------------------- | -------------------------------------------------------------------------------- |
+| `current-pox-reward-cycle`               | The reward cycle at the simnet's `burn-block-height`                             |
+| `get-pox-info`                           | Cycle id, cycle and prepare lengths, first burnchain block height, liquid supply |
+| `get-staker-info (staker principal)`     | The staker's position, or `none`                                                 |
+| `get-bond-membership (staker principal)` | The staker's protocol bond membership, or `none`                                 |
+
+The TypeScript equivalents are in the SDK reference: [fetchPoxInfo](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js/stacks-bitcoin-staking/fetch/fetchpoxinfo), [fetchStakerInfo](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js/stacks-bitcoin-staking/fetch/fetchstakerinfo), [fetchBondMembership](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js/stacks-bitcoin-staking/fetch/fetchbondmembership).
 
 ## Try it out
 
@@ -137,6 +151,14 @@ Solution: Check the contract exists at your block height.
 
 </details>
 
+<details>
+
+<summary>Contract 'SP000000000000000000002Q6VF78.pox-5' does not exist</summary>
+
+Solution: `pox-5` is deployed from Stacks block 8,665,568. Set `initial_height` to 8,665,568 or later.
+
+</details>
+
 ## Testing in the playground
 
 {% stepper %}
@@ -152,7 +174,7 @@ Go to: [https://play.stackslabs.com/?remote\_data=true](https://play.stackslabs.
 Example Clarity call:
 
 ```clarity
-> contract-call? 'SP000000000000000000002Q6VF78.pox-4 current-pox-reward-cycle
+> contract-call? 'SP000000000000000000002Q6VF78.pox-5 current-pox-reward-cycle
 ```
 {% endstep %}
 {% endstepper %}

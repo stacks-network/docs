@@ -4,6 +4,35 @@ description: Check out the latest Stacks developer updates
 
 # Latest Updates
 
+### Bitcoin Staking and Clarity 6 are live
+
+_October 14th, 2026_
+
+SIP-045 and SIP-044 activated at Bitcoin block 960,230 on July 30, 2026. Epoch 4.0 replaced PoX-4 with `SP000000000000000000002Q6VF78.pox-5`, which pays stakers in sBTC, and shipped Clarity 6. The first PoX-5 reward cycle is 141; the first protocol bond opened at cycle 143 (Bitcoin block 966,350) and new bonds open every two cycles. Start at the [Bitcoin Staking hub](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/bitcoin-staking) for what it is, [Opening a bond position](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/protocol-bonds/opening-a-bond-position) for how to take part, and [Epoch 4.0 Consensus Changes](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/epoch-4-0-consensus-changes) for what changed under the hood.
+
+<details>
+
+<summary>For builders</summary>
+
+* Clarity 6 adds `get-bitcoin-tx-output?` and `verify-merkle-proof` for native Bitcoin inclusion proofs, `ed25519-verify` and `secp256k1-decompress?`, and a variadic `concat`. The `with-stacking` allowance becomes `with-staking`, with `with-pox` alongside it. See [Functions](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/clarity/functions).
+* Two transaction post-condition types, `Staking` (0x03) and `PoX` (0x04), cover `stake`, `unstake` and the other position-altering `pox-5` calls. They are in `@stacks/transactions` 7.5.0 and later; see [Post Conditions](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js/stacks-transactions/post-conditions).
+* `@stacks/bitcoin-staking` 7.6.0 builds the staking and bond transactions, lock scripts, SPV proofs and reclaims. Every export is in the [reference](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js/stacks-bitcoin-staking).
+* The Hiro Stacks Blockchain API has staking endpoints under `/extended/v3/staking/...`; see [Staking](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/api/stacks-blockchain-api/staking).
+* [Clarinet v3.23.0](https://github.com/stx-labs/clarinet/releases/tag/v3.23.0) defaults new contracts to `clarity_version = 6` and `epoch = "latest"` (Epoch 4.0) and ships a Devnet snapshot that starts in Epoch 4.0; [v3.24.1](https://github.com/stx-labs/clarinet/releases/tag/v3.24.1) rewrites `'SP000000000000000000002Q6VF78.pox-5` to its simnet twin in your sources. Mainnet execution simulation reaches `pox-5` from Stacks block 8,665,568.
+
+</details>
+
+<details>
+
+<summary>For node and signer operators</summary>
+
+* Run [stacks-core 4.0.4](https://github.com/stacks-network/stacks-core/releases/tag/4.0.4) or later; anything older than 4.0.1 diverges from consensus after block 960,230. Upgrade steps are in the [PoX-5 Upgrade Guide](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/run-a-signer/pox-5-upgrade-guide).
+* STX locked under PoX-4 became spendable at activation with no unlock transaction or event; read the account's locked balance instead of watching for one. See [What's Changed in PoX-5](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/staking-stx/whats-changed-in-pox-5).
+
+</details>
+
+***
+
 ### More Linting, Less Friction
 
 _March 12th, 2026_
@@ -172,7 +201,7 @@ _February 4th, 2026_
 
 _January 30, 2026_
 
-The [Cookbook](https://app.gitbook.com/s/uholC0CdufHxYs050O3V/) contains detailed coding snippets known as recipes. Recipes are focused and reusable. They are designed to be referenced, copied, and adapted.
+The [Cookbook](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/uholC0CdufHxYs050O3V/) contains detailed coding snippets known as recipes. Recipes are focused and reusable. They are designed to be referenced, copied, and adapted.
 
 This section provides focused, reusable Clarity and Stacks.js code snippets that solve common problems or demonstrate specific patterns—designed to be referenced, copied, and adapted rather than read end-to-end.
 
@@ -285,7 +314,7 @@ _January 12, 2026_
 
 _January 9, 2026_
 
-The [Learn](https://app.gitbook.com/s/H74xqoobupBWwBsVMJhK/) section now supports Chinese and Spanish, helping more developers access clear explanations of how Stacks works. You can switch languages using the selector in the top-right corner of the Learn pages.
+The [Learn](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/H74xqoobupBWwBsVMJhK/) section now supports Chinese and Spanish, helping more developers access clear explanations of how Stacks works. You can switch languages using the selector in the top-right corner of the Learn pages.
 
 ***
 
@@ -448,7 +477,7 @@ Enter password to decrypt mnemonic for account deployer:
 
 _December 7, 2025_
 
-The new [Tutorials](https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/) section is now live on the Stacks docs!&#x20;
+The new [Tutorials](https://app.gitbook.com/o/hoh4mQXTl8NvI3cETroY/s/skGYu79qDNfITOqDNU3s/) section is now live on the Stacks docs!
 
 First up: the beloved [Bitcoin Primer](https://app.gitbook.com/s/skGYu79qDNfITOqDNU3s/bitcoin-primer) by Kenny Rogers.
 

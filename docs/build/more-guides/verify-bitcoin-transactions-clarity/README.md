@@ -7,7 +7,7 @@ description: Trustlessly validate Bitcoin data on-chain.
 <div data-with-frame="true"><figure><img src="../../.gitbook/assets/bitcoin-clarity.png" alt=""><figcaption></figcaption></figure></div>
 
 {% hint style="info" %}
-The current version of the `clarity-bitcoin-lib` is version 7. Click [here](https://explorer.hiro.so/txid/0xe433b35e95acfd24595e601860b4240cfaacd689ae7e7938a80c5505f186516b) for the deployed mainnet contract.
+Contracts on Clarity 6 (Epoch 4.0 and later) can use the native `get-bitcoin-tx-output?` and `verify-merkle-proof` with no external dependency; see [Native verification in Clarity 6](./#native-verification-in-clarity-6). Contracts on earlier Clarity versions, and existing integrations, use `clarity-bitcoin-lib-v7` at `SP2PABAF9FTAJYNFZH93XENAJ8FVY99RRM50D2JG9.clarity-bitcoin-lib-v7`, which the rest of this guide walks through.
 {% endhint %}
 
 ## Intro
@@ -15,9 +15,9 @@ The current version of the `clarity-bitcoin-lib` is version 7. Click [here](http
 One of the unique features of the Stack chain and the Clarity language is that it allows for using read-only functions to trustlessly validate on-chain Bitcoin activity from Clarity smart contracts. This enables developers to build applications that **react to real Bitcoin activity** — such as deposits, transfers, and proofs of inclusion — without relying on off-chain indexers or oracles. In this guide, you’ll learn how to verify Bitcoin transactions in Clarity and safely bridge Bitcoin state into on-chain logic.
 
 > _Knowledge of Bitcoin state: has knowledge of the full Bitcoin state; it can trustlessly read_\
-> &#xNAN;_&#x42;itcoin transactions and state changes and execute smart contracts triggered by Bitcoin_\
-> &#xNAN;_&#x74;ransactions. The Bitcoin read functionality helps to keep the decentralized peg state_\
-> &#xNAN;_&#x63;onsistent with BTC locked on Bitcoin L1, amongst other things. **- Stacks Whitepaper**_
+> \&#xNAN;_Bitcoin transactions and state changes and execute smart contracts triggered by Bitcoin_\
+> \&#xNAN;_transactions. The Bitcoin read functionality helps to keep the decentralized peg state_\
+> \&#xNAN;_consistent with BTC locked on Bitcoin L1, amongst other things. **- Stacks Whitepaper**_
 
 ### tl;dr
 
@@ -37,6 +37,109 @@ One of the unique features of the Stack chain and the Clarity language is that i
 * [mempool.space APIs](https://mempool.space/docs/api/rest): Bitcoin explorer APIs used to fetch bitcoin transaction metadata.
 * [Bitcoin Transaction Proof](https://github.com/kenrogers/bitcoin-tx-proof) \[optional]: A TypeScript library for generating Bitcoin transaction proofs, including witness data and merkle proofs.
 * [Clarity Bitcoin Client](https://github.com/BigMarketDao/clarity-bitcoin-client) \[optional]: Clarity Bitcoin Client is an open-source TypeScript library for interacting with the `clarity-bitcoin-lib` contract on Stacks.
+
+***
+
+## Native verification in Clarity 6
+
+The native path uses these functions:
+
+| Function                                                                     | Does                                                                                                                         | Returns                                                                                                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `(get-bitcoin-tx-output? tx-bytes vout)`                                     | Parses a serialized Bitcoin transaction, witness data included, and returns one output plus the canonical txid               | `(ok {script: (buff 1024), amount: uint, txid: (buff 32)})`, or `(err u1)` bad bytes, `(err u2)` `vout` out of range, `(err u3)` script over 1,024 bytes |
+| `(verify-merkle-proof leaf-hash root-hash tx-index tx-count sibling-hashes)` | Checks a Bitcoin merkle inclusion proof with double SHA-256 and the odd-row duplication rule; `tx-count` pins the tree shape | `true` for a valid proof, `false` for anything else                                                                                                      |
+| `(get-burn-block-info? header-hash height)`                                  | The hash of the Bitcoin block the Stacks chain recorded at `height`                                                          | `(some (buff 32))`, or `none` for a height the chain has not processed                                                                                   |
+
+All 32-byte hashes go in internal byte order, the reverse of what block explorers display. The `txid` from `get-bitcoin-tx-output?` is already internal, so it feeds `verify-merkle-proof` directly. Transactions up to 1,048,576 bytes are accepted, against `(buff 4096)` for `was-tx-mined-compact`, and witness data does not have to be stripped first.
+
+A read-only function that returns an output once it is proven to be in the Bitcoin block at `height`:
+
+{% code title="btc-inclusion.clar" %}
+```clarity
+;; Clarinet.toml: clarity_version = 6, epoch = "latest"
+(define-constant ERR_BAD_HEADER (err u100))
+(define-constant ERR_HEADER_NOT_IN_CHAIN (err u101))
+(define-constant ERR_TX_NOT_IN_BLOCK (err u102))
+
+;; Errors u1 to u3 pass through from get-bitcoin-tx-output?.
+(define-read-only (get-mined-output
+    (height uint)
+    (header (buff 80))
+    (tx (buff 4096)) ;; raise this bound for larger transactions; the native accepts up to 1,048,576 bytes
+    (vout uint)
+    (tx-index uint)
+    (tx-count uint)
+    (siblings (list 24 (buff 32))))
+  (let (
+      (output (try! (get-bitcoin-tx-output? tx vout)))
+      ;; Bytes 36 to 67 of an 80-byte header hold the merkle root, in internal byte order.
+      (merkle-root (unwrap! (as-max-len? (unwrap! (slice? header u36 u68) ERR_BAD_HEADER) u32)
+        ERR_BAD_HEADER)))
+    ;; The header has to be the one the Stacks node recorded at that Bitcoin height.
+    ;; pox-5 exposes this check as a read-only function.
+    (asserts!
+      (contract-call? 'SP000000000000000000002Q6VF78.pox-5 verify-block-header header height)
+      ERR_HEADER_NOT_IN_CHAIN)
+    ;; The txid has to hash up to that merkle root.
+    (asserts!
+      (verify-merkle-proof (get txid output) merkle-root tx-index tx-count siblings)
+      ERR_TX_NOT_IN_BLOCK)
+    (ok output)))
+```
+{% endcode %}
+
+`verify-block-header` in pox-5 compares `(get-burn-block-info? header-hash height)` with the reversed double SHA-256 of the header you pass ([pox-5.clar L3663-L3671](https://github.com/stacks-network/stacks-core/blob/10474cdec9f9c0bdf05841b58cffc89cdad87a9b/stackslib/src/chainstate/stacks/boot/pox-5.clar#L3663-L3671)). Calling it saves you the byte-reversal helper. Everything else is the two Clarity 6 natives. Clarinet v3.24.1 rewrites `'SP000000000000000000002Q6VF78.pox-5` to its simnet twin in your sources, so `clarinet check` and your tests run against the bundled `pox-5` without editing the principal.
+
+On the client, the same [mempool.space](https://mempool.space) endpoints as in the walkthrough supply the inputs, plus `tx_count` from the block:
+
+{% code title="verify-native.ts" %}
+```typescript
+import { fetchCallReadOnlyFunction, bufferCV, uintCV, listCV, cvToString } from "@stacks/transactions"
+import { hexToBytes } from "@stacks/common"
+import mempoolJS from "@mempool/mempool.js"
+
+const { bitcoin: { transactions, blocks } } = mempoolJS({ hostname: "mempool.space" })
+
+const txid = "fb88309b4041f76bea0c196633c768dca82bb0dd424cbfe19be38569007f92d9"
+const vout = 0
+
+// The full transaction, witness data included. get-bitcoin-tx-output? strips it itself.
+const txHex = await transactions.getTxHex({ txid })
+// For this txid: block_height 928198, pos 3, 12 sibling hashes
+const { block_height, merkle, pos } = await transactions.getTxMerkleProof({ txid })
+const blockHash = await blocks.getBlockHeight({ height: block_height })
+const blockHeader = await blocks.getBlockHeader({ hash: blockHash })
+// tx_count 3684 for block 928198; ceil(log2(3684)) = 12, matching the proof length
+const { tx_count } = await blocks.getBlock({ hash: blockHash })
+
+const functionArgs = [
+  uintCV(block_height),
+  bufferCV(hexToBytes(blockHeader)),
+  bufferCV(hexToBytes(txHex)),
+  uintCV(vout),
+  uintCV(pos),
+  uintCV(tx_count),
+  // mempool.space returns display-order hashes; the contract wants internal byte order
+  listCV(merkle.map((h) => bufferCV(hexToBytes(h).reverse()))),
+]
+
+const result = await fetchCallReadOnlyFunction({
+  contractAddress: "<deployer-address>", // placeholder: the address you deployed btc-inclusion.clar from
+  contractName: "btc-inclusion",
+  functionName: "get-mined-output",
+  functionArgs,
+  network: "mainnet",
+  senderAddress: "SP1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRCBGD7R",
+})
+
+console.log(cvToString(result))
+// (ok (tuple (amount u...) (script 0x...) (txid 0x...))) when the output is in block 928198
+```
+{% endcode %}
+
+`height` has to be a Bitcoin height the Stacks chain has processed: at or after 666,050, the first burnchain block, and at or below the current `burn-block-height`. For an earlier or later height `get-burn-block-info?` returns `none` and the call fails with `ERR_HEADER_NOT_IN_CHAIN (u101)`.
+
+This is the pattern pox-5 runs on every `register-for-bond` with native BTC lockups: `get-bitcoin-tx-output?` on the lockup transaction, `verify-block-header` on the supplied header, `verify-merkle-proof` on the txid, with its own error codes `ERR_INVALID_BTC_HEADER (u40)` and `ERR_INVALID_MERKLE_PROOF (u41)`. The staking SDK builds those proof arguments for you; see [buildLockProof](https://app.gitbook.com/s/GVj1Z9vMuEOMe7oH7Wnq/stacks.js/stacks-bitcoin-staking/proof/buildlockproof) and [Opening a bond position](https://app.gitbook.com/s/4cpTb2lbw0LAOuMHrvhA/protocol-bonds/opening-a-bond-position).
 
 ***
 
