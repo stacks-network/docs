@@ -21,7 +21,7 @@ description: >-
 * It is part of Proof of Transfer (PoX): miners commit BTC, and that BTC pays stakers.
 * You stake by naming a signer-manager contract. The STX locks in your own account and never moves.
 * There is no per-staker minimum. A signer-manager with at least 50,000 STX staked to it in aggregate gets a yield distribution.
-* You can unstake an STX-only position at any time, and the STX unlocks at the start of the next cycle. Bond-paired STX is committed for the bond term.
+* You can unstake an STX-only position outside the prepare phase, and the STX unlocks at the start of the next cycle. Bond-paired STX is committed for the bond term.
 * Rewards arrive as sBTC by default. A native BTC payout can be elected through your signer-manager.
 
 ***
@@ -92,7 +92,7 @@ PoX-5 has two participation paths, and a Stacks principal can hold one position 
 
 **Bitcoin Staking: Protocol Bond** pairs a BTC commitment with an STX lock for a bond term of 12 cycles (roughly six months). The BTC side is either a timelocked UTXO on Bitcoin L1 that stays under your own keys, or sBTC, which pox-5 holds for the term. Bonds have a Target Protocol Yield Rate (aka Target APY) on the BTC side; the paired STX earns no yield. Capacity is allowlisted per bonding period, so registering requires an allowance for that period, and `register-for-bond` is the entry point.
 
-**STX-Only Staking** locks STX alone. You choose 1 to 96 cycles, you can unstake at any time outside the prepare phase with the unlock at the next cycle start, and there is no capacity limit. Rewards come from the miner BTC left after protocol bond obligations, split 85% to STX-only stakers pro rata and 15% to the protocol reserve.
+**STX-Only Staking** locks STX alone. You choose 1 to 96 cycles, you can unstake outside the prepare phase with the unlock at the next cycle start, and there is no capacity limit. Rewards come from the miner BTC left after protocol bond obligations, split 85% to STX-only stakers pro rata and 15% to the protocol reserve.
 
 In the bootstrap phase that allowance is allocated by the Stacks Endowment to whitelisted partners, with roughly a tenth of bond capacity kept open through selected pooling partners, so most participants reach a bond through a pool rather than by calling `register-for-bond` themselves. Liquid staking products work differently again: you deposit into the product, the product stakes, and you hold a token representing your share, so pox-5 never records you as a staker at all.
 

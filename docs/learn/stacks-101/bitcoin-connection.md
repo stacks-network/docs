@@ -142,7 +142,7 @@ sBTC unlocks Bitcoin’s programmability. You get L2 expressivity without losing
 
 <div data-with-frame="true"><figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure></div>
 
-Zest, Bitflow, StackingDAO, Dual Stacking, and other major DeFi protocols on Stacks offer developer tooling for smart, composable, and Bitcoin-first applications.
+Zest, Bitflow, StackingDAO, and other major DeFi protocols on Stacks offer developer tooling for smart, composable, and Bitcoin-first applications.
 {% endstep %}
 
 {% step %}
