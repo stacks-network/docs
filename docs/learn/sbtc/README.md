@@ -48,7 +48,7 @@ sBTC is a [SIP-010](https://github.com/stacksgov/sips/blob/main/sips/sip-010/sip
 The sBTC UTXO is the single unspent transaction output (UTXO) on the Bitcoin blockchain that holds the entire BTC balance pegged into sBTC. This UTXO is managed and maintained by the set of sBTC Signers.
 
 This UTXO resides in a secure multi-signature taproot address controlled by the sBTC Signers:\
-[bc1pkwxwvhvtu5vc2rvw0emetlwf6z0jxj32geng57dsa8jgl47p84lspwnc8x](https://mempool.space/address/bc1pkwxwvhvtu5vc2rvw0emetlwf6z0jxj32geng57dsa8jgl47p84lspwnc8x)
+[bc1psptt20t7g8u0sz629k4y27c8lqd3kh6zqds4937s2hxecl7d7afsrhteyx](https://mempool.space/address/bc1psptt20t7g8u0sz629k4y27c8lqd3kh6zqds4937s2hxecl7d7afsrhteyx)
 
 </details>
 
