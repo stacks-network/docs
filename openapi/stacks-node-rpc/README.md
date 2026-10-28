@@ -1,6 +1,6 @@
 # Node RPC OpenAPI spec for GitBook
 
-Source: stacks-network/stacks-core `docs/rpc/` at commit `b62be8ee94f2a08dc58d5ff6809a6d08b813c3e9` (main after PR #7691, 2026-10-06).
+Source: stacks-network/stacks-core `docs/rpc/` at commit `12ac3abebc67cf2bfd286413a1d7db47cd9c7e5d` (main after PR #7786, 2026-10-28).
 GitBook spec slug: `stacks-node-rpc-api-dereferenced-new` (org `hoh4mQXTl8NvI3cETroY`).
 
 ## Why the extra step
@@ -12,7 +12,7 @@ GitBook spec slug: `stacks-node-rpc-api-dereferenced-new` (org `hoh4mQXTl8NvI3cE
 Run from a checkout of stacks-network/docs. Requires git, Node.js with npx, and Python 3.
 
 ```bash
-COMMIT=b62be8ee94f2a08dc58d5ff6809a6d08b813c3e9
+COMMIT=12ac3abebc67cf2bfd286413a1d7db47cd9c7e5d
 SHORT=${COMMIT:0:9}
 OUT="$PWD/openapi/stacks-node-rpc"
 TMP=$(mktemp -d)
@@ -26,7 +26,9 @@ npx -y @redocly/cli@2.19 lint "$OUT/stacks-node-rpc.$SHORT.json"
 cd - >/dev/null
 ```
 
-sha256 of `stacks-node-rpc.b62be8ee9.json`: `6bfbdf37b0380126035dfe4e46c7fbf7b4f4e8000c6e0a2979808910a48c2b32`
+sha256 of `stacks-node-rpc.12ac3abeb.json`: `6fae49c3e9a6ec33f5f8495637a58d761be7c08f96ce8d3013a1bff9abfdfc6f`
+
+Previous build, kept until GitBook no longer points at it: `stacks-node-rpc.b62be8ee9.json` (stacks-core `b62be8ee94f2a08dc58d5ff6809a6d08b813c3e9`), sha256 `6bfbdf37b0380126035dfe4e46c7fbf7b4f4e8000c6e0a2979808910a48c2b32`.
 
 ## Updating
 
