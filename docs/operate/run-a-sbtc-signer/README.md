@@ -56,10 +56,22 @@ You will need `bitcoind` version 25 or higher.
 
 ### Settings
 
-Your Bitcoin node must include these settings for sBTC signer operation:
+Your Bitcoin node must have the RPC server enabled (`server=1`) for sBTC signer operation.
 
-* `server=1`: RPC server must be enabled
-* `prune=0`: Pruning must be disabled
+### Pruning
+
+The signer reads full blocks from Bitcoin Core over RPC (`getblock`). It needs every block from the newest block in its PostgreSQL database up to the chain tip, so whether a pruned node works depends on that database.
+
+* **Existing database.** A signer whose database holds its history since it joined can use a pruned node. Keep at least three months of blocks, about 13,000. The same window covers catching up after downtime and restoring a database backup, as long as the backup is newer than the oldest block your node keeps.
+* **Empty database.** A signer that starts with an empty database, such as a new signer, backfills from `sbtc_bitcoin_start_height`. This defaults to the Nakamoto start height, Bitcoin block 867,867 on mainnet. The signer reads every block from there to the chain tip to follow the chain of sBTC sweep transactions. Use an unpruned node (`prune=0`) for this.
+
+`prune` sets a size in MiB, not a block count. The `prune=1024` example on [Run a Pruned Bitcoin Node](../run-a-node/run-a-pruned-bitcoin-node.md) is sized for a Stacks node and keeps far fewer blocks than an sBTC signer needs. To check how many blocks a pruned node keeps:
+
+```bash
+bitcoin-cli getblockchaininfo | jq '.blocks - .pruneheight'
+```
+
+Keep the result above 13,000.
 
 ### RPC-Based Block Detection
 
