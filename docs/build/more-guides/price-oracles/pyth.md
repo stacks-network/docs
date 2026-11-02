@@ -133,7 +133,6 @@ Below are how the contracts and mainfest files are setup in this example Clarine
     (recipient principal)
   )
   (begin
-    ;; #[filter(sender)]
     (asserts! (is-eq tx-sender sender) ERR_NOT_TOKEN_OWNER)
     (nft-transfer? benjamin token-id sender recipient)
   )
@@ -197,17 +196,6 @@ epoch = 'latest'
 path = 'contracts/nft.clar'
 clarity_version = 4
 epoch = 'latest'
-
-[repl.analysis]
-passes = ['check_checker']
-
-[repl.analysis.lints]
-
-[repl.analysis.check_checker]
-strict = false
-trusted_sender = false
-trusted_caller = false
-callee_filter = false
 
 [repl.remote_data]
 enabled = true

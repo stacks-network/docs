@@ -132,7 +132,6 @@ Any SFT contract that wants to conform to the SIP-013 semi-fungible token standa
 	(ok none)
 )
 
-;; #[allow(unchecked_params)]
 (define-public (transfer (token-id uint) (amount uint) (sender principal) (recipient principal))
 	(let
 		(

@@ -34,7 +34,6 @@ Useful flags:
 | `--deployment-plan-path <path>`  | Apply a specific deployment plan                                                        |
 | `--use-on-disk-deployment-plan`  | Use an existing plan without recomputing                                                |
 | `--use-computed-deployment-plan` | Recompute and overwrite the plan                                                        |
-| `--package <path>`               | Load a packaged Devnet configuration                                                    |
 | `--from-genesis`                 | Skip the embedded Epoch 4.0 snapshot and boot from genesis, walking through every epoch |
 | `--create-new-snapshot`          | Boot from genesis and save a new global snapshot after the first Epoch 4.0 Stacks block |
 
@@ -317,22 +316,6 @@ clarinet devnet start
 ```
 
 </details>
-
-### Package deployment
-
-Create reusable Devnet configurations:
-
-```bash
-$ clarinet devnet package --name demo-env
-Packaging devnet configuration...
-Created demo-env.json
-```
-
-Use a packaged configuration:
-
-```bash
-$ clarinet devnet start --package demo-env.json
-```
 
 ## Common issues
 

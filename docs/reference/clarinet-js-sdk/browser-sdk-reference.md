@@ -24,8 +24,8 @@ const simnet = await initSimnet();
 await simnet.initEmptySession();
 
 // Execute Clarity code directly
-const result = simnet.runSnippet("(+ 1 2)");
-console.log(result); // 3
+const { result } = simnet.execute("(+ 1 2)");
+console.log(result); // Cl.int(3)
 ```
 {% endcode %}
 

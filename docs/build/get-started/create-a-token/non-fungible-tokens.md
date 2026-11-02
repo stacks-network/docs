@@ -109,7 +109,6 @@ Any NFT contract that wants to conform to the SIP-009 non-fungible token standar
 ;; SIP-009 function: Transfer NFT token to another owner.
 (define-public (transfer (token-id uint) (sender principal) (recipient principal))
   (begin
-    ;; #[filter(sender)]
     (asserts! (is-eq tx-sender sender) ERR_NOT_TOKEN_OWNER)
     (nft-transfer? Your-NFT-Name token-id sender recipient)
   )

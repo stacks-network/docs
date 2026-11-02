@@ -147,7 +147,6 @@ Any token contract that wants to conform to the SIP-010 fungible token standard 
   (memo (optional (buff 34)))
 )
   (begin
-    ;; #[filter(amount, recipient)]
     (asserts! (or (is-eq tx-sender sender) (is-eq contract-caller sender)) ERR_NOT_TOKEN_OWNER)
     (try! (ft-transfer? clarity-coin amount sender recipient))
     (match memo to-print (print to-print) 0x)

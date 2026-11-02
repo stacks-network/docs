@@ -364,20 +364,24 @@ const newHeight = simnet.blockHeight;
 
 ## Utility methods
 
-### runSnippet
+### execute
 
-`runSnippet` executes arbitrary Clarity code without deploying.
+`execute` evaluates arbitrary Clarity code without deploying a contract. The `result` property holds the parsed Clarity value of the expression. If evaluation fails, `execute` throws, so wrap it in `try`/`catch` when a failure is expected.
 
 Usage:
 
 ```
-runSnippet(snippet: string): string | ClarityValue
+execute(snippet: string): TransactionResult
 ```
 
 ```ts
-const result = simnet.runSnippet('(stx-account tx-sender)');
-// Returns account balance information
+const { result } = simnet.execute('(stx-account tx-sender)');
+// Returns a tuple with the account's locked, unlocked and unlock-height values
 ```
+
+{% hint style="warning" %}
+Clarinet SDK 4.0 removed `simnet.runSnippet(code)`. Replace it with `simnet.execute(code).result`. Unlike `runSnippet`, `execute` throws on failure instead of returning an `"error:"` string.
+{% endhint %}
 
 ### getContractsInterfaces
 
