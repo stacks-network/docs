@@ -90,7 +90,7 @@ Updated Clarinet.toml
 
 ### clarinet check
 
-`clarinet check` checks contracts syntax, performs type checking, and runs the linter. When given a single file, it applies the `[linter]` settings from `--manifest-path` or from the nearest `Clarinet.toml` above the current directory, and uses the default lints if there is no manifest. See [Validation and Analysis](../../build/clarinet/validation-and-analysis.md#linter-analysis) for lint configuration.
+`clarinet check` checks contract syntax and types, and runs the linter. When you give it a single file, it applies the `[linter]` settings from `--manifest-path` or from the nearest `Clarinet.toml` above the current directory. If there is no manifest, it uses the default lints. See [Validation and Analysis](../../build/clarinet/validation-and-analysis.md#linter-analysis) for lint configuration.
 
 Usage
 

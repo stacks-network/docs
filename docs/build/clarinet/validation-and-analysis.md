@@ -155,7 +155,15 @@ Add the `--output=<format>` option to `clarinet check` to print diagnostics as J
 
 Clarinet includes a built-in linter as part of `clarinet check` that flags common mistakes, inefficiencies, and unused code in Clarity contracts.
 
-Clarinet 4.0 has 24 lints in five groups: `correctness` (code that is certainly wrong), `unused` (dead code), `perf` (inefficient code), `safety` (code that might not do what you intended) and `style` (naming conventions). Each lint except the `correctness` lints can be configured on its own or through its group.
+Clarinet 4.0 has 24 lints in five groups:
+
+* `correctness`: code that is certainly wrong
+* `unused`: dead code
+* `perf`: inefficient code
+* `safety`: code that might not do what you intended
+* `style`: naming conventions
+
+You can configure each lint on its own or through its group. The `correctness` lints are the exception: you cannot configure them.
 
 | Identifier               | Description                                                                                                                                                                                          | Lint group |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
@@ -234,7 +242,7 @@ unused = "error" # Enforces removal of unused code
 {% hint style="info" %}
 **Migrating from Clarinet 3.x**
 
-Clarinet 4.0 moved the linter settings out of `[repl.analysis]`. Rename `[repl.analysis.lints]` to `[linter.lints]` and `[repl.analysis.lint_groups]` to `[linter.groups]`. The check-checker pass was removed, so delete `passes = ["check_checker"]` and the `[repl.analysis.check_checker]` settings. Clarinet warns when `Clarinet.toml` still contains `[repl.analysis]` or an `analysis` key in `[project]`.
+Clarinet 4.0 moved the linter settings out of `[repl.analysis]`. Rename `[repl.analysis.lints]` to `[linter.lints]` and `[repl.analysis.lint_groups]` to `[linter.groups]`. Clarinet 4.0 also removed the check-checker pass, so remove `passes = ["check_checker"]` and the `[repl.analysis.check_checker]` settings. Clarinet warns when `Clarinet.toml` still contains `[repl.analysis]` or an `analysis` key in `[project]`.
 
 The check-checker annotations `#[filter(...)]`, `#[allow(unchecked_data)]` and `#[allow(unchecked_params)]` are still accepted, so existing contracts compile, but they have no effect.
 {% endhint %}

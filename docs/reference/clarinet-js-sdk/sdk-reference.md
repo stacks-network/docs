@@ -134,7 +134,7 @@ const count = simnet.getDataVar('counter', 'count');
 
 ### getMapEntry
 
-`getMapEntry` retrieves a value from a contract map by its key.
+`getMapEntry` retrieves a value from a contract map by its key. Like the node's map-entry endpoint, it returns `(some value)` for an existing entry and `none` otherwise, including when the map or contract does not exist.
 
 Usage:
 
@@ -150,7 +150,7 @@ const hasParticipated = simnet.getMapEntry(
   "Participants",
   Cl.standardPrincipal(wallet)
 );
-// Returns: { type: 10, value: { type: 3 } }
+// Returns: Cl.some(Cl.bool(true)), or Cl.none() if there is no entry
 ```
 
 | Parameter  | Type           | Description         |
@@ -222,6 +222,8 @@ const result = simnet.callPublicFn(
 // Mines block and returns result
 ```
 
+A returned `(err ...)` response does not throw. `callPublicFn`, `callPrivateFn`, `deployContract` and `transferSTX` throw when simnet rejects the transaction. They also throw when simnet includes the transaction but it fails with a runtime error or a post-condition abort. An included failure still consumes the sender's nonce and mines its block. To tell included failures from rejections, use [`mineBlock`](#mineblock).
+
 ### callPrivateFn
 
 `callPrivateFn` calls private functions (testing only) and mines a block.
@@ -248,7 +250,9 @@ const result = simnet.callPrivateFn(
 
 ## Transfer STX
 
-`transferSTX` transfers STX between addresses and mines a block.
+`transferSTX` transfers STX between addresses and mines a block. Like `callPublicFn`, it advances one block before executing, even when simnet rejects the transfer.
+
+Self-transfers, zero-amount transfers, and transfers that exceed the sender's unlocked balance throw without consuming a nonce. Inside `mineBlock`, these transfers return a `rejected` outcome instead.
 
 Usage:
 
@@ -277,7 +281,9 @@ const transfer = simnet.transferSTX(
 
 ## Deploy contracts
 
-`deployContract` deploys a new contract to simnet and mines a block.
+`deployContract` deploys a new contract to simnet and mines a block. A successful deployment returns `(ok true)`, whatever the contract's final top-level expression evaluates to. To check what the contract did when it initialized, use read-only calls, `getDataVar` and events. To evaluate a snippet and get its value, use [`execute`](#execute).
+
+An unsupported `clarityVersion` throws instead of falling back to the default version. Simnet rejects a duplicate contract name without consuming a nonce.
 
 Usage:
 
@@ -312,12 +318,12 @@ const contract = simnet.deployContract(
 
 ### mineBlock
 
-`mineBlock` mines a block with multiple transactions.
+`mineBlock` mines a block with multiple transactions. It advances exactly one block, and all entries execute at that height. It first mines any signed transactions queued with [`broadcastTransaction`](#broadcasttransaction), then the entries in `txs`, in input order.
 
 Usage:
 
 ```
-mineBlock(txs: Tx[]): ParsedTransactionResult[]
+mineBlock(txs?: Tx[]): BlockTransactionResult[]
 ```
 
 ```ts
@@ -328,7 +334,31 @@ const block = simnet.mineBlock([
   tx.callPublicFn("counter", "increment", [], simnet.deployer),
   tx.transferSTX(19000000, wallet, simnet.deployer),
 ]);
+
+for (const outcome of block) {
+  if (outcome.status === "success") {
+    console.log(outcome.execution.result);
+  } else {
+    console.log(outcome.status, outcome.error);
+  }
+}
 ```
+
+Each result has one of three statuses. A failed entry does not stop the batch. Later entries still execute.
+
+| Status             | Meaning                                                                                                                                                                                                                                          |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `success`          | `execution` holds the parsed result, events and costs.                                                                                                                                                                                           |
+| `included_failure` | Simnet included the transaction, but it failed. `error` describes the failure and `kind` is `abort_by_response`, `abort_by_post_condition`, `runtime_error` or `analysis_error`. `execution` is always present. The transaction consumes the nonce, and its payload writes roll back. |
+| `rejected`         | Simnet did not include the transaction. `error` gives the reason. Simnet commits no writes and no nonce changes.                                                                                                                                 |
+
+Results for signed transactions also have a `transaction` property with the `txid`, `fee` and `nonce`.
+
+{% hint style="warning" %}
+**Migrating from Clarinet SDK 3.x**
+
+Before 4.0, each entry returned the execution result directly, and most failures threw and stopped the batch. Replace direct access such as `block[0].result` with a status check and `block[0].execution.result`.
+{% endhint %}
 
 ### mineEmptyBlock
 
@@ -362,16 +392,57 @@ const newHeight = simnet.blockHeight;
 // Returns: 6
 ```
 
-## Utility methods
+## Signed transactions
 
-### execute
+### broadcastTransaction
 
-`execute` evaluates arbitrary Clarity code without deploying a contract. The `result` property holds the parsed Clarity value of the expression. If evaluation fails, `execute` throws, so wrap it in `try`/`catch` when a failure is expected.
+`broadcastTransaction` submits a signed, serialized Stacks transaction to the simnet's local mempool. It runs the node's mempool admission checks but does not execute the transaction, charge fees, consume nonces, or advance the chain. Call `mineBlock()` to mine queued transactions.
 
 Usage:
 
 ```
-execute(snippet: string): TransactionResult
+broadcastTransaction(rawHex: string): BroadcastTransactionResult
+```
+
+On acceptance it returns `{ txid }`. On rejection it returns `{ error, reason, reason_data?, txid? }`.
+
+```ts
+import { makeSTXTokenTransfer } from '@stacks/transactions';
+
+const transaction = await makeSTXTokenTransfer({
+  network: "testnet",
+  senderKey,
+  recipient,
+  amount: 100n,
+  fee: 1000n,
+  nonce: simnet.getAccountNonce(sender),
+});
+
+const admission = simnet.broadcastTransaction(transaction.serialize());
+if ("error" in admission) {
+  throw new Error(admission.reason);
+}
+
+const [outcome] = simnet.mineBlock();
+if (outcome.status === "success") {
+  console.log(outcome.transaction?.txid, outcome.execution.result);
+}
+```
+
+Admission checks signatures, network and epoch rules, nonces, unlocked funds, transfer validity, duplicate deployments, and public-function access and argument types. Admission rejects transactions that call read-only, private or missing functions. The minimum fee is 1 micro-STX per serialized byte. Set `fee` and `nonce` explicitly so Stacks.js does not request them from a remote node.
+
+Admission does not guarantee inclusion, because `mineBlock` checks the current state again. A transaction with a future nonce stays in the queue until `mineBlock` mines the transactions with the earlier nonces. To execute a signed transaction directly, without mempool admission, pass it to `mineBlock` as `{ broadcastTx: rawHex }`.
+
+## Utility methods
+
+### execute
+
+`execute` evaluates arbitrary Clarity code without deploying a contract. The `result` property holds the parsed Clarity value of the expression. If evaluation fails, `execute` throws, so wrap it in `try`/`catch` when you expect a failure.
+
+Usage:
+
+```
+execute(snippet: string): ParsedTransactionResult
 ```
 
 ```ts
