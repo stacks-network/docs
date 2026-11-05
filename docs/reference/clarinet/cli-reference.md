@@ -90,7 +90,7 @@ Updated Clarinet.toml
 
 ### clarinet check
 
-`clarinet check` checks contracts syntax and performs type checking.
+`clarinet check` checks contract syntax and types, and runs the linter. When you give it a single file, it applies the `[linter]` settings from `--manifest-path` or from the nearest `Clarinet.toml` above the current directory. If there is no manifest, it uses the default lints. See [Validation and Analysis](../../build/clarinet/validation-and-analysis.md#linter-analysis) for lint configuration.
 
 Usage
 
@@ -173,12 +173,11 @@ The Clarinet console offers a variety of commands for contract interaction:
 
 ### clarinet devnet
 
-`clarinet devnet` is a subcommand for working with Devnet. It has two subcommands:
+`clarinet devnet` is a subcommand for working with Devnet. It has one subcommand:
 
 | Command   | Description                                                      |
 | --------- | ---------------------------------------------------------------- |
 | `start`   | Start a local Devnet network for interacting with your contracts |
-| `package` | Generate package of all required devnet artifacts                |
 
 Usage with `start`
 
@@ -197,24 +196,6 @@ clarinet devnet start
 | `--deployment-plan-path <path>`  | `-p`  | If specified, use this deployment file                                      |
 | `--use-on-disk-deployment-plan`  | `-d`  | Use on disk deployment plan (prevent updates computing)                     |
 | `--use-computed-deployment-plan` | `-c`  | Use computed deployment plan (will overwrite on disk version if any update) |
-| `--package <path>`               |       | Path to Package.json produced by 'clarinet devnet package'                  |
-
-Usage with `package`
-
-```
-clarinet devnet package [OPTIONS]
-```
-
-```bash
-$ clarinet devnet package --name my-devnet
-Packaging devnet artifacts...
-Created file my-devnet.json
-```
-
-| Option                   | Short | Description           |
-| ------------------------ | ----- | --------------------- |
-| `--name <name>`          | `-n`  | Output json file name |
-| `--manifest-path <path>` | `-m`  | Path to Clarinet.toml |
 
 ## Manage your deployments
 

@@ -288,7 +288,7 @@ const totalDeposits = simnet.getDataVar("defi", "total-deposits");
 expect(totalDeposits).toBeUint(1000);
 
 const balance = simnet.getMapEntry("defi", "balances", Cl.principal(wallet));
-expect(balance).toBeUint(1000);
+expect(balance).toBeSome(Cl.uint(1000)); // none if the entry does not exist
 ```
 
 ## Other Examples

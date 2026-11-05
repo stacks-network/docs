@@ -64,6 +64,8 @@ Focus validation during development on a single contract file:
 ```bash
 clarinet check contracts/nft.clar
 ```
+
+Clarinet applies the `[linter]` settings from the `Clarinet.toml` given with `--manifest-path`, or from the nearest `Clarinet.toml` above the current directory. If there is no manifest, it uses the default lints. The project's `include` and `exclude` filters do not apply to a file you name explicitly.
 {% endstep %}
 
 {% step %}
@@ -153,10 +155,19 @@ Add the `--output=<format>` option to `clarinet check` to print diagnostics as J
 
 Clarinet includes a built-in linter as part of `clarinet check` that flags common mistakes, inefficiencies, and unused code in Clarity contracts.
 
-Clarinet v3.24.1 has 23 lints in four groups: `unused` (dead code), `perf` (inefficient code), `safety` (code that might not do what you intended) and `style` (naming conventions). Each lint can be configured on its own or through its group.
+Clarinet 4.0 has 24 lints in five groups:
+
+* `correctness`: code that is certainly wrong
+* `unused`: dead code
+* `perf`: inefficient code
+* `safety`: code that might not do what you intended
+* `style`: naming conventions
+
+You can configure each lint on its own or through its group. The `correctness` lints are the exception: you cannot configure them.
 
 | Identifier               | Description                                                                                                                                                                                          | Lint group |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `call_checker`           | Detects calls that pass the wrong number of arguments to a function.                                                                                                                                 | `correctness` |
 | `unused_binding`         | Detects unused function parameters and `let` bindings.                                                                                                                                               | `unused`   |
 | `unused_const`           | Detects unused `define-constant` declarations.                                                                                                                                                       | `unused`   |
 | `unused_data_var`        | Detects `define-data-var` declarations that are never used, never read, or never written (a value that is never written can be a constant).                                                          | `unused`   |
@@ -195,13 +206,25 @@ Individual lints can also be disabled for a specific line using Clarity's annota
 
 #### Configuration
 
-By default, lints in the `unused`, `perf` and `safety` groups report at the `warning` level and `style` lints at the `notice` level. Change the level per lint or per group in `Clarinet.toml`.
+By default, lints in the `unused`, `perf` and `safety` groups report at the `warning` level and `style` lints at the `notice` level. Change the level per lint or per group in the `[linter]` section of `Clarinet.toml`.
+
+Lints in the `correctness` group always report at the `error` level and reject the contract. `[linter]` settings do not change them: `call_checker = "warning"`, `correctness = false` and `all = false` have no effect on these lints.
+
+Each value is a level (`"error"`, `"warning"` or `"notice"`), `false` or `"off"` to turn the lint off, or `true` or `"on"` to turn it on at its default level. A lint that is already on keeps its current level, so `style = true` gives notices, not warnings. To get warnings, set `"warning"` explicitly.
+
+**Files to analyze**
+
+```toml
+[linter]
+include = ["contracts/*.clar"]
+exclude = []
+```
 
 **Individual lint configuration**
 
 ```toml
-[repl.analysis.lints]
-noop = true # Defaults to "warning"
+[linter.lints]
+noop = true # Turns the lint on at its default level ("warning")
 unused_const = "warning"
 unused_data_var = "error"
 unused_map = false
@@ -210,11 +233,19 @@ unused_map = false
 **Lint group configuration**
 
 ```toml
-[repl.analysis.lint_groups]
-all = true      # Sets the default level to "warning" for all lints
-style = "notice" # Cosmetic lints only generate notices
+[linter.groups]
+all = true       # Turns on all lints at their default levels
+style = "warning" # Report style lints as warnings instead of notices
 unused = "error" # Enforces removal of unused code
 ```
+
+{% hint style="info" %}
+**Migrating from Clarinet 3.x**
+
+Clarinet 4.0 moved the linter settings out of `[repl.analysis]`. Rename `[repl.analysis.lints]` to `[linter.lints]` and `[repl.analysis.lint_groups]` to `[linter.groups]`. Clarinet 4.0 also removed the check-checker pass, so remove `passes = ["check_checker"]` and the `[repl.analysis.check_checker]` settings. Clarinet warns when `Clarinet.toml` still contains `[repl.analysis]` or an `analysis` key in `[project]`.
+
+The check-checker annotations `#[filter(...)]`, `#[allow(unchecked_data)]` and `#[allow(unchecked_params)]` are still accepted, so existing contracts compile, but they have no effect.
+{% endhint %}
 
 ## Runtime analysis
 

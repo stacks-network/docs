@@ -43,7 +43,6 @@
     (recipient principal)
   )
   (begin
-    ;; #[filter(sender)]
     (asserts! (is-eq tx-sender sender) ERR_NOT_TOKEN_OWNER)
     (nft-transfer? Your-NFT-Name token-id sender recipient)
   )
@@ -96,4 +95,3 @@ A complete implementation of a SIP-009 compliant non-fungible token (NFT) contra
 * Metadata URI management for off-chain content
 * Using data variables to track minting state
 * Returning standardized responses for trait compliance
-* Filter annotations for security (`#[filter(sender)]`)

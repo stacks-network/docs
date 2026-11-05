@@ -70,7 +70,6 @@
     (memo (optional (buff 34)))
   )
   (begin
-    ;; #[filter(amount, recipient)]
     (asserts! (or (is-eq tx-sender sender) (is-eq contract-caller sender))
       ERR_NOT_TOKEN_OWNER
     )
@@ -110,4 +109,3 @@ A complete implementation of a SIP-010 compliant fungible token called "Clarity 
 * Preventing unauthorized transfers with sender validation
 * Returning standardized responses that comply with trait requirements
 * Using constants for immutable contract configuration
-* Filter annotations for security analysis (`#[filter]`)
