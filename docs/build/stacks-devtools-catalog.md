@@ -41,7 +41,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 
 * [**Clarigen**](https://www.clarigen.dev/) - Clarigen is a developer tool that automatically generates TypeScript-friendly clients that can interact with Clarity smart contracts.
 * [**Stacks.js Starters**](https://github.com/stx-labs/stacks.js-starters) **\[StacksLabs]** - Quickly bootstrap frontend applications with Stacks.js on top of multiple JavaScript frameworks as the foundation.
-* [**SecondLayer**](https://github.com/ryanwaits/secondlayer) - Generate fully typed contract interfaces, functions, and React hooks for Clarity smart contracts.
+* [**@secondlayer/stacks**](https://stacks.secondlayer.tools) - TypeScript client for Stacks: read contracts, decode Clarity values, send transactions.
 * [**Clarity-types**](https://github.com/ryanwaits/clarity-types) - Strict TypeScript types for Clarity ABI properties and values.
 * [**Clarity-ABItypes**](https://github.com/pradel/clarity-abitype) - Strict TypeScript types for Clarity ABIs. Provides utilities and type definitions for Clarity smart contract ABIs on the Stacks blockchain.
 * [**Stacks Kit**](https://github.com/karkigrishmin/stacks-kit) - React toolkit for Stacks blockchain. Think RainbowKit, but for Bitcoin L2.
@@ -73,6 +73,7 @@ Official Stacks devtools are built and maintained by either **Stacks Labs** or *
 * [**x402-Stacks**](https://github.com/tony1908/x402Stacks) - A TypeScript library for implementing the x402 payment protocol on Stacks blockchain.&#x20;
 * [**StacksAgent MCP**](https://github.com/kai-builder/stacksagent-mcp) - A Model Context Protocol (MCP) server that enables Claude Desktop to interact with the Stacks blockchain.
 * [**AIBTC**](https://github.com/aibtcdev) - AI agent tooling for Stacks.
+* [**secondlayer**](https://www.secondlayer.tools/docs) - Stacks indexer: decoded chain data from genesis, webhooks, and subgraphs. Hosted or self-hosted.
 
 </details>
 
