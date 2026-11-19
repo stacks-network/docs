@@ -16,7 +16,7 @@ For STX-only staking, use [app.leather.io/staking](https://app.leather.io/stakin
 
 Whichever you use, the transaction goes to `pox-5`.
 
-<figure><img src="https://4065274862-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4cpTb2lbw0LAOuMHrvhA%2Fuploads%2FjDg22iamidwOWL66JBSd%2Fimage.png?alt=media&#x26;token=f61519b1-c36c-4d8e-85e6-b3bd26cbd4c1" alt="A list of signer-manager contracts to choose from in the Leather staking app"><figcaption><p>Choosing a signer-manager</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/leather-staking-choose-signer-manager.png" alt="A list of signer-manager contracts to choose from in the Leather staking app"><figcaption><p>Choosing a signer-manager</p></figcaption></figure>
 
 <figure><img src="https://4065274862-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F4cpTb2lbw0LAOuMHrvhA%2Fuploads%2FP4PeRg1y6jTAyRGrwZCu%2Fimage.png?alt=media&#x26;token=e90baa33-27dc-4f5c-9744-ca43ec67e537" alt="Fields for the amount of STX to stake and the number of cycles to run"><figcaption><p>Setting the amount and the number of cycles</p></figcaption></figure>
 
