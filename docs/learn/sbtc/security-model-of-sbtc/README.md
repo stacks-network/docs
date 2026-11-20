@@ -24,9 +24,9 @@ As approved by the Stacks community via [SIP-028](https://github.com/stacksgov/s
 \
 As sBTC evolves, the Signer set will transition to a fully decentralized model, further strengthening the protocol's resilience.
 
-<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>source: <a href="https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers">Bitcoin L2 Labs</a></p></figcaption></figure></div>
+<div data-with-frame="true"><figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>source: <a href="https://www.stacks.co/blog/sbtc-rollout#sbtc-signers">Bitcoin L2 Labs</a></p></figcaption></figure></div>
 
-For more info on who the sBTC Signers are, check out this section on the Bitcoin L2 Labs website [here](https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers).
+For more info on who the sBTC Signers are, check out this section of the sBTC rollout post on the Stacks blog [here](https://www.stacks.co/blog/sbtc-rollout#sbtc-signers).
 
 #### **Trust-Minimized Bridge Model**
 
