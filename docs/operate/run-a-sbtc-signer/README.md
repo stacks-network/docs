@@ -131,6 +131,7 @@ endpoint = "sbtc-signer:8801"
 events_keys = [
     "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-registry::print",
 ]
+disable_contract_interface = true
 ```
 
 ### Reference configuration
@@ -556,6 +557,7 @@ private_neighbors = false
 endpoint = "sbtc-signer:8801"
 events_keys = ["SNKW1SJK9HES9WP0T5HJ32DF20Z4365AD1FRJ8CT.sbtc-registry::print"]
 timeout_ms = 10_000
+disable_contract_interface = true
 
 [[ustx_balance]]
 address = "ST2QKZ4FKHAH1NQKYKYAYZPY440FEPK7GZ1R5HBP2"
