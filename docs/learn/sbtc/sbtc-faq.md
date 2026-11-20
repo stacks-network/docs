@@ -34,7 +34,7 @@ Signers are responsible for approving all sBTC deposit and withdrawal operations
 
 To launch sBTC, the Stacks community approved [SIP-028](https://github.com/stacksgov/sips/blob/69d40a5f4f0ad98eb448ba44e7c31ca054820aa3/sips/sip-028-sbtc_peg.md), defining the criteria for selecting signers based on factors such as technical expertise, reliability, performance, and decentralization. An initial group of 15 institutional Signers has been chosen for Phase 1 to maintain simplicity and reduce operational risks. This group will expand over time as the protocol matures.
 
-The list of sBTC signers is public and listed [here](https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers).
+The list of sBTC signers is public and listed [here](https://www.stacks.co/blog/sbtc-rollout#sbtc-signers).
 
 </details>
 
@@ -81,7 +81,7 @@ Read the "[Selection of sBTC Signer Set](https://github.com/stacks-network/sbtc/
 
 sBTC deposits first went live on December 16, 2024, quickly hitting the 1,000 BTC cap. The second cap will go live on February 25th, 2025, quickly hitting the 3,000 BTC cap. Withdrawals went live on April 30, 2025.
 
-Full decentralization of the Signer set will follow in [a subsequent phase](https://bitcoinl2labs.com/sbtc-rollout), gradually expanding beyond the initial 15 community-elected signers.
+Full decentralization of the Signer set will follow in [a subsequent phase](https://www.stacks.co/blog/sbtc-rollout), gradually expanding beyond the initial 15 community-elected signers.
 
 </details>
 
