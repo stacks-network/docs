@@ -70,7 +70,7 @@ In sBTC, the sBTC Signer is a signer entity separate from the Stacks Nakamoto si
 
 The sBTC Signer Set is the group of all sBTC signers. This set has full democratic access to the sBTC UTXO and is responsible for maintaining the security of the peg wallet. The signers also have the ability to rotate their private keys for enhanced security.
 
-For more info on who the sBTC Signers are, check out this section on the Bitcoin L2 Labs website [here](https://bitcoinl2labs.com/sbtc-rollout#sbtc-signers).
+For more info on who the sBTC Signers are, check out this section of the sBTC rollout post on the Stacks blog [here](https://www.stacks.co/blog/sbtc-rollout#sbtc-signers).
 
 </details>
 
