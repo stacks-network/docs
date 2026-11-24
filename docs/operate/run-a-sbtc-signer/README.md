@@ -119,7 +119,9 @@ bitcoind \
 
 ### Minimum version
 
-Please ensure your Stacks version is up-to-date (using the latest release).
+Please ensure your Stacks-node version is up-to-date and using the latest
+release. The event observer configuration below requires Stacks node
+version 4.0.2 or later.
 
 ### Event observer
 
@@ -131,6 +133,7 @@ endpoint = "sbtc-signer:8801"
 events_keys = [
     "SM3VDXK3WZZSA84XXFKAFAF15NNZX32CTSG82JFQ4.sbtc-registry::print",
 ]
+timeout_ms = 10_000
 disable_contract_interface = true
 ```
 
